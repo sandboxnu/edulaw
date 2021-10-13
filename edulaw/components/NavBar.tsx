@@ -32,7 +32,7 @@ export default function NavBar() {
         <AppBar position="static" classes={{ root: classes.appBar }}>
             <Toolbar classes={{ root: classes.toolBar }}>
                 <Logo classes={{root: classes.logo}}/>
-                <div style={{height: 33, flex: 2}}>
+                <div style={{display: 'flex', position: 'absolute', right: 30, height: 33, flex: 2}}>
                     <Typography variant='body2' style={{display: 'inline-block', verticalAlign: 'middle', flex: 'none'}}>(123)-456-7890</Typography>
                     <Divider orientation='vertical' variant="middle" classes={{root: classes.divider}}></Divider>
                     <Typography variant='body2' style={{display: 'inline-block', verticalAlign: 'middle', flex: 'none'}}>edu@law.com</Typography>
