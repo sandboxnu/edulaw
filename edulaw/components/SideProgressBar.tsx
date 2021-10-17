@@ -8,6 +8,8 @@ import { withStyles } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { HomeOutlined, PlayCircleFilled } from '@material-ui/icons'; 
 
+// todo: fix console error
+
 const useStyles = makeStyles((theme) => ({
   listItemText: {
     fontSize: "20px",
@@ -30,7 +32,7 @@ function SideProgrssBar() { // todos: (for down the road) -- routing +  upon com
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const handleListItemClick = (event: any, index: number) => { // todo: figure out event type?
+  const handleListItemClick = (event: MouseEvent, index: number) => { 
     setSelectedIndex(index);
   };
 
