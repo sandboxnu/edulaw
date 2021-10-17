@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { MyTextInput } from '../Components/MyInput';
@@ -15,6 +15,8 @@ interface FormValues {
 
 const FormikExample: React.FC = () => {
   const initValues: FormValues = {email: '', firstName: '', lastName: '', acceptedTerms: false, jobType:''};
+  // const [inputValues, setInputValues] = useState<FormValues>()
+
   return (
     <Formik
       initialValues={initValues}
