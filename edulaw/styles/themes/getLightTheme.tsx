@@ -1,5 +1,4 @@
 import { createTheme, PaletteType } from "@material-ui/core";
-import "@fontsource/source-sans-pro"
 
 const defaultTheme = createTheme();
 
@@ -19,7 +18,7 @@ export default function getLightTheme() {
             }
         },
         typography: {
-            fontFamily: 'Source Sans Pro',
+            fontFamily: "'Source Sans Pro' sans-serif",
             h1: {
                 fontWeight: 600,
                 fontSize: '40px'

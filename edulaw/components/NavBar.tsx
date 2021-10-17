@@ -1,7 +1,7 @@
 import Logo from './Logo'
 import { AppBar, Toolbar, Divider } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { PhoneOutlined } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,29 +13,45 @@ const useStyles = makeStyles((theme) => ({
         flex: 'none'
     },
     divider: {
-        // color: theme.palette.primary.dark,
         backgroundColor: theme.palette.primary.dark,
-        // borderStyle: 'inset',
-        // borderWidth: '1px'
         display: 'inline-block',
         verticalAlign: 'middle',
-        flex: 'none'
+        flex: 'none',
+        marginLeft: '22px',
+        marginRight: '22px'
     },
     appBar: {
         height: '114px'
+    },
+    icon: {
+        marginRight: '7px',
+        height: 30
+    },
+    info: {
+        display: 'flex',
+        position: 'absolute',
+        right: 30,
+        height: 33,
+        flex: 2
+    },
+    typography: {
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        flex: 'none'
     }
 }));
 
 export default function NavBar() {
-    const classes = useStyles(); // TODO: Fix console warning -- has to do with SSR
+    const classes = useStyles();
     return (
         <AppBar position="static" classes={{ root: classes.appBar }}>
             <Toolbar classes={{ root: classes.toolBar }}>
-                <Logo classes={{root: classes.logo}}/>
-                <div style={{display: 'flex', position: 'absolute', right: 30, height: 33, flex: 2}}>
-                    <Typography variant='body2' style={{display: 'inline-block', verticalAlign: 'middle', flex: 'none'}}>(123)-456-7890</Typography>
-                    <Divider orientation='vertical' variant="middle" classes={{root: classes.divider}}></Divider>
-                    <Typography variant='body2' style={{display: 'inline-block', verticalAlign: 'middle', flex: 'none'}}>edu@law.com</Typography>
+                <Logo classes={{ root: classes.logo }} />
+                <div className={classes.info}>
+                    <PhoneOutlined classes={{ root: classes.icon }} />
+                    <Typography variant='body2' classes={{ root: classes.typography }}>(617)-910-5829</Typography>
+                    <Divider orientation='vertical' variant="middle" classes={{ root: classes.divider }}></Divider>
+                    <Typography variant='body2' classes={{ root: classes.typography }}>edlawproject@publiccounsel.net</Typography>
                 </div>
             </Toolbar>
         </AppBar>
