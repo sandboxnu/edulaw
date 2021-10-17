@@ -1,11 +1,12 @@
 import React from 'react'
 import SideProgressBar from './SideProgressBar'
+import styles from '../styles/SidePage.module.css'
 
 function SidePage() {
   return (
-    <div style={{backgroundColor: 'red'}}>
-      side 
-      <SideProgressBar />
+    <div className="sidepage" style={{float: 'left', position: 'absolute'}}>
+      
+      <SideProgressBar/>
     </div>
   )
 }

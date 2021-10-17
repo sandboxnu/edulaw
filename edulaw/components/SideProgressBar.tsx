@@ -52,9 +52,9 @@ function SideProgrssBar() { // todos: (for down the road) -- routing +  upon com
       </StyledListItem>
     );
   }
-
+//margin='0 auto'
   return (
-    <Box border={.5} borderColor="#B8B8B8" borderRadius={3} sx={{width: 340, bgcolor: "white"}}>
+    <Box position='absolute' top='5%' left='10%' borderColor="#B8B8B8" borderRadius={3} sx={{width: '80%', bgcolor: "white"}}>
       <List dense={true}>
         <StyledListItem 
           button
