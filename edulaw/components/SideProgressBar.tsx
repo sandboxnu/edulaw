@@ -32,7 +32,7 @@ function SideProgrssBar() { // todos: (for down the road) -- routing +  upon com
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const handleListItemClick = (event: MouseEvent, index: number) => { 
+  const handleListItemClick = (event: any, index: number) => {  // todo: figure out actual type 
     setSelectedIndex(index);
   };
 
