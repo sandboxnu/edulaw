@@ -4,8 +4,8 @@ import SidePage from './SidePage'
 
 function FullPage() {
   return (
-    <div>
-      full 
+    <div className="fullpage">
+      {/* full  */}
       <MainPage />
       <SidePage />
     </div>
