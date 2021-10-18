@@ -34,10 +34,6 @@ const FormikExample: React.FC = () => {
         jobType: Yup.string().oneOf(jobTypeOptions, 'Invalid Job Type').required('Required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        // setTimeout(() => {
-        //   alert(JSON.stringify(values, null, 2));
-        //   setSubmitting(false);
-        // }, 400);
         router.push({
           pathname: '/results',
           query: JSON.stringify(values)
