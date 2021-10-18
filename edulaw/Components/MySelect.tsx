@@ -3,6 +3,7 @@ import React from 'react';
 
 interface InputProps {
   label: string;
+  values: string[];
 }
 
 export const MySelect: React.FC<InputProps & FieldHookConfig<string>> = ({ label, ...props }) => {
@@ -10,7 +11,14 @@ export const MySelect: React.FC<InputProps & FieldHookConfig<string>> = ({ label
   return (
     <div>
       <label htmlFor={props.id || props.name}>{label}</label>
-      <select {...field} />
+      <select {...field}>
+        <option value='default'>Select an option</option>
+        {
+          props.values.map((op) => {
+            return <option value={op}>{op}</option>
+          })
+        }
+      </select>
 
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>

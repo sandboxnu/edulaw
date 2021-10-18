@@ -17,6 +17,8 @@ const FormikExample: React.FC = () => {
   const initValues: FormValues = {email: '', firstName: '', lastName: '', acceptedTerms: false, jobType:''};
   // const [inputValues, setInputValues] = useState<FormValues>()
 
+  const jobTypeOptions: string[] = ['Designer', 'Developer', 'Product Manager', 'Other']
+
   return (
     <Formik
       initialValues={initValues}
@@ -28,10 +30,7 @@ const FormikExample: React.FC = () => {
         email: Yup.string().email('Invalid email address').required('Required'),
         acceptedTerms: Yup.boolean().required('Required')
           .oneOf([true], 'You must accept the terms and conditions.'),
-        jobType: Yup.string().oneOf(
-          ['designer', 'development', 'product', 'other'],
-          'Invalid Job Type'
-        ).required('Required'),
+        jobType: Yup.string().oneOf(jobTypeOptions, 'Invalid Job Type').required('Required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -62,13 +61,11 @@ const FormikExample: React.FC = () => {
           placeholder='your@mother.com'
         />
 
-        <MySelect label="Job Type" name="jobType">
-          <option value="">Select a job type</option>
-          <option value="designer">Designer</option>
-          <option value="development">Developer</option>
-          <option value="product">Product Manager</option>
-          <option value="other">Other</option>
-        </MySelect>
+        <MySelect
+          label="Job Type"
+          name="jobType"
+          values={jobTypeOptions}
+        />
 
         <MyCheckbox name="acceptedTerms">
           I accept the terms and conditions
