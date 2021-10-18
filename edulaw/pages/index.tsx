@@ -17,7 +17,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <NavBar></NavBar>
 
-        <Typography variant='h1'>Hello</Typography>
+        {/* <Typography variant='h1'>Hello</Typography> */}
         <FullPage />
       </main>
     </div>
