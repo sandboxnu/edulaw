@@ -4,8 +4,9 @@ import * as Yup from 'yup';
 import { MyTextInput } from '../Components/MyInput';
 import { MySelect } from '../Components/MySelect';
 import { MyCheckbox } from '../Components/MyCheckbox';
+import { useRouter } from 'next/router';
 
-interface FormValues {
+export interface FormValues {
   email: string;
   firstName: string;
   lastName: string;
@@ -15,7 +16,7 @@ interface FormValues {
 
 const FormikExample: React.FC = () => {
   const initValues: FormValues = {email: '', firstName: '', lastName: '', acceptedTerms: false, jobType:''};
-  // const [inputValues, setInputValues] = useState<FormValues>()
+  const router = useRouter()
 
   const jobTypeOptions: string[] = ['Designer', 'Developer', 'Product Manager', 'Other']
 
@@ -33,10 +34,16 @@ const FormikExample: React.FC = () => {
         jobType: Yup.string().oneOf(jobTypeOptions, 'Invalid Job Type').required('Required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        // setTimeout(() => {
+        //   alert(JSON.stringify(values, null, 2));
+        //   setSubmitting(false);
+        // }, 400);
+        router.push({
+          pathname: '/results',
+          query: JSON.stringify(values)
+        }, 'results')
+
+        setSubmitting(false)
       }}
     >
       <Form>

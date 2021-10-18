@@ -15,7 +15,7 @@ export const MySelect: React.FC<InputProps & FieldHookConfig<string>> = ({ label
         <option value='default'>Select an option</option>
         {
           props.values.map((op) => {
-            return <option value={op}>{op}</option>
+            return <option key={op} value={op}>{op}</option>
           })
         }
       </select>
