@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     toolBar: {
         padding: '0px',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between', 
     },
     logo: {
         flex: 'none'
@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
         marginRight: '22px'
     },
     appBar: {
-        height: '114px'
+        height: '114px',
+        boxShadow: '0px 3px 4px rgba(0, 0, 0, 0.1)',
     },
     icon: {
         marginRight: '7px',
