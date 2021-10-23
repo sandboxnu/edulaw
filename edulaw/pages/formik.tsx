@@ -1,22 +1,16 @@
-import React, { useState } from "react";
-import { Formik, Form } from 'formik';
+import React, { useContext, useState } from "react";
+import { Formik, Form, FormikContext } from 'formik';
 import * as Yup from 'yup';
 import { MyTextInput } from '../Components/MyInput';
 import { MySelect } from '../Components/MySelect';
 import { MyCheckbox } from '../Components/MyCheckbox';
 import { useRouter } from 'next/router';
-
-export interface FormValues {
-  email: string;
-  firstName: string;
-  lastName: string;
-  acceptedTerms: boolean;
-  jobType: string
-}
+import { FormCtx, FormValues } from '../utils/FormContext';
 
 const FormikExample: React.FC = () => {
   const initValues: FormValues = {email: '', firstName: '', lastName: '', acceptedTerms: false, jobType:''};
   const router = useRouter()
+  const { formValues, updateFormValues } = useContext(FormCtx)
 
   const jobTypeOptions: string[] = ['Designer', 'Developer', 'Product Manager', 'Other']
 
@@ -34,9 +28,15 @@ const FormikExample: React.FC = () => {
         jobType: Yup.string().oneOf(jobTypeOptions, 'Invalid Job Type').required('Required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
+        if (updateFormValues) {
+          updateFormValues(values)
+        }
+
+        console.log(formValues)
+
         router.push({
-          pathname: '/results',
-          query: JSON.stringify(values)
+          pathname: '/results'
+          // query: JSON.stringify(values)
         }, 'results')
 
         setSubmitting(false)
