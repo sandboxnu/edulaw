@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Formik, Form, FormikContext } from 'formik';
+import React, { useContext } from "react";
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { MyTextInput } from '../Components/MyInput';
 import { MySelect } from '../Components/MySelect';
@@ -10,7 +10,7 @@ import { FormCtx, FormValues } from '../utils/FormContext';
 const FormikExample: React.FC = () => {
   const initValues: FormValues = {email: '', firstName: '', lastName: '', acceptedTerms: false, jobType:''};
   const router = useRouter()
-  const { formValues, updateFormValues } = useContext(FormCtx)
+  const { updateFormValues } = useContext(FormCtx)
 
   const jobTypeOptions: string[] = ['Designer', 'Developer', 'Product Manager', 'Other']
 
@@ -32,13 +32,7 @@ const FormikExample: React.FC = () => {
           updateFormValues(values)
         }
 
-        console.log(formValues)
-
-        router.push({
-          pathname: '/results'
-          // query: JSON.stringify(values)
-        }, 'results')
-
+        router.push({ pathname: '/results' })
         setSubmitting(false)
       }}
     >
