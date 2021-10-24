@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { HomeOutlined, PlayCircleFilled } from '@material-ui/icons'; 
-
+import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn';
 // todo: fix console error
 
 const useStyles = makeStyles((theme) => ({
@@ -62,7 +62,8 @@ function SideProgrssBar() { // todos: (for down the road) -- routing +  upon com
           onClick={(event) => handleListItemClick(event, 0)}
         >
           <ListItemIcon className={classes.listItemIcon}>
-            <HomeOutlined/>
+            {/* <HomeOutlined/> */}
+            <DoNotDisturbOnIcon/>
           </ListItemIcon>
           <ListItemText 
             classes={{primary: classes.listItemText}}
