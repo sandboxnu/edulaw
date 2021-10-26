@@ -31,6 +31,10 @@ export default function getLightTheme() {
                 fontWeight: 600,
                 fontSize: '22px'
             },
+            h6: {
+                fontWeight: 300,
+                fontSize: '18px'
+            },
             body1: {
                 fontWeight: 400,
                 fontSize: '26px'
