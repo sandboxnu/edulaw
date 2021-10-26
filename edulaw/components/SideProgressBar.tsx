@@ -42,7 +42,7 @@ function SideProgrssBar() { // todos: (for down the road) -- routing +  upon com
         button
         selected={selectedIndex === index}
         onClick={(event) => handleListItemClick(event, index)}
-        >
+      >
         <ListItemIcon className={classes.listItemIcon}>
           <PlayCircleFilled style={{ color: `${selectedIndex === index ? '#5064C7' : '#E2E2E2'}` }}/>
         </ListItemIcon>
