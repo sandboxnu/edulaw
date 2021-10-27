@@ -44,7 +44,7 @@ function SideProgrssBar() { // todos: (for down the road) -- routing +  upon com
         onClick={(event) => handleListItemClick(event, index)}
       >
         <ListItemIcon className={classes.listItemIcon}>
-          <PlayCircleFilled style={{ color: `${selectedIndex === index ? '#5064C7' : '#E2E2E2'}` }}/>
+          <DoNotDisturbOnIcon style={{ color: `${selectedIndex === index ? '#5064C7' : '#E2E2E2'}` }}/>
         </ListItemIcon>
         <ListItemText 
           classes={{primary: classes.listItemText}}
@@ -62,8 +62,7 @@ function SideProgrssBar() { // todos: (for down the road) -- routing +  upon com
           onClick={(event) => handleListItemClick(event, 0)}
         >
           <ListItemIcon className={classes.listItemIcon}>
-            {/* <HomeOutlined/> */}
-            <DoNotDisturbOnIcon/>
+            <HomeOutlined/> 
           </ListItemIcon>
           <ListItemText 
             classes={{primary: classes.listItemText}}

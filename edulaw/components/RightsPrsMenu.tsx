@@ -1,76 +1,61 @@
-import React from 'react'
-import Box from '@material-ui/core/Box';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse'
-import Divider from '@material-ui/core/Divider';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
+import Divider from "@mui/material/Divider";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import SubMenuItem from "./SubMenuItem";
 
-// todo: finish this component (Connie)
+// todo: routing (for when overall page is finished)
 
 function RightsPrsMenu() {
-  const [open, setOpen] = React.useState(true);
+  const [selectedIndex, setSelectedIndex] = React.useState("");
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+  const handleClick = (event: any, index: any) => {
+    if (selectedIndex === index) {
+      setSelectedIndex("")
+    } else {
+      setSelectedIndex(index)
+    }
+  }
+
+  const MainListItem = (index : any, label : string) => {
+    return(
+      <ListItemButton
+        onClick={(event) => handleClick(event, index)}
+        sx={{ width: "100%" }}
+      >
+        <ListItemText primary={label} sx={{ fontSize: "22px", fontWeight: 400, pl: 1 }}/>
+        {selectedIndex === index ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+    );
+  }
 
   return (
-    <Box sx={{ width: '300px' }}> 
-      <List>
-        <ListItem 
-          button
-        >
-          <ListItemText primary='Student Rights'/>
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List disablePadding dense={true}>
-            <ListItem button>
-              <ListItemText 
-                primary={<Typography variant="h6">School Discipline & Education</Typography>}/>
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary='Special Education'/>
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary='Bullying'/>
-            </ListItem>
-          </List>
-        </Collapse>
-
-        <Divider />
-        <ListItem 
-          button
-          onClick={handleClick}
-        >
-          <ListItemText primary='About PRS'/>
-          {open ? <ExpandLess /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List disablePadding dense={true}>
-            <ListItem button>
-              <ListItemText primary='How do I file a complaint?'/>
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary='When can I file a complaint?'/>
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary='Who can file a complaint?'/>
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary='What happens when I file?'/>
-            </ListItem>
-          </List>
-        </Collapse>
-
-        <Divider />
-      </List>
-    </Box>
-  )
+    <List sx={{ width: "310px", background: "#F4F5F7" }}>
+      {MainListItem("0", "Student Rights")}
+      <Collapse in={selectedIndex === "0"} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <SubMenuItem label={"School Discipline & Education"} />
+          <SubMenuItem label={"Special Education"} />
+          <SubMenuItem label={"Bullying"} />
+        </List>
+      </Collapse>
+      <Divider />
+      {MainListItem("1", "About PRS")}
+      <Collapse in={selectedIndex === "1"} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <SubMenuItem label={"How do I file a complaint?"} />
+          <SubMenuItem label={"When can I file a complaint?"} />
+          <SubMenuItem label={"Who can file a complaint?"} />
+          <SubMenuItem label={"What happens when I file?"} />
+        </List>
+      </Collapse>
+      <Divider />
+    </List>
+  );
 }
 
-export default RightsPrsMenu
+export default RightsPrsMenu;

@@ -4,8 +4,6 @@ import styles from '../styles/Home.module.css'
 import NavBar from '../components/NavBar'
 import Typography from '@material-ui/core/Typography';
 import FullPage from '../components/FullPage'
-import RightsPrsMenu from '../components/RightsPrsMenu';
-import StartComplaint from '../components/StartComplaint'
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +19,6 @@ const Home: NextPage = () => {
 
         {/* <Typography variant='h1'>Hello</Typography> */}
         <FullPage />
-        <RightsPrsMenu />
       </main>
     </div>
   )
