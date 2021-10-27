@@ -2,8 +2,9 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import NavBar from '../components/NavBar'
-import Typography from '@material-ui/core/Typography';
-import FullPage from '../components/FullPage'
+import SplitPage from '../components/SplitPage'
+import MainPage from '../components/MainPage';
+import SideProgressBar from '../components/SideProgressBar';
 
 const Home: NextPage = () => {
   return (
@@ -16,9 +17,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <NavBar></NavBar>
-
-        {/* <Typography variant='h1'>Hello</Typography> */}
-        <FullPage />
+        <SplitPage left={<MainPage />} right={<SideProgressBar />} />
       </main>
     </div>
   )
