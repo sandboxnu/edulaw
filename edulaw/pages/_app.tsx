@@ -1,5 +1,4 @@
 import '../styles/globals.css'
-import '../styles/formikStyles.css'
 import type { AppProps } from 'next/app'
 import React, { useState } from 'react';
 import { FormCtx, FormValues, emptyFormValues } from '../utils/FormContext';
