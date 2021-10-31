@@ -22,7 +22,7 @@ function MainPage() {
 
   return (
     <div className="mainpage">
-      <div style={{width: '70%', left: '10%', top: '25%', position: 'absolute'}} > {/* in order to place start text in correct place*/}
+      <div style={{width: '70%', left: '10%', top: '10%', position: 'absolute'}} > {/* in order to place start text in correct place*/}
         <h1>
           File a new complaint with PRS
         </h1>

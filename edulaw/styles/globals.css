@@ -24,29 +24,9 @@ a:visited {
   padding: 0;
 }
 
-.sidepage {
-  background-color: #F3F4F6; 
-  width: 25%;
-  height: 100vh;
-  /* float: right; */
-  /* overflow: hidden; */
-  /* float:absolute */
-  margin-left: 75%;
-
-}
-
 .mainpage {
   background-color: white;
   width: 75%;
   height: 100vh;
   float: left;
-}
-
-.fullpage {
-  background-color: blue;
-  width: 100%;
-  /* flex-direction: row; */
-  
-  /* display: flex; */
-  /* flex-grow: 1; */
 }

@@ -28,7 +28,7 @@ const StyledListItem = withStyles({
   },
 })(ListItem);
 
-function SideProgrssBar() { // todos: (for down the road) -- routing +  upon completion of section change icon to green checkmark
+function SideProgressBar() { // todos: (for down the road) -- routing +  upon completion of section change icon to green checkmark
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -78,4 +78,4 @@ function SideProgrssBar() { // todos: (for down the road) -- routing +  upon com
   )
 }
 
-export default SideProgrssBar
+export default SideProgressBar
