@@ -18,7 +18,7 @@ export default function getLightTheme() {
             }
         },
         typography: {
-            fontFamily: "'Source Sans Pro' sans-serif",
+            fontFamily: 'Source Sans Pro',
             h1: {
                 fontWeight: 600,
                 fontSize: '40px'
