@@ -9,8 +9,13 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: blue;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: darkblue;
+  text-decoration: underline;
 }
 
 * {

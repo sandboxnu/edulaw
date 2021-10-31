@@ -18,7 +18,7 @@ export default function getLightTheme() {
             }
         },
         typography: {
-            fontFamily: "'Source Sans Pro' sans-serif",
+            fontFamily: 'Source Sans Pro',
             h1: {
                 fontWeight: 600,
                 fontSize: '40px'
@@ -30,6 +30,10 @@ export default function getLightTheme() {
             h4: {
                 fontWeight: 600,
                 fontSize: '22px'
+            },
+            h6: {
+                fontWeight: 300,
+                fontSize: '18px'
             },
             body1: {
                 fontWeight: 400,
