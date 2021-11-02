@@ -6,29 +6,31 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     display: 'flex',
+    alignItems: 'stretch',
   }
 }));
 
 interface SplitPageProps {
   left: JSX.Element,
-  right: JSX.Element
+  right: JSX.Element,
   center?: JSX.Element,
-  leftPercentage?: Number,
-  rightPercentage?: Number
-  centerPercentage?: Number
+  leftStyle?: React.CSSProperties,
+  rightStyle?: React.CSSProperties,
+  centerStyle?: React.CSSProperties,
 }
 
-const SplitPage: FC<SplitPageProps> = ({ left, right, center = <div></div>, leftPercentage = 70, rightPercentage = 30, centerPercentage = 0 }): JSX.Element => {
+const SplitPage: FC<SplitPageProps> = ({ left, right, center = <div></div>, leftStyle={ width: '70%', height: '100%', position: 'relative'}, centerStyle={ width: '0%', height: '100%', position: 'relative'},
+rightStyle={ width: '30%', height: '100%', position: 'relative'}}): JSX.Element => {
   const classes = useStyles();
   return (
     <div className={classes.splitPage}>
-      <div style={{ width: leftPercentage + '%', height: '100%', position: 'relative' }}>
+      <div style={leftStyle}>
         {left}
       </div>
-      <div style={{ width: centerPercentage + '%', height: '100%', position: 'relative' }}>
+      <div style={centerStyle}>
         {center}
       </div>
-      <div style={{ width: rightPercentage + '%', height: '100%', position: 'relative' }}>
+      <div style={rightStyle}>
         {right}
       </div>
     </div>

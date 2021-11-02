@@ -6,7 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { HomeOutlined, PlayCircleFilled } from '@material-ui/icons'; 
+import { HomeOutlined } from '@material-ui/icons'; 
 import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn';
 // todo: fix console error
 
@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
 const StyledListItem = withStyles({
   root: {
     "&.Mui-selected": {
+      background: 'linear-gradient(to right, #5064C7 0%, #5064C7 2%, #FFFFFF 2%, #FFFFFF 100%)',
+      boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.15)',
+    },
+    '&:hover': {
       background: 'linear-gradient(to right, #5064C7 0%, #5064C7 2%, #FFFFFF 2%, #FFFFFF 100%)',
       boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.15)',
     },
