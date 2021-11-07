@@ -1,6 +1,6 @@
 import { FieldHookConfig, useField } from "formik";
 import React, { ChangeEvent } from "react";
-import { Answer } from ".";
+import { Answer } from "../models";
 
 interface MyRadioProps {
     name: string,
