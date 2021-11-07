@@ -1,4 +1,4 @@
-import {Question, questions, QuestionsKeys, answers, AnswersKeys, forms} from './models';
+import { Question, questions, QuestionsKeys, answers, AnswersKeys, forms } from './models';
 import { Form, Formik } from 'formik';
 import React, { ChangeEvent, useContext, useState } from 'react';
 import { FormAnswer, FormCtx, FormValues } from './FormContext'; // Note use of a different form context than before
@@ -38,28 +38,34 @@ const DynamicPOC: React.FC = () => {
         console.log(currentAnswer);
     }
 
-    function _handleSubmit(values: FormValues) {
-        // TODO: probably do something here, should probably break out into a handleNext and handleSubmit to handle the end of the form
-        console.log(values);
+    function _handleNext(values: FormValues) {
         values.formAnswers[currentAnswer.answer.questionId] = currentAnswer;
         setCurrentQuestion(getNextQuestion(currentAnswer.answer.answerId as AnswersKeys));
-        console.log(currentQuestion);
+    }
+
+    function _handleSubmit(values: FormValues) {
+        // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
+        alert(JSON.stringify(values));
     }
 
     return (
         <FormCtx.Provider value={providerValue}>
             <Formik
                 initialValues={{ formAnswers: {} } as FormValues}
-                onSubmit={(values) => { // TODO: Set submitting?
+                onSubmit={(values: FormValues, {setSubmitting}) => {
                     if (updateFormValues) {
                         updateFormValues(currentAnswer, values);
                     }
-                    _handleSubmit(values);
+                    _handleNext(values);
+                    if (currentQuestion.type === "RESULT") {
+                        _handleSubmit(values);
+                        setSubmitting(false);
+                    }
                 }}
             >
                 <Form>
                     <ChooseFormType question={currentQuestion} onChange={_updateCurrentAnswer} />
-                    <button type="submit">Submit</button> {/*TODO: Hide this at the end of the form */}
+                    <button type="submit">{currentQuestion.type === "RESULT" ? 'End' : 'Next'}</button>
                 </Form>
             </Formik>
         </FormCtx.Provider>
