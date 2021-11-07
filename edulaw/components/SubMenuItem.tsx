@@ -11,7 +11,7 @@ interface MenuItemProps {
 
 const SubMenuItem: React.FC<MenuItemProps> = ({ label, link }) => {
   return (
-    <Link href={link}>
+    <Link href={link} passHref>
       <ListItemButton sx={{ width: '100%' }}>
         <ListItemText 
           primary={<Typography variant="h6">{label}</Typography>} 

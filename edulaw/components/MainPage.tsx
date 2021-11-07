@@ -1,25 +1,24 @@
 import React from 'react'
 import { Button } from '@mui/material';
-import { makeStyles } from '@material-ui/core/styles';
-import { blue } from '@material-ui/core/colors';
-
-const useStyles = makeStyles((theme) => ({
-  button: {
-    backgroundColor: theme.palette.secondary.dark,
-    padding: '10px',
-    borderRadius: '8px',
-    color: theme.palette.primary.main,
-    fontFamily: theme.typography.fontFamily,
-    fontSize: '12px',
-    fontWeight: '700',
-    margin: '0 auto',
-    
-  },
-}));
+import { withStyles } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 function MainPage() {
-  const classes = useStyles();
 
+  const ContinueButton = withStyles({ 
+    root: {
+      backgroundColor: "#5064C7",
+      width: "100%", 
+      color: "#FFFFFF",
+      padding: '10px',
+      borderRadius: '8px',
+      margin: '0 auto',
+      '&:hover': {
+        backgroundColor: "#5064C7",
+      },
+    },
+  })(Button);
+  
   return (
     <div className="mainpage">
       <div style={{width: '70%', left: '10%', top: '10%', position: 'absolute'}} > {/* in order to place start text in correct place*/}
@@ -54,9 +53,11 @@ function MainPage() {
         </p>
         <br/>
         <div style={{margin: '0 auto', width: '60%', display: 'flex', justifyContent: 'center' }}>
-          <Button classes={{ root: classes.button }}>
-            I’m ready to start the walkthrough >
-          </Button>
+          <ContinueButton >
+            <Typography variant="button" style={{ textTransform: 'none', color: "#FFFFFF"}}>
+              I'm ready to start the walkthrough 
+            </Typography>
+          </ContinueButton>
         </div>
       </div>
     </div>
