@@ -25,7 +25,7 @@ const StyledListItem = withStyles({
       background: 'linear-gradient(to right, #5064C7 0%, #5064C7 2%, #FFFFFF 2%, #FFFFFF 100%)',
       boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.15)',
     },
-    '&:hover': {
+    '&:hover': { // repetitive send help 
       background: 'linear-gradient(to right, #5064C7 0%, #5064C7 2%, #FFFFFF 2%, #FFFFFF 100%)',
       boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.15)',
     },
@@ -56,7 +56,7 @@ function SideProgressBar() { // todos: (for down the road) -- routing +  upon co
       </StyledListItem>
     );
   }
-//margin='0 auto'
+
   return (
     <Box position='absolute' top='5%' left='10%' borderColor="#B8B8B8" borderRadius={3} sx={{width: '80%', bgcolor: "white"}}>
       <List dense={true}>

@@ -23,13 +23,13 @@ function StartComplaint() {
       <div className={styles.complaintWrapper}> 
         <Typography variant="h4">Start My Complaint</Typography>
         <p className={styles.captionText}>Our new tool will walk you through the process of filing a new PRS complaint. </p>
-        <ContinueButton disableElevation>
-          <Link href={"/home"}>
+        <Link href={"/home"} passHref>
+          <ContinueButton disableElevation>
             <a target="_blank">
               <Typography variant="button" style={{ textTransform: 'none', color: "#FFFFFF"}}>Continue</Typography>
             </a>
-          </Link>
-        </ContinueButton> 
+          </ContinueButton> 
+        </Link>
       </div>
     </div>
   )

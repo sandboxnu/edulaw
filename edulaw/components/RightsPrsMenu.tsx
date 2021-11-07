@@ -25,7 +25,7 @@ function RightsPrsMenu() {
 
   const MainListItem = (index : any, label : string, link : string) => {
     return(
-      <Link href={link}>
+      <Link href={link} passHref>
         <ListItemButton
           onClick={(event) => handleClick(event, index)}
           sx={{ width: "100%" }}
@@ -42,19 +42,19 @@ function RightsPrsMenu() {
       {MainListItem("0", "Student Rights", "/studentrights")}
       <Collapse in={selectedIndex === "0"} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <SubMenuItem label={"School Discipline & Education"} link={"#school-discipline"} />
-          <SubMenuItem label={"Special Education"} link={"#special-education"} />
-          <SubMenuItem label={"Bullying"} link={"#bullying"}/>
+          <SubMenuItem label={"School Discipline & Education"} link={"/studentrights#school-discipline"} />
+          <SubMenuItem label={"Special Education"} link={"/studentrights#special-education"} />
+          <SubMenuItem label={"Bullying"} link={"/studentrights#bullying"}/>
         </List>
       </Collapse>
       <Divider />
       {MainListItem("1", "About PRS", "/aboutprs")}
       <Collapse in={selectedIndex === "1"} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <SubMenuItem label={"How do I file a complaint?"} link={"#how-to-file"} />
-          <SubMenuItem label={"When can I file a complaint?"} link={"#when-to-file"}/>
-          <SubMenuItem label={"Who can file a complaint?"} link={"#who-can-file"}/>
-          <SubMenuItem label={"What happens when I file?"} link={"#what-happens"}/>
+          <SubMenuItem label={"How do I file a complaint?"} link={"/aboutprs#how-to-file"} />
+          <SubMenuItem label={"When can I file a complaint?"} link={"/aboutprs#when-to-file"}/>
+          <SubMenuItem label={"Who can file a complaint?"} link={"/aboutprs#who-can-file"}/>
+          <SubMenuItem label={"What happens when I file?"} link={"/aboutprs#what-happens"}/>
         </List>
       </Collapse>
       <Divider />
