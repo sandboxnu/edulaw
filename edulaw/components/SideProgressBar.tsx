@@ -72,7 +72,7 @@ function SideProgressBar() { // todos: (for down the road) -- routing +  upon co
             classes={{primary: classes.listItemText}}
             primary='Home'/>
         </StyledListItem>
-        {ProgressItem("ContactInfo", 1)}
+        {ProgressItem("Contact Info", 1)}
         {ProgressItem("Additional Info", 2)}
         {ProgressItem("District and School", 3)}
         {ProgressItem("Student or Group Details", 4)}
