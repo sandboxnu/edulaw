@@ -1,1 +1,1 @@
-export {default as getLightTheme} from './getLightTheme';
+export { default as getLightTheme } from './getLightTheme'

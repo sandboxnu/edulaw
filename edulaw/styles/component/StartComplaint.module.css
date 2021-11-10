@@ -1,8 +1,8 @@
 .complaint {
   width: 255px;
   height: 229px;
-  background: #FAFAFB;
-  border: 0.4px solid #C2C2C2;
+  background: #fafafb;
+  border: 0.4px solid #c2c2c2;
   box-sizing: border-box;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -21,6 +21,6 @@
 }
 
 .buttonCont {
-  color: #5064C7;
+  color: #5064c7;
   width: 78%;
 }
