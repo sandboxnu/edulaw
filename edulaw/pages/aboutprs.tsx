@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
-import NavBar from '../Components/NavBar'
+// import NavBar from '../Components/NavBar'
 import SplitPage from '../Components/SplitPage'
 import AboutPrs from '../Components/LandingAboutPrs'
 import RightsPrsMenu from '../Components/RightsPrsMenu'
@@ -13,7 +13,7 @@ const StudentRights: NextPage = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <NavBar></NavBar>
+        {/*<NavBar></NavBar>*/}
         <SplitPage
           left={<RightsPrsMenu />}
           leftStyle={{
