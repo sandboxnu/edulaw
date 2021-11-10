@@ -13,7 +13,7 @@ const StudentRights: NextPage = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <NavBar />
+        <NavBar></NavBar>
         <SplitPage
           left={<RightsPrsMenu />}
           leftStyle={{
