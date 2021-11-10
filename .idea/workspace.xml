@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e2b85436-cdf8-4f26-8e94-d5c0b2511fa3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/Components/MyCheckbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MyCheckbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/Components/MyInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MyInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/Components/MySelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MySelect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/FormikExample/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/FormikExample/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/FormikExample/formik.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/FormikExample/formik.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/FormikExample/results.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/FormikExample/results.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/additional.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/additional.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/LandingAboutPrs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LandingAboutPrs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/LandingContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LandingContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/LandingStudentRightsGuide.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LandingStudentRightsGuide.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MainPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/RightsPrsMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/RightsPrsMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/SideProgressBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SideProgressBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/SplitPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SplitPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/StartComplaint.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/StartComplaint.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/components/SubMenuItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SubMenuItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/next-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_document.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/pages/aboutprs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/aboutprs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/pages/api/hello.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/hello.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/pages/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/pages/studentrights.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/studentrights.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/public/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/public/vercel.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/vercel.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/styles/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/styles/component/StartComplaint.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/component/StartComplaint.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/styles/themes/getLightTheme.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/styles/themes/getLightTheme.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/styles/themes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/styles/themes/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edulaw/utils/FormContext.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/FormContext.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1zbwnJSVPpcJZAdKmDUSnhwlPeG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/edulaw/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/edulaw/FormikExample" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e2b85436-cdf8-4f26-8e94-d5c0b2511fa3" name="Default Changelist" comment="" />
+      <created>1634430260230</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1634430260230</updated>
+      <workItem from="1634430262192" duration="1623000" />
+      <workItem from="1634434835502" duration="2893000" />
+      <workItem from="1634522623416" duration="2916000" />
+      <workItem from="1634692135795" duration="1259000" />
+      <workItem from="1635028380884" duration="3331000" />
+      <workItem from="1635297111347" duration="894000" />
+      <workItem from="1635298104508" duration="1234000" />
+      <workItem from="1635619910083" duration="24000" />
+      <workItem from="1636514246407" duration="6660000" />
+      <workItem from="1636522102378" duration="656000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/edulaw/pages/index.js" />
+      </list>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="947" y="245" key="#com.intellij.ide.util.MemberChooser" timestamp="1635029778927">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="947" y="245" key="#com.intellij.ide.util.MemberChooser/-1194.140.1194.834/0.0.1680.1050@0.0.1680.1050" timestamp="1635029778927" />
+  </component>
+</project>
