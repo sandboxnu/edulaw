@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from "react";
+import { MyTextInput } from "../../../Components/MyInput";
 import { Question, Answer, AnswersKeys, answers } from "../models";
 import { MyRadio } from './MyRadio';
 import { MyResult } from './MyResult';
@@ -28,12 +29,6 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({ ...props }): JSX
                 question={props.question}
             />
         }
-        case 'TEXT': {
-            return <MyResult
-                question={props.question}
-            />
-        }
-        // TODO: To finish POC, finish implementing MyResult to handle that kind of answer?
         // TODO: Other form types in general
         default: {
             return <div></div>
