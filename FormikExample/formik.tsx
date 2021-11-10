@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import { Formik, Form } from 'FormikExample/formik'
 import * as Yup from 'yup'
 import { MyTextInput } from '../components/MyInput'
 import { MySelect } from '../components/MySelect'
 import { MyCheckbox } from '../components/MyCheckbox'
 import { useRouter } from 'next/router'
 import { FormCtx, FormValues } from '../utils/FormContext'
+import { Form, Formik } from 'formik'
 
 const FormikExample: React.FC = () => {
   const initValues: FormValues = {
