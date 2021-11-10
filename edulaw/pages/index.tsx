@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import NavBar from '../Components/NavBar'
-import SplitPage from '../Components/SplitPage'
-import LandingContent from '../Components/LandingContent'
-import RightsPrsMenu from '../Components/RightsPrsMenu'
-import StartComplaint from '../Components/StartComplaint'
+import NavBar from '../components/NavBar'
+import SplitPage from '../components/SplitPage'
+import LandingContent from '../components/LandingContent'
+import RightsPrsMenu from '../components/RightsPrsMenu'
+import StartComplaint from '../components/StartComplaint'
 import React from 'react'
 
 const Landing: NextPage = () => {

@@ -7,7 +7,7 @@ import Collapse from "@mui/material/Collapse";
 import Divider from "@mui/material/Divider";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import SubMenuItem from "./SubMenuItem";
-import Link from 'next/link'
+import Link from 'next/link';
 
 enum MENU_OPTS {
   STUDENT_RIGHTS = "/studentrights",
