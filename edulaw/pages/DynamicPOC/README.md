@@ -1,5 +1,17 @@
 # Dynamically navigated multi-page form: proof of concept
 
+## Discussed in standup on Nov 9
+Question types:
+* Radio
+* Next
+* Next with input
+* End (this represents end states that recommend calling the hotline)
+* End with summary
+
+Things to edit in the data structures/models:
+* Add an "Additional Info" (blurb) constants JSON
+* Add references to those IDs in the answers model/JSON
+
 ## Overview
 This branch is not intended to be merged to master, but rather serve as a reference resource to start our work on.The example shown on this branch is a simple form who's path can be seen below:
 
