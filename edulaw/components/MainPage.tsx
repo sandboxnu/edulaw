@@ -8,7 +8,7 @@ function MainPage() {
   const ContinueButton = withStyles({ 
     root: {
       backgroundColor: "#5064C7",
-      width: "100%", 
+      width: "700px", 
       color: "#FFFFFF",
       padding: '10px',
       borderRadius: '8px',
