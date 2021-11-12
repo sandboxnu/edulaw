@@ -1,0 +1,26 @@
+.complaint {
+  width: 255px;
+  height: 229px;
+  background: #fafafb;
+  border: 0.4px solid #c2c2c2;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+.complaintWrapper {
+  margin: 10%;
+}
+
+.captionText {
+  margin-top: 8%;
+  margin-bottom: 8%;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.buttonCont {
+  color: #5064c7;
+  width: 78%;
+}
