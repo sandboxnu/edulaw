@@ -61,7 +61,8 @@ const FormikExample: React.FC = () => {
           placeholder="Your"
         />
 
-        <Button>Normal Button</Button>
+        <Button primary={true}>Yes</Button>
+        <Button primary={false}>No</Button>
 
         <MyTextInput
           label="Last Name"
