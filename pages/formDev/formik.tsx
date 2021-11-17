@@ -7,6 +7,10 @@ import { useRouter } from 'next/router'
 import { FormCtx, FormValues } from '../../utils/FormContext'
 import { Form, Formik } from 'formik'
 import { Button } from '../../components/FormStyles/Button'
+import {
+  RadioButton,
+  // RadioButtonLabel,
+} from '../../components/FormStyles/RadioButton'
 
 const FormikExample: React.FC = () => {
   const initValues: FormValues = {
@@ -63,6 +67,13 @@ const FormikExample: React.FC = () => {
 
         <Button primary={true}>Yes</Button>
         <Button primary={false}>No</Button>
+        <div>
+          <RadioButton type="radio" />
+          <label> Yes </label>
+
+          <RadioButton type="radio" />
+          <label> No </label>
+        </div>
 
         <MyTextInput
           label="Last Name"
