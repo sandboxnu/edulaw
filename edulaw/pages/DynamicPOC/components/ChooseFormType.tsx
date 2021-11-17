@@ -6,7 +6,7 @@ import { MyResult } from './MyResult';
 
 interface ChooseFormTypeProps {
     question: Question,
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChange: (event: ChangeEvent<HTMLInputElement>, isUserInput: boolean) => void;
 }
 
 export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({ ...props }): JSX.Element => {
@@ -21,7 +21,14 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({ ...props }): JSX
                 name={props.question.id.toString()}
                 label={props.question.question}
                 options={answerChoices}
-                onChange={props.onChange}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => props.onChange(event, false)}
+            />
+        }
+        case 'TEXT': {
+            return <MyTextInput
+                name={props.question.id.toString()}
+                label={props.question.question}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => props.onChange(event, true)}
             />
         }
         case 'RESULT': {

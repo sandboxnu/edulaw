@@ -23,24 +23,28 @@ const DynamicPOC: React.FC = () => {
     const [currentAnswer, setCurrentAnswer] = useState(startingAnswer);
 
     function _updateForm(answer: FormAnswer, formValues: FormValues) {
-        formValues.formAnswers[answer.answer.questionId] = answer;
+        formValues.formAnswers[answer.questionId] = answer;
     }
 
-    function _updateCurrentAnswer(event: ChangeEvent<HTMLInputElement>) {
+    function _updateCurrentAnswer(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, isUserInput: boolean) {
         let answer = {
-            answer: {
                 questionId: event.target.name,
-                answerId: event.target.value
-            }
+                answerId: isUserInput ? _getInputAnswerId(event.target.name) : event.target.value,
+                userAnswer: isUserInput ? event.target.value : undefined
         };
 
         setCurrentAnswer(answer);
         console.log(currentAnswer);
     }
 
+    function _getInputAnswerId(questionId: string): string {
+        let question: Question = questions[questionId as QuestionsKeys] as Question;
+        return question.answers[0].toString(); // TODO: Probably error check this or something
+    }
+
     function _handleNext(values: FormValues) {
-        values.formAnswers[currentAnswer.answer.questionId] = currentAnswer;
-        setCurrentQuestion(getNextQuestion(currentAnswer.answer.answerId as AnswersKeys));
+        values.formAnswers[currentAnswer.questionId] = currentAnswer;
+        setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys));
     }
 
     function _handleSubmit(values: FormValues) {

@@ -5,20 +5,20 @@ export interface FormValues {
     [key: string]: FormAnswer;
    }
 }
-export interface SelectedAnswer {
-  questionId: string;
-  answerId: string;
-}
-
-interface UserAnswer {
-  questionId: string;
-  answerId: string;
-  userAnswer: string
-}
+// export interface SelectedAnswer {
+//   questionId: string;
+//   answerId: string;
+// }
 
 export interface FormAnswer {
-  answer: SelectedAnswer | UserAnswer;
+  questionId: string;
+  answerId?: string;
+  userAnswer?: string
 }
+
+// export interface FormAnswer {
+//   answer: SelectedAnswer | UserAnswer;
+// }
 
 // Interface has two parts
 interface FormContextInterface {

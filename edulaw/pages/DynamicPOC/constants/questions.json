@@ -32,7 +32,7 @@
         "id": 3,
         "question": "Why don't you like dogs or cats?",
         "description": "Tell us about your feelings or whatever",
-        "type": "RADIO",
+        "type": "TEXT",
         "answers": [
             4
         ]
