@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 export interface FormValues {
   formAnswers: {
-    [key: string]: FormAnswer;
-   }
+    [key: string]: FormAnswer
+  }
 }
 // export interface SelectedAnswer {
 //   questionId: string;
@@ -11,8 +11,8 @@ export interface FormValues {
 // }
 
 export interface FormAnswer {
-  questionId: string;
-  answerId?: string;
+  questionId: string
+  answerId?: string
   userAnswer?: string
 }
 
@@ -22,16 +22,17 @@ export interface FormAnswer {
 
 // Interface has two parts
 interface FormContextInterface {
-  formValues: FormValues;
-  updateFormValues?: (answer: FormAnswer, formValues: FormValues) => void;
+  formValues: FormValues
+  updateFormValues?: (answer: FormAnswer, formValues: FormValues) => void
 }
 
 export const emptyFormValues: FormValues = {
-  formAnswers: {}
+  formAnswers: {},
 }
 
 export const defaultFormState: FormContextInterface = {
-  formValues: emptyFormValues
+  formValues: emptyFormValues,
 }
 
-export const FormCtx = React.createContext<FormContextInterface>(defaultFormState)
+export const FormCtx =
+  React.createContext<FormContextInterface>(defaultFormState)
