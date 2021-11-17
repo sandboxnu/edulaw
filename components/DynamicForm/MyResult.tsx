@@ -1,4 +1,4 @@
-import { Question } from '../models'
+import { Question } from '../../models'
 
 interface MyResultProps {
   question: Question

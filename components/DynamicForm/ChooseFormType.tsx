@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react'
-import { MyTextInput } from '../../../Components/MyInput'
-import { Question, Answer, AnswersKeys, answers } from '../models'
+import { MyTextInput } from './MyInput'
+import { Question, Answer, AnswersKeys, answers } from '../../models'
 import { MyRadio } from './MyRadio'
 import { MyResult } from './MyResult'
 
@@ -14,7 +14,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
 }): JSX.Element => {
   const answerChoices: Answer[] = props.question.answers.map(function (
     answerId: number,
-    i: number
+    _: number
   ) {
     const typedAnswerId = answerId.toString() as AnswersKeys
     return answers[typedAnswerId] as Answer
@@ -49,7 +49,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
     }
     // TODO: Other form types in general
     default: {
-      return <div></div>
+      return <div />
     }
   }
 }

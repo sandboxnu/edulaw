@@ -1,6 +1,6 @@
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
-import { Answer } from '../models'
+import { Answer } from '../../models'
 
 interface MyRadioProps {
   name: string
@@ -21,7 +21,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
           {...field}
           value={option.id}
           onChange={props.onChange}
-        ></input>
+        />
         {option.content}
       </label>
     )

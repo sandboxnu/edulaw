@@ -1,25 +1,25 @@
 import React from 'react'
 
 export interface FormValues {
-  formAnswers: {
-    [key: string]: FormAnswer
-  }
-}
-
-export interface FormAnswer {
-  questionId: string
-  answerId: string
-  userAnswer?: string
+  email: string
+  firstName: string
+  lastName: string
+  acceptedTerms: boolean
+  jobType: string
 }
 
 // Interface has two parts
 interface FormContextInterface {
   formValues: FormValues
-  updateFormValues?: (formValues: FormValues) => void
+  updateFormValues?: (f: FormValues) => void
 }
 
 export const emptyFormValues: FormValues = {
-  formAnswers: {},
+  acceptedTerms: false,
+  email: '',
+  firstName: '',
+  jobType: '',
+  lastName: '',
 }
 
 export const defaultFormState: FormContextInterface = {

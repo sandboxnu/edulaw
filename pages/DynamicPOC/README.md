@@ -19,7 +19,7 @@ Things to edit in the data structures/models:
 
 This branch is not intended to be merged to master, but rather serve as a reference resource to start our work on.The example shown on this branch is a simple form who's path can be seen below:
 
-![Form diagram](resources/formRoutes.png)
+![Form diagram](../../public/resources/formRoutes.png)
 
 The example can be seen at localhost:3000/DynamicPOC. This proof of concept replaces the brute force solution of having a different Next.js page for each literal question with a solution that has a different page for each different form, and question/answer components get replaced on that page as the user progresses through the form.
 
@@ -31,7 +31,7 @@ Below is a proposition and definitely not final starting state for what our desi
 
 Also I KNOW that the arrows definitely don't match UML whatever but okay it's fine
 
-![Design diagram](resources/formDesign.png)
+![Design diagram](../../public/resources/formDesign.png)
 
 ## Project structure
 
