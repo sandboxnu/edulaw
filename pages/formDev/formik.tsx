@@ -11,6 +11,7 @@ import {
   RadioButton,
   // RadioButtonLabel,
 } from '../../components/FormStyles/RadioButton'
+import { InputBox } from '../../components/FormStyles/InputBox'
 
 const FormikExample: React.FC = () => {
   const initValues: FormValues = {
@@ -74,6 +75,8 @@ const FormikExample: React.FC = () => {
           <RadioButton type="radio" />
           <label> No </label>
         </div>
+
+        <InputBox width="330px" height="53px" type="text" placeholder="test" />
 
         <MyTextInput
           label="Last Name"
