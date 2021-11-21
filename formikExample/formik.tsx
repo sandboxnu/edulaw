@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import * as Yup from 'yup'
-import { MyTextInput } from '../components/MyInput'
-import { MySelect } from '../components/MySelect'
-import { MyCheckbox } from '../components/MyCheckbox'
+import { MyTextInput } from '../components/DynamicForm/MyInput'
+import { MySelect } from '../components/FormikExample/MySelect'
+import { MyCheckbox } from '../components/FormikExample/MyCheckbox'
 import { useRouter } from 'next/router'
-import { FormCtx, FormValues } from '../utils/FormContext'
+import { FormCtx, FormValues } from './FormContext'
 import { Form, Formik } from 'formik'
 
 const FormikExample: React.FC = () => {
@@ -58,6 +58,7 @@ const FormikExample: React.FC = () => {
           name="firstName"
           type="text"
           placeholder="Your"
+          onChange={() => console.log('do something')}
         />
 
         <MyTextInput
@@ -65,6 +66,7 @@ const FormikExample: React.FC = () => {
           name="lastName"
           type="text"
           placeholder="Mom"
+          onChange={() => console.log('do something')}
         />
 
         <MyTextInput
@@ -72,6 +74,7 @@ const FormikExample: React.FC = () => {
           name="email"
           type="email"
           placeholder="your@mother.com"
+          onChange={() => console.log('do something')}
         />
 
         <MySelect label="Job Type" name="jobType" values={jobTypeOptions} />

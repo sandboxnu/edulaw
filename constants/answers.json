@@ -1,0 +1,44 @@
+{
+    "0": {
+        "id": 0,
+        "type": "SELECT",
+        "content": "No",
+        "route": 1
+    },
+    "1": {
+        "id": 1,
+        "type": "SELECT",
+        "content": "Yes",
+        "route": 2
+    },
+    "2": {
+        "id": 2,
+        "type": "SELECT",
+        "content": "Yes",
+        "route": 2
+    },
+    "3": {
+        "id": 3,
+        "type": "SELECT",
+        "content": "No",
+        "route": 3
+    },
+    "4": {
+        "id": 4,
+        "type": "INPUT",
+        "content":  null,
+        "route": 4
+    },
+    "5": {
+        "id": 5,
+        "type": "SELECT",
+        "content": "No",
+        "route": 4
+    },
+    "6": {
+        "id": 6,
+        "type": "SELECT",
+        "content": "Yes",
+        "route": 5
+    }
+}
