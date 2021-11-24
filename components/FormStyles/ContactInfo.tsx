@@ -7,6 +7,7 @@ import { Button } from '../FormStyles/Button'
 export const ContactColumn = styled.div`
   display: flex;
   flex-direction: column;
+  padding-right: 50px;
 
   > * {
     &:first-child,
@@ -27,12 +28,33 @@ export const ContactContent = styled.div`
   flex-wrap: wrap;
   width: 100%;
   align-items: stretch;
-  justify-content: space-evenly;
 `
 
-// may be used for everything?
+export const ButtonRow = styled.div`
+  display: flex;
+  width: 93%;
+  justify-content: space-between;
+  margin-top: 15%;
+`
+
+// at this point i'm just trolling
+export const OuterDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 export const WrapperDiv = styled.div`
   margin: 7%;
+  > * {
+    &:first-child {
+      margin-bottom: 10px;
+    }
+
+    &:nth-child(2) {
+      margin-bottom: 30px;
+    }
+  }
 `
 
 // not too familiar with styled component usage guidelines..do I just make a const for everything??
@@ -40,12 +62,12 @@ export const WrapperDiv = styled.div`
 
 function ContactInfo() {
   return (
-    <div>
+    <OuterDiv>
       <WrapperDiv>
         <Typography variant="h1">Contact Info</Typography>
         <p>
           The PRS officer will only contact you using the information you
-          provide below.{' '}
+          provide below.
         </p>
         <ContactContent>
           <ContactColumn>
@@ -101,11 +123,12 @@ function ContactInfo() {
             />
           </ContactColumn>
         </ContactContent>
-
-        <Button primary={false}>Back</Button>
-        <Button primary={true}>Next</Button>
+        <ButtonRow>
+          <Button primary={false}>placehold</Button>
+          <Button primary={true}>placehold</Button>
+        </ButtonRow>
       </WrapperDiv>
-    </div>
+    </OuterDiv>
   )
 }
 

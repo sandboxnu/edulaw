@@ -17,7 +17,7 @@ export const Button = styled.button`
   color: black;
   width: 140px;
   height: 54px;
-  margin: 0 1em;
+  margin: 0;
 
   ${(props: buttonProps) =>
     props.primary &&
