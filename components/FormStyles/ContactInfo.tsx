@@ -57,9 +57,6 @@ export const WrapperDiv = styled.div`
   }
 `
 
-// not too familiar with styled component usage guidelines..do I just make a const for everything??
-// yo what this was styled and now it's not i'm so confused
-
 function ContactInfo() {
   return (
     <OuterDiv>
