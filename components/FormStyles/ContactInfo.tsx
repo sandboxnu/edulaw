@@ -67,6 +67,7 @@ function ContactInfo() {
           provide below.
         </p>
         <ContactContent>
+          {/* *** note to self can put divs inside a form..which is good? */}
           <ContactColumn>
             <InputBox
               width="330px"
