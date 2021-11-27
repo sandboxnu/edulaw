@@ -1,6 +1,8 @@
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
 import { Answer } from '../../models'
+import { RadioButton } from '../../components/FormStyles/RadioButton'
+import { Radio } from '@material-ui/core'
 
 interface MyRadioProps {
   name: string
@@ -16,13 +18,13 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
   const answers = props.options.map(function (option, i) {
     return (
       <label key={option.content}>
-        <input
+        <RadioButton
           type="radio"
           {...field}
           value={option.id}
           onChange={props.onChange}
         />
-        {option.content}
+        <label>{option.content}</label>
       </label>
     )
   })
