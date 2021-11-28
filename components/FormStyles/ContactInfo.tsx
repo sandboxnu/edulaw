@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React, { useContext } from 'react'
-import { InputBox, MyTextInput } from '../FormStyles/InputBox'
+import { MyTextInput } from '../FormStyles/InputBox'
 import Typography from '@mui/material/Typography'
 import { Button } from '../FormStyles/Button'
 import { Form, Formik, Field } from 'formik'
@@ -134,86 +134,85 @@ const ContactFormik: React.FC = () => {
         }, 400)
       }}
     >
-      {(formik) => (
-        <form onSubmit={formik.handleSubmit}>
-          <OuterDiv>
-            <WrapperDiv>
-              <Typography variant="h1">Contact Info</Typography>
-              <p>
-                The PRS officer will only contact you using the information you
-                provide below.
-              </p>
-              <ContactContent>
-                {/* *** note to self can put divs inside a form..which is good? */}
-                <ContactColumn>
-                  <MyTextInput
-                    width="330px"
-                    height="53px"
-                    name="firstName"
-                    placeholder="First name"
-                  />
+      <Form>
+        <OuterDiv>
+          <WrapperDiv>
+            <Typography variant="h1">Contact Info</Typography>
+            <p>
+              The PRS officer will only contact you using the information you
+              provide below.
+            </p>
+            <ContactContent>
+              <ContactColumn>
+                <MyTextInput
+                  width="330px"
+                  height="53px"
+                  name="firstName"
+                  placeholder="First name"
+                />
 
-                  <MyTextInput
-                    width="330px"
-                    height="53px"
-                    name="phoneNumber"
-                    placeholder="Phone"
-                  />
+                <MyTextInput
+                  width="330px"
+                  height="53px"
+                  name="phoneNumber"
+                  placeholder="Phone"
+                />
 
-                  <MyTextInput
-                    width="330px"
-                    height="53px"
-                    name="address"
-                    placeholder="Address"
-                  />
+                <MyTextInput
+                  width="330px"
+                  height="53px"
+                  name="address"
+                  placeholder="Address"
+                />
 
-                  <MyTextInput
-                    width="330px"
-                    height="53px"
-                    name="state"
-                    placeholder="State"
-                  />
-                </ContactColumn>
-                <ContactColumn>
-                  <MyTextInput
-                    width="330px"
-                    height="53px"
-                    name="lastName"
-                    placeholder="Last name"
-                  />
+                <MyTextInput
+                  width="330px"
+                  height="53px"
+                  name="state"
+                  placeholder="State"
+                />
+              </ContactColumn>
+              <ContactColumn>
+                <MyTextInput
+                  width="330px"
+                  height="53px"
+                  name="lastName"
+                  placeholder="Last name"
+                />
 
-                  <MyTextInput
-                    width="330px"
-                    height="53px"
-                    name="email"
-                    placeholder="E-mail"
-                  />
+                <MyTextInput
+                  width="330px"
+                  height="53px"
+                  name="email"
+                  placeholder="E-mail"
+                />
 
-                  <MyTextInput
-                    width="330px"
-                    height="53px"
-                    name="city"
-                    placeholder="City"
-                  />
+                <MyTextInput
+                  width="330px"
+                  height="53px"
+                  name="city"
+                  placeholder="City"
+                />
 
-                  <MyTextInput
-                    width="330px"
-                    height="53px"
-                    name="zip"
-                    placeholder="Zip"
-                  />
-                </ContactColumn>
-              </ContactContent>
-              <ButtonRow>
-                <Button type="submit" primary={false}>
-                  submit-test
-                </Button>
-                <Button primary={true}>placehold</Button>
-              </ButtonRow>
-            </WrapperDiv>
-          </OuterDiv>
-        </form>
-      )}
+                <MyTextInput
+                  width="330px"
+                  height="53px"
+                  name="zip"
+                  placeholder="Zip"
+                />
+              </ContactColumn>
+            </ContactContent>
+            <ButtonRow>
+              <Button type="submit" primary={false}>
+                submit-test
+              </Button>
+              <Button type="button" primary={true}>
+                placehold
+              </Button>
+            </ButtonRow>
+          </WrapperDiv>
+        </OuterDiv>
+      </Form>
     </Formik>
   )
 }
