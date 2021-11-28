@@ -15,7 +15,7 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
   return (
     <div key={props.name}>
       <label htmlFor={`${props.id}-${props.name}`}>{props.label}</label>
-      <input className="text-input" {...field} onChange={props.onChange} />
+      <input type="text" {...field} onChange={props.onChange} />
 
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
