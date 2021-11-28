@@ -1,7 +1,7 @@
 import styles from '../../styles/Home.module.css' //'../../styles/Home.module.css'
-import NavBar from '../../components/NavBar'
-import SplitPage from '../../components/SplitPage'
-import SideProgressBar from '../../components/SideProgressBar'
+import NavBar from '../../components/Critical/NavBar'
+import SplitPage from '../../components/Critical/SplitPage'
+import SideProgressBar from '../../components/Critical/SideProgressBar'
 import ContactInfo from '../../components/FormStyles/ContactInfo'
 import React from 'react'
 

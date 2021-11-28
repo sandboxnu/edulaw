@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
-import NavBar from '../components/NavBar'
-import SplitPage from '../components/SplitPage'
-import AboutPrs from '../components/LandingAboutPrs'
-import RightsPrsMenu from '../components/RightsPrsMenu'
-import StartComplaint from '../components/StartComplaint'
+import NavBar from '../components/Critical/NavBar'
+import SplitPage from '../components/Critical/SplitPage'
+import AboutPrs from '../components/LandingPage/LandingAboutPrs'
+import RightsPrsMenu from '../components/LandingPage/RightsPrsMenu'
+import StartComplaint from '../components/LandingPage/StartComplaint'
 import React from 'react'
 
 // reaaaaaaallly repetitive - clean up needed for index, studentrights, and aboutprs
