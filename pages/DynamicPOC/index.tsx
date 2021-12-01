@@ -11,7 +11,7 @@ import React, { ChangeEvent, useContext, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
-
+import { Page } from '../../components/FormStyles/FormPageLayout'
 const firstQuestionId: QuestionsKeys =
   forms.animalForm.toString() as QuestionsKeys
 const startingQuestion: Question = questions[firstQuestionId] as Question
@@ -83,6 +83,7 @@ const DynamicPOC: React.FC = () => {
           question={currentQuestion}
           onChange={_updateCurrentAnswer}
         />
+        <Page />
         <Button primary type="submit">
           {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
         </Button>
