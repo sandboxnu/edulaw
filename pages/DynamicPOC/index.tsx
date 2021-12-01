@@ -10,6 +10,7 @@ import { Form, Formik } from 'formik'
 import React, { ChangeEvent, useContext, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
+import { Button } from '../../components/FormStyles/Button'
 
 const firstQuestionId: QuestionsKeys =
   forms.animalForm.toString() as QuestionsKeys
@@ -82,9 +83,9 @@ const DynamicPOC: React.FC = () => {
           question={currentQuestion}
           onChange={_updateCurrentAnswer}
         />
-        <button type="submit">
+        <Button primary type="submit">
           {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
-        </button>
+        </Button>
       </Form>
     </Formik>
   )

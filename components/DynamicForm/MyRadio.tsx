@@ -3,6 +3,7 @@ import React, { ChangeEvent } from 'react'
 import { Answer } from '../../models'
 import { RadioButton } from '../../components/FormStyles/RadioButton'
 import { Radio } from '@material-ui/core'
+import { QuestionText } from '../FormStyles/QuestionText'
 
 interface MyRadioProps {
   name: string
@@ -31,7 +32,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
 
   return (
     <div key={props.name} role="group" aria-labelledby="my-radio-group">
-      {props.label}
+      <QuestionText>{props.label}</QuestionText>
       <br />
       {answers}
 
