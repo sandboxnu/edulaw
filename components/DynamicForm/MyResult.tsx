@@ -42,7 +42,7 @@ function _updateTextInputs(
 ) {
   const formValues: FormValues = ctx.formValues
   const userInput: string = event.target.value
-  formValues.formAnswers[questionId].answer = userInput
+  formValues.formAnswers[questionId].userAnswer = userInput
   if (ctx.updateFormValues) {
     ctx.updateFormValues(formValues)
   }
