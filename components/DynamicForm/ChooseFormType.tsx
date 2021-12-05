@@ -45,7 +45,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
       )
     }
     case 'RESULT': {
-      return <MyResult question={props.question} />
+      return <MyResult />
     }
     // TODO: Other form types in general
     default: {
