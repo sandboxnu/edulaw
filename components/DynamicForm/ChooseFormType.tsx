@@ -45,7 +45,12 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
       )
     }
     case 'RESULT': {
-      return <MyResult />
+      return (
+        <MyResult
+          label={props.question.question}
+          description={props.question.description}
+        />
+      )
     }
     // TODO: Other form types in general
     default: {
