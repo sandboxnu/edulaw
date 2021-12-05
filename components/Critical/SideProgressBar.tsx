@@ -69,7 +69,7 @@ function SideProgressBar() {
 
   return (
     <Box
-      position="absolute"
+      position="relative"
       top="5%"
       left="10%"
       borderColor="#B8B8B8"

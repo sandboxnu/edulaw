@@ -11,7 +11,11 @@ import React, { ChangeEvent, useContext, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
-import { Page } from '../../components/FormStyles/FormPageLayout'
+import NavBar from '../../components/Critical/NavBar'
+import styled from 'styled-components'
+import SplitPage from '../../components/Critical/SplitPage'
+import SideProgressBar from '../../components/Critical/SideProgressBar'
+
 const firstQuestionId: QuestionsKeys =
   forms.animalForm.toString() as QuestionsKeys
 const startingQuestion: Question = questions[firstQuestionId] as Question
@@ -21,6 +25,27 @@ function getNextQuestion(answerId: AnswersKeys): Question {
   const id: QuestionsKeys = answers[answerId].route.toString() as QuestionsKeys
   return questions[id] as Question
 }
+
+const VerticalBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 70%;
+`
+const GreyBar = styled.div`
+  width: 450px;
+  background-color: #e5e5e5;
+`
+// horizontal box
+const HorizontalBox = styled.div`
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  flex-direction: horizontal;
+`
+const TitleText = styled.h1`
+  font-size: large;
+`
 
 const DynamicPOC: React.FC = () => {
   const { formValues, updateFormValues } = useContext(FormCtx)
@@ -65,30 +90,42 @@ const DynamicPOC: React.FC = () => {
   }
 
   return (
-    <Formik
-      initialValues={formValues}
-      onSubmit={(values: FormValues, { setSubmitting }) => {
-        if (updateFormValues) {
-          updateFormValues(values)
-        }
-        _handleNext()
-        if (currentQuestion.type === 'RESULT') {
-          _handleSubmit(values)
-          setSubmitting(false)
-        }
-      }}
-    >
-      <Form>
-        <ChooseFormType
-          question={currentQuestion}
-          onChange={_updateCurrentAnswer}
-        />
-        <Page />
-        <Button primary type="submit">
-          {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
-        </Button>
-      </Form>
-    </Formik>
+    <>
+      <NavBar></NavBar>
+      <HorizontalBox>
+        <VerticalBox>
+          <TitleText> This is the Bullying Section?</TitleText>
+          <div>
+            <Formik
+              initialValues={formValues}
+              onSubmit={(values: FormValues, { setSubmitting }) => {
+                if (updateFormValues) {
+                  updateFormValues(values)
+                }
+                _handleNext()
+                if (currentQuestion.type === 'RESULT') {
+                  _handleSubmit(values)
+                  setSubmitting(false)
+                }
+              }}
+            >
+              <Form>
+                <ChooseFormType
+                  question={currentQuestion}
+                  onChange={_updateCurrentAnswer}
+                />
+                <Button primary type="submit">
+                  {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
+                </Button>
+              </Form>
+            </Formik>{' '}
+          </div>
+        </VerticalBox>
+        <GreyBar>
+          <SideProgressBar />
+        </GreyBar>
+      </HorizontalBox>
+    </>
   )
 }
 
