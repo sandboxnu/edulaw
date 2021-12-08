@@ -13,7 +13,6 @@ import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
 import NavBar from '../../components/Critical/NavBar'
 import styled from 'styled-components'
-import SplitPage from '../../components/Critical/SplitPage'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
@@ -27,6 +26,13 @@ function getNextQuestion(answerId: AnswersKeys): Question {
   const id: QuestionsKeys = answers[answerId].route.toString() as QuestionsKeys
   return questions[id] as Question
 }
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: stretch;
+`
 
 const VerticalBox = styled.div`
   display: flex;
@@ -46,8 +52,8 @@ const HorizontalBox = styled.div`
   display: flex;
   align-items: stretch;
   width: 100%;
-  flex-direction: horizontal;
-  height: 100%
+  flex-direction: row;
+  height: 100%;
   justify-content: center;
 `
 const TitleText = styled.h1`
@@ -127,7 +133,7 @@ const DynamicPOC: React.FC = () => {
   }
 
   return (
-    <>
+    <Main>
       <NavBar></NavBar>
       <HorizontalBox>
         <VerticalBox>
@@ -162,7 +168,7 @@ const DynamicPOC: React.FC = () => {
           <SideProgressBar />
         </GreyBar>
       </HorizontalBox>
-    </>
+    </Main>
   )
 }
 
