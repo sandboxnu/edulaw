@@ -31,10 +31,13 @@ const VerticalBox = styled.div`
   flex-direction: column;
   height: 100%;
   width: 70%;
+  margin-top: 3em;
+  justify-content: center;
 `
 const GreyBar = styled.div`
   width: 450px;
   background-color: #e5e5e5;
+  height: 100%;
 `
 // horizontal box
 const HorizontalBox = styled.div`
@@ -42,6 +45,8 @@ const HorizontalBox = styled.div`
   align-items: stretch;
   width: 100%;
   flex-direction: horizontal;
+  height: 100%
+  justify-content: center;
 `
 const TitleText = styled.h1`
   font-size: large;
