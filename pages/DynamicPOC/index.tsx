@@ -10,6 +10,8 @@ import { Form, Formik } from 'formik'
 import React, { ChangeEvent, useContext, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
+import { buildResults } from '../../components/DynamicForm/MyResult'
+import { jsPDF } from 'jspdf'
 
 const firstQuestionId: QuestionsKeys =
   forms.animalForm.toString() as QuestionsKeys
@@ -55,12 +57,42 @@ const DynamicPOC: React.FC = () => {
     setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
   }
 
+  function _buildDoc(doc: jsPDF, answers: FormAnswer[]): jsPDF {
+    const results = ''
+    const x = 10
+    let y = 10
+    const y_inc = 8
+
+    answers.forEach(function (item, index) {
+      doc.setFont('times', 'bold').text(item.question + '\n', x, y)
+      y += y_inc
+      if (item.answer != null) {
+        doc.setFont('times', 'normal').text('\t' + item.answer + '\n\n', x, y)
+        y += y_inc
+      }
+      if (item.userAnswer != undefined) {
+        doc
+          .setFont('times', 'normal')
+          .text('\t' + item.userAnswer + '\n\n', x, y)
+        y += y_inc
+      }
+      console.log('results', results)
+    })
+
+    return doc
+  }
+
   function _handleSubmit(values: FormValues) {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
     alert(JSON.stringify(values))
     if (updateFormValues) {
       updateFormValues(values)
     }
+
+    let doc = new jsPDF()
+    const results = buildResults(values['formAnswers'])
+    doc = _buildDoc(doc, results)
+    doc.save('a4.pdf')
   }
 
   return (
