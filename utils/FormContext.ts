@@ -8,12 +8,14 @@ export interface FormValues {
 
 export interface FormAnswer {
   questionId: string
+  question?: string
   answerId: string
+  answer?: string
   userAnswer?: string
 }
 
 // Interface has two parts
-interface FormContextInterface {
+export interface FormContextInterface {
   formValues: FormValues
   updateFormValues?: (formValues: FormValues) => void
 }
