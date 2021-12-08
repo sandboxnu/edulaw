@@ -30,7 +30,7 @@ function getNextQuestion(answerId: AnswersKeys): Question {
 const Main = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
   align-items: stretch;
 `
 
@@ -39,8 +39,8 @@ const VerticalBox = styled.div`
   flex-direction: column;
   height: 100%;
   width: 70%;
-  margin-top: 3em;
   justify-content: center;
+  padding: 3em;
 `
 const GreyBar = styled.div`
   width: 450px;
