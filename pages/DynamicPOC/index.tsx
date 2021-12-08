@@ -38,12 +38,14 @@ const VerticalBox = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 70%;
+  width: 100%;
+  padding-left: 15%;
   justify-content: center;
-  padding: 3em;
 `
 const GreyBar = styled.div`
-  width: 450px;
+  width: 30%;
+  min-width: 250px;
+  max-width: 400px;
   background-color: #e5e5e5;
   height: 100%;
 `
