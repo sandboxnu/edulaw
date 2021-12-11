@@ -17,182 +17,182 @@
     "id": 2,
     "question": "There are requirements the school must follow when they learn that a student has been bullied.  Are your concerns about a student who was bullied?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [2,5]
   },
   "3": {
     "id": 3,
     "question": "Schools must take certain steps to prevent bullying. Schools must create a school-wide bullying prevention plan. Are your concerns about the school's bullying prevention plan?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [3,4]
   },
   "4": {
     "id": 4,
     "question": "The questions in this guide may not address your concerns. You can still file a complaint with PRS (here). If you don’t know what to do, call the EdLaw Project at 617-910-5829, or fill out the online form (here)",
     "description": "",
-    "type": "",
+    "type": "RESULT",
     "answers": []
   },
   "5": {
     "id": 5,
     "question": "Did someone at the school know that the student was being bullied?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [6]
   },
   "6": {
     "id": 6,
     "question": "If someone at the school knows about the bullying, they must tell the principal. They can also tell someone else like the vice principal. Did the person tell the principal about the bullying?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [7,10]
   },
   "7": {
     "id": 7,
     "question": "Do you want to include the failure to tell the principal in your complaint?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [8,9]
   },
   "8": {
     "id": 8,
     "question": "When the principal found out about the bullying, did they do an investigation?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [11,14]
   },
   "9": {
     "id": 9,
     "question": "It looks like you've identified that the school didn't respond appropriately when they found out the student was being bullied.  Do you want to include information about that in your complaint? ",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [12,13]
   },
   "10": {
     "id": 10,
     "question": "Did the school find that the student was bullied?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [15,16,17]
   },
   "11": {
     "id": 11,
     "question": "It looks like the school might not have communicated with you appropriately following their investigation.  Do you want to include that in your complaint?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [22,23]
   },
   "12": {
     "id": 12,
     "question": "Did the school send you a letter or email after the investigation that told you about the action they're taking to prevent the bullying from happening again?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [24,25]
   },
   "13": {
     "id": 13,
     "question": "You identified that the school didn't think the student had been bullied. Do you want to include that in your complaint?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [18,19]
   },
   "14": {
     "id": 14,
-    "question": "",
+    "question": "Okay, we'll move on to the next section",
     "description": "",
-    "type": "",
+    "type": "RESULT",
     "answers": []
   },
   "15": {
     "id": 15,
     "question": "You identified that someone at the school found out about the bullying, and didn't tell the principal. This language will be used in your complaint: 'School staff failed to report an incident of bullying pursuant to MGL c71 s.37O(g)' In the box below, describe what happened in detail.  Be sure to include who knew about the bullying, and how you know that they were aware of the bullying.",
     "description": "",
-    "type": "",
+    "type": "TEXT",
     "answers": [37]
   },
   "16": {
     "id": 16,
     "question": "You identified that the school didn't do an investigation when they learned that the student was being bullied. This language will identify that violation in your complaint: 'The School District failed to investigate an incident of bullying pursuant to MGL c71 s.37O(g)' In the box below, describe what happened in detail. Desribe what was happening with the student, how the principal found out about the bullying, and what happened after the principal found out. ",
     "description": "",
-    "type": "",
+    "type": "TEXT",
     "answers": [36]
   },
   "17": {
     "id": 17,
     "question": "Okay, we'll move on to the next section",
     "description": "",
-    "type": "",
+    "type": "RESULT",
     "answers": []
   },
   "18": {
     "id": 18,
     "question": "You identified that the school didn't do an investigation when they learned that the student was being bullied. This language will identify that violation in your complaint: 'The School District failed to investigate an incident of bullying pursuant to MGL c71 s.37O(g)' In the box below, describe what happened in detail. Desribe what was happening with the student, how the principal found out about the bullying, and what happened after the principal found out. ",
     "description": "",
-    "type": "",
+    "type": "TEXT",
     "answers": [35]
   },
   "19": {
     "id": 19,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [28]
   },
   "20": {
     "id": 20,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
-    "type": "",
-    "answers": []
+    "type": "RADIO",
+    "answers": [21]
   },
   "21": {
     "id": 21,
     "question": "You identified that the school didn't think the student had been bullied, but you disagree. This language will be used in your complaint: 'The school determined through an investigation pursuant to MGL c.71 s.37O(g) that no incident of bullying occurred.  I disagree with their finding.' In the box below, describe what happened in detail.  Describe how the principal investigated whether the student was being bullied, and any reasons the principal gave for their decision.  Be sure to explain why you disagree.  If you don't think the investigation was thorough, include that information",
     "description": "",
-    "type": "",
+    "type": "TEXT",
     "answers": [21]
   },
   "22": {
     "id": 22,
     "question": "You identified a problem with the school's communication with you about the investigation.  We'll ask some more questions about that at the end of this section.  Press next to continue.",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [29]
   },
   "23": {
     "id": 23,
     "question": "You identified a problem with the school's communication with you about your rights after the investigation.  We'll ask some more questions about that at the end of this section.  Press next to continue.",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [30]
   },
   "24": {
     "id": 24,
     "question": "Did the letter give you information about PRS and the process for filing a complaint?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [27]
   },
   "25": {
     "id": 25,
     "question": "Those are all the requirements that the school has to follow when they learn a student is being bullied. if they've identified violations: You've identified the following concerns: _____. Do you want to include those in your complaint? if they haven't identified any violations in this section: You haven't identified a violation of a requirement included in this guide.  If you have concerns about the school's response, you should still include them in your complaint.  Would you like to describe any concerns to include in your complaint? ",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [31,32]
   },
   "26": {
     "id": 26,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [33]
   },
   "27": {
     "id": 27,
     "question": "Plain language: The school didn't tell you about PRS in their letter about the investigation. Legal language: this language will identify that concern in your complaint: 'The School District failed to include information about PRS in their notice to parents about a finding that bullying occurred after an investigation conducted pursuant to MGL c.71 s.37O(g)' Prompts: In the box below, desribe what happened in detail.  If you didn't file a complaint earlier because you didn't know you could, include that information.",
     "description": "",
-    "type": "",
+    "type": "TEXT",
     "answers": []
   },
   "28": {
@@ -206,63 +206,63 @@
     "id": 29,
     "question": "Bullying Prevention Plan Schools have to have a plan for preventing, identifying, and responding to bullying.  The school has to have the plan in place whether or not any students have been bullied.  Do you want to go through some questions about the requirements for the school-wide plan?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [34,37]
   },
   "30": {
     "id": 30,
     "question": "Those are all the requirements included in this guide. If they identified any concerns in the first section: now we're going to continue with the rest of your complaint (go to next section) If they didn't identify any concerns in the first section: It looks like the questions in this guide don't address your concerns.  You can still file a complaint with PRS (here).  If you aren't sure how to proceed, call the EdLaw Project intake line at 617-910-5829, or fill out the online intake form (here).",
     "description": "",
-    "type": "",
+    "type": "RESULT",
     "answers": []
   },
   "31": {
     "id": 31,
     "question": "Every year, the school has to send you information about their bullying prevention plan. The information has to include all the parts of the plan that relate to students.  The school doesn't have to include information about their internal policies and procedures that only involve staff. Did the school send you information about the plan?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [38,39]
   },
   "32": {
     "id": 32,
     "question": "You identified a problem with the school's communication about the plan.  We'll ask some more questions about that at the end of this section.  Press next to continue.",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [40]
   },
   "33": {
     "id": 33,
     "question": "The school district has to post the whole plan on their website.  The plan may not be on a school's individual website, but has to be on the district's website. Does the school district have their bullying prevention plan on their website?  ",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [41,42]
   },
   "34": {
     "id": 34,
     "question": "You identified a problem with the school's communication about the plan.  We'll ask some more questions about that at the end of this section.  Press next to continue. ",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [43]
   },
   "35": {
     "id": 35,
     "question": "In addition to information about the school's bullying prevention plan, schools have to provide families with information about how they can support the bullying prevention efforts at home.  The school has to at least provide: -  information on how families can reinforce the bullying prevention curriculum at home- information on what bullying looks like in schools, and how to identify bullying.  This might be called 'bullying dynamics.'- information on cyber-bullying, and how to be safe online. Did the school provide you with all of the information listed above?",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [44,45]
   },
   "36": {
     "id": 36,
     "question": "You identified a problem with the school's communication about the plan.  We'll ask some more questions about that at the end of this section.  Press next to continue.",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [46]
   },
   "37": {
     "id": 37,
     "question": "Those are all the questions about the bullying prevention plan. If they've identified violations: You've identified the following concerns: _____. Do you want to include those in your complaint? if they haven't identified any violations in this section: You haven't identified a violation of a requirement included in this guide.  If you have concerns about the prevention plan, you should still include them in your complaint.  Would you like to describe any concerns to include in your complaint? ",
     "description": "",
-    "type": "",
+    "type": "RADIO",
     "answers": [47]
   },
   "38": {
