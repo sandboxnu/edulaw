@@ -199,7 +199,7 @@
     "id": 28,
     "question": "You identified: (THE VIOLATION THEY IDENTIFIED IN PLAIN LANGUAGE)",
     "description": "",
-    "type": "",
+    "type": "TEXT",
     "answers": [33]
   },
   "29": {
@@ -269,7 +269,7 @@
     "id": 38,
     "question": "You identified: (THE VIOLATION THEY IDENTIFIED IN PLAIN LANGUAGE) This language will identify thoat violations in your complaint: (LEGAL LAGUAGE FOR  VIOLATION) You can write more details about the violations in the box below: (PROMPT QUESTIONS FOR ALL THE VIOLATION) repeat for all the violations they identified Press next when you're ready to move on to the next section.",
     "description": "",
-    "type": "",
+    "type": "TEXT",
     "answers": []
   },
   "39": {
