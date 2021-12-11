@@ -281,14 +281,14 @@
   },
   "40": {
     "id": 40,
-    "question": "Students with disabilities are entitled to an education that works for them. This guide covers the requirements for the special education process, starting from the first request for an evaluation.  We will go over the process for identifying whether a student has a disability, to making a plan for the student to access the services they need, to keeping the plan updated year to year.   The guide only asks questions to identify whether the school followed the right process.   Pop up: what does this mean?  Sometimes, a school follows the right process, but the special education services and the plan they offer doesn't work for the student.  If that's the case, the questions in the guide won't address your all of your concerns.  If you go through the guide and the questions don't address your concerns, call the EdLaw Project intake line at _____.  pop up under "the right process": "What does this mean?" inside the pop up: "The questions will identify issues where the school clearly did or didn't do something (for example, the school didn't follow the right timeline for an evaluation, or the school isn't providing the services in the student's IEP).  The questions don't cover disagreements over what the student needs (for example, whether the student is eligible for special education services, or whether the student needs to be in a smaller classroom), because those situations require more specific details about the student."",
+    "question": "Students with disabilities are entitled to an education that works for them. This guide covers the requirements for the special education process, starting from the first request for an evaluation.  We will go over the process for identifying whether a student has a disability, to making a plan for the student to access the services they need, to keeping the plan updated year to year.   The guide only asks questions to identify whether the school followed the right process.   Pop up: what does this mean?  Sometimes, a school follows the right process, but the special education services and the plan they offer doesn't work for the student.  If that's the case, the questions in the guide won't address your all of your concerns.  If you go through the guide and the questions don't address your concerns, call the EdLaw Project intake line at _____.  pop up under \"the right process\": \"What does this mean?\" inside the pop up: \"The questions will identify issues where the school clearly did or didn't do something (for example, the school didn't follow the right timeline for an evaluation, or the school isn't providing the services in the student's IEP).  The questions don't cover disagreements over what the student needs (for example, whether the student is eligible for special education services, or whether the student needs to be in a smaller classroom), because those situations require more specific details about the student.\"",
     "description": "",
     "type": "",
     "answers": [50]
   },
   "41": {
     "id": 41,
-    "question": "Referral  The special education process starts with someone making a request for the student to be evaluated.  When someone requests a special education evaluation for a student, the school is required to start the evaluation process to determine whether the student is eligible for special education services.  Requesting an evaluation is called a “referral.” This section covers the requirements for the school's response to the first time someone requests an evaluation for the student.  If you don't have concerns about this part of the process, you can select "skip this section"  Start this section/skip this section ",
+    "question": "Referral  The special education process starts with someone making a request for the student to be evaluated.  When someone requests a special education evaluation for a student, the school is required to start the evaluation process to determine whether the student is eligible for special education services.  Requesting an evaluation is called a “referral.” This section covers the requirements for the school's response to the first time someone requests an evaluation for the student.  If you don't have concerns about this part of the process, you can select \"skip this section\"  Start this section/skip this section ",
     "description": "",
     "type": "",
     "answers": [51, 169]
@@ -358,14 +358,14 @@
   },
   "51": {
     "id": 51,
-    "question": "You identified that someone requested an evaluation for the student, and the school never responded.   This language will identify that concern in your complaint: "The School District failed to respond to a special education referral.  The District did not send a consent form to the parent, pursuant to 603 CMR 28.04(1)(a), or conduct an evaluation pursuant to 603 CMR 28.04(2)."   In the box below, add details about what happened.  Be sure to include all of this information:  - who requested the evaluation,  - how they requested the evaluation (for example, "I told a teacher over the phone," or "the student's social worker sent an email to the principal"),  - when they requested the evaluation, and  - any communication you had with the school about the request since then, if there was any (for example, "I sent an email to follow up because I never heard back," or "the teacher confirmed they got the message but I never heard anything else") Press next to continue. ",
+    "question": "You identified that someone requested an evaluation for the student, and the school never responded.   This language will identify that concern in your complaint: \"The School District failed to respond to a special education referral.  The District did not send a consent form to the parent, pursuant to 603 CMR 28.04(1)(a), or conduct an evaluation pursuant to 603 CMR 28.04(2).\"   In the box below, add details about what happened.  Be sure to include all of this information:  - who requested the evaluation,  - how they requested the evaluation (for example, \"I told a teacher over the phone,\" or \"the student's social worker sent an email to the principal\"),  - when they requested the evaluation, and  - any communication you had with the school about the request since then, if there was any (for example, \"I sent an email to follow up because I never heard back,\" or \"the teacher confirmed they got the message but I never heard anything else\") Press next to continue. ",
     "description": "",
     "type": "",
     "answers": []
   },
   "52": {
     "id": 52,
-    "question": "You identified that the school evaluated the student without your consent.   This language will identify that concern in your complaint: "The school proceeded with an evaluation without notifying the parent pursuant to 28.04(1)(a), and without the parent's consent."  In the box below, add any details that you want to include.  If you didn't want the student to be evaluated, include that.  If you didn't have details about the evaluation process because they didn't send you the form with the information, include that.",
+    "question": "You identified that the school evaluated the student without your consent.   This language will identify that concern in your complaint: \"The school proceeded with an evaluation without notifying the parent pursuant to 28.04(1)(a), and without the parent's consent.\"  In the box below, add any details that you want to include.  If you didn't want the student to be evaluated, include that.  If you didn't have details about the evaluation process because they didn't send you the form with the information, include that.",
     "description": "",
     "type": "",
     "answers": []
@@ -470,7 +470,7 @@
   },
   "67": {
     "id": 67,
-    "question": "67. Evaluation After the school gets your consent, they have to do an evaluation.   This section is going to go through questions about the evaluation process. If you don't have concerns about this part of the process, you can select "skip this section"  Start this section/skip this section",
+    "question": "67. Evaluation After the school gets your consent, they have to do an evaluation.   This section is going to go through questions about the evaluation process. If you don't have concerns about this part of the process, you can select \"skip this section\"  Start this section/skip this section",
     "description": "",
     "type": "",
     "answers": [77, 78]
@@ -484,7 +484,7 @@
   },
   "69": {
     "id": 69,
-    "question": "When the school sent the form requesting your permission to do the evaluation, did you give the school permission? Pop up: What does this mean?  inside the pop up: after they get a request to evaluate the student, the school has to send you a consent form explaining the evaluation process and asking for your permission to evaluate the student. If you sign and return the form, the school has your permission and can do the evaluation.  If you don't sign and return the form, the school can't do the evaluation.  If you never got the form, or have concerns about the form (for example, if you didn't know how to fill it out), go back to the "referral" section. Yes/No/I never got a form requesting my permission",
+    "question": "When the school sent the form requesting your permission to do the evaluation, did you give the school permission? Pop up: What does this mean?  inside the pop up: after they get a request to evaluate the student, the school has to send you a consent form explaining the evaluation process and asking for your permission to evaluate the student. If you sign and return the form, the school has your permission and can do the evaluation.  If you don't sign and return the form, the school can't do the evaluation.  If you never got the form, or have concerns about the form (for example, if you didn't know how to fill it out), go back to the \"referral\" section. Yes/No/I never got a form requesting my permission",
     "description": "",
     "type": "",
     "answers": [79, 80, 81]
@@ -526,7 +526,7 @@
   },
   "75": {
     "id": 75,
-    "question": "75. You identified that the school evaluated the student without your consent.   This language will identify that concern in your complaint: "The school proceeded with an evaluation without notifying the parent pursuant to 28.04(1)(a), and without the parent's consent."  In the box below, add any details that you want to include.",
+    "question": "75. You identified that the school evaluated the student without your consent.   This language will identify that concern in your complaint: \"The school proceeded with an evaluation without notifying the parent pursuant to 28.04(1)(a), and without the parent's consent.\"  In the box below, add any details that you want to include.",
     "description": "",
     "type": "",
     "answers": [89]
@@ -582,7 +582,7 @@
   },
   "83": {
     "id": 83,
-    "question": "You identified that the school never did an evaluation after getting your consent. This language will identify that in your complaint: "The School District failed to evaluate the student upon receiving the parent's consent, pusuant to 603 CMR 28.04(2)"  In the box below, add details.  Include when you returned the consent form.  Describe any communication you've had with the school about the evaluation.  ",
+    "question": "You identified that the school never did an evaluation after getting your consent. This language will identify that in your complaint: \"The School District failed to evaluate the student upon receiving the parent's consent, pusuant to 603 CMR 28.04(2)\"  In the box below, add details.  Include when you returned the consent form.  Describe any communication you've had with the school about the evaluation.  ",
     "description": "",
     "type": "",
     "answers": []
@@ -631,7 +631,7 @@
   },
   "90": {
     "id": 90,
-    "question": "90. Did the school give you a copy of the assessments at least two days before the meeting where you went over the results of the assessments?  Pop up: What if I never had a meeting to go over the results? Inside the pop up: After the evaluation, the school has to have a meeting, called a "team meeting," to go over the results.  We're going to cover the requirements for the team meeting in the next section. Options: Y/N/I haven't had a meeting yet ",
+    "question": "90. Did the school give you a copy of the assessments at least two days before the meeting where you went over the results of the assessments?  Pop up: What if I never had a meeting to go over the results? Inside the pop up: After the evaluation, the school has to have a meeting, called a \"team meeting,\" to go over the results.  We're going to cover the requirements for the team meeting in the next section. Options: Y/N/I haven't had a meeting yet ",
     "description": "",
     "type": "",
     "answers": [106, 107, 108]
@@ -687,7 +687,7 @@
   },
   "98": {
     "id": 98,
-    "question": "Team meeting After the evaluation, the school has to have a meeting, called a team meeting, to go over the results and discuss the student's needs. This section is going to go through questions about the requirements for the team meeting. If you don't have concerns about this part of the process, you can select "skip this section"  Start this section/skip this section",
+    "question": "Team meeting After the evaluation, the school has to have a meeting, called a team meeting, to go over the results and discuss the student's needs. This section is going to go through questions about the requirements for the team meeting. If you don't have concerns about this part of the process, you can select \"skip this section\"  Start this section/skip this section",
     "description": "",
     "type": "",
     "answers": [120, 121]
@@ -981,7 +981,7 @@
   },
   "140": {
     "id": 140,
-    "question": "First, we are going to look at what counts as "school."Bringing a weapon "to school," means bringing a weapon into the school building, to a school event, or to another school activity. An example of a school event is a job fair or sports game. An example of a school activity is a field trip.                    												Is the school accusing the student of bringing the drugs into the school building, to a school event, or to another school activity?",
+    "question": "First, we are going to look at what counts as \"school.\" Bringing a weapon \"to school,\" means bringing a weapon into the school building, to a school event, or to another school activity. An example of a school event is a job fair or sports game. An example of a school activity is a field trip. Is the school accusing the student of bringing the drugs into the school building, to a school event, or to another school activity?",
     "description": "",
     "type": "",
     "answers": [179, 180]
@@ -995,7 +995,7 @@
   },
   "142": {
     "id": 142,
-    "question": "Under school discipline law, "weapon" is defined by the school principal.  The weapon can be anything that the principal says is a weapon.  Is the school accusing the student of having something that the principal says is a weapon? (y/n/yes, but the thing the principal is saying is a weapon shouldn't be called a weapon)",
+    "question": "Under school discipline law, \"weapon\" is defined by the school principal.  The weapon can be anything that the principal says is a weapon.  Is the school accusing the student of having something that the principal says is a weapon? (y/n/yes, but the thing the principal is saying is a weapon shouldn't be called a weapon)",
     "description": "",
     "type": "",
     "answers": [183, 184]
@@ -1009,7 +1009,7 @@
   },
   "144": {
     "id": 144,
-    "question": "You said that the school is accusing the student of bringing a weapon to school, but the thing that the principal is saying was a weapon shouldn’t be called a weapon.  We recommend that you include this paragraph in your complaint: 'The school is accusing the student of bringing a weapon to school and moving to discipline the student under 37H, but the principal is using an unreasonable definition of 'weapon' '. In the box below, explain what happened.  Include what the "weapon" is, and any information that's relevant to the principal calling it a "weapon"                               ADD: Is the school trying to expel the student? We recommend that you call th Edlaw project helping for help! 617-910-5829. ADD HELPLINE BOX",
+    "question": "You said that the school is accusing the student of bringing a weapon to school, but the thing that the principal is saying was a weapon shouldn’t be called a weapon.  We recommend that you include this paragraph in your complaint: 'The school is accusing the student of bringing a weapon to school and moving to discipline the student under 37H, but the principal is using an unreasonable definition of 'weapon' '. In the box below, explain what happened.  Include what the \"weapon\" is, and any information that's relevant to the principal calling it a \"weapon\"                               ADD: Is the school trying to expel the student? We recommend that you call th Edlaw project helping for help! 617-910-5829. ADD HELPLINE BOX",
     "description": "",
     "type": "",
     "answers": [186, 187, 188]
@@ -1044,29 +1044,21 @@
   },
   "149": {
     "id": 149,
-    "question": "149. First, we are going to look at what counts as "school."
-    Bringing drugs 'to school,'' means bringing drugs into the school building, to a school event, or to another school activity. An example of a school event is a job fair or sports game. An example of a school activity is a field trip. Is the school accusing the student of bringing the drugs into the school building, to a school event, or to another school activity?  yes/no/  don't know",
+    "question": "149. First, we are going to look at what counts as \"school.\" Bringing drugs \"to school,\" means bringing drugs into the school building, to a school event, or to another school activity. An example of a school event is a job fair or sports game. An example of a school activity is a field trip. Is the school accusing the student of bringing the drugs into the school building, to a school event, or to another school activity?  yes/no/  don't know",
     "description": "",
     "type": "",
     "answers": []
   },
   "150": {
     "id": 150,
-    "question": "What counts as a “drug” is defined by Massachusetts law. It includes things like cocaine, heroin and pills that aren’t prescribed by a doctor. It also includes marijuana. It does not include alcohol and tobacco.
-    Is the school accusing the student of having something that fits the legal definition of "drug"?
-       See the full law here (https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter94C/Section1) Yes/No/I don't know",
+    "question": "What counts as a “drug” is defined by Massachusetts law. It includes things like cocaine, heroin and pills that aren’t prescribed by a doctor. It also includes marijuana. It does not include alcohol and tobacco. Is the school accusing the student of having something that fits the legal definition of \"drug\"? See the full law here (https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter94C/Section1) Yes/No/I don't know",
     "description": "",
     "type": "",
     "answers": []
   },
   "151": {
     "id": 151,
-    "question": "You said the school is not accusing the student of brining drugs to school. Is the school accusing the student of brining:
-    1.Alcohol or tobacco to school?
-2.Something else?
-        2. Something else --> add call helping
- Alcohol/ tobacco -->  
-You said that the school is trying to expel the student because they are accusing them of bringing tobacco or alcohol to school. This is illegal and we recommend that you include it in your complaint. Would you like to include that in your complaint?",
+    "question": "You said the school is not accusing the student of brining drugs to school. Is the school accusing the student of brining: 1.Alcohol or tobacco to school? 2.Something else? 2. Something else --> add call helping Alcohol/ tobacco -->   You said that the school is trying to expel the student because they are accusing them of bringing tobacco or alcohol to school. This is illegal and we recommend that you include it in your complaint. Would you like to include that in your complaint?",
     "description": "",
     "type": "",
     "answers": []
@@ -1080,14 +1072,14 @@ You said that the school is trying to expel the student because they are accusin
   },
   "153": {
     "id": 153,
-    "question": "'Educational staff' are people whose job is to educate students. Some examples are teachers, teacher's aids, principals, and guidance counselors.                                       								Is the school saying that the student assaulted someone whose job is to educate students?  (y/no or not sure/the student is being accused of assaulting a school resource or police officer)",
+    "question": "'Educational staff' are people whose job is to educate students. Some examples are teachers, teacher's aids, principals, and guidance  counselors. Is the school saying that the student assaulted someone whose job is to educate students?  (y/no or not sure/the student is being accused of assaulting a school resource or police officer)",
     "description": "",
     "type": "",
     "answers": []
   },
   "154": {
     "id": 154,
-    "question": "School Police Officers are police who work in a school building. Their job is to keep the school safe, not to educate students. If the school is saying that the student assaulted a school police officer, you can argue that the police officer is not "educational staff."  If you have questions, please call the EdLaw Project intake line at  617-910-5829. Would you like to include that in your complaint? Pop-up: School Police Officers are often called School Resource Officers or SRO's. School Police Officers, School Resource Officers and SRO's are all the same thing. ",
+    "question": "School Police Officers are police who work in a school building. Their job is to keep the school safe, not to educate students. If the school is saying that the student assaulted a school police officer, you can argue that the police officer is not \"educational staff.\"  If you have questions, please call the EdLaw Project intake line at  617-910-5829. Would you like to include that in your complaint? Pop-up: School Police Officers are often called School Resource Officers or SRO's. School Police Officers, School Resource Officers and SRO's are all the same thing. ",
     "description": "",
     "type": "",
     "answers": []
@@ -1101,14 +1093,14 @@ You said that the school is trying to expel the student because they are accusin
   },
   "156": {
     "id": 156,
-    "question": "You said that the school is trying to punish the student for bringing "drugs" to school, but what the student had was alcohol.   We recommend you include this paragraph in your complaint:  “The school is saying that they are disciplining the student for bringing drugs to school. However, the substance that they are accusing the student of bringing to school is alochol, which is not defined as a drug by MGL c.37H.  Therefore the school is improperly discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.” In the box below, explain what happened.                      ADD: Is the school trying to expel the stud",
+    "question": "You said that the school is trying to punish the student for bringing \"drugs\" to school, but what the student had was alcohol.   We recommend you include this paragraph in your complaint:  “The school is saying that they are disciplining the student for bringing drugs to school. However, the substance that they are accusing the student of bringing to school is alochol, which is not defined as a drug by MGL c.37H.  Therefore the school is improperly discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.” In the box below, explain what happened.                      ADD: Is the school trying to expel the stud",
     "description": "",
     "type": "",
     "answers": []
   },
   "157": {
     "id": 157,
-    "question": "You said that the school is trying to punish the student for bringing "drugs" to school, but what the student had was tobacco.   We recommend you include this paragraph in your complaint:  “The school is saying that they are disciplining the student for bringing drugs to school. However, the substance that they are accusing the student of bringing to school is tobacco, which is not defined as a drug by MGL c.37H.  Therefore the school is improperly discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.” In the box below, explain what happened.                         ADD: Is the school trying to expel the student? We recommend that you call the Edlaw project helping for help! 617-910-5829. ADD HELPLINE BOX",
+    "question": "You said that the school is trying to punish the student for bringing \"drugs\" to school, but what the student had was tobacco.   We recommend you include this paragraph in your complaint:  “The school is saying that they are disciplining the student for bringing drugs to school. However, the substance that they are accusing the student of bringing to school is tobacco, which is not defined as a drug by MGL c.37H.  Therefore the school is improperly discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.” In the box below, explain what happened.                         ADD: Is the school trying to expel the student? We recommend that you call the Edlaw project helping for help! 617-910-5829. ADD HELPLINE BOX",
     "description": "",
     "type": "",
     "answers": []
@@ -1129,7 +1121,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "160": {
     "id": 160,
-    "question": "You said that the school is trying to punish the student for assaulting "educational staff." But that the staff member invovled is a police officer.   We recommend you include this paragraph in your complaint:“The school is moving to discipline the student for assaulting a member of the school’s educational staff, however the incident involved the student and a police officer, who is not educational staff as defined by MGL c.37H.  Therefore the school is improperly moving to discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.” In the box below explain what happened.          ",
+    "question": "You said that the school is trying to punish the student for assaulting \"educational staff.\" But that the staff member invovled is a police officer.   We recommend you include this paragraph in your complaint:“The school is moving to discipline the student for assaulting a member of the school’s educational staff, however the incident involved the student and a police officer, who is not educational staff as defined by MGL c.37H.  Therefore the school is improperly moving to discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.” In the box below explain what happened.          ",
     "description": "",
     "type": "",
     "answers": []
@@ -1143,8 +1135,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "162": {
     "id": 162,
-    "question": "Hearing Notice Students have certain rights that must be followed before the school can suspend or expel them. The student has a right to a meeting / hearing with the principal. Before the hearing happens, the school must send the student and the family a letter or email telling them about the hearing, including date and time.  This is called “notice.” The notice must be in writing, it is not enough for the principal to just tell the family about the hearing in person or over the phone.
-    Did the school send a letter or email to the student and family about the meeting?",
+    "question": "Hearing Notice Students have certain rights that must be followed before the school can suspend or expel them. The student has a right to a meeting / hearing with the principal. Before the hearing happens, the school must send the student and the family a letter or email telling them about the hearing, including date and time.  This is called \"notice.\" The notice must be in writing, it is not enough for the principal to just tell the family about the hearing in person or over the phone. Did the school send a letter or email to the student and family about the meeting?",
     "description": "",
     "type": "",
     "answers": []
@@ -1172,15 +1163,14 @@ You said that the school is trying to expel the student because they are accusin
   },
   "166": {
     "id": 166,
-    "question": "166. You said that the school did not send the family a letter or email about the hearing. This is a violation of the student’s rights.  We recommend you include this paragraph in your complaint:“	
-    “The Principal failed to send notice to the student of a disciplinary hearing when they moved to exclude the student under chapter 37H”   In the box below explain what happened. Include any information you have about how the student found out they were being suspended or expelled. If you or the student's family missed the hearing because you didn't know about it make sure to include that.  Press next when you're ready to move on to the next section.",
+    "question": "166. You said that the school did not send the family a letter or email about the hearing. This is a violation of the student’s rights.  We recommend you include this paragraph in your complaint: “The Principal failed to send notice to the student of a disciplinary hearing when they moved to exclude the student under chapter 37H”   In the box below explain what happened. Include any information you have about how the student found out they were being suspended or expelled. If you or the student's family missed the hearing because you didn't know about it make sure to include that.  Press next when you're ready to move on to the next section.",
     "description": "",
     "type": "",
     "answers": []
   },
   "167": {
     "id": 167,
-    "question": "The notice has to include information about the student's rights at the hearing, including that they have the right to present evidence and witnesses.   pop up: what does "present evidence and witnesses" mean? inside the pop up: "Present evidence" means they can show the principal anything that supports their side of the story.   "Present witnesses" means they can have other people come to the hearing if they can support the student's side of the story.   Did the letter say that the student had the right to present evidence and witnesses at the hearing? ",
+    "question": "The notice has to include information about the student's rights at the hearing, including that they have the right to present evidence and witnesses.   pop up: what does \"present evidence and witnesses\" mean? inside the pop up: \"Present evidence\" means they can show the principal anything that supports their side of the story.   \"Present witnesses\" means they can have other people come to the hearing if they can support the student's side of the story.   Did the letter say that the student had the right to present evidence and witnesses at the hearing? ",
     "description": "",
     "type": "",
     "answers": []
@@ -1257,7 +1247,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "178": {
     "id": 178,
-    "question": "You identified that the principal didn't have a hearing.   This language will identify that problem in your complaint: "the principal excluded the student under 37H without holding a hearing" In the box below, describe what happened in detail: Pop up: what should I include? In the pop up: The details you include will depend on your situation, but these are some questions you may want to answer:   How did you find out that the school decided to suspend or expel the student? Did the principal ever tell you why they made the decision to suspend or expel the student? Did you ask to have a meeting, or reach out to the school and yet they still didn't hold a hearing? Is the student frustrated because they never got to share their side of the story?",
+    "question": "You identified that the principal didn't have a hearing.   This language will identify that problem in your complaint: \"the principal excluded the student under 37H without holding a hearing\" In the box below, describe what happened in detail: Pop up: what should I include? In the pop up: The details you include will depend on your situation, but these are some questions you may want to answer:   How did you find out that the school decided to suspend or expel the student? Did the principal ever tell you why they made the decision to suspend or expel the student? Did you ask to have a meeting, or reach out to the school and yet they still didn't hold a hearing? Is the student frustrated because they never got to share their side of the story?",
     "description": "",
     "type": "",
     "answers": []
@@ -1292,7 +1282,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "183": {
     "id": 183,
-    "question": "The student has the right to present evidence and witnesses at the hearing. "Present evidence" means they can show the principal anything that supports their side of the story.   "Present witnesses" means they can have other people come to the hearing if they can support the student's side of the story.   Was the student able to present evidence and witnesses at the hearing?",
+    "question": "The student has the right to present evidence and witnesses at the hearing. \"Present evidence\" means they can show the principal anything that supports their side of the story.   \"Present witnesses\" means they can have other people come to the hearing if they can support the student's side of the story.   Was the student able to present evidence and witnesses at the hearing?",
     "description": "",
     "type": "",
     "answers": []
@@ -1383,7 +1373,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "196": {
     "id": 196,
-    "question": "If the school decided to expel the student, the student has the right to appeal their decision to the School District's superintendent.   Pop up: What is an "appeal"? Inside the pop up: An "appeal" means that the student has the right to have the superintendent review the principal's decision.  If the student requests an appeal, they'll have another hearing with the superintendent where the superintendent decides whether or not they agree with the principal's decision.  The superintendent can change or reverse the principal's decision if they don't agree with it.   Was the student expelled?  pop-up: what does that mean?  inside the pop-up: "Expelled" means excluded from school for over 90 days. An expulsion can also mean that the student is excluded from school indefinitely, or permanently.",
+    "question": "If the school decided to expel the student, the student has the right to appeal their decision to the School District's superintendent.   Pop up: What is an \"appeal\"? Inside the pop up: An \"appeal\" means that the student has the right to have the superintendent review the principal's decision.  If the student requests an appeal, they'll have another hearing with the superintendent where the superintendent decides whether or not they agree with the principal's decision.  The superintendent can change or reverse the principal's decision if they don't agree with it.   Was the student expelled?  pop-up: what does that mean?  inside the pop-up: \"Expelled\" means excluded from school for over 90 days. An expulsion can also mean that the student is excluded from school indefinitely, or permanently.",
     "description": "",
     "type": "",
     "answers": []
@@ -1425,7 +1415,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "202": {
     "id": 202,
-    "question": "You identified that the student requested an appeal, but the superintendent hasn't held a hearing. This language will identify that in your complaint: "The Superintendent failed to hold a hearing following the Student's request for an appeal of an expulsion pursuant to MGL c.71 s37H" In the box below, explain what happened in detail. Pop-up: what should I include? Inside the pop-up: describe everything that happened after the student requested the appeal.  Did the superintendent's office respond to the request at all? Have you or the student followed up on the request? ",
+    "question": "You identified that the student requested an appeal, but the superintendent hasn't held a hearing. This language will identify that in your complaint: \"The Superintendent failed to hold a hearing following the Student's request for an appeal of an expulsion pursuant to MGL c.71 s37H\" In the box below, explain what happened in detail. Pop-up: what should I include? Inside the pop-up: describe everything that happened after the student requested the appeal.  Did the superintendent's office respond to the request at all? Have you or the student followed up on the request? ",
     "description": "",
     "type": "",
     "answers": []
@@ -1474,7 +1464,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "209": {
     "id": 209,
-    "question": "You identified that the student's attorney wasn't able to come to the appeal. This langauge will identify that in your complaint: "The student was not afforded the right to counsel at the appeal of the 37H hearing." In the box below, describe what happened.  How did the superintendent prevent the attorney from coming to the meeting?",
+    "question": "You identified that the student's attorney wasn't able to come to the appeal. This langauge will identify that in your complaint: \"The student was not afforded the right to counsel at the appeal of the 37H hearing.\" In the box below, describe what happened.  How did the superintendent prevent the attorney from coming to the meeting?",
     "description": "",
     "type": "",
     "answers": []
@@ -1579,7 +1569,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "224": {
     "id": 224,
-    "question": "Students who are suspended for more than 10 days also have the right to get alternative education services.   Pop up: What does that mean? inside the pop up: "alternative education services" are options like tutoring, placement at a different school, Saturday school, or online learning, that a school offers to help a student continue their education while they're out of school. When the school decides to suspend or expel a student, they have to tell you about the student's right to education services in a letter or email (not over the phone or in person). Did the school send you a letter or email that told you the student could get education services? ",
+    "question": "Students who are suspended for more than 10 days also have the right to get alternative education services.   Pop up: What does that mean? inside the pop up: \"alternative education services\" are options like tutoring, placement at a different school, Saturday school, or online learning, that a school offers to help a student continue their education while they're out of school. When the school decides to suspend or expel a student, they have to tell you about the student's right to education services in a letter or email (not over the phone or in person). Did the school send you a letter or email that told you the student could get education services? ",
     "description": "",
     "type": "",
     "answers": []
@@ -1663,7 +1653,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "236": {
     "id": 236,
-    "question": "Plain language: You identified that the school didn't give the student at least two educational services to choose from.   Legal Language:  "The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H did not include a list of the specific education services available to the student, as is required by 603 CMR 53.13(4)(a)" Prompts: Explain what was in the notice, and what happened because the required information was missing.",
+    "question": "Plain language: You identified that the school didn't give the student at least two educational services to choose from.   Legal Language:  \"The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H did not include a list of the specific education services available to the student, as is required by 603 CMR 53.13(4)(a)\" Prompts: Explain what was in the notice, and what happened because the required information was missing.",
     "description": "",
     "type": "",
     "answers": []
@@ -1684,7 +1674,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "239": {
     "id": 239,
-    "question": "Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services. Legal Language:  "The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H did not include contact information for a school district staff member who could provide more detailed information about the services,as is required by 603 CMR 53.13(4)(a)" Prompts: Explain what happened because the required information was missing.  If the student had questions, or didn't understand what the school meant by "alternative education services," include that information.",
+    "question": "Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services. Legal Language:  \"The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H did not include contact information for a school district staff member who could provide more detailed information about the services,as is required by 603 CMR 53.13(4)(a)\" Prompts: Explain what happened because the required information was missing.  If the student had questions, or didn't understand what the school meant by \"alternative education services,\" include that information.",
     "description": "",
     "type": "",
     "answers": []
@@ -1712,7 +1702,7 @@ You said that the school is trying to expel the student because they are accusin
   },
   "243": {
     "id": 243,
-    "question": "Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services. Legal Language:  "The principal failed to arrange for the education service that the student selected. 603 CMR 53.13 requires that the school-wide education service plan contain the process for arranding for such services." Prompts: Explain in detail why the student wasn't able to start the academic services.  ",
+    "question": "Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services. Legal Language:  \"The principal failed to arrange for the education service that the student selected. 603 CMR 53.13 requires that the school-wide education service plan contain the process for arranding for such services.\" Prompts: Explain in detail why the student wasn't able to start the academic services.  ",
     "description": "",
     "type": "",
     "answers": []
