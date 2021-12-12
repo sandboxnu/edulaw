@@ -139,7 +139,7 @@ const DynamicPOC: React.FC = () => {
       <NavBar></NavBar>
       <HorizontalBox>
         <VerticalBox>
-          <TitleText> This is the Bullying Section?</TitleText>
+          <TitleText>Pet Lover Section</TitleText>
           <div>
             <Formik
               initialValues={formValues}

@@ -15,6 +15,8 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
 }) => {
   const [field, meta] = useField(props)
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return (
     <div key={props.name}>
       <QuestionLayout
