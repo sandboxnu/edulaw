@@ -28,6 +28,9 @@ const DynamicPOC: React.FC = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
+  const [questionHistory, setQuestionHistory] = useState([startingQuestion])
+  const [answerHistory, setAnswerHistory] = useState([currentAnswer])
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   function _updateCurrentAnswer(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -55,6 +58,26 @@ const DynamicPOC: React.FC = () => {
   function _handleNext() {
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
     setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    setAnswerHistory((answerHistory) => [...answerHistory, currentAnswer])
+    setQuestionHistory((questionHistory) => [
+      ...questionHistory,
+      currentQuestion,
+    ])
+    setCurrentIndex(currentIndex + 1)
+  }
+
+  function _handleBack() {
+    console.log('back button')
+    if (currentIndex === 0) {
+      console.log('back button curIndex = 0')
+    } else {
+      console.log('back button curIndex not 0')
+      setCurrentIndex(currentIndex - 1)
+      const newQuestion = questionHistory[currentIndex]
+      const newAnswer = answerHistory[currentIndex]
+      setCurrentQuestion(newQuestion)
+      setCurrentAnswer(newAnswer)
+    }
   }
 
   function _buildDoc(doc: jsPDF, answers: FormAnswer[]): jsPDF {
@@ -114,6 +137,10 @@ const DynamicPOC: React.FC = () => {
           question={currentQuestion}
           onChange={_updateCurrentAnswer}
         />
+        <button type="button" onClick={() => _handleBack()}>
+          {' '}
+          {'Back'}
+        </button>
         <button type="submit">
           {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
         </button>
