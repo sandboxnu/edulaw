@@ -29,7 +29,6 @@ const DynamicPOC: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
-  const [answerHistory, setAnswerHistory] = useState([currentAnswer])
   const [currentIndex, setCurrentIndex] = useState(0)
 
   function _updateCurrentAnswer(
@@ -56,33 +55,41 @@ const DynamicPOC: React.FC = () => {
   }
 
   function _handleNext() {
-    formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
-    if ((answerHistory[currentIndex] = currentAnswer)) {
-      setAnswerHistory((answerHistory) => [...answerHistory, currentAnswer])
+    if (formValues.formAnswers[currentAnswer.questionId]) {
+      console.log('form' + formValues.formAnswers[currentAnswer.questionId])
+      if (formValues.formAnswers[currentAnswer.questionId] != currentAnswer) {
+        console.log('question history length: before ' + questionHistory.length)
+        console.log('current index before ' + currentIndex)
+        for (let i = currentIndex; i < questionHistory.length; i++) {
+          console.log(
+            'current i: ' + i + 'current question: ' + questionHistory[i]
+          )
+          delete formValues.formAnswers[questionHistory[i].id]
+        }
+        const questionSlice = questionHistory.slice(0, currentIndex)
+        // todo some index checking
+        setQuestionHistory([...questionSlice, currentQuestion])
+        console.log('question history length: after ' + questionHistory.length)
+      }
+    } else {
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
         currentQuestion,
       ])
       setCurrentIndex(currentIndex + 1)
-    } else {
-      const answerSlice = answerHistory.slice(0, currentIndex)
-      setAnswerHistory([...answerSlice, currentAnswer])
-      const questionSlice = questionHistory.slice(0, currentIndex)
-      setQuestionHistory([...questionSlice, currentQuestion])
-      setCurrentIndex(currentIndex + 1)
     }
+    formValues.formAnswers[currentAnswer.questionId] = currentAnswer
+    console.log(formValues.formAnswers)
+    setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
   }
 
   function _handleBack() {
-    console.log('back button')
+    console.log('in back button')
+    console.log('current index' + currentIndex)
     if (currentIndex != 0) {
-      console.log('back button curIndex not 0')
       setCurrentIndex(currentIndex - 1)
       const newQuestion = questionHistory[currentIndex]
-      const newAnswer = answerHistory[currentIndex]
       setCurrentQuestion(newQuestion)
-      setCurrentAnswer(newAnswer)
     }
   }
 
