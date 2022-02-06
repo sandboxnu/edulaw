@@ -56,6 +56,32 @@ const DynamicPOC: React.FC = () => {
   }
 
   function _handleNext() {
+    // if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
+    //   if (formValues.formAnswers[currentAnswer.questionId] != currentAnswer) {
+    //     console.log('question history length: before ' + questionHistory.length)
+    //     console.log('current index before ' + currentIndex)
+    //     for (let i = currentIndex; i < questionHistory.length; i++) {
+    //       console.log(
+    //         'current i: ' + i + 'current question id: ' + questionHistory[i].id
+    //       )
+    //       delete formValues.formAnswers[questionHistory[i].id]
+    //     }
+    //     const questionSlice = questionHistory.slice(0, currentIndex)
+    //     // todo some index checking
+    //     setQuestionHistory([...questionSlice, currentQuestion])
+    //     console.log('question history length: after ' + questionHistory.length)
+    //   }
+    // } else {
+    //   setQuestionHistory((questionHistory) => [
+    //     ...questionHistory,
+    //     currentQuestion,
+    //   ])
+    //   setCurrentIndex(currentIndex + 1)
+    // }
+    // formValues.formAnswers[currentAnswer.questionId] = currentAnswer
+    // console.log(formValues.formAnswers)
+    // setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
     setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
     setQuestionHistory((questionHistory) => [
