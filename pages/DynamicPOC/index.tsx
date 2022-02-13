@@ -58,14 +58,13 @@ const DynamicPOC: React.FC = () => {
   function _handleNext() {
     console.log('HANDLE NEXT')
     if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
-      console.log(formValues.formAnswers[currentAnswer.questionId])
       if (
         formValues.formAnswers[currentAnswer.questionId]['answerId'] !=
         currentAnswer['answerId']
       ) {
         console.log('DELETING STUFF')
-        console.log(currentAnswer)
         for (let i = currentIndex; i < questionHistory.length; i++) {
+          console.log(formValues.formAnswers[currentAnswer.questionId])
           delete formValues.formAnswers[questionHistory[i].id]
         }
         const questionSlice = questionHistory.slice(0, currentIndex)
@@ -85,6 +84,7 @@ const DynamicPOC: React.FC = () => {
     }
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
     setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    console.log(currentIndex)
     // formValues.formAnswers[currentAnswer.questionId] = currentAnswer
     // console.log(formValues.formAnswers)
     // setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
@@ -108,6 +108,7 @@ const DynamicPOC: React.FC = () => {
 
   function _handleBack() {
     console.log('HANDLE BACK')
+    console.log(currentIndex)
     if (currentIndex != 0) {
       setCurrentIndex(currentIndex - 1)
       const newQuestion = questionHistory[currentIndex]
