@@ -67,21 +67,20 @@ const DynamicPOC: React.FC = () => {
           console.log(formValues.formAnswers[currentAnswer.questionId])
           delete formValues.formAnswers[questionHistory[i].id]
         }
-        const questionSlice = questionHistory.slice(0, currentIndex)
+        const questionSlice = questionHistory.slice(0, currentIndex + 1)
         // todo some index checking
         setQuestionHistory([...questionSlice, currentQuestion])
       } else {
         console.log('NOT CHANGING ANSWER')
-        setCurrentIndex(currentIndex + 1)
       }
     } else {
       console.log('UPDATE CURRENT INDEX AND HISTORY')
-      setCurrentIndex(currentIndex + 1)
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
         currentQuestion,
       ])
     }
+    setCurrentIndex(currentIndex + 1)
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
     setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
     console.log(currentIndex)
