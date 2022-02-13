@@ -45,7 +45,7 @@ const DynamicPOC: React.FC = () => {
     }
 
     setCurrentAnswer(answer)
-    console.log(currentAnswer)
+    // console.log(currentAnswer)
   }
 
   function _getInputAnswerId(questionId: string): string {
@@ -56,39 +56,50 @@ const DynamicPOC: React.FC = () => {
   }
 
   function _handleNext() {
-    // if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
-    //   if (formValues.formAnswers[currentAnswer.questionId] != currentAnswer) {
-    //     console.log('question history length: before ' + questionHistory.length)
-    //     console.log('current index before ' + currentIndex)
-    //     for (let i = currentIndex; i < questionHistory.length; i++) {
-    //       console.log(
-    //         'current i: ' + i + 'current question id: ' + questionHistory[i].id
-    //       )
-    //       delete formValues.formAnswers[questionHistory[i].id]
-    //     }
-    //     const questionSlice = questionHistory.slice(0, currentIndex)
-    //     // todo some index checking
-    //     setQuestionHistory([...questionSlice, currentQuestion])
-    //     console.log('question history length: after ' + questionHistory.length)
-    //   }
+    console.log('HANDLE NEXT')
+    if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
+      console.log(formValues.formAnswers[currentAnswer.questionId])
+      if (
+        formValues.formAnswers[currentAnswer.questionId]['answerId'] !=
+        currentAnswer['answerId']
+      ) {
+        console.log('DELETING STUFF')
+        console.log(currentAnswer)
+        for (let i = currentIndex; i < questionHistory.length; i++) {
+          delete formValues.formAnswers[questionHistory[i].id]
+        }
+        const questionSlice = questionHistory.slice(0, currentIndex)
+        // todo some index checking
+        setQuestionHistory([...questionSlice, currentQuestion])
+      } else {
+        console.log('NOT CHANGING ANSWER')
+        setCurrentIndex(currentIndex + 1)
+      }
+    } else {
+      console.log('UPDATE CURRENT INDEX AND HISTORY')
+      setCurrentIndex(currentIndex + 1)
+      setQuestionHistory((questionHistory) => [
+        ...questionHistory,
+        currentQuestion,
+      ])
+    }
+    formValues.formAnswers[currentAnswer.questionId] = currentAnswer
+    setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    // formValues.formAnswers[currentAnswer.questionId] = currentAnswer
+    // console.log(formValues.formAnswers)
+    // setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+
+    // formValues.formAnswers[currentAnswer.questionId] = currentAnswer
+    // setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    // if(currentIndex != questionHistory.length - 1) {
+    //   // i'm trying to think but my braincells are kinda sus rn?
     // } else {
     //   setQuestionHistory((questionHistory) => [
     //     ...questionHistory,
     //     currentQuestion,
     //   ])
-    //   setCurrentIndex(currentIndex + 1)
     // }
-    // formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    // console.log(formValues.formAnswers)
-    // setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
-
-    formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
-    setQuestionHistory((questionHistory) => [
-      ...questionHistory,
-      currentQuestion,
-    ])
-    setCurrentIndex(currentIndex + 1)
+    // setCurrentIndex(currentIndex + 1)
 
     // const questionSlice = questionHistory.slice(0, currentIndex)
     // setQuestionHistory([...questionSlice, currentQuestion])
@@ -96,12 +107,11 @@ const DynamicPOC: React.FC = () => {
   }
 
   function _handleBack() {
+    console.log('HANDLE BACK')
     if (currentIndex != 0) {
-      console.log('curr index: ' + currentIndex)
       setCurrentIndex(currentIndex - 1)
       const newQuestion = questionHistory[currentIndex]
       setCurrentQuestion(newQuestion)
-      console.log('curr index after: ' + currentIndex)
     }
   }
 
