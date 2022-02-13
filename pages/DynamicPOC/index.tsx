@@ -84,25 +84,6 @@ const DynamicPOC: React.FC = () => {
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
     setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
     console.log(currentIndex)
-    // formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    // console.log(formValues.formAnswers)
-    // setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
-
-    // formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    // setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
-    // if(currentIndex != questionHistory.length - 1) {
-    //   // i'm trying to think but my braincells are kinda sus rn?
-    // } else {
-    //   setQuestionHistory((questionHistory) => [
-    //     ...questionHistory,
-    //     currentQuestion,
-    //   ])
-    // }
-    // setCurrentIndex(currentIndex + 1)
-
-    // const questionSlice = questionHistory.slice(0, currentIndex)
-    // setQuestionHistory([...questionSlice, currentQuestion])
-    // setCurrentIndex(currentIndex + 1)
   }
 
   function _handleBack() {
