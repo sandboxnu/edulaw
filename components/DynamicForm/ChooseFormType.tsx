@@ -3,10 +3,12 @@ import { MyTextInput } from './MyInput'
 import { Question, Answer, AnswersKeys, answers } from '../../models'
 import { MyRadio } from './MyRadio'
 import { MyResult } from './MyResult'
+import { FormAnswer } from '../../utils/FormContext'
 
 interface ChooseFormTypeProps {
   question: Question
   onChange: (event: ChangeEvent<HTMLInputElement>, isUserInput: boolean) => void
+  answers: FormAnswer
 }
 
 export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
@@ -30,6 +32,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             props.onChange(event, false)
           }
+          ans={props.answers}
         />
       )
     }

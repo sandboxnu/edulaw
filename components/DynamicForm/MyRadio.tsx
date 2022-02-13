@@ -1,12 +1,21 @@
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
 import { Answer } from '../../models'
+import { FormAnswer } from '../../utils/FormContext'
 
 interface MyRadioProps {
   name: string
   label: string
   options: Answer[]
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  ans: FormAnswer
+}
+
+function isChecked(optionId: number, answers: FormAnswer): boolean {
+  if (answers) {
+    return optionId.toString() == answers.answerId
+  }
+  return false
 }
 
 export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
@@ -21,6 +30,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
           {...field}
           value={option.id}
           onChange={props.onChange}
+          checked={isChecked(option.id, props.ans)}
         />
         {option.content}
       </label>

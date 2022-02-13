@@ -152,6 +152,7 @@ const DynamicPOC: React.FC = () => {
         <ChooseFormType
           question={currentQuestion}
           onChange={_updateCurrentAnswer}
+          answers={formValues.formAnswers[currentQuestion.id]}
         />
         <button type="button" onClick={() => _handleBack()}>
           {' '}
