@@ -9,6 +9,7 @@ import { answers, AnswersKeys, questions, QuestionsKeys } from '../../models'
 import { QuestionText } from '../FormStyles/QuestionText'
 import { InputBox } from '../FormStyles/InputBox'
 import styled from 'styled-components'
+import { MyTextInput } from './MyInput'
 
 interface MyResultProps {
   label: string
@@ -77,7 +78,9 @@ export const MyResult: React.FC<MyResultProps> = ({
         {/*<p>{key.question}</p>*/}
         {/*<p>{key.answer}</p>*/}
         {key.userAnswer ? (
-          <InputBox
+          <MyTextInput
+            name={key.userAnswer}
+            label={key.userAnswer}
             className="text-input"
             defaultValue={key.userAnswer}
             onChange={_onChange}
