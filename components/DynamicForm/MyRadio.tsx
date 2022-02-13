@@ -2,7 +2,6 @@ import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
 import { Answer } from '../../models'
 import { RadioButton } from '../../components/FormStyles/RadioButton'
-import { Radio } from '@material-ui/core'
 import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
 
@@ -17,7 +16,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
   ...props
 }): JSX.Element => {
   const [field, meta] = useField(props)
-  const answers = props.options.map(function (option, i) {
+  const answers = props.options.map(function (option) {
     return (
       <label key={option.content}>
         <RadioButton

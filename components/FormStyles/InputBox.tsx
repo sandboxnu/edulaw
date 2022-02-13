@@ -1,7 +1,6 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { FieldHookConfig, useField } from 'formik'
-import React, { ChangeEvent } from 'react'
-import { QuestionText } from './QuestionText'
+import React from 'react'
 
 interface InputBoxProps {
   width: string

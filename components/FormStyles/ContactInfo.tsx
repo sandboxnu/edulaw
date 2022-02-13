@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { MyTextInput } from '../FormStyles/InputBox'
 import Typography from '@mui/material/Typography'
 import { Button } from '../FormStyles/Button'
-import { Form, Formik, Field } from 'formik'
+import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 
 export const ContactColumn = styled.div`
@@ -97,7 +97,7 @@ const ContactFormik: React.FC = () => {
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
   const FormCtx = React.createContext<FormContextInterface>(defaultFormState)
 
-  const { updateFormValues } = useContext(FormCtx)
+  //const { updateFormValues } = useContext(FormCtx)
   return (
     <Formik
       initialValues={initValues}

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import NavBar from '../Critical/NavBar'
-import SplitPage from '../Critical/SplitPage'
 import SideProgressBar from '../Critical/SideProgressBar'
 
 interface MyLayoutProps {
@@ -8,19 +7,23 @@ interface MyLayoutProps {
 }
 
 // div for question and titles
+/*
 const VerticalBox = styled.div`
   display: flex;
   flex-direction: vertical;
 `
+*/
 
 // horizontal box
 const HorizontalBox = styled.div`
   display: flex;
   flex-direction: horizontal;
 `
+/*
 const TitleText = styled.h1`
   font-size: large;
 `
+*/
 
 //make an interface that takes in a Formik component
 // have this have the split layout and navbar n stuff.

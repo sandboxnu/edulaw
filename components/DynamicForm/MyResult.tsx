@@ -7,7 +7,6 @@ import {
 } from '../../utils/FormContext'
 import { answers, AnswersKeys, questions, QuestionsKeys } from '../../models'
 import { QuestionText } from '../FormStyles/QuestionText'
-import { InputBox } from '../FormStyles/InputBox'
 import styled from 'styled-components'
 import { MyTextInput } from './MyInput'
 

@@ -40,8 +40,10 @@ function SideProgressBar() {
   const classes = useStyles()
   const [selectedIndex, setSelectedIndex] = React.useState(0)
 
-  const handleListItemClick = (event: any, index: number) => {
-    // todo: figure out actual type
+  const handleListItemClick = (
+    event: React.MouseEvent<HTMLDivElement>,
+    index: number
+  ) => {
     setSelectedIndex(index)
   }
 

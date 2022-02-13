@@ -102,7 +102,7 @@ const DynamicPOC: React.FC = () => {
     let y = 10
     const y_inc = 8
 
-    answers.forEach(function (item, index) {
+    answers.forEach(function (item) {
       doc.setFont('times', 'bold').text(item.question + '\n', x, y)
       y += y_inc
       if (item.answer != null) {
