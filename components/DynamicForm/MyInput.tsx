@@ -1,5 +1,7 @@
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
+import { QuestionText } from '../FormStyles/QuestionText'
+import QuestionLayout from '../FormStyles/QuestionLayout'
 
 interface InputProps {
   name: string
@@ -12,11 +14,26 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
 }) => {
   const [field, meta] = useField(props)
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return (
     <div key={props.name}>
-      <label htmlFor={`${props.id}-${props.name}`}>{props.label}</label>
-      <input className="text-input" {...field} onChange={props.onChange} />
-
+      <QuestionLayout
+        questionText={
+          <QuestionText>
+            {' '}
+            {/*htmlFor={`${props.id}-${props.name}`}*/} {props.label}
+          </QuestionText>
+        }
+        input={
+          <MyTextInput
+            type="text"
+            label={props.name}
+            {...field}
+            onChange={props.onChange}
+          />
+        }
+      />
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}

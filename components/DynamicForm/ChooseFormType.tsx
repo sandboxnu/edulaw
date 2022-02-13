@@ -13,8 +13,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
   ...props
 }): JSX.Element => {
   const answerChoices: Answer[] = props.question.answers.map(function (
-    answerId: number,
-    _: number
+    answerId: number
   ) {
     const typedAnswerId = answerId.toString() as AnswersKeys
     return answers[typedAnswerId] as Answer
