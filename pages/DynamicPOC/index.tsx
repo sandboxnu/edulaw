@@ -63,7 +63,7 @@ const DynamicPOC: React.FC = () => {
         currentAnswer['answerId']
       ) {
         console.log('DELETING STUFF')
-        for (let i = currentIndex; i < questionHistory.length; i++) {
+        for (let i = currentIndex + 1; i < questionHistory.length; i++) {
           console.log(formValues.formAnswers[currentAnswer.questionId])
           delete formValues.formAnswers[questionHistory[i].id]
         }
