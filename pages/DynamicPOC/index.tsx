@@ -64,11 +64,9 @@ const DynamicPOC: React.FC = () => {
       ) {
         console.log('DELETING STUFF')
         for (let i = currentIndex + 1; i < questionHistory.length; i++) {
-          console.log(formValues.formAnswers[currentAnswer.questionId])
           delete formValues.formAnswers[questionHistory[i].id]
         }
         const questionSlice = questionHistory.slice(0, currentIndex + 1)
-        // todo some index checking
         setQuestionHistory([...questionSlice, currentQuestion])
       } else {
         console.log('NOT CHANGING ANSWER')
