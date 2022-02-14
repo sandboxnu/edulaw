@@ -30,7 +30,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
           {...field}
           value={option.id}
           onChange={props.onChange}
-          checked={isChecked(option.id, props.ans)}
+          //checked={isChecked(option.id, props.ans)}
         />
         {option.content}
       </label>
