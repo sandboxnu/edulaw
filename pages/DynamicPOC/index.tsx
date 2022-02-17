@@ -58,25 +58,7 @@ const DynamicPOC: React.FC = () => {
    */
   function _handleNext() {
     if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
-      if (
-        formValues.formAnswers[currentAnswer.questionId]['answerId'] !=
-        currentAnswer['answerId']
-      ) {
-        for (let i = currentIndex + 1; i < questionHistory.length; i++) {
-          delete formValues.formAnswers[questionHistory[i].id]
-        }
-        const questionSlice = questionHistory.slice(0, currentIndex + 1)
-        setQuestionHistory([...questionSlice, currentQuestion])
-        setCurrentQuestion(
-          getNextQuestion(currentAnswer.answerId as AnswersKeys)
-        )
-      } else {
-        setCurrentQuestion(
-          getNextQuestion(
-            formValues.formAnswers[currentQuestion.id].answerId as AnswersKeys
-          )
-        )
-      }
+      _handleQuestionExists()
     } else {
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
@@ -87,6 +69,31 @@ const DynamicPOC: React.FC = () => {
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       setCurrentIndex(currentIndex + 1)
+    }
+  }
+
+  /**
+   * Modifies question history and routes form depending on whether answer has been changed
+   */
+  function _handleQuestionExists() {
+    if (
+      formValues.formAnswers[currentAnswer.questionId]['answerId'] !=
+      currentAnswer['answerId']
+    ) {
+      for (let i = currentIndex + 1; i < questionHistory.length; i++) {
+        delete formValues.formAnswers[questionHistory[i].id]
+      }
+      const questionSlice = questionHistory.slice(0, currentIndex + 1)
+      setQuestionHistory([...questionSlice, currentQuestion])
+      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    } else {
+      if (formValues.formAnswers[currentQuestion.id]) {
+        setCurrentQuestion(
+          getNextQuestion(
+            formValues.formAnswers[currentQuestion.id].answerId as AnswersKeys
+          )
+        )
+      }
     }
   }
 
