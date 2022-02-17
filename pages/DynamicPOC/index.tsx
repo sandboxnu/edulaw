@@ -29,7 +29,6 @@ const DynamicPOC: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
-  //const [answerHistory, setAnswerHistory] = useState([currentAnswer])
   const [currentIndex, setCurrentIndex] = useState(0)
 
   function _updateCurrentAnswer(
@@ -45,7 +44,6 @@ const DynamicPOC: React.FC = () => {
     }
 
     setCurrentAnswer(answer)
-    // console.log(currentAnswer)
   }
 
   function _getInputAnswerId(questionId: string): string {
@@ -68,9 +66,18 @@ const DynamicPOC: React.FC = () => {
         }
         const questionSlice = questionHistory.slice(0, currentIndex + 1)
         setQuestionHistory([...questionSlice, currentQuestion])
+        setCurrentQuestion(
+          getNextQuestion(currentAnswer.answerId as AnswersKeys)
+        )
       } else {
         console.log('NOT CHANGING ANSWER')
-        //setCurrentAnswer(formValues.formAnswers[currentQuestion.id])
+        console.log(currentAnswer)
+        console.log(currentQuestion)
+        setCurrentQuestion(
+          getNextQuestion(
+            formValues.formAnswers[currentQuestion.id].answerId as AnswersKeys
+          )
+        )
       }
     } else {
       console.log('UPDATE CURRENT INDEX AND HISTORY')
@@ -78,10 +85,10 @@ const DynamicPOC: React.FC = () => {
         ...questionHistory,
         currentQuestion,
       ])
+      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
     }
     console.log('OUT OF IF')
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       setCurrentIndex(currentIndex + 1)
     }
