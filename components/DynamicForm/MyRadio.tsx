@@ -11,18 +11,10 @@ interface MyRadioProps {
   ans: FormAnswer
 }
 
-// function isChecked(optionId: number, answers: FormAnswer): boolean {
-//   if (answers) {
-//     return optionId.toString() == answers.answerId
-//   }
-//   return false
-// }
-
 export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
   ...props
 }): JSX.Element => {
   const [field, meta] = useField(props)
-  console.log(props.ans)
   // renders input type radio, determines whether or not it should be checked initially
   function initialRadio(optionId: number): JSX.Element {
     if (props.ans) {
@@ -51,13 +43,6 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
   const answers = props.options.map(function (option, i) {
     return (
       <label key={option.content}>
-        {/* <input
-          type="radio"
-          {...field}
-          value={option.id}
-          onChange={props.onChange}
-          //checked={isChecked(option.id, props.ans) ? true : undefined}
-        /> */}
         {initialRadio(option.id)}
         {option.content}
       </label>
