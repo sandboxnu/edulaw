@@ -53,14 +53,15 @@ const DynamicPOC: React.FC = () => {
     return question.answers[0].toString() // TODO: Probably error check this or something
   }
 
+  /**
+   * handles getting the next question based on current question's answer
+   */
   function _handleNext() {
-    console.log('HANDLE NEXT')
     if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
       if (
         formValues.formAnswers[currentAnswer.questionId]['answerId'] !=
         currentAnswer['answerId']
       ) {
-        console.log('DELETING STUFF')
         for (let i = currentIndex + 1; i < questionHistory.length; i++) {
           delete formValues.formAnswers[questionHistory[i].id]
         }
@@ -70,9 +71,6 @@ const DynamicPOC: React.FC = () => {
           getNextQuestion(currentAnswer.answerId as AnswersKeys)
         )
       } else {
-        console.log('NOT CHANGING ANSWER')
-        console.log(currentAnswer)
-        console.log(currentQuestion)
         setCurrentQuestion(
           getNextQuestion(
             formValues.formAnswers[currentQuestion.id].answerId as AnswersKeys
@@ -80,25 +78,19 @@ const DynamicPOC: React.FC = () => {
         )
       }
     } else {
-      console.log('UPDATE CURRENT INDEX AND HISTORY')
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
         currentQuestion,
       ])
       setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
     }
-    console.log('OUT OF IF')
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       setCurrentIndex(currentIndex + 1)
     }
-    console.log(currentIndex)
-    console.log(currentAnswer)
   }
 
   function _handleBack() {
-    console.log('HANDLE BACK')
-    console.log(currentIndex)
     if (currentIndex != 0) {
       setCurrentIndex(currentIndex - 1)
       const newQuestion = questionHistory[currentIndex]
