@@ -57,6 +57,7 @@ const DynamicPOC: React.FC = () => {
    * handles getting the next question based on current question's answer
    */
   function _handleNext() {
+    console.log(formValues.formAnswers)
     if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
       _handleQuestionExists()
     } else {
@@ -98,6 +99,7 @@ const DynamicPOC: React.FC = () => {
   }
 
   function _handleBack() {
+    console.log(formValues.formAnswers)
     if (currentIndex != 0) {
       setCurrentIndex(currentIndex - 1)
       const newQuestion = questionHistory[currentIndex]

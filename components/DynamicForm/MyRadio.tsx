@@ -22,7 +22,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
   ...props
 }): JSX.Element => {
   const [field, meta] = useField(props)
-
+  console.log(props.ans)
   // renders input type radio, determines whether or not it should be checked initially
   function initialRadio(optionId: number): JSX.Element {
     if (props.ans) {
