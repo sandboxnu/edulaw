@@ -22,8 +22,8 @@ interface InputProps {
   name: string
   width: string
   height: string
-  defaultValue: string
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  defaultValue?: string
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =

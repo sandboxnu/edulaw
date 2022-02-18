@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React, { useContext } from 'react'
-import { MyTextInput } from '../FormStyles/InputBox'
+import { StyledTextInput } from '../FormStyles/InputBox'
 import Typography from '@mui/material/Typography'
 import { Button } from '../FormStyles/Button'
 import { Form, Formik } from 'formik'
@@ -144,28 +144,28 @@ const ContactFormik: React.FC = () => {
             </p>
             <ContactContent>
               <ContactColumn>
-                <MyTextInput
+                <StyledTextInput
                   width="330px"
                   height="53px"
                   name="firstName"
                   placeholder="First name"
                 />
 
-                <MyTextInput
+                <StyledTextInput
                   width="330px"
                   height="53px"
                   name="phoneNumber"
                   placeholder="Phone"
                 />
 
-                <MyTextInput
+                <StyledTextInput
                   width="330px"
                   height="53px"
                   name="address"
                   placeholder="Address"
                 />
 
-                <MyTextInput
+                <StyledTextInput
                   width="330px"
                   height="53px"
                   name="state"
@@ -173,28 +173,28 @@ const ContactFormik: React.FC = () => {
                 />
               </ContactColumn>
               <ContactColumn>
-                <MyTextInput
+                <StyledTextInput
                   width="330px"
                   height="53px"
                   name="lastName"
                   placeholder="Last name"
                 />
 
-                <MyTextInput
+                <StyledTextInput
                   width="330px"
                   height="53px"
                   name="email"
                   placeholder="E-mail"
                 />
 
-                <MyTextInput
+                <StyledTextInput
                   width="330px"
                   height="53px"
                   name="city"
                   placeholder="City"
                 />
 
-                <MyTextInput
+                <StyledTextInput
                   width="330px"
                   height="53px"
                   name="zip"
