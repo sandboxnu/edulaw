@@ -2,6 +2,8 @@ import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
 import { answers } from '../../constants'
 import { FormAnswer } from '../../utils/FormContext'
+import { QuestionText } from '../FormStyles/QuestionText'
+import QuestionLayout from '../FormStyles/QuestionLayout'
 
 interface InputProps {
   name: string
@@ -16,14 +18,23 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
   const [field, meta] = useField(props)
   return (
     <div key={props.name}>
-      <label htmlFor={`${props.id}-${props.name}`}>{props.label}</label>
-      <input
-        className="text-input"
-        {...field}
-        onChange={props.onChange}
-        defaultValue={props.ans ? props.ans.userAnswer : ''}
+      <QuestionLayout
+        questionText={
+          <QuestionText>
+            {' '}
+            {/*htmlFor={`${props.id}-${props.name}`}*/} {props.label}
+          </QuestionText>
+        }
+        input={
+          <MyTextInput
+            type="text"
+            label={props.name}
+            {...field}
+            onChange={props.onChange}
+            defaultValue={props.ans ? props.ans.userAnswer : ''}
+          />
+        }
       />
-
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}

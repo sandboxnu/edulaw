@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from '@mui/material'
 import { withStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
+import Link from 'next/link'
 
 function MainPage() {
   const ContinueButton = withStyles({
@@ -78,14 +79,16 @@ function MainPage() {
             justifyContent: 'center',
           }}
         >
-          <ContinueButton>
-            <Typography
-              variant="button"
-              style={{ textTransform: 'none', color: '#FFFFFF' }}
-            >
-              I&apos;m ready to start the walkthrough
-            </Typography>
-          </ContinueButton>
+          <Link href="/DynamicPOC/" passHref>
+            <ContinueButton>
+              <Typography
+                variant="button"
+                style={{ textTransform: 'none', color: '#FFFFFF' }}
+              >
+                I&apos;m ready to start the walkthrough
+              </Typography>
+            </ContinueButton>
+          </Link>
         </div>
       </div>
     </div>

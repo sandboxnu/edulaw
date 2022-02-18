@@ -1,8 +1,8 @@
 import styles from '../styles/Home.module.css'
-import NavBar from '../components/NavBar'
-import SplitPage from '../components/SplitPage'
+import NavBar from '../components/Critical/NavBar'
+import SplitPage from '../components/Critical/SplitPage'
 import MainPage from '../components/MainPage'
-import SideProgressBar from '../components/SideProgressBar'
+import SideProgressBar from '../components/Critical/SideProgressBar'
 import React from 'react'
 
 function home() {

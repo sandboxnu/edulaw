@@ -10,6 +10,10 @@ import { Form, Formik } from 'formik'
 import React, { ChangeEvent, useContext, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
+import { Button } from '../../components/FormStyles/Button'
+import NavBar from '../../components/Critical/NavBar'
+import styled from 'styled-components'
+import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 
@@ -22,6 +26,41 @@ function getNextQuestion(answerId: AnswersKeys): Question {
   const id: QuestionsKeys = answers[answerId].route.toString() as QuestionsKeys
   return questions[id] as Question
 }
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: stretch;
+`
+
+const VerticalBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding-left: 15%;
+  justify-content: center;
+`
+const GreyBar = styled.div`
+  width: 30%;
+  min-width: 250px;
+  max-width: 400px;
+  background-color: #e5e5e5;
+  height: 100%;
+`
+// horizontal box
+const HorizontalBox = styled.div`
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+`
+const TitleText = styled.h1`
+  font-size: large;
+`
 
 const DynamicPOC: React.FC = () => {
   const { formValues, updateFormValues } = useContext(FormCtx)
@@ -111,7 +150,7 @@ const DynamicPOC: React.FC = () => {
     let y = 10
     const y_inc = 8
 
-    answers.forEach(function (item, index) {
+    answers.forEach(function (item) {
       doc.setFont('times', 'bold').text(item.question + '\n', x, y)
       y += y_inc
       if (item.answer != null) {
@@ -144,34 +183,47 @@ const DynamicPOC: React.FC = () => {
   }
 
   return (
-    <Formik
-      initialValues={formValues}
-      onSubmit={(values: FormValues, { setSubmitting }) => {
-        if (updateFormValues) {
-          updateFormValues(values)
-        }
-        _handleNext()
-        if (currentQuestion.type === 'RESULT') {
-          _handleSubmit(values)
-          setSubmitting(false)
-        }
-      }}
-    >
-      <Form>
-        <ChooseFormType
-          question={currentQuestion}
-          onChange={_updateCurrentAnswer}
-          answers={formValues.formAnswers[currentQuestion.id]}
-        />
-        <button type="button" onClick={() => _handleBack()}>
-          {' '}
-          {'Back'}
-        </button>
-        <button type="submit">
-          {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
-        </button>
-      </Form>
-    </Formik>
+    <Main>
+      <NavBar></NavBar>
+      <HorizontalBox>
+        <VerticalBox>
+          <TitleText>Pet Lover Section</TitleText>
+          <div>
+            <Formik
+              initialValues={formValues}
+              onSubmit={(values: FormValues, { setSubmitting }) => {
+                if (updateFormValues) {
+                  updateFormValues(values)
+                }
+                _handleNext()
+                if (currentQuestion.type === 'RESULT') {
+                  _handleSubmit(values)
+                  setSubmitting(false)
+                }
+              }}
+            >
+              <Form>
+                <ChooseFormType
+                  question={currentQuestion}
+                  onChange={_updateCurrentAnswer}
+                  answers={formValues.formAnswers[currentQuestion.id]}
+                />
+                <Button type="button" onClick={() => _handleBack()}>
+                  {' '}
+                  {'Back'}
+                </Button>
+                <Button primary type="submit">
+                  {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
+                </Button>
+              </Form>
+            </Formik>{' '}
+          </div>
+        </VerticalBox>
+        <GreyBar>
+          <SideProgressBar />
+        </GreyBar>
+      </HorizontalBox>
+    </Main>
   )
 }
 
