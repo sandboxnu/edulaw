@@ -116,7 +116,7 @@ const DynamicPOC: React.FC = () => {
    */
   function _handleQuestionExists() {
     if (
-      formValues.formAnswers[currentAnswer.questionId]['answerId'] !=
+      formValues.formAnswers[currentAnswer.questionId]['answerId'] !==
       currentAnswer['answerId']
     ) {
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
@@ -137,7 +137,7 @@ const DynamicPOC: React.FC = () => {
   }
 
   function _handleBack() {
-    if (currentIndex != 0) {
+    if (currentIndex !== 0) {
       setCurrentIndex(currentIndex - 1)
       const newQuestion = questionHistory[currentIndex]
       setCurrentQuestion(newQuestion)
