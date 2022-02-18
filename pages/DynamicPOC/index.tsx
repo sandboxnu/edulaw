@@ -67,6 +67,8 @@ const DynamicPOC: React.FC = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
+  const [questionHistory, setQuestionHistory] = useState([startingQuestion])
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   function _updateCurrentAnswer(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -81,7 +83,6 @@ const DynamicPOC: React.FC = () => {
     }
 
     setCurrentAnswer(answer)
-    console.log(currentAnswer)
   }
 
   function _getInputAnswerId(questionId: string): string {
@@ -91,9 +92,56 @@ const DynamicPOC: React.FC = () => {
     return question.answers[0].toString() // TODO: Probably error check this or something
   }
 
+  /**
+   * handles getting the next question based on current question's answer
+   */
   function _handleNext() {
+    if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
+      _handleQuestionExists()
+    } else {
+      setQuestionHistory((questionHistory) => [
+        ...questionHistory,
+        currentQuestion,
+      ])
+      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    }
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
+      setCurrentIndex(currentIndex + 1)
+    }
+  }
+
+  /**
+   * Modifies question history and routes form depending on whether answer has been changed
+   */
+  function _handleQuestionExists() {
+    if (
+      formValues.formAnswers[currentAnswer.questionId]['answerId'] !==
+      currentAnswer['answerId']
+    ) {
+      for (let i = currentIndex + 1; i < questionHistory.length; i++) {
+        delete formValues.formAnswers[questionHistory[i].id]
+      }
+      const questionSlice = questionHistory.slice(0, currentIndex + 1)
+      setQuestionHistory([...questionSlice, currentQuestion])
+      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    } else {
+      if (formValues.formAnswers[currentQuestion.id]) {
+        setCurrentQuestion(
+          getNextQuestion(
+            formValues.formAnswers[currentQuestion.id].answerId as AnswersKeys
+          )
+        )
+      }
+    }
+  }
+
+  function _handleBack() {
+    if (currentIndex !== 0) {
+      setCurrentIndex(currentIndex - 1)
+      const newQuestion = questionHistory[currentIndex]
+      setCurrentQuestion(newQuestion)
+    }
   }
 
   function _buildDoc(doc: jsPDF, answers: FormAnswer[]): jsPDF {
@@ -158,7 +206,12 @@ const DynamicPOC: React.FC = () => {
                 <ChooseFormType
                   question={currentQuestion}
                   onChange={_updateCurrentAnswer}
+                  answers={formValues.formAnswers[currentQuestion.id]}
                 />
+                <Button type="button" onClick={() => _handleBack()}>
+                  {' '}
+                  {'Back'}
+                </Button>
                 <Button primary type="submit">
                   {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
                 </Button>
