@@ -83,6 +83,7 @@ export const MyResult: React.FC<MyResultProps> = ({
             className="text-input"
             defaultValue={key.userAnswer}
             onChange={_onChange}
+            ans={key}
           />
         ) : null}
       </div>
