@@ -5,6 +5,7 @@ import { FormAnswer } from '../../utils/FormContext'
 import { RadioButton } from '../../components/FormStyles/RadioButton'
 import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
+import { Divider } from 'material-ui'
 
 interface MyRadioProps {
   name: string
@@ -28,7 +29,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
             {...field}
             value={optionId}
             onChange={props.onChange}
-            defaultChecked
+            checked
           />
         )
       }
@@ -45,10 +46,10 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
 
   const answers = props.options.map(function (option, i) {
     return (
-      <label key={option.content}>
+      <div key={option.content}>
         {initialRadio(option.id)}
-        {option.content}
-      </label>
+        <label>{option.content}</label>
+      </div>
     )
   })
 
