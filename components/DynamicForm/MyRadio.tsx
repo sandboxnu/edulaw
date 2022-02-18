@@ -5,7 +5,6 @@ import { FormAnswer } from '../../utils/FormContext'
 import { RadioButton } from '../../components/FormStyles/RadioButton'
 import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
-import { Divider } from 'material-ui'
 
 interface MyRadioProps {
   name: string
