@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FieldHookConfig, useField } from 'formik'
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 
 interface InputBoxProps {
   width: string
@@ -22,28 +22,29 @@ interface InputProps {
   name: string
   width: string
   height: string
-  placeholder: string
+  defaultValue: string
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
-  ...props
-}) => {
-  const [field, meta] = useField(props)
+export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =
+  ({ ...props }) => {
+    const [field, meta] = useField(props)
 
-  return (
-    <div key={props.name}>
-      {/* <label htmlFor={`${props.id}-${props.name}`}>{props.label}</label> */}
-      <InputBox
-        width={`${props.width}`}
-        height={`${props.height}`}
-        placeholder={`${props.placeholder}`}
-        type="text"
-        {...field}
-      />
+    return (
+      <div key={props.name}>
+        {/* <label htmlFor={`${props.id}-${props.name}`}>{props.label}</label> */}
+        <InputBox
+          width={`${props.width}`}
+          height={`${props.height}`}
+          defaultValue={props.defaultValue}
+          type="text"
+          {...field}
+          onChange={props.onChange}
+        />
 
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </div>
-  )
-}
+        {meta.touched && meta.error ? (
+          <div className="error">{meta.error}</div>
+        ) : null}
+      </div>
+    )
+  }

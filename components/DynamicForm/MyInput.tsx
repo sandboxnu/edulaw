@@ -4,6 +4,7 @@ import { answers } from '../../constants'
 import { FormAnswer } from '../../utils/FormContext'
 import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
+import { StyledTextInput } from '../FormStyles/InputBox'
 
 interface InputProps {
   name: string
@@ -26,13 +27,13 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
           </QuestionText>
         }
         input={
-          <MyTextInput
+          <StyledTextInput
             type="text"
-            label={props.name}
             {...field}
             onChange={props.onChange}
-            defaultValue={props.ans ? props.ans.userAnswer : ''}
-            ans={props.ans}
+            defaultValue={props.ans?.userAnswer ? props.ans.userAnswer : ''}
+            width="500px"
+            height="54px"
           />
         }
       />
