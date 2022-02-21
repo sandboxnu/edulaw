@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // if you have a better name for this pls name it
+// still needs a LOT of styling
 
 export const Container = styled.div`
   width: 340px;
@@ -15,6 +16,7 @@ interface LoginSignupProps {
   headerPhrase: string
   description: string
   buttonPhrase: string
+  buttonLink?: string
 }
 
 function SideBox(props: LoginSignupProps) {

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useContext } from 'react'
+import React from 'react'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import Typography from '@mui/material/Typography'
 import { Button } from '../FormStyles/Button'
@@ -95,7 +95,6 @@ const ContactFormik: React.FC = () => {
 
   const spain =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-  const FormCtx = React.createContext<FormContextInterface>(defaultFormState)
 
   //const { updateFormValues } = useContext(FormCtx)
   return (
@@ -148,7 +147,7 @@ const ContactFormik: React.FC = () => {
                   width="330px"
                   height="53px"
                   name="firstName"
-                  placeholder="First name"
+                  placeholder="First Name"
                 />
 
                 <StyledTextInput

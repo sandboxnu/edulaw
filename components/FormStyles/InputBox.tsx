@@ -24,24 +24,54 @@ interface InputProps {
   height: string
   defaultValue?: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  type?: string
+  placeholder?: string
 }
 
 export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =
   ({ ...props }) => {
     const [field, meta] = useField(props)
 
-    return (
-      <div key={props.name}>
-        {/* <label htmlFor={`${props.id}-${props.name}`}>{props.label}</label> */}
+    // try and make this less jank
+    function why(): JSX.Element {
+      if (props.onChange) {
+        return (
+          <InputBox
+            width={`${props.width}`}
+            height={`${props.height}`}
+            defaultValue={props.defaultValue}
+            {...field}
+            onChange={props.onChange}
+            type={props.type}
+            placeholder={props.placeholder}
+          />
+        )
+      }
+      return (
         <InputBox
           width={`${props.width}`}
           height={`${props.height}`}
           defaultValue={props.defaultValue}
-          type="text"
+          {...field}
+          type={props.type}
+          placeholder={props.placeholder}
+        />
+      )
+    }
+
+    return (
+      <div key={props.name}>
+        {/* <label htmlFor={`${props.id}-${props.name}`}>{props.label}</label> */}
+        {/* <InputBox
+          width={`${props.width}`}
+          height={`${props.height}`}
+          defaultValue={props.defaultValue}
           {...field}
           onChange={props.onChange}
-        />
-
+          type={props.type}
+          placeholder={props.placeholder}
+        /> */}
+        {why()}
         {meta.touched && meta.error ? (
           <div className="error">{meta.error}</div>
         ) : null}
