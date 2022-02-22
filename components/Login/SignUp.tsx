@@ -3,8 +3,26 @@ import { StyledTextInput } from '../FormStyles/InputBox'
 import { Button } from '../FormStyles/Button'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
-
+import styled from 'styled-components'
 // NO legit STYLING YET
+
+export const Container = styled.div`
+  width: 600px;
+  height: 500px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: column;
+  align-items: flex-start;
+`
+
+export const PasswordDiv = styled.div`
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+`
 
 interface FormValues {
   email: string
@@ -37,7 +55,7 @@ function Signup() {
       }}
     >
       <Form>
-        <div>
+        <Container>
           <p>Back</p>
           <h1>Welcome</h1>
           <p>Let us get your account up and running.</p>
@@ -50,7 +68,7 @@ function Signup() {
               type="text"
             />
           </div>
-          <div>
+          <PasswordDiv>
             <StyledTextInput
               width="330px"
               height="53px"
@@ -65,11 +83,11 @@ function Signup() {
               placeholder="Confirm Password"
               type="password"
             />
-          </div>
+          </PasswordDiv>
           <Button type="submit" primary={true}>
             Sign Up
           </Button>
-        </div>
+        </Container>
       </Form>
     </Formik>
   )
