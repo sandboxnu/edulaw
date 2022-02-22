@@ -11,19 +11,50 @@ export const Container = styled.div`
   height: 500px;
   background-color: #ffffff;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-flow: column;
+  gap: 20px;
   align-items: flex-start;
+`
+
+export const Title = styled.h2`
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 35px;
+`
+
+export const SubTitle = styled.p``
+export const SubContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  gap: 20px;
 `
 
 export const PasswordDiv = styled.div`
   display: flex;
   flex-flow: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   gap: 20px;
 `
+export const EmailDiv = styled.div``
 
+export const EStyledButton = styled(Button)`
+  align-self: flex-end;
+`
+export const BackButton = styled.button`
+  border: none;
+  background: none;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  color: #5064c7;
+`
 interface FormValues {
   email: string
   password: string
@@ -56,10 +87,10 @@ function Signup() {
     >
       <Form>
         <Container>
-          <p>Back</p>
-          <h1>Welcome</h1>
-          <p>Let us get your account up and running.</p>
-          <div>
+          <BackButton> &lt; Back </BackButton>
+          <Title>Welcome</Title>
+          <SubTitle>Let us get your account up and running.</SubTitle>
+          <EmailDiv>
             <StyledTextInput
               width="330px"
               height="53px"
@@ -67,26 +98,28 @@ function Signup() {
               placeholder="Email"
               type="text"
             />
-          </div>
-          <PasswordDiv>
-            <StyledTextInput
-              width="330px"
-              height="53px"
-              name="password"
-              placeholder="Password"
-              type="password"
-            />
-            <StyledTextInput
-              width="330px"
-              height="53px"
-              name="confirmPass"
-              placeholder="Confirm Password"
-              type="password"
-            />
-          </PasswordDiv>
-          <Button type="submit" primary={true}>
-            Sign Up
-          </Button>
+          </EmailDiv>
+          <SubContainer>
+            <PasswordDiv>
+              <StyledTextInput
+                width="330px"
+                height="53px"
+                name="password"
+                placeholder="Password"
+                type="password"
+              />
+              <StyledTextInput
+                width="330px"
+                height="53px"
+                name="confirmPass"
+                placeholder="Confirm Password"
+                type="password"
+              />
+            </PasswordDiv>
+            <EStyledButton type="submit" primary={true}>
+              Sign Up
+            </EStyledButton>
+          </SubContainer>
         </Container>
       </Form>
     </Formik>
