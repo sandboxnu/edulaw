@@ -11,6 +11,8 @@ import {
   SubTitle,
 } from '../Login/SignUp'
 import styled from 'styled-components'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export const RememberSignIn = styled.div`
   display: flex;
@@ -24,10 +26,6 @@ export const RememberDiv = styled.div`
   margin-top: 2%;
 `
 
-export const Test = styled.label`
-  margin: 10px;
-`
-
 interface FormValues {
   email: string
   password: string
@@ -35,6 +33,7 @@ interface FormValues {
 }
 
 function SignIn() {
+  const router = useRouter()
   const initialVal: FormValues = {
     email: '',
     password: '',
@@ -76,15 +75,17 @@ function SignIn() {
               type="password"
             />
           </SubContainer>
-          <div>
-            <p>Forgot password?</p>
-          </div>
+          <Link href="/forgotpassword" passHref>
+            <p>
+              Forgot <strong>Password?</strong>
+            </p>
+          </Link>
           <RememberSignIn>
             <RememberDiv>
-              <Test>
+              <label>
                 <Field type="checkbox" name="checked" value="Remember" />
                 Remember me
-              </Test>
+              </label>
             </RememberDiv>
             <EStyledButton type="submit" primary={true}>
               Sign In
