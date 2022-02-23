@@ -1,8 +1,32 @@
 import React from 'react'
 import { Form, Formik, Field } from 'formik'
 import { StyledTextInput } from '../FormStyles/InputBox'
-import { Button } from '../FormStyles/Button'
 import * as Yup from 'yup'
+import {
+  BackButton,
+  EStyledButton,
+  Container,
+  SubContainer,
+  Title,
+  SubTitle,
+} from '../Login/SignUp'
+import styled from 'styled-components'
+
+export const RememberSignIn = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+`
+
+export const RememberDiv = styled.div`
+  margin-top: 2%;
+`
+
+export const Test = styled.label`
+  margin: 10px;
+`
 
 interface FormValues {
   email: string
@@ -32,11 +56,11 @@ function SignIn() {
       }}
     >
       <Form>
-        <div>
-          <p>{'< Back'}</p> {/* placeholder */}
-          <h1>Welcome back!</h1>
-          <p>Please sign in</p>
-          <div>
+        <Container>
+          <BackButton type="button">&lt; Back</BackButton>
+          <Title>Welcome back!</Title>
+          <SubTitle>Please sign in.</SubTitle>
+          <SubContainer>
             <StyledTextInput
               width="600px"
               height="53px"
@@ -51,22 +75,22 @@ function SignIn() {
               placeholder="Password"
               type="password"
             />
-          </div>
+          </SubContainer>
           <div>
-            <p>Forgot Username or Password?</p>
+            <p>Forgot password?</p>
           </div>
-          <div>
-            <div>
-              <label>
+          <RememberSignIn>
+            <RememberDiv>
+              <Test>
                 <Field type="checkbox" name="checked" value="Remember" />
                 Remember me
-              </label>
-            </div>
-            <Button type="submit" primary={true}>
+              </Test>
+            </RememberDiv>
+            <EStyledButton type="submit" primary={true}>
               Sign In
-            </Button>
-          </div>
-        </div>
+            </EStyledButton>
+          </RememberSignIn>
+        </Container>
       </Form>
     </Formik>
   )
