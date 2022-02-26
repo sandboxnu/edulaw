@@ -56,7 +56,9 @@ function SignIn() {
     >
       <Form>
         <Container>
-          <BackButton type="button">&lt; Back</BackButton>
+          <Link href="/home" passHref>
+            <BackButton type="button">&lt; Back</BackButton>
+          </Link>
           <Title>Welcome back!</Title>
           <SubTitle>Please sign in.</SubTitle>
           <SubContainer>
@@ -73,6 +75,7 @@ function SignIn() {
               name="password"
               placeholder="Password"
               type="password"
+              id="passwordInput"
             />
           </SubContainer>
           <Link href="/forgotpassword" passHref>

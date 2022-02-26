@@ -4,6 +4,7 @@ import { Button } from '../FormStyles/Button'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 export const Container = styled.div`
   background-color: #ffffff;
@@ -45,6 +46,10 @@ export const EmailDiv = styled.div``
 export const EStyledButton = styled(Button)`
   margin-top: 20px;
   align-self: flex-end;
+  :hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
 `
 
 export const BackButton = styled.button`
@@ -56,6 +61,10 @@ export const BackButton = styled.button`
   font-size: 28px;
   color: #5064c7;
   margin-bottom: 30px;
+
+  :hover {
+    text-shadow: 2px 2px 4px gray;
+  }
 `
 interface FormValues {
   email: string
@@ -89,7 +98,9 @@ function Signup() {
     >
       <Form>
         <Container>
-          <BackButton type="button"> &lt; Back </BackButton>
+          <Link href="/home" passHref>
+            <BackButton type="button"> &lt; Back </BackButton>
+          </Link>
           <Title>Welcome</Title>
           <SubTitle>Let us get your account up and running.</SubTitle>
           <EmailDiv>
