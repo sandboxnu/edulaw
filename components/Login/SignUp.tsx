@@ -5,6 +5,7 @@ import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import styled from 'styled-components'
 import Link from 'next/link'
+import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
 
 export const Container = styled.div`
   background-color: #ffffff;
@@ -114,19 +115,17 @@ function Signup() {
           </EmailDiv>
           <SubContainer>
             <PasswordDiv>
-              <StyledTextInput
+              <PasswordInputBox
                 width="330px"
                 height="53px"
-                name="password"
                 placeholder="Password"
-                type="password"
+                name="password"
               />
-              <StyledTextInput
+              <PasswordInputBox
                 width="330px"
                 height="53px"
-                name="confirmPass"
                 placeholder="Confirm Password"
-                type="password"
+                name="confirmPass"
               />
             </PasswordDiv>
             <EStyledButton type="submit" primary={true}>
