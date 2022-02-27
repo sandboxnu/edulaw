@@ -13,6 +13,9 @@ import {
 import styled from 'styled-components'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
 
 export const RememberSignIn = styled.div`
   display: flex;
@@ -69,13 +72,12 @@ function SignIn() {
               placeholder="Email"
               type="text"
             />
-            <StyledTextInput
+
+            <PasswordInputBox
               width="600px"
               height="53px"
-              name="password"
               placeholder="Password"
-              type="password"
-              id="passwordInput"
+              name="password"
             />
           </SubContainer>
           <Link href="/forgotpassword" passHref>
