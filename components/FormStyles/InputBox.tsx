@@ -18,6 +18,10 @@ export const InputBox = styled.input`
   line-height: 26px;
 `
 
+export const ErrorDiv = styled.div`
+  color: #ff0000;
+`
+
 interface InputProps {
   name: string
   width: string
@@ -33,7 +37,7 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =
     const [field, meta] = useField(props)
 
     // try and make this less jank
-    function why(): JSX.Element {
+    function onChangeInput(): JSX.Element {
       if (props.onChange) {
         return (
           <InputBox
@@ -61,19 +65,9 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =
 
     return (
       <div key={props.name}>
-        {/* <label htmlFor={`${props.id}-${props.name}`}>{props.label}</label> */}
-        {/* <InputBox
-          width={`${props.width}`}
-          height={`${props.height}`}
-          defaultValue={props.defaultValue}
-          {...field}
-          onChange={props.onChange}
-          type={props.type}
-          placeholder={props.placeholder}
-        /> */}
-        {why()}
+        {onChangeInput()}
         {meta.touched && meta.error ? (
-          <div className="error">{meta.error}</div>
+          <ErrorDiv className="error">{meta.error}</ErrorDiv>
         ) : null}
       </div>
     )

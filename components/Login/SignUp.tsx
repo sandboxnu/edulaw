@@ -39,7 +39,7 @@ export const PasswordDiv = styled.div`
   display: flex;
   flex-flow: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
 `
 export const EmailDiv = styled.div``
