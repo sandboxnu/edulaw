@@ -5,18 +5,21 @@ import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core'
 import Link from 'next/link'
 
-const ContinueButton = withStyles({
-  // TODO: custom button component for design? theme? refactor styling eventually
-  root: {
-    backgroundColor: '#5064C7',
-    width: '100%',
-    color: '#FFFFFF',
-    //textTransform: "lowercase",
-    '&:hover': {
+const ContinueButton = withStyles(
+  {
+    // TODO: custom button component for design? theme? refactor styling eventually
+    root: {
       backgroundColor: '#5064C7',
+      width: '100%',
+      color: '#FFFFFF',
+      //textTransform: "lowercase",
+      '&:hover': {
+        backgroundColor: '#5064C7',
+      },
     },
   },
-})(Button)
+  { name: 'ContinueButtonComplaint' }
+)(Button)
 
 function StartComplaint() {
   return (
