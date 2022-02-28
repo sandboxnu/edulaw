@@ -1,11 +1,14 @@
 import { ChangeEvent, useContext } from 'react'
 import {
   FormAnswer,
-  FormCtx,
   FormContextInterface,
+  FormCtx,
   FormValues,
 } from '../../utils/FormContext'
-import { questions, QuestionsKeys, answers, AnswersKeys } from '../../models'
+import { answers, AnswersKeys, questions, QuestionsKeys } from '../../models'
+import { QuestionText } from '../FormStyles/QuestionText'
+import styled from 'styled-components'
+import { StyledTextInput } from '../FormStyles/InputBox'
 
 interface MyResultProps {
   label: string
@@ -48,6 +51,12 @@ function _updateTextInputs(
   }
 }
 
+const HorizontalDiv = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-bottom: 2em;
+  flex-direction: row;
+`
 export const MyResult: React.FC<MyResultProps> = ({
   ...props
 }): JSX.Element => {
@@ -60,16 +69,23 @@ export const MyResult: React.FC<MyResultProps> = ({
 
     return (
       <div key={key.questionId}>
-        <p>{key.question}</p>
-        <p>{key.answer}</p>
+        <HorizontalDiv>
+          <QuestionText>{key.question}</QuestionText>
+          <QuestionText>{key.answer}</QuestionText>
+        </HorizontalDiv>
+
+        {/*<p>{key.question}</p>*/}
+        {/*<p>{key.answer}</p>*/}
         {key.userAnswer ? (
-          <input
+          <StyledTextInput
+            name={key.userAnswer}
             className="text-input"
             defaultValue={key.userAnswer}
             onChange={_onChange}
+            width="500px"
+            height="64px"
           />
         ) : null}
-        <br />
       </div>
     )
   })
@@ -78,8 +94,10 @@ export const MyResult: React.FC<MyResultProps> = ({
     <div>
       {results}
       <br />
-      <p>{props.label}</p>
+      <QuestionText>{props.label}</QuestionText>
       {props.description ? <p>{props.description}</p> : null}
+      <br />
+      <br />
     </div>
   )
 }

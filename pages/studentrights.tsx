@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.css'
-import NavBar from '../components/NavBar'
-import SplitPage from '../components/SplitPage'
-import LandingStudentRights from '../components/LandingStudentRightsGuide'
-import RightsPrsMenu from '../components/RightsPrsMenu'
-import StartComplaint from '../components/StartComplaint'
+import NavBar from '../components/Critical/NavBar'
+import SplitPage from '../components/Critical/SplitPage'
+import LandingStudentRights from '../components/LandingPage/LandingStudentRightsGuide'
+import RightsPrsMenu from '../components/LandingPage/RightsPrsMenu'
+import StartComplaint from '../components/LandingPage/StartComplaint'
 import React from 'react'
 
 const StudentRights: NextPage = () => {

@@ -10,6 +10,10 @@ import { Form, Formik } from 'formik'
 import React, { ChangeEvent, useContext, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
+import { Button } from '../../components/FormStyles/Button'
+import NavBar from '../../components/Critical/NavBar'
+import styled from 'styled-components'
+import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 
@@ -23,11 +27,48 @@ function getNextQuestion(answerId: AnswersKeys): Question {
   return questions[id] as Question
 }
 
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: stretch;
+`
+
+const VerticalBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding-left: 15%;
+  justify-content: center;
+`
+const GreyBar = styled.div`
+  width: 30%;
+  min-width: 250px;
+  max-width: 400px;
+  background-color: #e5e5e5;
+  height: 100%;
+`
+// horizontal box
+const HorizontalBox = styled.div`
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+`
+const TitleText = styled.h1`
+  font-size: large;
+`
+
 const DynamicPOC: React.FC = () => {
   const { formValues, updateFormValues } = useContext(FormCtx)
 
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
+  const [questionHistory, setQuestionHistory] = useState([startingQuestion])
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   function _updateCurrentAnswer(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -42,7 +83,6 @@ const DynamicPOC: React.FC = () => {
     }
 
     setCurrentAnswer(answer)
-    console.log(currentAnswer)
   }
 
   function _getInputAnswerId(questionId: string): string {
@@ -52,9 +92,56 @@ const DynamicPOC: React.FC = () => {
     return question.answers[0].toString() // TODO: Probably error check this or something
   }
 
+  /**
+   * handles getting the next question based on current question's answer
+   */
   function _handleNext() {
+    if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
+      _handleQuestionExists()
+    } else {
+      setQuestionHistory((questionHistory) => [
+        ...questionHistory,
+        currentQuestion,
+      ])
+      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    }
     formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
+      setCurrentIndex(currentIndex + 1)
+    }
+  }
+
+  /**
+   * Modifies question history and routes form depending on whether answer has been changed
+   */
+  function _handleQuestionExists() {
+    if (
+      formValues.formAnswers[currentAnswer.questionId]['answerId'] !==
+      currentAnswer['answerId']
+    ) {
+      for (let i = currentIndex + 1; i < questionHistory.length; i++) {
+        delete formValues.formAnswers[questionHistory[i].id]
+      }
+      const questionSlice = questionHistory.slice(0, currentIndex + 1)
+      setQuestionHistory([...questionSlice, currentQuestion])
+      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+    } else {
+      if (formValues.formAnswers[currentQuestion.id]) {
+        setCurrentQuestion(
+          getNextQuestion(
+            formValues.formAnswers[currentQuestion.id].answerId as AnswersKeys
+          )
+        )
+      }
+    }
+  }
+
+  function _handleBack() {
+    if (currentIndex !== 0) {
+      setCurrentIndex(currentIndex - 1)
+      const newQuestion = questionHistory[currentIndex]
+      setCurrentQuestion(newQuestion)
+    }
   }
 
   function _buildDoc(doc: jsPDF, answers: FormAnswer[]): jsPDF {
@@ -63,7 +150,7 @@ const DynamicPOC: React.FC = () => {
     let y = 10
     const y_inc = 8
 
-    answers.forEach(function (item, index) {
+    answers.forEach(function (item) {
       doc.setFont('times', 'bold').text(item.question + '\n', x, y)
       y += y_inc
       if (item.answer != null) {
@@ -96,29 +183,47 @@ const DynamicPOC: React.FC = () => {
   }
 
   return (
-    <Formik
-      initialValues={formValues}
-      onSubmit={(values: FormValues, { setSubmitting }) => {
-        if (updateFormValues) {
-          updateFormValues(values)
-        }
-        _handleNext()
-        if (currentQuestion.type === 'RESULT') {
-          _handleSubmit(values)
-          setSubmitting(false)
-        }
-      }}
-    >
-      <Form>
-        <ChooseFormType
-          question={currentQuestion}
-          onChange={_updateCurrentAnswer}
-        />
-        <button type="submit">
-          {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
-        </button>
-      </Form>
-    </Formik>
+    <Main>
+      <NavBar></NavBar>
+      <HorizontalBox>
+        <VerticalBox>
+          <TitleText>Pet Lover Section</TitleText>
+          <div>
+            <Formik
+              initialValues={formValues}
+              onSubmit={(values: FormValues, { setSubmitting }) => {
+                if (updateFormValues) {
+                  updateFormValues(values)
+                }
+                _handleNext()
+                if (currentQuestion.type === 'RESULT') {
+                  _handleSubmit(values)
+                  setSubmitting(false)
+                }
+              }}
+            >
+              <Form>
+                <ChooseFormType
+                  question={currentQuestion}
+                  onChange={_updateCurrentAnswer}
+                  answers={formValues.formAnswers[currentQuestion.id]}
+                />
+                <Button type="button" onClick={() => _handleBack()}>
+                  {' '}
+                  {'Back'}
+                </Button>
+                <Button primary type="submit">
+                  {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
+                </Button>
+              </Form>
+            </Formik>{' '}
+          </div>
+        </VerticalBox>
+        <GreyBar>
+          <SideProgressBar />
+        </GreyBar>
+      </HorizontalBox>
+    </Main>
   )
 }
 
