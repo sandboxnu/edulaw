@@ -5,6 +5,7 @@ import {
   answers,
   AnswersKeys,
   forms,
+  Answer,
 } from '../../models'
 import { Form, Formik } from 'formik'
 import React, { ChangeEvent, useContext, useState } from 'react'
@@ -22,8 +23,8 @@ const firstQuestionId: QuestionsKeys =
 const startingQuestion: Question = questions[firstQuestionId] as Question
 let startingAnswer: FormAnswer
 
-function getNextQuestion(answerId: AnswersKeys): Question {
-  const id: QuestionsKeys = answers[answerId].route.toString() as QuestionsKeys
+function getNextQuestion(answer: Answer): Question {
+  const id: number = answer.route
   return questions[id] as Question
 }
 
@@ -76,13 +77,12 @@ const DynamicPOC: React.FC = () => {
   ) {
     const answer = {
       questionId: event.target.name,
-      answerId: isUserInput
-        ? _getInputAnswerId(event.target.name)
-        : event.target.value,
+      answerId: isUserInput ? '0' : event.target.value,
       userAnswer: isUserInput ? event.target.value : undefined,
     }
 
     setCurrentAnswer(answer)
+    console.log(formValues)
   }
 
   function _getInputAnswerId(questionId: string): string {
@@ -103,12 +103,18 @@ const DynamicPOC: React.FC = () => {
         ...questionHistory,
         currentQuestion,
       ])
-      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
     }
-    formValues.formAnswers[currentAnswer.questionId] = currentAnswer
+    formValues.formAnswers[currentQuestion.id] = currentAnswer
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       setCurrentIndex(currentIndex + 1)
     }
+    setCurrentQuestion(
+      getNextQuestion(
+        questions[parseInt(currentAnswer.questionId)].answers[
+          parseInt(currentAnswer.answerId)
+        ]
+      )
+    )
   }
 
   /**
@@ -116,7 +122,7 @@ const DynamicPOC: React.FC = () => {
    */
   function _handleQuestionExists() {
     if (
-      formValues.formAnswers[currentAnswer.questionId]['answerId'] !==
+      formValues.formAnswers[currentQuestion.id]['answerId'] !==
       currentAnswer['answerId']
     ) {
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
@@ -124,12 +130,21 @@ const DynamicPOC: React.FC = () => {
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
       setQuestionHistory([...questionSlice, currentQuestion])
-      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setCurrentQuestion(
+        getNextQuestion(
+          questions[parseInt(currentAnswer.questionId)].answers[
+            parseInt(currentAnswer.answerId)
+          ]
+        )
+      )
     } else {
       if (formValues.formAnswers[currentQuestion.id]) {
         setCurrentQuestion(
           getNextQuestion(
-            formValues.formAnswers[currentQuestion.id].answerId as AnswersKeys
+            questions[parseInt(currentAnswer.questionId)].answers[
+              parseInt(currentAnswer.answerId)
+            ]
           )
         )
       }

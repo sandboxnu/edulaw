@@ -24,11 +24,12 @@ export function buildResults(formAnswers: {
     const idBasedFormAnswer: FormAnswer = formAnswers[key]
     const contentBasedFormAnswer: FormAnswer = {
       questionId: idBasedFormAnswer.questionId,
-      question:
-        questions[idBasedFormAnswer.questionId as QuestionsKeys].question,
+      question: questions[parseInt(idBasedFormAnswer.questionId)].question,
       answerId: idBasedFormAnswer.answerId,
-      answer: answers[idBasedFormAnswer.answerId as AnswersKeys]
-        .content as string,
+      answer:
+        questions[parseInt(idBasedFormAnswer.questionId)].answers[
+          parseInt(idBasedFormAnswer.answerId)
+        ].content,
       userAnswer: idBasedFormAnswer.userAnswer ?? undefined,
     }
     return contentBasedFormAnswer

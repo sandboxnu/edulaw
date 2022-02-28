@@ -14,12 +14,7 @@ interface ChooseFormTypeProps {
 export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
   ...props
 }): JSX.Element => {
-  const answerChoices: Answer[] = props.question.answers.map(function (
-    answerId: number
-  ) {
-    const typedAnswerId = answerId.toString() as AnswersKeys
-    return answers[typedAnswerId] as Answer
-  })
+  const answerChoices: Answer[] = props.question.answers
 
   switch (props.question.type) {
     case 'RADIO': {
@@ -43,7 +38,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             props.onChange(event, true)
           }
-          ans={props.answers}
+          //ans={props.answers}
         />
       )
     }

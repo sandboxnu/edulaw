@@ -5,9 +5,7 @@ const typedAnswers = answers as Answers
 
 export type AnswersKeys = keyof Answers
 export interface Answer {
-  id: number
-  type: string
-  content: string
+  content?: string
   route: number
 }
 export { typedAnswers as answers }
