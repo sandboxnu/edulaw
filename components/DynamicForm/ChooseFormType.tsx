@@ -38,7 +38,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             props.onChange(event, true)
           }
-          //ans={props.answers}
+          ans={props.answers}
         />
       )
     }
