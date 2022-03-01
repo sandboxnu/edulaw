@@ -101,6 +101,12 @@ const DynamicPOC: React.FC = () => {
    * handles getting the next question based on current question's answer
    */
   function _handleNext() {
+    if (
+      !currentAnswer ||
+      currentAnswer.questionId !== currentQuestion.id.toString()
+    ) {
+      return
+    }
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       _handleQuestionExists()
     } else {
