@@ -19,7 +19,7 @@ import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 
 const firstQuestionId: QuestionsKeys =
-  forms.animalForm.toString() as QuestionsKeys
+  forms.actualForm.toString() as QuestionsKeys
 const startingQuestion: Question = questions[firstQuestionId] as Question
 let startingAnswer: FormAnswer
 
@@ -96,16 +96,24 @@ const DynamicPOC: React.FC = () => {
    */
   function _handleNext() {
     if (
-      !currentAnswer ||
-      currentAnswer.questionId !== currentQuestion.id.toString()
+      currentQuestion.type !== 'CONTINUE' &&
+      (!currentAnswer ||
+        currentAnswer.questionId !== currentQuestion.id.toString())
     ) {
       return
     }
-    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
+    if (
+      formValues.formAnswers.hasOwnProperty(currentQuestion.id) &&
+      currentQuestion.type !== 'CONTINUE'
+    ) {
       _handleQuestionExists()
     } else {
       const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+        questions[currentQuestion.id].answers[
+          currentQuestion.type === 'CONTINUE'
+            ? 0
+            : parseInt(currentAnswer.answerId)
+        ]
       )
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
@@ -158,7 +166,7 @@ const DynamicPOC: React.FC = () => {
     if (currentIndex !== 0) {
       const newQuestion = questionHistory[currentIndex - 1]
       if (currentQuestion.id.toString() === currentAnswer.questionId) {
-        formValues.formAnswers[currentQuestion.id] = currentAnswer
+        formValues.formAnswers[currentQuestion.id.toString()] = currentAnswer
         setCurrentAnswer(formValues.formAnswers[newQuestion.id])
       }
       setCurrentQuestion(newQuestion)

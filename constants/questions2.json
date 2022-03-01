@@ -1,1759 +1,2346 @@
-{
-  "0": {
+[
+  {
     "id": 0,
     "question": "",
     "description": "",
     "type": "",
     "answers": []
   },
-  "1": {
+  {
     "id": 1,
     "question": "Are you having problems with special education, discipline, or bullying?",
     "description": "",
     "type": "RADIO",
-    "answers": [1, 48]
+    "answers": [
+      {
+        "content": "Bullying",
+        "route": 2
+      },
+      {
+        "content": "Special Education",
+        "route": 39
+      }
+    ]
   },
-  "2": {
+  {
     "id": 2,
     "question": "There are requirements the school must follow when they learn that a student has been bullied.  Are your concerns about a student who was bullied?",
     "description": "",
     "type": "RADIO",
-    "answers": [2,5]
+    "answers": [
+      {
+        "content": "No",
+        "route": 3
+      },
+      {
+        "content": "Yes",
+        "route": 5
+      }
+    ]
   },
-  "3": {
+  {
     "id": 3,
     "question": "Schools must take certain steps to prevent bullying. Schools must create a school-wide bullying prevention plan. Are your concerns about the school's bullying prevention plan?",
     "description": "",
     "type": "RADIO",
-    "answers": [3,4]
+    "answers": [
+      {
+        "content": "No",
+        "route": 4
+      },
+      {
+        "content": "Yes",
+        "route": 29
+      }
+    ]
   },
-  "4": {
+  {
     "id": 4,
     "question": "The questions in this guide may not address your concerns. You can still file a complaint with PRS (here). If you don’t know what to do, call the EdLaw Project at 617-910-5829, or fill out the online form (here)",
     "description": "",
     "type": "RESULT",
     "answers": []
   },
-  "5": {
+  {
     "id": 5,
     "question": "Did someone at the school know that the student was being bullied?",
     "description": "",
     "type": "RADIO",
-    "answers": [6]
+    "answers": [
+      {
+        "content": "Yes",
+        "route": 6
+      }
+    ]
   },
-  "6": {
+  {
     "id": 6,
     "question": "If someone at the school knows about the bullying, they must tell the principal. They can also tell someone else like the vice principal. Did the person tell the principal about the bullying?",
     "description": "",
     "type": "RADIO",
-    "answers": [7,10]
+    "answers": [
+      {
+        "content": "No",
+        "route": 7
+      },
+      {
+        "content": "Yes",
+        "route": 8
+      }
+    ]
   },
-  "7": {
+  {
     "id": 7,
     "question": "Do you want to include the failure to tell the principal in your complaint?",
     "description": "",
     "type": "RADIO",
-    "answers": [8,9]
+    "answers": [
+      {
+        "content": "No",
+        "route": 14
+      },
+      {
+        "content": "Yes",
+        "route": 15
+      }
+    ]
   },
-  "8": {
+  {
     "id": 8,
     "question": "When the principal found out about the bullying, did they do an investigation?",
     "description": "",
     "type": "RADIO",
-    "answers": [11,14]
+    "answers": [
+      {
+        "content": "No",
+        "route": 9
+      },
+      {
+        "content": "Yes",
+        "route": 10
+      }
+    ]
   },
-  "9": {
+  {
     "id": 9,
     "question": "It looks like you've identified that the school didn't respond appropriately when they found out the student was being bullied.  Do you want to include information about that in your complaint? ",
     "description": "",
     "type": "RADIO",
-    "answers": [12,13]
+    "answers": [
+      {
+        "content": "Yes",
+        "route": 16
+      },
+      {
+        "content": "No",
+        "route": 17
+      }
+    ]
   },
-  "10": {
+  {
     "id": 10,
     "question": "Did the school find that the student was bullied?",
     "description": "",
     "type": "RADIO",
-    "answers": [15,16,17]
+    "answers": [
+      {
+        "content": "The school never told me the reults of the investigation",
+        "route": 11
+      },
+      {
+        "content": "Yes",
+        "route": 12
+      },
+      {
+        "content": "No",
+        "route": 13
+      }
+    ]
   },
-  "11": {
+  {
     "id": 11,
     "question": "It looks like the school might not have communicated with you appropriately following their investigation.  Do you want to include that in your complaint?",
     "description": "",
     "type": "RADIO",
-    "answers": [22,23]
+    "answers": [
+      {
+        "content": "No",
+        "route": 19
+      },
+      {
+        "content": "Yes",
+        "route": 18
+      }
+    ]
   },
-  "12": {
+  {
     "id": 12,
     "question": "Did the school send you a letter or email after the investigation that told you about the action they're taking to prevent the bullying from happening again?",
     "description": "",
     "type": "RADIO",
-    "answers": [24,25]
+    "answers": [
+      {
+        "content": "No",
+        "route": 22
+      },
+      {
+        "content": "Yes",
+        "route": 24
+      }
+    ]
   },
-  "13": {
+  {
     "id": 13,
     "question": "You identified that the school didn't think the student had been bullied. Do you want to include that in your complaint?",
     "description": "",
     "type": "RADIO",
-    "answers": [18,19]
+    "answers": [
+      {
+        "content": "No",
+        "route": 20
+      },
+      {
+        "content": "Yes",
+        "route": 21
+      }
+    ]
   },
-  "14": {
+  {
     "id": 14,
     "question": "Okay, we'll move on to the next section",
     "description": "",
-    "type": "RESULT",
-    "answers": []
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 29
+      }
+    ]
   },
-  "15": {
+  {
     "id": 15,
     "question": "You identified that someone at the school found out about the bullying, and didn't tell the principal. This language will be used in your complaint: 'School staff failed to report an incident of bullying pursuant to MGL c71 s.37O(g)' In the box below, describe what happened in detail.  Be sure to include who knew about the bullying, and how you know that they were aware of the bullying.",
     "description": "",
     "type": "TEXT",
-    "answers": [37]
+    "answers": [
+      {
+        "route": 29
+      }
+    ]
   },
-  "16": {
+  {
     "id": 16,
     "question": "You identified that the school didn't do an investigation when they learned that the student was being bullied. This language will identify that violation in your complaint: 'The School District failed to investigate an incident of bullying pursuant to MGL c71 s.37O(g)' In the box below, describe what happened in detail. Desribe what was happening with the student, how the principal found out about the bullying, and what happened after the principal found out. ",
     "description": "",
     "type": "TEXT",
-    "answers": [36]
+    "answers": [
+      {
+        "content": "Next",
+        "route": 29
+      }
+    ]
   },
-  "17": {
+  {
     "id": 17,
     "question": "Okay, we'll move on to the next section",
     "description": "",
-    "type": "RESULT",
-    "answers": []
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 29
+      }
+    ]
   },
-  "18": {
+  {
     "id": 18,
     "question": "You identified that the school didn't do an investigation when they learned that the student was being bullied. This language will identify that violation in your complaint: 'The School District failed to investigate an incident of bullying pursuant to MGL c71 s.37O(g)' In the box below, describe what happened in detail. Desribe what was happening with the student, how the principal found out about the bullying, and what happened after the principal found out. ",
     "description": "",
     "type": "TEXT",
-    "answers": [35]
+    "answers": [
+      {
+        "content": "Next",
+        "route": 29
+      }
+    ]
   },
-  "19": {
+  {
     "id": 19,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
-    "type": "RADIO",
-    "answers": [28]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 29
+      }
+    ]
   },
-  "20": {
+  {
     "id": 20,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
-    "type": "RADIO",
-    "answers": [21]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 29
+      }
+    ]
   },
-  "21": {
+  {
     "id": 21,
     "question": "You identified that the school didn't think the student had been bullied, but you disagree. This language will be used in your complaint: 'The school determined through an investigation pursuant to MGL c.71 s.37O(g) that no incident of bullying occurred.  I disagree with their finding.' In the box below, describe what happened in detail.  Describe how the principal investigated whether the student was being bullied, and any reasons the principal gave for their decision.  Be sure to explain why you disagree.  If you don't think the investigation was thorough, include that information",
     "description": "",
     "type": "TEXT",
-    "answers": [21]
+    "answers": [
+      {
+        "route": 29
+      }
+    ]
   },
-  "22": {
+  {
     "id": 22,
     "question": "You identified a problem with the school's communication with you about the investigation.  We'll ask some more questions about that at the end of this section.  Press next to continue.",
     "description": "",
-    "type": "RADIO",
-    "answers": [29]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 25
+      }
+    ]
   },
-  "23": {
+  {
     "id": 23,
     "question": "You identified a problem with the school's communication with you about your rights after the investigation.  We'll ask some more questions about that at the end of this section.  Press next to continue.",
     "description": "",
-    "type": "RADIO",
-    "answers": [30]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 25
+      }
+    ]
   },
-  "24": {
+  {
     "id": 24,
     "question": "Did the letter give you information about PRS and the process for filing a complaint?",
     "description": "",
     "type": "RADIO",
-    "answers": [27]
+    "answers": [
+      {
+        "content": "Yes",
+        "route": 25
+      },
+      {
+        "content": "No",
+        "route": 23
+      }
+    ]
   },
-  "25": {
+  {
     "id": 25,
     "question": "Those are all the requirements that the school has to follow when they learn a student is being bullied. if they've identified violations: You've identified the following concerns: _____. Do you want to include those in your complaint? if they haven't identified any violations in this section: You haven't identified a violation of a requirement included in this guide.  If you have concerns about the school's response, you should still include them in your complaint.  Would you like to describe any concerns to include in your complaint? ",
     "description": "",
     "type": "RADIO",
-    "answers": [31,32]
+    "answers": [
+      {
+        "content": "No",
+        "route": 26
+      },
+      {
+        "content": "Yes",
+        "route": 28
+      }
+    ]
   },
-  "26": {
+  {
     "id": 26,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
-    "type": "RADIO",
-    "answers": [33]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 29
+      }
+    ]
   },
-  "27": {
+  {
     "id": 27,
     "question": "Plain language: The school didn't tell you about PRS in their letter about the investigation. Legal language: this language will identify that concern in your complaint: 'The School District failed to include information about PRS in their notice to parents about a finding that bullying occurred after an investigation conducted pursuant to MGL c.71 s.37O(g)' Prompts: In the box below, desribe what happened in detail.  If you didn't file a complaint earlier because you didn't know you could, include that information.",
     "description": "",
-    "type": "TEXT",
+    "type": "RESULT",
     "answers": []
   },
-  "28": {
+  {
     "id": 28,
     "question": "You identified: (THE VIOLATION THEY IDENTIFIED IN PLAIN LANGUAGE)",
     "description": "",
-    "type": "TEXT",
-    "answers": [33]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 29
+      }
+    ]
   },
-  "29": {
+  {
     "id": 29,
     "question": "Bullying Prevention Plan Schools have to have a plan for preventing, identifying, and responding to bullying.  The school has to have the plan in place whether or not any students have been bullied.  Do you want to go through some questions about the requirements for the school-wide plan?",
     "description": "",
     "type": "RADIO",
-    "answers": [34,37]
+    "answers": [
+      {
+        "content": "No",
+        "route": 30
+      },
+      {
+        "content": "Yes",
+        "route": 31
+      }
+    ]
   },
-  "30": {
+  {
     "id": 30,
     "question": "Those are all the requirements included in this guide. If they identified any concerns in the first section: now we're going to continue with the rest of your complaint (go to next section) If they didn't identify any concerns in the first section: It looks like the questions in this guide don't address your concerns.  You can still file a complaint with PRS (here).  If you aren't sure how to proceed, call the EdLaw Project intake line at 617-910-5829, or fill out the online intake form (here).",
     "description": "",
     "type": "RESULT",
     "answers": []
   },
-  "31": {
+  {
     "id": 31,
     "question": "Every year, the school has to send you information about their bullying prevention plan. The information has to include all the parts of the plan that relate to students.  The school doesn't have to include information about their internal policies and procedures that only involve staff. Did the school send you information about the plan?",
     "description": "",
     "type": "RADIO",
-    "answers": [38,39]
+    "answers": [
+      {
+        "content": "No",
+        "route": 32
+      },
+      {
+        "content": "Yes",
+        "route": 33
+      }
+    ]
   },
-  "32": {
+  {
     "id": 32,
     "question": "You identified a problem with the school's communication about the plan.  We'll ask some more questions about that at the end of this section.  Press next to continue.",
     "description": "",
-    "type": "RADIO",
-    "answers": [40]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 40
+      }
+    ]
   },
-  "33": {
+  {
     "id": 33,
     "question": "The school district has to post the whole plan on their website.  The plan may not be on a school's individual website, but has to be on the district's website. Does the school district have their bullying prevention plan on their website?  ",
     "description": "",
     "type": "RADIO",
-    "answers": [41,42]
+    "answers": [
+      {
+        "content": "No",
+        "route": 34
+      },
+      {
+        "content": "Yes",
+        "route": 35
+      }
+    ]
   },
-  "34": {
+  {
     "id": 34,
     "question": "You identified a problem with the school's communication about the plan.  We'll ask some more questions about that at the end of this section.  Press next to continue. ",
     "description": "",
-    "type": "RADIO",
-    "answers": [43]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 35
+      }
+    ]
   },
-  "35": {
+  {
     "id": 35,
     "question": "In addition to information about the school's bullying prevention plan, schools have to provide families with information about how they can support the bullying prevention efforts at home.  The school has to at least provide: -  information on how families can reinforce the bullying prevention curriculum at home- information on what bullying looks like in schools, and how to identify bullying.  This might be called 'bullying dynamics.'- information on cyber-bullying, and how to be safe online. Did the school provide you with all of the information listed above?",
     "description": "",
     "type": "RADIO",
-    "answers": [44,45]
+    "answers": [
+      {
+        "content": "No",
+        "route": 36
+      },
+      {
+        "content": "Yes",
+        "route": 37
+      }
+    ]
   },
-  "36": {
+  {
     "id": 36,
     "question": "You identified a problem with the school's communication about the plan.  We'll ask some more questions about that at the end of this section.  Press next to continue.",
     "description": "",
-    "type": "RADIO",
-    "answers": [46]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 37
+      }
+    ]
   },
-  "37": {
+  {
     "id": 37,
     "question": "Those are all the questions about the bullying prevention plan. If they've identified violations: You've identified the following concerns: _____. Do you want to include those in your complaint? if they haven't identified any violations in this section: You haven't identified a violation of a requirement included in this guide.  If you have concerns about the prevention plan, you should still include them in your complaint.  Would you like to describe any concerns to include in your complaint? ",
     "description": "",
     "type": "RADIO",
-    "answers": [47]
+    "answers": [
+      {
+        "content": "yes",
+        "route": 38
+      }
+    ]
   },
-  "38": {
+  {
     "id": 38,
     "question": "You identified: (THE VIOLATION THEY IDENTIFIED IN PLAIN LANGUAGE) This language will identify thoat violations in your complaint: (LEGAL LAGUAGE FOR  VIOLATION) You can write more details about the violations in the box below: (PROMPT QUESTIONS FOR ALL THE VIOLATION) repeat for all the violations they identified Press next when you're ready to move on to the next section.",
     "description": "",
-    "type": "TEXT",
+    "type": "RESULT",
     "answers": []
   },
-  "39": {
+  {
     "id": 39,
-    "question": "s the problem about a student who has or had an IEP or 504 plan? Or is it about a student who has never had an IEP or 504 plan before?",
-    "description": "",
-    "type": "",
-    "answers": [49]
-  },
-  "40": {
-    "id": 40,
     "question": "Students with disabilities are entitled to an education that works for them. This guide covers the requirements for the special education process, starting from the first request for an evaluation.  We will go over the process for identifying whether a student has a disability, to making a plan for the student to access the services they need, to keeping the plan updated year to year.   The guide only asks questions to identify whether the school followed the right process.   Pop up: what does this mean?  Sometimes, a school follows the right process, but the special education services and the plan they offer doesn't work for the student.  If that's the case, the questions in the guide won't address your all of your concerns.  If you go through the guide and the questions don't address your concerns, call the EdLaw Project intake line at _____.  pop up under \"the right process\": \"What does this mean?\" inside the pop up: \"The questions will identify issues where the school clearly did or didn't do something (for example, the school didn't follow the right timeline for an evaluation, or the school isn't providing the services in the student's IEP).  The questions don't cover disagreements over what the student needs (for example, whether the student is eligible for special education services, or whether the student needs to be in a smaller classroom), because those situations require more specific details about the student.\"",
     "description": "",
-    "type": "",
-    "answers": [50]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 40
+      }
+    ]
   },
-  "41": {
+  {
+    "id": 40,
+    "question": "Does the student have an IEP or 504 plan?\nPop up: what is an IEP or 504 Plan?\nInside the pop up:insert definition",
+    "description": "",
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 41
+      },
+      {
+        "content": "Yes",
+        "route": 67
+      },
+      {
+        "content": "The student used to have one but no longer does",
+        "route": -1
+      }
+    ]
+  },
+  {
     "id": 41,
-    "question": "Referral  The special education process starts with someone making a request for the student to be evaluated.  When someone requests a special education evaluation for a student, the school is required to start the evaluation process to determine whether the student is eligible for special education services.  Requesting an evaluation is called a “referral.” This section covers the requirements for the school's response to the first time someone requests an evaluation for the student.  If you don't have concerns about this part of the process, you can select \"skip this section\"  Start this section/skip this section ",
+    "question": "The special education process starts when someone asks for an evaluation for the student. The ask for an evaluation is called a \"referral.\" Then,the school has to take steps to see if the student qualifies for special education.\nThis part of the guide explains what the school must do after a referral for a student is made..  If you do not have concerns about this part, you can pick \"skip this part\"",
     "description": "",
-    "type": "",
-    "answers": [51, 169]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "Skip this section",
+        "route": 60
+      },
+      {
+        "content": "Start this section",
+        "route": 42
+      }
+    ]
   },
-  "42": {
+  {
     "id": 42,
-    "question": "DId someone request an evaluation for the student? ",
+    "question": "Did you or someone you know ask for an evaluation of the student?",
     "description": "",
-    "type": "",
-    "answers": [52,53]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 44
+      },
+      {
+        "content": "Yes",
+        "route": 43
+      }
+    ]
   },
-  "43": {
+  {
     "id": 43,
-    "question": "Within 5 days of getting the referral, the school has to send you a form explaining the evaluation process, and asking for your permission to evaluate the student.   Did the school send you the consent form within 5 days of getting the referral?",
+    "question": "Within 5 school days of getting the request, the school has to send the parent or guardian a form called a “consent form”. The form explains the evaluation process, and asks for the parent or guardian's permission to evaluate the student.\nDid the school send the parent or guardian the consent form within 5 school days of getting the request?",
     "description": "",
-    "type": "",
-    "answers": [54, 55]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 45
+      },
+      {
+        "content": "Yes",
+        "route": 53
+      }
+    ]
   },
-  "44": {
+  {
     "id": 44,
-    "question": "This guide only cover the process that starts with the first request for an evaluation.  If no one has requested an evaluation for the student, the questions in this guide won't apply to your situation.  If you have questions, or want to request an evaluation for the student but don't know how, call the EdLaw Project intake line at...",
+    "question": "The first step in the special education process is to ask for an evaluation. Any adult who knows the student can ask for an evaluation. It is best to ask for an evaluation in writing so that there is a record. Make sure to include the date on your request. Sending an email to the school asking for a special education evaluation is often an easy way to do this. \nThe rest of this guide explains steps starting after asking for an evaluation for the student. \nIf you have questions about how to ask for an evaluation, call the EdLaw Project at…",
     "description": "",
-    "type": "",
+    "type": "RESULT",
     "answers": []
   },
-  "45": {
+  {
     "id": 45,
-    "question": "Did the school ever send the consent form? ",
+    "question": "Did the school ever send the consent form?",
     "description": "",
-    "type": "",
-    "answers": [56, 57]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 46
+      },
+      {
+        "content": "Yes",
+        "route": 47
+      }
+    ]
   },
-  "46": {
+  {
     "id": 46,
-    "question": "Was the student ever evaluated?",
+    "question": "Did the school ever evaluate the student?",
     "description": "",
-    "type": "",
-    "answers": [58, 59]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 49
+      },
+      {
+        "content": "Yes",
+        "route": 50
+      }
+    ]
   },
-  "47": {
+  {
     "id": 47,
     "question": "You identified that the school didn't follow the required timeline after a referral.  We'll ask more questions about that at the end of this section.",
     "description": "",
-    "type": "",
-    "answers": [68]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 48
+      }
+    ]
   },
-  "48": {
+  {
     "id": 48,
     "question": "Plain language: the school didn't send the consent form within 5 days after the request for the evaluation. Legal language: The School District failed to send a consent form to the parent within five working days of receiving a special education referral, as required by 603 CMR 28.04(1)(a). Prompts: Explain what happened after the evaluation was requested. Include how long it took for the school to send the consent form.",
     "description": "",
-    "type": "",
-    "answers": []
+    "type": "TEXT",
+    "answers": [
+      {
+        "route": 53
+      }
+    ]
   },
-  "49": {
+  {
     "id": 49,
-    "question": "You identified that someone requested an evaluation for the student, and the school never sent the consent form or did the evaluation.  Would you like to include that in your complaint?",
+    "question": "You said that someone asked for an evaluation for the student, and the school never sent the consent form or did the evaluation. Would you like to put that in your complaint?",
     "description": "",
-    "type": "",
-    "answers": [60]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": -1
+      },
+      {
+        "content": "Yes",
+        "route": 51
+      }
+    ]
   },
-  "50": {
+  {
     "id": 50,
     "question": "50. You identified that the school evaluated the student without sending a consent form.  This means that they evaluated the student without your consent. We'll ask more questions about that at the end of this section.  ",
     "description": "",
-    "type": "",
-    "answers": [61,62]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 52
+      }
+    ]
   },
-  "51": {
+  {
     "id": 51,
     "question": "You identified that someone requested an evaluation for the student, and the school never responded.   This language will identify that concern in your complaint: \"The School District failed to respond to a special education referral.  The District did not send a consent form to the parent, pursuant to 603 CMR 28.04(1)(a), or conduct an evaluation pursuant to 603 CMR 28.04(2).\"   In the box below, add details about what happened.  Be sure to include all of this information:  - who requested the evaluation,  - how they requested the evaluation (for example, \"I told a teacher over the phone,\" or \"the student's social worker sent an email to the principal\"),  - when they requested the evaluation, and  - any communication you had with the school about the request since then, if there was any (for example, \"I sent an email to follow up because I never heard back,\" or \"the teacher confirmed they got the message but I never heard anything else\") Press next to continue. ",
     "description": "",
-    "type": "",
-    "answers": []
+    "type": "TEXT",
+    "answers": [
+      {
+        "route": 63
+      }
+    ]
   },
-  "52": {
+  {
     "id": 52,
     "question": "You identified that the school evaluated the student without your consent.   This language will identify that concern in your complaint: \"The school proceeded with an evaluation without notifying the parent pursuant to 28.04(1)(a), and without the parent's consent.\"  In the box below, add any details that you want to include.  If you didn't want the student to be evaluated, include that.  If you didn't have details about the evaluation process because they didn't send you the form with the information, include that.",
     "description": "",
-    "type": "",
-    "answers": []
+    "type": "TEXT",
+    "answers": [
+      {
+        "route": -1
+      }
+    ]
   },
-  "53": {
+  {
     "id": 53,
-    "question": "The school has to send the form in your primary language.  Did the school send the form in your primary language? Pop up: what does this mean? Inside the pop up: Your primary language the language you speak at home, if you've told told the school to communicate with you in that language.",
+    "question": "The school has to send the form in your primary language.  Did the school send the form in your primary language?\nPop up: what does this mean? Inside the pop up: Your primary language the language you speak at home, if you've told told the school to communicate with you in that language.",
     "description": "",
-    "type": "",
-    "answers": [63, 64]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 56
+      },
+      {
+        "content": "Yes",
+        "route": 54
+      }
+    ]
   },
-  "54": {
+  {
     "id": 54,
-    "question": "54. The consent form has to explain the evaluation process, including how you can participate in the process by sharing information that's relevant to the evaluation.  This includes concerns you have about the student, and about information about the student's strengths.  Did the consent form tell you about the evaluation process, and explain how you can participate in the process?",
+    "question": "The consent form has to explain the evaluation process, including how you can participate in the process by sharing information that's relevant to the evaluation.  This includes concerns you have about the student, and about information about the student's strengths.  Did the consent form tell you about the evaluation process, and explain how you can participate in the process?",
     "description": "",
-    "type": "",
-    "answers": [65, 66]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 55
+      },
+      {
+        "content": "Yes",
+        "route": 59
+      }
+    ]
   },
-  "55": {
+  {
     "id": 55,
-    "question": "55. You've identified a problem with the consent form. We'll ask more questions about that at the end of this section.",
+    "question": "You've identified a problem with the consent form. We'll ask more questions about that at the end of this section.",
     "description": "",
-    "type": "",
-    "answers": [171]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 58
+      }
+    ]
   },
-  "56": {
+  {
     "id": 56,
     "question": "You've identified a problem with the consent form.  We'll ask more questions about that at the end of this section.",
     "description": "",
-    "type": "",
-    "answers": [67]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 57
+      }
+    ]
   },
-  "57": {
+  {
     "id": 57,
     "question": "Plain language: You identified that the school didn't send the form requesting your permission to evaluate the student in your primary language.   Legal language: Following a special education referral, the school failed to send the consent form in the language of the home pursuant to MGL c.71B §3. In the box below, add details about what happened.  Include anything that happened because the school failed to send the form in the right language",
     "description": "",
-    "type": "",
-    "answers": []
+    "type": "TEXT",
+    "answers": [
+      {
+        "route": 54
+      }
+    ]
   },
-  "58": {
+  {
     "id": 58,
-    "question": "58. Plain language: You identified that the school didn't tell you about the evaluation process and explain how you can participate in the process. Legal language: Following a special education referral, the school failed to notify parents of the evaluation procedure, and provide the parents with the opportunity to express any concerns or provide information on the student's skills or abilities, pursuant to MGL c.71B s.3 and 603 CMR 28.04(1)(b). In the box below, add details about what happened.  If you were unable to participate in the evaluation process because you didn't know you could, include that information.",
+    "question": "Plain language: You identified that the school didn't tell you about the evaluation process and explain how you can participate in the process. Legal language: Following a special education referral, the school failed to notify parents of the evaluation procedure, and provide the parents with the opportunity to express any concerns or provide information on the student's skills or abilities, pursuant to MGL c.71B s.3 and 603 CMR 28.04(1)(b). In the box below, add details about what happened.  If you were unable to participate in the evaluation process because you didn't know you could, include that information.",
     "description": "",
-    "type": "",
-    "answers": []
+    "type": "TEXT",
+    "answers": [
+      {
+        "route": 63
+      }
+    ]
   },
-  "59": {
+  {
     "id": 59,
     "question": "The school has to give you an opportunity to talk to someone in the special education department about the referral and the evaluation, if you had concerns that you wanted to discuss about why the student is/was being evaluated for special education services, what the evaluation would look like for the student, and who would be evaluating the student. When you got the consent form, did you have concerns that you wanted to discuss with someone in the special education department? ",
     "description": "",
-    "type": "",
-    "answers": [69, 70]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 61
+      },
+      {
+        "content": "Yes",
+        "route": 63
+      }
+    ]
   },
-  "60": {
+  {
     "id": 60,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
-    "type": "",
-    "answers": [170]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 67
+      }
+    ]
   },
-  "61": {
+  {
     "id": 61,
     "question": "Were you able to discuss your concerns with someone in the special education department?",
     "description": "",
-    "type": "",
-    "answers": [71, 72]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 62
+      },
+      {
+        "content": "Yes",
+        "route": 63
+      }
+    ]
   },
-  "62": {
+  {
     "id": 62,
     "question": "You've identified a problem with the school's response to the referral.  We'll ask more questions about that at the end of the section.",
     "description": "",
-    "type": "",
-    "answers": [172]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 64
+      }
+    ]
   },
-  "63": {
+  {
     "id": 63,
     "question": "That's the end of this section. If they've identified any concerns: You've identified concern(s) related to the notice.  Do you want to include those concerns in your complaint? If they haven't identified any concerns in this section:  You haven't identified a violation of a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.   Would you like to describe any concerns to include in your complaint?",
     "description": "",
-    "type": "",
-    "answers": [73, 74]
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 65
+      },
+      {
+        "content": "Yes",
+        "route": 66
+      }
+    ]
   },
-  "64": {
+  {
     "id": 64,
     "question": "Plain language: You identified that the school didn't give you an opportunity to talk to someone in the special education department about the evaluation. Legal language: Following a special education referral, the school failed to notify parents of the eprovide the student's parents with an opportunity to consult with the Special Education Administrator or his/her designee to discuss the reasons for the referral, the content of the proposed evaluation, and the evaluators used pursuant to 603 CMR 28.04(1)(c). In the box below, add details about what happened.  Did you have concerns you wanted to discuss? Did you know you could discuss your concerns before the evaluation? What did you do when you couldn't get your questions answered? ",
     "description": "",
-    "type": "",
-    "answers": []
+    "type": "TEXT",
+    "answers": [
+      {
+        "route": 63
+      }
+    ]
   },
-  "65": {
+  {
     "id": 65,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
-    "type": "",
-    "answers": [75]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 67
+      }
+    ]
   },
-  "66": {
+  {
     "id": 66,
     "question": "END OF SECTION PAGE",
     "description": "",
-    "type": "",
-    "answers": [76]
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 67
+      }
+    ]
   },
-  "67": {
+  {
     "id": 67,
     "question": "67. Evaluation After the school gets your consent, they have to do an evaluation.   This section is going to go through questions about the evaluation process. If you don't have concerns about this part of the process, you can select \"skip this section\"  Start this section/skip this section",
     "description": "",
     "type": "",
-    "answers": [77, 78]
+    "answers": [
+      77,
+      78
+    ]
   },
-  "68": {
+  {
     "id": 68,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "69": {
+  {
     "id": 69,
     "question": "When the school sent the form requesting your permission to do the evaluation, did you give the school permission? Pop up: What does this mean?  inside the pop up: after they get a request to evaluate the student, the school has to send you a consent form explaining the evaluation process and asking for your permission to evaluate the student. If you sign and return the form, the school has your permission and can do the evaluation.  If you don't sign and return the form, the school can't do the evaluation.  If you never got the form, or have concerns about the form (for example, if you didn't know how to fill it out), go back to the \"referral\" section. Yes/No/I never got a form requesting my permission",
     "description": "",
     "type": "",
-    "answers": [79, 80, 81]
+    "answers": [
+      79,
+      80,
+      81
+    ]
   },
-  "70": {
+  {
     "id": 70,
     "question": "The 'referral' section asks questions about the consent form.  Would you like to go back to that section?",
     "description": "",
     "type": "",
-    "answers": [82, 83]
+    "answers": [
+      82,
+      83
+    ]
   },
-  "71": {
+  {
     "id": 71,
     "question": "Did the school evaluate the student?",
     "description": "",
     "type": "",
-    "answers": [84, 85]
+    "answers": [
+      84,
+      85
+    ]
   },
-  "72": {
+  {
     "id": 72,
     "question": "72. The school has to do the evaluation within 30 days of getting your consent.  Did the school do the evaluation within 30 days? ",
     "description": "",
     "type": "",
-    "answers": [88, 90]
+    "answers": [
+      88,
+      90
+    ]
   },
-  "73": {
+  {
     "id": 73,
     "question": "You identified that the school did a special education evaluation for the student without your permission.  Would you like to include that in your complaint? ",
     "description": "",
     "type": "",
-    "answers": [86]
+    "answers": [
+      86
+    ]
   },
-  "74": {
+  {
     "id": 74,
     "question": "Did you want the student to be evaluated?",
     "description": "",
     "type": "",
-    "answers": [87]
+    "answers": [
+      87
+    ]
   },
-  "75": {
+  {
     "id": 75,
     "question": "75. You identified that the school evaluated the student without your consent.   This language will identify that concern in your complaint: \"The school proceeded with an evaluation without notifying the parent pursuant to 28.04(1)(a), and without the parent's consent.\"  In the box below, add any details that you want to include.",
     "description": "",
     "type": "",
-    "answers": [89]
+    "answers": [
+      89
+    ]
   },
-  "76": {
+  {
     "id": 76,
     "question": "You identified that you wanted the student to be evaluated, but didn't give the school permission.  The rest of the questions in this guide cover the process the school has to do after they get your permission to do the evaluation, so it looks like this guide might not cover your concerns.   Call the EdLaw Project intake line at ... and one of our attorneys can get a better sense of what's going on.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "77": {
+  {
     "id": 77,
     "question": "77. The rest of the questions in this guide are about whether the school followed the right process for figuring out whether the student needs special education services, and deciding what services the student needs. If you don't want the student to be evaluated or receive any special education services, you can skip the rest of the qusetions and finish writing your complaint based on the information you've included so far.   Would you like to continue answering questions or finish the complaint?  Continue answering questions/finish the complaint",
     "description": "",
     "type": "",
-    "answers": [93, 94]
+    "answers": [
+      93,
+      94
+    ]
   },
-  "78": {
+  {
     "id": 78,
     "question": "Did the school ever do the evaluation?",
     "description": "",
     "type": "",
-    "answers": [91, 92]
+    "answers": [
+      91,
+      92
+    ]
   },
-  "79": {
+  {
     "id": 79,
     "question": "79. It looks like you identified a problem with the evaluation timeline.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [173]
+    "answers": [
+      173
+    ]
   },
-  "80": {
+  {
     "id": 80,
     "question": "You identified that the school never did an evaluation after getting your consent.  Would you like to include that in your complaint?",
     "description": "",
     "type": "",
-    "answers": [95, 96]
+    "answers": [
+      95,
+      96
+    ]
   },
-  "81": {
+  {
     "id": 81,
     "question": "Was the evaluation requested when the student was 2.5 years old?",
     "description": "",
     "type": "",
-    "answers": [97, 98]
+    "answers": [
+      97,
+      98
+    ]
   },
-  "82": {
+  {
     "id": 82,
     "question": "END OF STATEMENT OF CONCERNS PAGE",
     "description": "",
     "type": "",
     "answers": []
   },
-  "83": {
+  {
     "id": 83,
     "question": "You identified that the school never did an evaluation after getting your consent. This language will identify that in your complaint: \"The School District failed to evaluate the student upon receiving the parent's consent, pusuant to 603 CMR 28.04(2)\"  In the box below, add details.  Include when you returned the consent form.  Describe any communication you've had with the school about the evaluation.  ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "84": {
+  {
     "id": 84,
     "question": "You identified that the school never evaluated the student, but that isn't a concern you want to include in your complaint. The rest of the questions cover the process that happens during and after the evaluation, so it looks like this guide might not cover your concerns. Call the EdLaw Project intake line at ____ Call the EdLaw Project intake line at ... and one of our attorneys can get a better sense of what's going on.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "85": {
+  {
     "id": 85,
     "question": "If anyone requests an evaluation for a child who is 2.5 years old, the school district has to do the evaluation so that special education services begin when the child turns 3, so there's no gap between early intervention and special education services.   Did the school do the evaluation in time for the special education services to start when the student turned 3?",
     "description": "",
     "type": "",
-    "answers": [99, 100]
+    "answers": [
+      99,
+      100
+    ]
   },
-  "86": {
+  {
     "id": 86,
     "question": "You identified that the school didn't evaluate a 2.5 year old in time for special education services to start when they turned 3.  We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [101, 174]
+    "answers": [
+      101,
+      174
+    ]
   },
-  "87": {
+  {
     "id": 87,
     "question": "When the student is evaluated, they have to be evaluated in all areas of concern.   For example, if the school thinks that the student might have a communication impairment, and you tell the school that you think that the student also might have a hearing impairment, the school has to do an evaluation that covers both communication and hearing. Did the school evaluate the student in all areas of concern?",
     "description": "",
     "type": "",
-    "answers": [102]
+    "answers": [
+      102
+    ]
   },
-  "88": {
+  {
     "id": 88,
     "question": "???",
     "description": "",
     "type": "",
-    "answers": [103]
+    "answers": [
+      103
+    ]
   },
-  "89": {
+  {
     "id": 89,
     "question": "89. Anyone who does an assessment of the student has to write a summary of what they found.  The school has to give you a copy of the assessment(s) if you ask for one.   Did you ask the school for a copy of the assessments?",
     "description": "",
     "type": "",
-    "answers": [104, 105]
+    "answers": [
+      104,
+      105
+    ]
   },
-  "90": {
+  {
     "id": 90,
     "question": "90. Did the school give you a copy of the assessments at least two days before the meeting where you went over the results of the assessments?  Pop up: What if I never had a meeting to go over the results? Inside the pop up: After the evaluation, the school has to have a meeting, called a \"team meeting,\" to go over the results.  We're going to cover the requirements for the team meeting in the next section. Options: Y/N/I haven't had a meeting yet ",
     "description": "",
     "type": "",
-    "answers": [106, 107, 108]
+    "answers": [
+      106,
+      107,
+      108
+    ]
   },
-  "91": {
+  {
     "id": 91,
     "question": "Did the school ever give you a copy of the assessments?",
     "description": "",
     "type": "",
-    "answers": [111, 109]
+    "answers": [
+      111,
+      109
+    ]
   },
-  "92": {
+  {
     "id": 92,
     "question": "The assessment summaries have to include a desription of how they did the assessment and what they found.  Reading the summaries should give you a clear picture of what the person who did the assessment thinks that the student needs.   Did the school give you complete summaries of how they did the assessments and what they found?",
     "description": "",
     "type": "",
-    "answers": [114, 115]
+    "answers": [
+      114,
+      115
+    ]
   },
-  "93": {
+  {
     "id": 93,
     "question": "93. You identified a problem with the evaluation process.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [113]
+    "answers": [
+      113
+    ]
   },
-  "94": {
+  {
     "id": 94,
     "question": "You identified a problem with the evaluation process.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [110]
+    "answers": [
+      110
+    ]
   },
-  "95": {
+  {
     "id": 95,
     "question": "You identified a problem with the evaluation process.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [116, 117]
+    "answers": [
+      116,
+      117
+    ]
   },
-  "96": {
+  {
     "id": 96,
     "question": "96. That's the end of this section. If they've identified any concerns: You've identified concern(s) related to the notice.  Do you want to include those concerns in your complaint? If they haven't identified any concerns in this section:  You haven't identified a violation of a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.   Would you like to describe any concerns to include in your complaint?",
     "description": "",
     "type": "",
-    "answers": [118]
+    "answers": [
+      118
+    ]
   },
-  "97": {
+  {
     "id": 97,
     "question": "END OF SECTION PAGE",
     "description": "",
     "type": "",
-    "answers": [119]
+    "answers": [
+      119
+    ]
   },
-  "98": {
+  {
     "id": 98,
     "question": "Team meeting After the evaluation, the school has to have a meeting, called a team meeting, to go over the results and discuss the student's needs. This section is going to go through questions about the requirements for the team meeting. If you don't have concerns about this part of the process, you can select \"skip this section\"  Start this section/skip this section",
     "description": "",
     "type": "",
-    "answers": [120, 121]
+    "answers": [
+      120,
+      121
+    ]
   },
-  "99": {
+  {
     "id": 99,
     "question": "99. The school has to have the meeting within 45 days of getting your consent to evaluate the student.   Did the school have the meeting within 45 days?",
     "description": "",
     "type": "",
-    "answers": [122, 123]
+    "answers": [
+      122,
+      123
+    ]
   },
-  "100": {
+  {
     "id": 100,
     "question": "The meeting has to be with the student's IEP team, or the group of people who come together to talk about the student's needs.  The people who are on the student's IEP team will depend on the school, but the IEP team has to at least include:  - You (the parent or educational decision maker)  - one regular education teacher, if the student is in regular education classes - one special education teacher  - A representative from the school district who knows about the resources available in the district Did the school include you in the meeting? ",
     "description": "",
     "type": "",
-    "answers": [130, 132]
+    "answers": [
+      130,
+      132
+    ]
   },
-  "101": {
+  {
     "id": 101,
     "question": "Did the school ever have the meeting?",
     "description": "",
     "type": "",
-    "answers": [124, 127]
+    "answers": [
+      124,
+      127
+    ]
   },
-  "102": {
+  {
     "id": 102,
     "question": "You identified a problem with the timeline.  We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [125]
+    "answers": [
+      125
+    ]
   },
-  "103": {
+  {
     "id": 103,
     "question": "103. You identified that the school never had a team meeting after the student was evaluated for special education services.  Would you like to include that in your complaint?",
     "description": "",
     "type": "",
-    "answers": [128, 129]
+    "answers": [
+      128,
+      129
+    ]
   },
-  "104": {
+  {
     "id": 104,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "105": {
+  {
     "id": 105,
     "question": "",
     "description": "",
     "type": "",
     "answers": []
   },
-  "106": {
+  {
     "id": 106,
     "question": "106. You identifed that the school never had a team meeting after the student was evaluated for special education services. This language will identify that in your complaint: The School District failed to convene a team meeting to review evaluation data following a special education evaluation, pursuant to 603 CMR 28.05(1).  In the box below, describe what happened. Include what happened after the evaluation, and any describe any communication you've had with the school about the evaluation.  ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "107": {
+  {
     "id": 107,
     "question": "You identified a problem with the IEP team. We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [132, 133]
+    "answers": [
+      132,
+      133
+    ]
   },
-  "108": {
+  {
     "id": 108,
     "question": "Was there at least one regular education teacher at the meeting?",
     "description": "",
     "type": "",
-    "answers": [134, 135]
+    "answers": [
+      134,
+      135
+    ]
   },
-  "109": {
+  {
     "id": 109,
     "question": "You identified a problem with the IEP team. We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [136]
+    "answers": [
+      136
+    ]
   },
-  "110": {
+  {
     "id": 110,
     "question": "Was there at least one special education teacher at the meeting?",
     "description": "",
     "type": "",
-    "answers": [137, 138]
+    "answers": [
+      137,
+      138
+    ]
   },
-  "111": {
+  {
     "id": 111,
     "question": "You identified a problem with the IEP team. We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [139, 140]
+    "answers": [
+      139,
+      140
+    ]
   },
-  "112": {
+  {
     "id": 112,
     "question": "Was there a representative from the School District, or someone who works for the school district outside of the student's school, at the meeting?",
     "description": "",
     "type": "",
-    "answers": [141, 142]
+    "answers": [
+      141,
+      142
+    ]
   },
-  "113": {
+  {
     "id": 113,
     "question": "You identified a problem with the IEP team. We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [143, 144]
+    "answers": [
+      143,
+      144
+    ]
   },
-  "114": {
+  {
     "id": 114,
     "question": "If the student is over 14 years old, the school has to invite them to the meeting.   Is the student over 14 years old?",
     "description": "",
     "type": "",
-    "answers": [145, 146]
+    "answers": [
+      145,
+      146
+    ]
   },
-  "115": {
+  {
     "id": 115,
     "question": "Did the school invite them to the meeting?",
     "description": "",
     "type": "",
-    "answers": [147, 148]
+    "answers": [
+      147,
+      148
+    ]
   },
-  "116": {
+  {
     "id": 116,
     "question": "116. You identified a problem with the team meeting. We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [174]
+    "answers": [
+      174
+    ]
   },
-  "117": {
+  {
     "id": 117,
     "question": "117. You can bring other people to the meeting who know the student and are interested in the student's education.  Did you try to bring anyone else to the meeting?",
     "description": "",
     "type": "",
-    "answers": [149]
+    "answers": [
+      149
+    ]
   },
-  "118": {
+  {
     "id": 118,
     "question": "Did the school let the person come to the meeting?",
     "description": "",
     "type": "",
-    "answers": [150, 151]
+    "answers": [
+      150,
+      151
+    ]
   },
-  "119": {
+  {
     "id": 119,
     "question": "You identified a problem with the team meeting. We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
-    "answers": [152]
+    "answers": [
+      152
+    ]
   },
-  "120": {
+  {
     "id": 120,
     "question": "120. At the meeting, the IEP team has to decide if the student is eligible for special education services. Did the team decide that the student is eligible for special education services?  Yes, the team decided the student is eligible for services / No, the team decided the student is not eligible for services / The team did not make the decision at the meeting.",
     "description": "",
     "type": "",
-    "answers": [153, 154, 155]
+    "answers": [
+      153,
+      154,
+      155
+    ]
   },
-  "121": {
+  {
     "id": 121,
     "question": "121. As a reminder, this guide only covers the requirements for the special education process.  It does not cover concerns or disagreements about what the student needs. The next question will cover what the school has to do when they decide that a student isn't eligible for special education services. If you disagree with the school's decision and think that the student has a disability and is eligible for services, call the EdLaw Project intake line at...",
     "description": "",
     "type": "",
-    "answers": [156]
+    "answers": [
+      156
+    ]
   },
-  "122": {
+  {
     "id": 122,
     "question": "Once the team decides that a student is eligible for special education services, they have to develop a special education plan for the student.  We're going to cover those requirements in the next section.  Before we move on to the next section, let's finish up this one. ",
     "description": "",
     "type": "",
-    "answers": [158]
+    "answers": [
+      158
+    ]
   },
-  "123": {
+  {
     "id": 123,
     "question": "If the team decides that the evaluation didn't provide enough information to develop a special education plan for the student, the school may suggest an extended evaluation to get more information. Did the school suggest an extended evaluation?",
     "description": "",
     "type": "",
-    "answers": [159, 160]
+    "answers": [
+      159,
+      160
+    ]
   },
-  "124": {
+  {
     "id": 124,
     "question": "Okay, we'll do a section that covers the requirements for an extended evaluation next.  Before we move on, let's finish up this section. ",
     "description": "",
     "type": "",
-    "answers": [161]
+    "answers": [
+      161
+    ]
   },
-  "125": {
+  {
     "id": 125,
     "question": "That's the end of this section. If they've identified any concerns: You've identified concern(s) related to the notice.  Do you want to include those concerns in your complaint? If they haven't identified any concerns in this section:  You haven't identified a violation of a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.   Would you like to describe any concerns to include in your complaint?",
     "description": "",
     "type": "",
-    "answers": [162]
+    "answers": [
+      162
+    ]
   },
-  "126": {
+  {
     "id": 126,
     "question": "After the meeting, the school has to send you a letter or email telling you that the student isn't eligible for services within 10 days of the meeting. Did the school send you a letter or email within 10 days?",
     "description": "",
     "type": "",
-    "answers": [157, 163]
+    "answers": [
+      157,
+      163
+    ]
   },
-  "127": {
+  {
     "id": 127,
     "question": "That's the end of this section. If they've identified any concerns: You've identified concern(s) related to the notice.  Do you want to include those concerns in your complaint? If they haven't identified any concerns in this section:  You haven't identified a violation of a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.   Would you like to describe any concerns to include in your complaint?",
     "description": "",
     "type": "",
-    "answers": [164]
+    "answers": [
+      164
+    ]
   },
-  "128": {
+  {
     "id": 128,
     "question": "END OF SECTION PAGE",
     "description": "",
     "type": "",
-    "answers": [165]
+    "answers": [
+      165
+    ]
   },
-  "129": {
+  {
     "id": 129,
     "question": "Did the school ever send a letter or email?",
     "description": "",
     "type": "",
-    "answers": [166]
+    "answers": [
+      166
+    ]
   },
-  "130": {
+  {
     "id": 130,
     "question": "130. That's the end of this section. If they've identified any concerns: You've identified concern(s) related to the notice.  Do you want to include those concerns in your complaint? If they haven't identified any concerns in this section:  You haven't identified a violation of a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.   Would you like to describe any concerns to include in your complaint?",
     "description": "",
     "type": "",
-    "answers": [167]
+    "answers": [
+      167
+    ]
   },
-  "131": {
+  {
     "id": 131,
     "question": "go to developing an IEP section",
     "description": "",
     "type": "",
     "answers": []
   },
-  "132": {
+  {
     "id": 132,
     "question": "You identified that the school decided that the student was not eligible for special education services, and didn't send you their decision in a letter or email.  We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "133": {
+  {
     "id": 133,
     "question": "End of statement of concerns section",
     "description": "",
     "type": "",
     "answers": []
   },
-  "134": {
+  {
     "id": 134,
     "question": "Has the student already been suspended or expelled for this incident? Pop Up: What is a suspension and what is an expulsion?There are two kinds of suspensions, an in-school-suspensions and an out-of-school suspension. An in-school-suspension is when a student is told they have to leave their classroom and work in a different classroom for more than half of a school day. An out-of-school suspension is when the student is told they cannot come back to school at all for a certain number of days. An expulsion is when the student is told they cannot come back to school for more than 90 school days.",
     "description": "",
     "type": "",
-    "answers": [170, 172]
+    "answers": [
+      170,
+      172
+    ]
   },
-  "135": {
+  {
     "id": 135,
     "question": "Has the school said they might suspend or expel the student?",
     "description": "",
     "type": "",
-    "answers": [173, 174]
+    "answers": [
+      173,
+      174
+    ]
   },
-  "136": {
+  {
     "id": 136,
     "question": "This might not be the ride guide for you. Try one of the other guides, or call the Edlaw helpline if you're not sure what guide is best for you.",
     "description": "",
     "type": "",
-    "answers": [171]
+    "answers": [
+      171
+    ]
   },
-  "137": {
+  {
     "id": 137,
     "question": "What is the student being suspended or expelled for? Are they being suspended or expelled for:",
     "description": "",
     "type": "",
     "answers": []
   },
-  "138": {
+  {
     "id": 138,
     "question": "Go to appropriate questions (37H1/2, 37H3/4)",
     "description": "",
     "type": "",
-    "answers": [175, 176]
+    "answers": [
+      175,
+      176
+    ]
   },
-  "139": {
+  {
     "id": 139,
     "question": "Type of Discipline You said that the school is accusing the student of bringing a weapon to school. This means that the discipline is covered by a Massachusetts law called 71 MGL §37H.  You can read the full law here.  https://malegislature.gov/laws/generallaws/parti/titlexii/chapter71/section37h In Massachusetts, a student can be suspended or expelled for bringing a weapon to school. But, the law says that only certain things count as “weapons” and only certain places count as “school.” Sometimes, schools say that the student brought a weapon to school, even when what the student had doesn’t count as a “weapon,” or the place the student was doesn’t count as “school.” To start, we are going to ask some questions about what the school says the student did. This will help us to find out if the school can punish the student for “bringing a weapon to school.” These questions will only be about what the school says happened, later we will have questions about the student’s side of the story.",
     "description": "",
     "type": "",
-    "answers": [177, 178]
+    "answers": [
+      177,
+      178
+    ]
   },
-  "140": {
+  {
     "id": 140,
     "question": "First, we are going to look at what counts as \"school.\" Bringing a weapon \"to school,\" means bringing a weapon into the school building, to a school event, or to another school activity. An example of a school event is a job fair or sports game. An example of a school activity is a field trip. Is the school accusing the student of bringing the drugs into the school building, to a school event, or to another school activity?",
     "description": "",
     "type": "",
-    "answers": [179, 180]
+    "answers": [
+      179,
+      180
+    ]
   },
-  "141": {
+  {
     "id": 141,
     "question": "It might be helpful to talk to someone about your student’s situation. We recommend that you call the EdLaw Project help-line at 617-910-5829 for help.",
     "description": "",
     "type": "",
-    "answers": [181, 182]
+    "answers": [
+      181,
+      182
+    ]
   },
-  "142": {
+  {
     "id": 142,
     "question": "Under school discipline law, \"weapon\" is defined by the school principal.  The weapon can be anything that the principal says is a weapon.  Is the school accusing the student of having something that the principal says is a weapon? (y/n/yes, but the thing the principal is saying is a weapon shouldn't be called a weapon)",
     "description": "",
     "type": "",
-    "answers": [183, 184]
+    "answers": [
+      183,
+      184
+    ]
   },
-  "143": {
+  {
     "id": 143,
     "question": "You said that the school is accusing the student of bringing a weapon to school, but the thing that the principal is saying was a weapon shouldn’t be called a weapon. Do you want to include that in your complaint?",
     "description": "",
     "type": "",
-    "answers": [185]
+    "answers": [
+      185
+    ]
   },
-  "144": {
+  {
     "id": 144,
     "question": "You said that the school is accusing the student of bringing a weapon to school, but the thing that the principal is saying was a weapon shouldn’t be called a weapon.  We recommend that you include this paragraph in your complaint: 'The school is accusing the student of bringing a weapon to school and moving to discipline the student under 37H, but the principal is using an unreasonable definition of 'weapon' '. In the box below, explain what happened.  Include what the \"weapon\" is, and any information that's relevant to the principal calling it a \"weapon\"                               ADD: Is the school trying to expel the student? We recommend that you call th Edlaw project helping for help! 617-910-5829. ADD HELPLINE BOX",
     "description": "",
     "type": "",
-    "answers": [186, 187, 188]
+    "answers": [
+      186,
+      187,
+      188
+    ]
   },
-  "145": {
+  {
     "id": 145,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
     "type": "",
-    "answers": [189, 190]
+    "answers": [
+      189,
+      190
+    ]
   },
-  "146": {
+  {
     "id": 146,
     "question": "Type of Discipline You said that the school is accusing the student of 'assaulting school staff.'  This means that the discipline is covered by a Massachusetts law called 71 MGL §37H.  You can read the full law here.  https://malegislature.gov/laws/generallaws/parti/titlexii/chapter71/section37h A student can be suspended or expelled for assaulting educational staff. But, the law says that only certain things count as “assault” and only certain school staff count as “educational staff.”Sometimes, schools say that the student “assaulted educational staff” even when what the student did does not count as 'assault,' or the staff member does not count as 'educational staff.' To start, we are going to ask some questions about what the school says the student did. This will help us to find out if the school can punish the student for “assaulting educational staff.” These questions will only be about what the school says happened, later we will have questions about the student’s side of the story..",
     "description": "",
     "type": "",
-    "answers": [191]
+    "answers": [
+      191
+    ]
   },
-  "147": {
+  {
     "id": 147,
     "question": "We'll look at what an 'assault' is first, and then we'll look at who is an 'educational staff.' What action counts as an 'assault' is not always clear. But some action definitely count as an assault. For example, kicking, hitting, punching or throwing something at another person and hitting that person definitely are assaults. Did the school say that the student did something that definitely counts as an assault?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "148": {
+  {
     "id": 148,
     "question": "Type of Discipline You said that the school is accusing the student of “bringing drugs to school.”  This means that the discipline is covered by a Massachusetts law called 71 MGL §37H.  You can read the full law here.  https://malegislature.gov/laws/generallaws/parti/titlexii/chapter71/section37h   In Massachusetts, students can be suspended or expelled for bringing drugs to school. But, the law says that only certain things count as “drugs” and only certain places count as “school.” Sometimes, schools say that the student brought drugs to school, even when what the student had does not count as “drugs,” or the place the student was does not count as “school.    I noticed in the orange pop up for this that it mentions 37H, but we haven't mentioned it before the orange pop up...is that by design?  This is true for all of the 37H offenses. To start, we are going to ask some questions about what the school says the student did. This will help us to find out if the school can punish the student for “bringing drugs to school.” These questions will only be about what the school says happened, later we will have questions about the student’s side of the story.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "149": {
+  {
     "id": 149,
     "question": "149. First, we are going to look at what counts as \"school.\" Bringing drugs \"to school,\" means bringing drugs into the school building, to a school event, or to another school activity. An example of a school event is a job fair or sports game. An example of a school activity is a field trip. Is the school accusing the student of bringing the drugs into the school building, to a school event, or to another school activity?  yes/no/  don't know",
     "description": "",
     "type": "",
     "answers": []
   },
-  "150": {
+  {
     "id": 150,
     "question": "What counts as a “drug” is defined by Massachusetts law. It includes things like cocaine, heroin and pills that aren’t prescribed by a doctor. It also includes marijuana. It does not include alcohol and tobacco. Is the school accusing the student of having something that fits the legal definition of \"drug\"? See the full law here (https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter94C/Section1) Yes/No/I don't know",
     "description": "",
     "type": "",
     "answers": []
   },
-  "151": {
+  {
     "id": 151,
     "question": "You said the school is not accusing the student of brining drugs to school. Is the school accusing the student of brining: 1.Alcohol or tobacco to school? 2.Something else? 2. Something else --> add call helping Alcohol/ tobacco -->   You said that the school is trying to expel the student because they are accusing them of bringing tobacco or alcohol to school. This is illegal and we recommend that you include it in your complaint. Would you like to include that in your complaint?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "152": {
+  {
     "id": 152,
     "question": "Okay, we'll move on to the next section.  ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "153": {
+  {
     "id": 153,
     "question": "'Educational staff' are people whose job is to educate students. Some examples are teachers, teacher's aids, principals, and guidance  counselors. Is the school saying that the student assaulted someone whose job is to educate students?  (y/no or not sure/the student is being accused of assaulting a school resource or police officer)",
     "description": "",
     "type": "",
     "answers": []
   },
-  "154": {
+  {
     "id": 154,
     "question": "School Police Officers are police who work in a school building. Their job is to keep the school safe, not to educate students. If the school is saying that the student assaulted a school police officer, you can argue that the police officer is not \"educational staff.\"  If you have questions, please call the EdLaw Project intake line at  617-910-5829. Would you like to include that in your complaint? Pop-up: School Police Officers are often called School Resource Officers or SRO's. School Police Officers, School Resource Officers and SRO's are all the same thing. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "155": {
+  {
     "id": 155,
     "question": "Is the school accusing the student of bringing alcohol or tobacco to school?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "156": {
+  {
     "id": 156,
     "question": "You said that the school is trying to punish the student for bringing \"drugs\" to school, but what the student had was alcohol.   We recommend you include this paragraph in your complaint:  “The school is saying that they are disciplining the student for bringing drugs to school. However, the substance that they are accusing the student of bringing to school is alochol, which is not defined as a drug by MGL c.37H.  Therefore the school is improperly discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.” In the box below, explain what happened.                      ADD: Is the school trying to expel the stud",
     "description": "",
     "type": "",
     "answers": []
   },
-  "157": {
+  {
     "id": 157,
     "question": "You said that the school is trying to punish the student for bringing \"drugs\" to school, but what the student had was tobacco.   We recommend you include this paragraph in your complaint:  “The school is saying that they are disciplining the student for bringing drugs to school. However, the substance that they are accusing the student of bringing to school is tobacco, which is not defined as a drug by MGL c.37H.  Therefore the school is improperly discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.” In the box below, explain what happened.                         ADD: Is the school trying to expel the student? We recommend that you call the Edlaw project helping for help! 617-910-5829. ADD HELPLINE BOX",
     "description": "",
     "type": "",
     "answers": []
   },
-  "158": {
+  {
     "id": 158,
     "question": "Is the school trying to expel the student?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "159": {
+  {
     "id": 159,
     "question": "Okay, we'll move on to the next section",
     "description": "",
     "type": "",
     "answers": []
   },
-  "160": {
+  {
     "id": 160,
     "question": "You said that the school is trying to punish the student for assaulting \"educational staff.\" But that the staff member invovled is a police officer.   We recommend you include this paragraph in your complaint:“The school is moving to discipline the student for assaulting a member of the school’s educational staff, however the incident involved the student and a police officer, who is not educational staff as defined by MGL c.37H.  Therefore the school is improperly moving to discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.” In the box below explain what happened.          ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "161": {
+  {
     "id": 161,
     "question": "Is the school trying to expel the student?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "162": {
+  {
     "id": 162,
     "question": "Hearing Notice Students have certain rights that must be followed before the school can suspend or expel them. The student has a right to a meeting / hearing with the principal. Before the hearing happens, the school must send the student and the family a letter or email telling them about the hearing, including date and time.  This is called \"notice.\" The notice must be in writing, it is not enough for the principal to just tell the family about the hearing in person or over the phone. Did the school send a letter or email to the student and family about the meeting?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "163": {
+  {
     "id": 163,
     "question": "You said that the school did not send the family a letter or email about the hearing before the hearing happened. This is a violation of the student’s rights. Would you like to include that concern in your complaint?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "164": {
+  {
     "id": 164,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "165": {
+  {
     "id": 165,
     "question": "Next we're going to go through the information that the school has to include in the notice. If you have a copy of the notice, it may be helpful to take it out to reference while you're answering these questions.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "166": {
+  {
     "id": 166,
     "question": "166. You said that the school did not send the family a letter or email about the hearing. This is a violation of the student’s rights.  We recommend you include this paragraph in your complaint: “The Principal failed to send notice to the student of a disciplinary hearing when they moved to exclude the student under chapter 37H”   In the box below explain what happened. Include any information you have about how the student found out they were being suspended or expelled. If you or the student's family missed the hearing because you didn't know about it make sure to include that.  Press next when you're ready to move on to the next section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "167": {
+  {
     "id": 167,
     "question": "The notice has to include information about the student's rights at the hearing, including that they have the right to present evidence and witnesses.   pop up: what does \"present evidence and witnesses\" mean? inside the pop up: \"Present evidence\" means they can show the principal anything that supports their side of the story.   \"Present witnesses\" means they can have other people come to the hearing if they can support the student's side of the story.   Did the letter say that the student had the right to present evidence and witnesses at the hearing? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "168": {
+  {
     "id": 168,
     "question": "You identified a problem with the notice.  We'll ask more questions about that at the end of this section. Press next to continue. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "169": {
+  {
     "id": 169,
     "question": "Plain Language: You identified that the notice didn't say that the student had the right to present evidence and witnesses at the hearing. Legal Language: The Principal failed to send appropriate notice to the student of a disciplinary hearing when they moved to exclude the student under chapter 37H, because the notice did not include the student's right to present evidence and witnesses at the hearing.”  Prompts: Provide more details in the box below.   Pop up: What should I include In the pop up: Include anything that happened because the notice didn’t include the information about the student’s rights.  If you would have been more prepared for the hearing if you knew that the student had those rights, include that information.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "170": {
+  {
     "id": 170,
     "question": "The notice has to say that the student has the right to bring an attorney at the family's expense.   This means that the school can't prevent an attorney from being at the hearing, if the family has one. Did the letter say that the student had the right to bring an attorney to the hearing?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "171": {
+  {
     "id": 171,
     "question": "You identified a problem with the notice.  We'll ask more questions about that at the end of this section. Press next to continue",
     "description": "",
     "type": "",
     "answers": []
   },
-  "172": {
+  {
     "id": 172,
     "question": "Plain Language: You identified that the notice didn't say that the student had the right to present evidence and witnesses at the hearing. Legal Language: The Principal failed to send appropriate notice to the student of a disciplinary hearing when they moved to exclude the student under chapter 37H, because the notice did not include the student's right to bring an attorney to the hearing.”  Prompts: Provide more details in the box below.  Include anything that happened because you didn't get that information.   pop up: What should I include?  in the pop up: Would you have brought an attorney if you knew you could?  Would that information have made you understand the seriousness of the situation? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "173": {
+  {
     "id": 173,
     "question": "Those are all the notice requirements.   If they've identified any concerns: You identified problem(s) related to the notice.  Do you want to include those problems in your complaint? If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.   Would you like to describe any concerns to include in your complaint?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "174": {
+  {
     "id": 174,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "175": {
+  {
     "id": 175,
     "question": "END OF SECTION PAGE",
     "description": "",
     "type": "",
     "answers": []
   },
-  "176": {
+  {
     "id": 176,
     "question": "Hearing Now we're going to go through some questions about the hearing.   Did the principal have the hearing, or a meeting to discuss the potential suspension or expulsion?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "177": {
+  {
     "id": 177,
     "question": "You identified that the principal didn't have a hearing.  Would you like to include that in your complaint?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "178": {
+  {
     "id": 178,
     "question": "You identified that the principal didn't have a hearing.   This language will identify that problem in your complaint: \"the principal excluded the student under 37H without holding a hearing\" In the box below, describe what happened in detail: Pop up: what should I include? In the pop up: The details you include will depend on your situation, but these are some questions you may want to answer:   How did you find out that the school decided to suspend or expel the student? Did the principal ever tell you why they made the decision to suspend or expel the student? Did you ask to have a meeting, or reach out to the school and yet they still didn't hold a hearing? Is the student frustrated because they never got to share their side of the story?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "179": {
+  {
     "id": 179,
     "question": "Okay, we'll move on to the next section. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "180": {
+  {
     "id": 180,
     "question": "If the family has an advocate or attorney, the student has the right to have that person at the hearing. This means that the school can't prevent an advocate from coming to the meeting if the family brings one. It also means that the school has to be reasonable in scheduling the hearing so the advocate can come. Did the student try to bring an attorney or other advocate to the hearing?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "181": {
+  {
     "id": 181,
     "question": "Did the school allow the student's attorney or advocate to come to the hearing?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "182": {
+  {
     "id": 182,
     "question": "You identified a problem with the hearing.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "183": {
+  {
     "id": 183,
     "question": "The student has the right to present evidence and witnesses at the hearing. \"Present evidence\" means they can show the principal anything that supports their side of the story.   \"Present witnesses\" means they can have other people come to the hearing if they can support the student's side of the story.   Was the student able to present evidence and witnesses at the hearing?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "184": {
+  {
     "id": 184,
     "question": "You identified a problem with the hearing.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "185": {
+  {
     "id": 185,
     "question": "Plain Language: you identified that the student tried to bring an attorney to the hearing, but the school didn't let them.  Legal language: The student was not afforded the right to representation at a hearing with the principal pursuant to 71 MGL s.37H Prompt questions:  In the box below, describe what happened in detail.  How did the school prevent the attorney from coming to the hearing? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "186": {
+  {
     "id": 186,
     "question": "186. Plain Language: you identified that the student wasn't able to present evidence and witnesses at the hearing. Legal language: The student was not afforded the right to present evidence and witnesses at a hearing with the principal pursuant to MGL c.71 s.37H Prompt questions:  In the box below, describe what happened in detail.  How did the principal prevent the student from presenting evidence and witnesses?  Was there specific evidence the student wanted to show the principal? Were there specific witnesses the student wanted to bring to the hearing? Note: This can be more complicated if the witness the student wanted to bring was another student.  We recommend you call the EdLaw Project Help-line at 617-910-5829 to discuss this.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "187": {
+  {
     "id": 187,
     "question": "Did anything else stop the student from telling their side of the story at the hearing?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "188": {
+  {
     "id": 188,
     "question": "You identified a problem with the hearing.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "189": {
+  {
     "id": 189,
     "question": "Plain Language: you identified that the student wasn't able to tell their side of the story at the hearing. Legal language: The principal did not hold an appropriate hearing pursuant to MGL c.71 s.37H. Prompt questions:  In the box below, describe what happened at the hearing in detail.  What prevented the student from telling their side of the story? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "190": {
+  {
     "id": 190,
     "question": "Was the hearing recorded?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "191": {
+  {
     "id": 191,
     "question": "You identified a problem with the hearing.  We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "192": {
+  {
     "id": 192,
     "question": "Plain Language: you identified that the hearing wasn't recorded. Legal language: The school district did not record the hearing WHERE DOES IT SAY THEY HAVE TO  RECORD IT? Prompt questions:  In the box below, describe what happened.  If you asked them to record the hearing and they refused, include that. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "193": {
+  {
     "id": 193,
     "question": "Those are all the hearing requirements.   If they've identified any concerns: You identified problem(s) related to the notice.  Do you want to include those problems in your complaint? i think it may be clearer to do one at a time? people may not remember what they clicked? If they haven't identified any concerns in this section:  You haven't identified a problem of a requirement included in this guide.  If you have problems about the school's communication about the hearing, you should still include them in the complaint.   Would you like to describe any problems to include in your complaint? If you are not sure, call the EdLaw Project intake line at 617-910-5829 for help.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "194": {
+  {
     "id": 194,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "195": {
+  {
     "id": 195,
     "question": "END OF SECTION PAGE",
     "description": "",
     "type": "",
     "answers": []
   },
-  "196": {
+  {
     "id": 196,
     "question": "If the school decided to expel the student, the student has the right to appeal their decision to the School District's superintendent.   Pop up: What is an \"appeal\"? Inside the pop up: An \"appeal\" means that the student has the right to have the superintendent review the principal's decision.  If the student requests an appeal, they'll have another hearing with the superintendent where the superintendent decides whether or not they agree with the principal's decision.  The superintendent can change or reverse the principal's decision if they don't agree with it.   Was the student expelled?  pop-up: what does that mean?  inside the pop-up: \"Expelled\" means excluded from school for over 90 days. An expulsion can also mean that the student is excluded from school indefinitely, or permanently.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "197": {
+  {
     "id": 197,
     "question": "To appeal the principal's decision, the student has 10 days from the date they're expelled to tell the superintendent they want to appeal. Did the student request an appeal within 10 days?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "198": {
+  {
     "id": 198,
     "question": "Was the student expelled less than 10 days ago? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "199": {
+  {
     "id": 199,
     "question": "Process",
     "description": "",
     "type": "",
     "answers": []
   },
-  "200": {
+  {
     "id": 200,
     "question": "Once the student requests an appeal, the superintendent has to schedule a hearing on the appeal. Did the superintendent have the  hearing?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "201": {
+  {
     "id": 201,
     "question": "You identified that the student requested an appeal, but the superintendent hasn't held a hearing.  Would you like to include that in your complaint?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "202": {
+  {
     "id": 202,
     "question": "You identified that the student requested an appeal, but the superintendent hasn't held a hearing. This language will identify that in your complaint: \"The Superintendent failed to hold a hearing following the Student's request for an appeal of an expulsion pursuant to MGL c.71 s37H\" In the box below, explain what happened in detail. Pop-up: what should I include? Inside the pop-up: describe everything that happened after the student requested the appeal.  Did the superintendent's office respond to the request at all? Have you or the student followed up on the request? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "203": {
+  {
     "id": 203,
     "question": "The appeal has to actually be with the superintendent.  The superintendent can't send someone else to run the hearing. Was the hearing with the superintendent?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "204": {
+  {
     "id": 204,
     "question": "You identified a problem with the appeal hearing.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "205": {
+  {
     "id": 205,
     "question": "You identified that the superintendent didn't conduct the appeal.   This langauge will identify that in your complaint: 'The superintendent delegated an appeal of a 37H expulsion hearing. The appeal may not be delegated.'   In the box below, describe what happened.  Who was the meeting with? Did the superintendent give any reason why they weren't at the meeting? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "206": {
+  {
     "id": 206,
     "question": "The student has the right to bring an attorney to the hearing, if their family pays for it.   Did the student hire an attorney to bring to the hearing?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "207": {
+  {
     "id": 207,
     "question": "The superintendent had to allow the attorney to attend the hearing, and has to be reasonable in scheduling the hearing so that the attorney can come. Was the attorney able to attend the hearing?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "208": {
+  {
     "id": 208,
     "question": "You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "209": {
+  {
     "id": 209,
     "question": "You identified that the student's attorney wasn't able to come to the appeal. This langauge will identify that in your complaint: \"The student was not afforded the right to counsel at the appeal of the 37H hearing.\" In the box below, describe what happened.  How did the superintendent prevent the attorney from coming to the meeting?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "210": {
+  {
     "id": 210,
     "question": "During the appeal, the superintendent can look at the record from the hearing with the principal, but they can't rely on that record to make their decision.  The superintendent has to do the hearing from the beginning -- the student must be able to tell their side of the story, present evidence, and present witnesses again.   Did the superintendent conduct a full hearing from the beginning?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "211": {
+  {
     "id": 211,
     "question": "Did the superintendent base their decision on what happened at the hearing with the principal instead? options are Y/N/No, the superintendent didn't rely on the principal's decision, but the student didn't get to tell their side of the story, present evidence, or present witnesses)",
     "description": "",
     "type": "",
     "answers": []
   },
-  "212": {
+  {
     "id": 212,
     "question": "You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "213": {
+  {
     "id": 213,
     "question": "You identified that the superintendent relied on the principal's decision instead of having a new hearing from the beginning. This langauge will identify that in your complaint: 'The superintendent did not review the principal's decision to expel the student under 37H de novo, the standard of review required by 37H.' In the box below, describe what happened at the hearing. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "214": {
+  {
     "id": 214,
     "question": "You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "215": {
+  {
     "id": 215,
     "question": "You identified that the student didn't get to tell their side of the story and present evidence and witnesses at the appeal. This language will identify that in your complaint: 'The superintendent failed to conduct an appropriate appeal of an expulsion hearing pursuant to 37H.'  In the box below, describe what happened at the hearing. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "216": {
+  {
     "id": 216,
     "question": "Those are all the requirements for the appeal. If they've identified any concerns: You identified problem(s) related to the appeal.  Do you want to include those concerns in your complaint? If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.   Would you like to describe any concerns to include in your complaint?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "217": {
+  {
     "id": 217,
     "question": "END OF SECTION PAGE",
     "description": "",
     "type": "",
     "answers": []
   },
-  "218": {
+  {
     "id": 218,
     "question": "Right to Continue Education Next, we're going to go through the student's right to continue their education while they're out of school. The student has the right to continue doing work and earning credits while they're out of school.   When the school decided to suspend or expel the student, did the school tell you that would the student be able to continue earning credits?  ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "219": {
+  {
     "id": 219,
     "question": "You identified a problem with the school's communication.  We'll ask more questions about that at the end of this section. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "220": {
+  {
     "id": 220,
     "question": "Plain language: You identified that the school didn't tell the student they would be able to continue earning credits while they were out of school.   Legal Language:  “The School District failed to notify the student and parent of the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H.”  Prompts: Explain what happened.   pop up: what should I include:  Inside: Did the student ever find out that they would be able to earn credits? Did the student miss any opportunities to earn credits becuase they didn't know about them?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "221": {
+  {
     "id": 221,
     "question": "Has the student actually been able to complete work and earn credits while out of school? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "222": {
+  {
     "id": 222,
     "question": "You identified a problem with the the student's academic progress during the suspension.  We'll ask more questions about that at the end of this section. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "223": {
+  {
     "id": 223,
     "question": "Plain language: You identified that the student wasn't able to make progress in their education while they were out of school. Legal Language:  “The School District failed to give the student the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H.”  Prompts: Explain in detail why the student wasn't able to do work and earn credits in the box below.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "224": {
+  {
     "id": 224,
     "question": "Students who are suspended for more than 10 days also have the right to get alternative education services.   Pop up: What does that mean? inside the pop up: \"alternative education services\" are options like tutoring, placement at a different school, Saturday school, or online learning, that a school offers to help a student continue their education while they're out of school. When the school decides to suspend or expel a student, they have to tell you about the student's right to education services in a letter or email (not over the phone or in person). Did the school send you a letter or email that told you the student could get education services? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "225": {
+  {
     "id": 225,
     "question": "Did the school tell you that the student could receive services at all, even if it wasn't in a letter?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "226": {
+  {
     "id": 226,
     "question": "You identified a problem with the school's communication about the services.  We'll ask more about that at the end of this section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "227": {
+  {
     "id": 227,
     "question": "You identified that the school never told you that the student could receive alternative education services.  Would you like to include that in your complaint? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "228": {
+  {
     "id": 228,
     "question": "Okay, we'll move on to the next section.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "229": {
+  {
     "id": 229,
     "question": "You identified that the school never told you that the student could receive alternative education services.  Would you like to include that in your complaint?  This language will identify that concern in your complaint: “The principal failed to notify the student and parent about the student's right to alternative education services while the student was out of school due to discipline issued pursuant to 37H.  603 CMR 53.13(4)(a) requires that the principal notify the student and the parent of the opportunity to receive education services at the time the student is expelled or placed on long-term suspension.”  In the box below, add details about what happened, and what the student is doing without the services.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "230": {
+  {
     "id": 230,
     "question": "Plain language: You identified that the school didn't send you a letter or email to tell you that the student could get education services while they're out of school. Legal Language:  “The principal failed to notify the student and parent about the student's right to alternative education services while the student was out of school due to discipline issued pursuant to 37H.  603 CMR 53.13(4)(a) requires that the principal notify the student and the parent of the opportunity to receive education services at the time the student is expelled or placed on long-term suspension.”  Prompts: In the box below, explain what happened in detail.   Pop up: what should I include:  Inside the pop up: Did you ever find out about education services? What happened because the school didn't tell you about them? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "231": {
+  {
     "id": 231,
     "question": "The letter or email has to be in English and in your primary language, if your primary language isn't English.   Did the school send the letter or email in English and in your primary language? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "232": {
+  {
     "id": 232,
     "question": "You identified a problem with the school's communication.  We'll ask more questions about that at the end of this section. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "233": {
+  {
     "id": 233,
     "question": "Plain language: You identified that the school didn't send the letter about alternative education services in your primary language. Legal Language: 'The School District failed to give the student the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H. 603 CMR 53.13(4)(a) requires that the principal send notice of the opportunity to receive education services in English and in the primary language of the home.' Prompts: Explain what happened, when you got the notice in the wrong language, and include what your primary language is. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "234": {
+  {
     "id": 234,
     "question": "The school has to provide at least two options for alternative education services.   Did the letter include at least two alternative education services that the student could choose from?  ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "235": {
+  {
     "id": 235,
     "question": "You identified a problem.  We'll ask more questions about that at the end of this section. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "236": {
+  {
     "id": 236,
     "question": "Plain language: You identified that the school didn't give the student at least two educational services to choose from.   Legal Language:  \"The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H did not include a list of the specific education services available to the student, as is required by 603 CMR 53.13(4)(a)\" Prompts: Explain what was in the notice, and what happened because the required information was missing.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "237": {
+  {
     "id": 237,
     "question": "Did the letter about the education services tell the student who to contact if they had questions about the services? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "238": {
+  {
     "id": 238,
     "question": "You identified a problem.  We'll ask more questions about that at the end of this section. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "239": {
+  {
     "id": 239,
     "question": "Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services. Legal Language:  \"The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H did not include contact information for a school district staff member who could provide more detailed information about the services,as is required by 603 CMR 53.13(4)(a)\" Prompts: Explain what happened because the required information was missing.  If the student had questions, or didn't understand what the school meant by \"alternative education services,\" include that information.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "240": {
+  {
     "id": 240,
     "question": "Did the student choose an alternative education service option? ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "241": {
+  {
     "id": 241,
     "question": "Was the student able to enroll in the option they chose?  pop up: What does this mean?  inside the pop up: the school district has to make sure the student is able to actually start doing the education service they choose.  For example, if the school offered tutoring as an education service, and the student chooses tutoring, the District has to make sure that the student knows how to sign up for tutoring.",
     "description": "",
     "type": "",
     "answers": []
   },
-  "242": {
+  {
     "id": 242,
     "question": "You identified a problem.  We'll ask more questions about that at the end of this section. ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "243": {
+  {
     "id": 243,
     "question": "Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services. Legal Language:  \"The principal failed to arrange for the education service that the student selected. 603 CMR 53.13 requires that the school-wide education service plan contain the process for arranding for such services.\" Prompts: Explain in detail why the student wasn't able to start the academic services.  ",
     "description": "",
     "type": "",
     "answers": []
   },
-  "244": {
+  {
     "id": 244,
     "question": "Those are all the requirements for the academic progress and education services.. If they've identified any concerns: You identified problem(s) related to the appeal.  Do you want to include those concerns in your complaint? If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.   Would you like to describe any concerns to include in your complaint?",
     "description": "",
     "type": "",
     "answers": []
   },
-  "245": {
+  {
     "id": 245,
     "question": "END OF SECTION PAGE",
     "description": "",
     "type": "",
     "answers": []
   },
-  "246": {
+  {
     "id": 246,
     "question": "Does the student have a disability that the school knows about? Pop up: What does this mean? Inside the pop up: the student has a disability that the school knows about if any of these apply to the student:  - they get special education services through an IEP or 504 plan  - someone has requested that the school do a special education evaluation for the student",
     "description": "",
     "type": "",
     "answers": []
   },
-  "247": {
+  {
     "id": 247,
     "question": "END OF CONCERNS SECTION PAGE",
     "description": "",
     "type": "",
     "answers": []
   },
-  "248": {
+  {
     "id": 248,
     "question": "MDR",
     "description": "",
     "type": "",
     "answers": []
   },
-  "249": {
+  {
     "id": 249,
     "question": "END OF SECTION PAGE",
     "description": "",
     "type": "",
-    "answers": [169]
+    "answers": [
+      169
+    ]
   },
-  "250": {
+  {
     "id": 250,
     "question": "END OF SECTION PAGE",
     "description": "",
     "type": "",
-    "answers": [168]
+    "answers": [
+      168
+    ]
   }
-}
+]
