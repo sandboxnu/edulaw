@@ -8,7 +8,7 @@ import {
   Answer,
 } from '../../models'
 import { Form, Formik } from 'formik'
-import React, { ChangeEvent, useContext, useState } from 'react'
+import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
@@ -71,6 +71,12 @@ const DynamicPOC: React.FC = () => {
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  useEffect(() => {
+    console.log(formValues.formAnswers)
+    console.log(currentIndex)
+    console.log(questionHistory.map((question) => question.id))
+  }, [currentIndex])
+
   function _updateCurrentAnswer(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     isUserInput: boolean
@@ -82,7 +88,6 @@ const DynamicPOC: React.FC = () => {
     }
 
     setCurrentAnswer(answer)
-    console.log(formValues)
   }
 
   function _getInputAnswerId(questionId: string): string {
@@ -96,25 +101,25 @@ const DynamicPOC: React.FC = () => {
    * handles getting the next question based on current question's answer
    */
   function _handleNext() {
-    if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
+    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       _handleQuestionExists()
     } else {
+      const nextQuestion = getNextQuestion(
+        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+      )
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
-        currentQuestion,
+        nextQuestion,
       ])
+      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setCurrentQuestion(nextQuestion)
+      if (formValues.formAnswers[nextQuestion.id]) {
+        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      }
     }
-    formValues.formAnswers[currentQuestion.id] = currentAnswer
-    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
-      setCurrentIndex(currentIndex + 1)
-    }
-    setCurrentQuestion(
-      getNextQuestion(
-        questions[parseInt(currentAnswer.questionId)].answers[
-          parseInt(currentAnswer.answerId)
-        ]
-      )
-    )
+    // if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
+    setCurrentIndex(currentIndex + 1)
+    // }
   }
 
   /**
@@ -129,33 +134,35 @@ const DynamicPOC: React.FC = () => {
         delete formValues.formAnswers[questionHistory[i].id]
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
-      setQuestionHistory([...questionSlice, currentQuestion])
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
-      setCurrentQuestion(
-        getNextQuestion(
-          questions[parseInt(currentAnswer.questionId)].answers[
-            parseInt(currentAnswer.answerId)
-          ]
-        )
+      const nextQuestion = getNextQuestion(
+        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
       )
+      setQuestionHistory([...questionSlice, nextQuestion])
+      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setCurrentQuestion(nextQuestion)
+      if (formValues.formAnswers[nextQuestion.id]) {
+        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      }
     } else {
-      if (formValues.formAnswers[currentQuestion.id]) {
-        setCurrentQuestion(
-          getNextQuestion(
-            questions[parseInt(currentAnswer.questionId)].answers[
-              parseInt(currentAnswer.answerId)
-            ]
-          )
-        )
+      const nextQuestion = getNextQuestion(
+        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+      )
+      setCurrentQuestion(nextQuestion)
+      if (formValues.formAnswers[nextQuestion.id]) {
+        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
       }
     }
   }
 
   function _handleBack() {
     if (currentIndex !== 0) {
-      setCurrentIndex(currentIndex - 1)
-      const newQuestion = questionHistory[currentIndex]
+      const newQuestion = questionHistory[currentIndex - 1]
+      if (currentQuestion.id.toString() === currentAnswer.questionId) {
+        formValues.formAnswers[currentQuestion.id] = currentAnswer
+        setCurrentAnswer(formValues.formAnswers[newQuestion.id])
+      }
       setCurrentQuestion(newQuestion)
+      setCurrentIndex(currentIndex - 1)
     }
   }
 
