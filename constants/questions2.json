@@ -692,7 +692,7 @@
   },
   {
     "id": 53,
-    "question": "The school has to send the form in your primary language.  Did the school send the form in your primary language?\nPop up: what does this mean? Inside the pop up: Your primary language the language you speak at home, if you've told told the school to communicate with you in that language.",
+    "question": "The school has to send the form in your primary language.  Did the school send the form in your primary language?\nPop up: what does this mean? Inside the pop up: Your primary language the language you speak at home, if you've told told the school to communicate with you in that language.",
     "description": "",
     "type": "RADIO",
     "answers": [
