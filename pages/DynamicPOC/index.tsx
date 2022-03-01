@@ -71,12 +71,6 @@ const DynamicPOC: React.FC = () => {
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  useEffect(() => {
-    console.log(formValues.formAnswers)
-    console.log(currentIndex)
-    console.log(questionHistory.map((question) => question.id))
-  }, [currentIndex])
-
   function _updateCurrentAnswer(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     isUserInput: boolean
