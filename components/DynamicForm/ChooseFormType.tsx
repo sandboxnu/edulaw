@@ -54,5 +54,13 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
     default: {
       return <div />
     }
+    case 'CONTINUE': {
+      return (
+        <MyResult
+          label={props.question.question}
+          description={props.question.description}
+        />
+      )
+    }
   }
 }
