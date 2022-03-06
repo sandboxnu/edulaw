@@ -84,13 +84,6 @@ const DynamicPOC: React.FC = () => {
     setCurrentAnswer(answer)
   }
 
-  function _getInputAnswerId(questionId: string): string {
-    const question: Question = questions[
-      questionId as QuestionsKeys
-    ] as Question
-    return question.answers[0].toString() // TODO: Probably error check this or something
-  }
-
   /**
    * handles getting the next question based on current question's answer
    */
