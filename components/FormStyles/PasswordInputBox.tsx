@@ -21,7 +21,7 @@ interface PasswordProps {
 
 export const PasswordInputBox: React.FC<
   PasswordProps & FieldHookConfig<string>
-> = ({ ...props }) => {
+> = (props) => {
   const [visibility, setVisibility] = useState(false)
   const [field, meta] = useField(props)
 

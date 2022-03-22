@@ -9,12 +9,9 @@ import {
   SubContainer,
   Title,
   SubTitle,
-} from '../Login/SignUp'
+} from './LoginStyling'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
 
 export const RememberSignIn = styled.div`
@@ -35,8 +32,8 @@ interface FormValues {
   checked: Array<string>
 }
 
+// component for the signin page - includes form (and styling) for validation
 function SignIn() {
-  const router = useRouter()
   const initialVal: FormValues = {
     email: '',
     password: '',

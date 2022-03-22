@@ -8,8 +8,7 @@ import {
   Container,
   Title,
   SubTitle,
-} from '../Login/SignUp'
-import { RememberSignIn } from '../Login/SignIn'
+} from './LoginStyling'
 import styled from 'styled-components'
 import Link from 'next/link'
 
@@ -20,6 +19,7 @@ export const TextButtonDiv = styled.div`
   gap: 25px;
 `
 
+// component / form for the forgot password page
 function ForgotPassword() {
   return (
     <Formik
