@@ -9,6 +9,7 @@ interface LandingProps {
   center: JSX.Element
 }
 
+// component that creates a single point for the styling of the landing-related pages to reduce redundancy
 function LandingSplitPage(props: LandingProps) {
   return (
     <main className={styles.main}>

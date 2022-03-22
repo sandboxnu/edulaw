@@ -8,6 +8,7 @@ interface LoginProps {
   right: JSX.Element
 }
 
+// component that creates a single point for the styling of the login-related pages to reduce redundancy
 function LoginSplitPage(props: LoginProps) {
   return (
     <main className={styles.main}>
