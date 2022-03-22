@@ -119,6 +119,9 @@ const DynamicPOC: React.FC = () => {
    * Modifies question history and routes form depending on whether answer has been changed
    */
   function _handleQuestionExists() {
+    const nextQuestion = getNextQuestion(
+      questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+    )
     if (
       formValues.formAnswers[currentQuestion.id]['answerId'] !==
       currentAnswer['answerId']
@@ -127,23 +130,12 @@ const DynamicPOC: React.FC = () => {
         delete formValues.formAnswers[questionHistory[i].id]
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
-      )
-      setQuestionHistory([...questionSlice, nextQuestion])
       formValues.formAnswers[currentQuestion.id] = currentAnswer
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
-    } else {
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
-      )
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
+      setQuestionHistory([...questionSlice, nextQuestion])
+    }
+    setCurrentQuestion(nextQuestion)
+    if (formValues.formAnswers[nextQuestion.id]) {
+      setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
     }
   }
 
