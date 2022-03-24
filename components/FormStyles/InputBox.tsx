@@ -36,7 +36,6 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =
   ({ ...props }) => {
     const [field, meta] = useField(props)
 
-    // try and make this less jank
     function onChangeInput(): JSX.Element {
       if (props.onChange) {
         return (

@@ -19,7 +19,7 @@ export const TextButtonDiv = styled.div`
   gap: 25px;
 `
 
-// component / form for the forgot password page
+// component form for the forgot password page
 function ForgotPassword() {
   return (
     <Formik
