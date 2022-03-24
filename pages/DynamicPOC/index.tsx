@@ -167,7 +167,6 @@ const DynamicPOC: React.FC = () => {
           .text('\t' + item.userAnswer + '\n\n', x, y)
         y += y_inc
       }
-      console.log('results', results)
     })
 
     return doc
