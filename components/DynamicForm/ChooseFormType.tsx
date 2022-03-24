@@ -4,10 +4,11 @@ import { Question, Answer, AnswersKeys, answers } from '../../models'
 import { MyRadio } from './MyRadio'
 import { MyResult } from './MyResult'
 import { FormAnswer } from '../../utils/FormContext'
+import MyContinue from './MyContinue'
 
 interface ChooseFormTypeProps {
   question: Question
-  onChange: (event: ChangeEvent<HTMLInputElement>, isUserInput: boolean) => void
+  onChange: (questionId: string, answerId: string, userAnswer?: string) => void
   answers: FormAnswer
 }
 
@@ -24,7 +25,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           label={props.question.question}
           options={answerChoices}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(event, false)
+            props.onChange(event.target.name, event.target.value)
           }
           ans={props.answers}
         />
@@ -36,7 +37,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           name={props.question.id.toString()}
           label={props.question.question}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(event, true)
+            props.onChange(event.target.name, '0', event.target.value)
           }
           ans={props.answers}
         />
@@ -50,17 +51,18 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
         />
       )
     }
+    case 'CONTINUE': {
+      return (
+        <MyContinue
+          label={props.question.question}
+          description={props.question.description}
+          onMount={() => props.onChange(props.question.id.toString(), '0')}
+        />
+      )
+    }
     // TODO: Other form types in general
     default: {
       return <div />
-    }
-    case 'CONTINUE': {
-      return (
-        <MyResult
-          label={props.question.question}
-          description={props.question.description}
-        />
-      )
     }
   }
 }

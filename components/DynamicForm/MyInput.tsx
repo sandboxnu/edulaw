@@ -1,6 +1,5 @@
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
-import { answers } from '../../constants'
 import { FormAnswer } from '../../utils/FormContext'
 import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
@@ -20,12 +19,7 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
   return (
     <div key={props.name}>
       <QuestionLayout
-        questionText={
-          <QuestionText>
-            {' '}
-            {/*htmlFor={`${props.id}-${props.name}`}*/} {props.label}
-          </QuestionText>
-        }
+        questionText={<QuestionText>{props.label}</QuestionText>}
         input={
           <StyledTextInput
             type="text"
