@@ -2,7 +2,7 @@ import { Answer } from './answer'
 import { questions } from '../constants'
 
 type Questions = Array<Question>
-const typedQuestions = questions as Questions
+// const typedQuestions = questions as Questions
 
 export type QuestionsKeys = keyof Questions
 export interface Question {
@@ -12,5 +12,3 @@ export interface Question {
   type: string
   answers: Answer[]
 }
-
-export { typedQuestions as questions }

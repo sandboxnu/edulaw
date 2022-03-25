@@ -9,6 +9,7 @@ interface ChooseFormTypeProps {
   question: Question
   onChange: (event: ChangeEvent<HTMLInputElement>, isUserInput: boolean) => void
   answers: FormAnswer
+  questions: Question[]
 }
 
 export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
@@ -47,6 +48,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
         <MyResult
           label={props.question.question}
           description={props.question.description}
+          {...props}
         />
       )
     }

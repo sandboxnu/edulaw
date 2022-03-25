@@ -1,6 +1,5 @@
 import {
   Question,
-  questions,
   QuestionsKeys,
   answers,
   AnswersKeys,
@@ -17,16 +16,12 @@ import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
+import { GetStaticProps } from 'next'
+import { parse } from 'csv-parse/sync'
+import { promises as fs } from 'fs'
+import path from 'path'
 
-const firstQuestionId: QuestionsKeys =
-  forms.animalForm.toString() as QuestionsKeys
-const startingQuestion: Question = questions[firstQuestionId] as Question
 let startingAnswer: FormAnswer
-
-function getNextQuestion(answer: Answer): Question {
-  const id: number = answer.route
-  return questions[id] as Question
-}
 
 const Main = styled.div`
   display: flex;
@@ -63,13 +58,86 @@ const TitleText = styled.h1`
   font-size: large;
 `
 
-const DynamicPOC: React.FC = () => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const bullying = await fs.readFile(
+    path.resolve(__dirname, '../../../constants/Bullying.csv')
+  )
+  let questions: Question[] = []
+  const bullyingParsed = parse(bullying) as string[][]
+  const rowTitles = bullyingParsed[0]
+  const questionsArray = bullyingParsed.filter(
+    (entry: string[]) => entry[rowTitles.indexOf('Name')] === 'Process'
+  )
+  const answersArray = bullyingParsed.filter(
+    (entry: string[]) => entry[rowTitles.indexOf('Name')] === 'Line'
+  )
+  const oldToNew = new Map<number, number>()
+  questionsArray.forEach((question: string[], index: number) => {
+    oldToNew.set(parseInt(question[0]), index)
+    const relevantAnswers = answersArray.filter(
+      (answer: string[]) =>
+        answer[rowTitles.indexOf('Line Source')] === question[0]
+    )
+    const relevantAnswersObjects = relevantAnswers.map((answer: string[]) => {
+      return {
+        ...(answer[rowTitles.indexOf('Text Area 1')] !== ''
+          ? {
+              content: answer[rowTitles.indexOf('Text Area 1')],
+            }
+          : {}),
+        route: parseInt(answer[rowTitles.indexOf('Line Destination')]),
+      }
+    })
+    relevantAnswersObjects.sort((a, b) =>
+      (a.content || '') < (b.content || '') ? -1 : 1
+    )
+    questions.push({
+      id: index,
+      question: question[rowTitles.indexOf('Text Area 1')],
+      type:
+        relevantAnswersObjects.length === 0
+          ? 'RESULT'
+          : relevantAnswersObjects[0].content
+          ? 'RADIO'
+          : 'TEXT',
+      answers: relevantAnswersObjects,
+    })
+  })
+  questions = questions.map((question: Question, index: number) => {
+    return {
+      ...question,
+      answers: [
+        ...question.answers.map((answer: Answer) => {
+          return {
+            ...answer,
+            route: oldToNew.get(answer.route) || 0,
+          }
+        }),
+      ],
+    }
+  })
+
+  return {
+    props: {
+      questions: questions,
+    },
+  }
+}
+
+const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
+  const startingQuestion: Question = questions[0]
+
   const { formValues, updateFormValues } = useContext(FormCtx)
 
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
+
+  function getNextQuestion(answer: Answer): Question {
+    const id: number = answer.route
+    return questions[id]
+  }
 
   function _updateCurrentAnswer(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -184,7 +252,7 @@ const DynamicPOC: React.FC = () => {
     }
 
     let doc = new jsPDF()
-    const results = buildResults(values['formAnswers'])
+    const results = buildResults(values['formAnswers'], questions)
     doc = _buildDoc(doc, results)
     doc.save('a4.pdf')
   }
@@ -214,6 +282,7 @@ const DynamicPOC: React.FC = () => {
                   question={currentQuestion}
                   onChange={_updateCurrentAnswer}
                   answers={formValues.formAnswers[currentQuestion.id]}
+                  questions={questions}
                 />
                 <Button type="button" onClick={() => _handleBack()}>
                   {' '}
