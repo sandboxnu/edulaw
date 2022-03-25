@@ -18,8 +18,9 @@ import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { GetStaticProps } from 'next'
 import { parse } from 'csv-parse/sync'
-import { promises as fs } from 'fs'
+import fs from 'fs'
 import path from 'path'
+import { questions } from '../../constants'
 
 let startingAnswer: FormAnswer
 
@@ -58,22 +59,15 @@ const TitleText = styled.h1`
   font-size: large;
 `
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const bullying = await fs.readFile(
-    path.resolve(__dirname, '../../../constants/Bullying.csv')
-  )
-  let questions: Question[] = []
-  const bullyingParsed = parse(bullying) as string[][]
-  const rowTitles = bullyingParsed[0]
-  const questionsArray = bullyingParsed.filter(
+const csvToQuestionArray = (csv: string[][]): Question[] => {
+  const rowTitles = csv[0]
+  const questionsArray = csv.filter(
     (entry: string[]) => entry[rowTitles.indexOf('Name')] === 'Process'
   )
-  const answersArray = bullyingParsed.filter(
+  const answersArray = csv.filter(
     (entry: string[]) => entry[rowTitles.indexOf('Name')] === 'Line'
   )
-  const oldToNew = new Map<number, number>()
-  questionsArray.forEach((question: string[], index: number) => {
-    oldToNew.set(parseInt(question[0]), index)
+  return questionsArray.map((question: string[], index: number) => {
     const relevantAnswers = answersArray.filter(
       (answer: string[]) =>
         answer[rowTitles.indexOf('Line Source')] === question[0]
@@ -91,30 +85,76 @@ export const getStaticProps: GetStaticProps = async (context) => {
     relevantAnswersObjects.sort((a, b) =>
       (a.content || '') < (b.content || '') ? -1 : 1
     )
-    questions.push({
-      id: index,
+    const startingQuestion = relevantAnswersObjects.findIndex((answer) => {
+      const uppercase = answer.content?.toUpperCase()
+      return (
+        uppercase === 'DISCIPLINE' ||
+        uppercase === 'BULLYING' ||
+        uppercase === 'SPECIAL EDUCATION'
+      )
+    })
+    return {
+      id: startingQuestion === -1 ? parseInt(question[0]) : -1,
       question: question[rowTitles.indexOf('Text Area 1')],
       type:
         relevantAnswersObjects.length === 0
           ? 'RESULT'
-          : relevantAnswersObjects[0].content
-          ? 'RADIO'
-          : 'TEXT',
+          : relevantAnswersObjects.length === 1
+          ? 'TEXT'
+          : 'RADIO',
       answers: relevantAnswersObjects,
-    })
-  })
-  questions = questions.map((question: Question, index: number) => {
-    return {
-      ...question,
-      answers: [
-        ...question.answers.map((answer: Answer) => {
-          return {
-            ...answer,
-            route: oldToNew.get(answer.route) || 0,
-          }
-        }),
-      ],
     }
+  })
+}
+
+const files = [
+  '../../../constants/Bullying.csv',
+  '../../../constants/Discipline.csv',
+]
+
+export const getStaticProps: GetStaticProps = (context) => {
+  const questions: Question[] = [
+    {
+      id: 0,
+      question:
+        'Are you having problems with bullying, discipline, or special education?',
+      type: 'RADIO',
+      answers: [],
+    },
+  ]
+
+  files.forEach((file: string) => {
+    const f = fs.readFileSync(path.resolve(__dirname, file))
+    const questionsFromF = csvToQuestionArray(parse(f) as string[][])
+    const idMap = new Map<number, number>()
+    questionsFromF.forEach((question: Question, index: number) => {
+      idMap.set(question.id, questions.length + index)
+    })
+    const updatedQuestionIds = questionsFromF.map((question: Question) => {
+      if (question.id === -1) {
+        const a = question.answers[0]
+        const newRoute = idMap.get(a.route)
+        questions[0].answers.push({
+          ...a,
+          route: newRoute === undefined ? -1 : newRoute,
+        })
+      }
+      const newQuestionId = idMap.get(question.id)
+      return {
+        ...question,
+        id: newQuestionId === undefined ? -1 : newQuestionId,
+        answers: [
+          ...question.answers.map((answer: Answer) => {
+            const newRoute = idMap.get(answer.route)
+            return {
+              ...answer,
+              route: newRoute === undefined ? -1 : newRoute,
+            }
+          }),
+        ],
+      }
+    })
+    questions.push(...updatedQuestionIds)
   })
 
   return {
