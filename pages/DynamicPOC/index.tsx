@@ -92,6 +92,7 @@ const csvToQuestionArray = (csv: string[][]): Question[] => {
     relevantAnswersObjects.sort((a, b) =>
       (a.content || '') < (b.content || '') ? -1 : 1
     )
+    console.log(typeof question[rowTitles.indexOf('Text Area 1')])
     return {
       id: parseInt(question[0]),
       question: question[rowTitles.indexOf('Text Area 1')].replaceAll(
@@ -111,9 +112,7 @@ export const getStaticProps: GetStaticProps = (context) => {
 
   files.forEach((file: string) => {
     const f = fs.readFileSync(path.resolve(__dirname, file))
-    const parsed: string[][] = parse(f)
-    console.log(parsed)
-    const questionsFromF = csvToQuestionArray(parsed)
+    const questionsFromF = csvToQuestionArray(parse(f))
     const idMap = new Map<number, number>()
     questionsFromF.forEach((question: Question, index: number) => {
       idMap.set(question.id, questions.length + index)
