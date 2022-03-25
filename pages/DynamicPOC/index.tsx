@@ -92,7 +92,7 @@ const csvToQuestionArray = (csv: string[][]): Question[] => {
     relevantAnswersObjects.sort((a, b) =>
       (a.content || '') < (b.content || '') ? -1 : 1
     )
-    console.log(typeof question[rowTitles.indexOf('Text Area 1')])
+    console.log(question[rowTitles.indexOf('Text Area 1')])
     return {
       id: parseInt(question[0]),
       question: question[rowTitles.indexOf('Text Area 1')].replaceAll(
