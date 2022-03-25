@@ -92,10 +92,11 @@ const csvToQuestionArray = (csv: string[][]): Question[] => {
     relevantAnswersObjects.sort((a, b) =>
       (a.content || '') < (b.content || '') ? -1 : 1
     )
+    console.log(question[0])
     console.log(question[rowTitles.indexOf('Text Area 1')])
     return {
       id: parseInt(question[0]),
-      question: question[rowTitles.indexOf('Text Area 1')].replaceAll(
+      question: question[rowTitles.indexOf('Text Area 1')].replace(
         /(\s{2,})|(\r?\n)|(\r)|(\u2028)/g,
         '\n'
       ),
