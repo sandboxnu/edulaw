@@ -111,7 +111,9 @@ export const getStaticProps: GetStaticProps = (context) => {
 
   files.forEach((file: string) => {
     const f = fs.readFileSync(path.resolve(__dirname, file))
-    const questionsFromF = csvToQuestionArray(parse(f) as string[][])
+    const parsed: string[][] = parse(f)
+    console.log(parsed)
+    const questionsFromF = csvToQuestionArray(parsed)
     const idMap = new Map<number, number>()
     questionsFromF.forEach((question: Question, index: number) => {
       idMap.set(question.id, questions.length + index)
