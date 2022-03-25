@@ -1,961 +1,0 @@
-Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Status,Text Area 1,Text Area 2
-1,Document,,,,,,,,,,Discipline,
-2,Page,,,,,,,,,,37 H,
-3,Process,Flowchart Shapes,2,,,,,,,,"Has the student already been suspended or expelled for this incident?
-Pop Up: What is a suspension and what is an expulsion?There are two kinds of suspensions, an in-school-suspensions and an out-of-school suspension. An in-school-suspension is when a student is told they have to leave their classroom and work in a different classroom for more than half of a school day. An out-of-school suspension is when the student is told they cannot come back to school at all for a certain number of days. An expulsion is when the student is told they cannot come back to school for more than 90 school days.",
-4,Process,Flowchart Shapes,2,,,,,,,," What is the student being suspended or expelled for? Are they being suspended or expelled for:
-(1) Breaking a school rule,
-(2) Bringing a weapon to school,
-(3) Bringing drugs to school,
-(4) Hitting or assaulting educational staff?
-(5) because the student was charged with a crime and had to go to court?",
-5,Process,Flowchart Shapes,2,,,,,,,,"Are you having problems with discipline, special education, or bullying?",
-6,Process,Flowchart Shapes,2,,,,,,,,The user has already identified that they're the student's parent.,
-7,Process,Flowchart Shapes,2,,,,,,,,Has the school said they might suspend or expel the student?,
-8,Process,Flowchart Shapes,2,,,,,,,,"Type of Discipline You said that the school is accusing the student of bringing a weapon to school. This means that the discipline is covered by a Massachusetts law called 71 MGL §37H.  You can read the full law here.  https://malegislature.gov/laws/generallaws/parti/titlexii/chapter71/section37h  In Massachusetts, a student can be suspended or expelled for bringing a weapon to school. But, the law says that only certain things count as “weapons” and only certain places count as “school.” Sometimes, schools say that the student brought a weapon to school, even when what the student had doesn’t count as a “weapon,” or the place the student was doesn’t count as “school.”
-                                                                                                     To start, we are going to ask some questions about what the school says the student did. This will help us to find out if the school can punish the student for “bringing a weapon to school.” These questions will only be about what the school says happened, later we will have questions about the student’s side of the story.",
-9,Process,Flowchart Shapes,2,,,,,,,,"First, we are going to look at what counts as ""school.""Bringing a weapon ""to school,"" means bringing a weapon into the school building, to a school event, or to another school activity. An example of a school event is a job fair or sports game. An example of a school activity is a field trip.                    												Is the school accusing the student of bringing the drugs into the school building, to a school event, or to another school activity?",
-10,Process,Flowchart Shapes,2,,,,,,,,It might be helpful to talk to someone about your student’s situation.                                                   										We recommend that you call the EdLaw Project help-line at 617-910-5829 for help..,
-11,Process,Flowchart Shapes,2,,,,,,,,"You said that the school is accusing the student of bringing a weapon to school, but the thing that the principal is saying was a weapon shouldn’t be called a weapon.         							Do you want to include that in your complaint?",
-12,Process,Flowchart Shapes,2,,,,,,,,"Under school discipline law, ""weapon"" is defined by the school principal.  The weapon can be anything that the principal says is a weapon.  Is the school accusing the student of having something that the principal says is a weapon? (y/n/yes, but the thing the principal is saying is a weapon shouldn't be called a weapon) ",
-13,Process,Flowchart Shapes,2,,,,,,,,It might be helpful to talk to someone about your student’s situation.                                                 													We recommend that you call the EdLaw Project help-line at 617-910-5829 for help..,
-14,Process,Flowchart Shapes,2,,,,,,,,"You said that the school is accusing the student of bringing a weapon to school, but the thing that the principal is saying was a weapon shouldn’t be called a weapon.   We recommend that you include this paragraph in your complaint:   ""The school is accusing the student of bringing a weapon to school and moving to discipline the student under 37H, but the principal is using an unreasonable definition of 'weapon' ""  In the box below, explain what happened.  Include what the ""weapon"" is, and any information that's relevant to the principal calling it a ""weapon""                               ADD: Is the school trying to expel the student? We recommend that you call th Edlaw project helping for help! 617-910-5829. ADD HELPLINE BOX   ",
-15,Process,Flowchart Shapes,2,,,,,,,,"Type of Discipline
-You said that the school is accusing the student of “bringing drugs to school.”  This means that the discipline is covered by a Massachusetts law called 71 MGL §37H.  You can read the full law here.  https://malegislature.gov/laws/generallaws/parti/titlexii/chapter71/section37h    In Massachusetts, students can be suspended or expelled for bringing drugs to school. But, the law says that only certain things count as “drugs” and only certain places count as “school.” Sometimes, schools say that the student brought drugs to school, even when what the student had does not count as “drugs,” or the place the student was does not count as “school.    I noticed in the orange pop up for this that it mentions 37H, but we haven't mentioned it before the orange pop up...is that by design?  This is true for all of the 37H offenses.                    
-                                                                                     To start, we are going to ask some questions about what the school says the student did. This will help us to find out if the school can punish the student for “bringing drugs to school.” These questions will only be about what the school says happened, later we will have questions about the student’s side of the story.",
-16,Process,Flowchart Shapes,2,,,,,,,,"First, we are going to look at what counts as ""school.""
-                                                                                 Bringing drugs ""to school,"" means bringing drugs into the school building, to a school event, or to another school activity. An example of a school event is a job fair or sports game. An example of a school activity is a field trip.
-                                                                                    Is the school accusing the student of bringing the drugs into the school building, to a school event, or to another school activity?   yes/no/  don't know",
-17,Process,Flowchart Shapes,2,,,,,,,,It might be helpful to talk to someone about your student’s situation.                                                  										We recommend that you call the EdLaw Project help-line at 617-910-5829 for help..,
-18,Process,Flowchart Shapes,2,,,,,,,,"What counts as a “drug” is defined by Massachusetts law. It includes things like cocaine, heroin and pills that aren’t prescribed by a doctor. It also includes marijuana. It does not include alcohol and tobacco.
-                                                                                                                                    Is the school accusing the student of having something that fits the legal definition of ""drug""?
-                                                                                                                                       See the full law here (https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter94C/Section1)  Yes/No/I don't know",
-19,Process,Flowchart Shapes,2,,,,,,,,"if you aren't sure about the answer to a question, we recommend that you call the EdLaw Project help-line at 617-910-5829 for help.",
-20,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section.  ",
-21,Process,Flowchart Shapes,2,,,,,,,,"Type of Discipline You said that the school is accusing the student of “assaulting school staff.”  This means that the discipline is covered by a Massachusetts law called 71 MGL §37H.  You can read the full law here.  https://malegislature.gov/laws/generallaws/parti/titlexii/chapter71/section37h  A student can be suspended or expelled for assaulting educational staff. But, the law says that only certain things count as “assault” and only certain school staff count as “educational staff.”Sometimes, schools say that the student “assaulted educational staff” even when what the student did does not count as “assault,” or the staff member does not count as “educational staff.”
-                                                                                      To start, we are going to ask some questions about what the school says the student did. This will help us to find out if the school can punish the student for “assaulting educational staff.” These questions will only be about what the school says happened, later we will have questions about the student’s side of the story..  ",
-22,Process,Flowchart Shapes,2,,,,,,,,"Go to appropriate questions (37H1/2, 37H3/4)",
-23,Process,Flowchart Shapes,2,,,,,,,,"We'll look at what an ""assault"" is first, and then we'll look at who is an ""educational staff.""
-                                                                               What action counts as an ""assault"" is not always clear. But some action definitely count as an assault. For example, kicking, hitting, punching or throwing something at another person and hitting that person definitely are assaults.
-                                                                                   Did the school say that the student did something that definitely counts as an assault?",
-24,Process,Flowchart Shapes,2,,,,,,,,It might be helpful to talk to someone about your student’s situation.                                                 									                     We recommend that you call the EdLaw Project help-line at 617-910-5829 for help.,
-25,Process,Flowchart Shapes,2,,,,,,,,"""Educational staff"" are people whose job is to educate students. Some examples are teachers, teacher's aids, principals, and guidance counselors.                                       								Is the school saying that the student assaulted someone whose job is to educate students?   (y/no or not sure/the student is being accused of assaulting a school resource or police officer)",
-26,Process,Flowchart Shapes,2,,,,,,,,It might be helpful to talk to someone about your student’s situation..                                                    									                     We recommend that you call the EdLaw Project help-line at 617-910-5829 for help.,
-27,Process,Flowchart Shapes,2,,,,,,,,"School Police Officers are police who work in a school building. Their job is to keep the school safe, not to educate students. If the school is saying that the student assaulted a school police officer, you can argue that the police officer is not ""educational staff.""   If you have questions, please call the EdLaw Project intake line at  617-910-5829. 
-                                                 Would you like to include that in your complaint?                               						Pop-up: School Police Officers are often called School Resource Officers or SRO's. School Police Officers, School Resource Officers and SRO's are all the same thing. ",
-28,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section.",
-29,Process,Flowchart Shapes,2,,,,,,,,"You said that the school is trying to punish the student for assaulting ""educational staff."" But that the staff member invovled is a police officer.    We recommend you include this paragraph in your complaint:“The school is moving to discipline the student for assaulting a member of the school’s educational staff, however the incident involved the student and a police officer, who is not educational staff as defined by MGL c.37H.  Therefore the school is improperly moving to discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.”  In the box below explain what happened.                                        ",
-30,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section.",
-31,Process,Flowchart Shapes,2,,,,,,,," Hearing Notice Students have certain rights that must be followed before the school can suspend or expel them. The student has a right to a meeting / hearing with the principal. Before the hearing happens, the school must send the student and the family a letter or email telling them about the hearing, including date and time.  This is called “notice.” The notice must be in writing, it is not enough for the principal to just tell the family about the hearing in person or over the phone.
-                                                                   Did the school send a letter or email to the student and family about the meeting?",
-32,Process,Flowchart Shapes,2,,,,,,,,You said that the school did not send the family a letter or email about the hearing before the hearing happened. This is a violation of the student’s rights. Would you like to include that concern in your complaint?,
-33,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section.",
-34,Process,Flowchart Shapes,2,,,,,,,,"You said that the school did not send the family a letter or email about the hearing. This is a violation of the student’s rights.   We recommend you include this paragraph in your complaint:“	
-“The Principal failed to send notice to the student of a disciplinary hearing when they moved to exclude the student under chapter 37H”   In the box below explain what happened. Include any information you have about how the student found out they were being suspended or expelled. If you or the student's family missed the hearing because you didn't know about it make sure to include that.   Press next when you're ready to move on to the next section.",
-35,Process,Flowchart Shapes,2,,,,,,,,"Next we're going to go through the information that the school has to include in the notice. If you have a copy of the notice, it may be helpful to take it out to reference while you're answering these questions.",
-36,Process,Flowchart Shapes,2,,,,,,,,"The notice has to include information about the student's rights at the hearing, including that they have the right to present evidence and witnesses.    pop up: what does ""present evidence and witnesses"" mean? inside the pop up: ""Present evidence"" means they can show the principal anything that supports their side of the story.   ""Present witnesses"" means they can have other people come to the hearing if they can support the student's side of the story.    Did the letter say that the student had the right to present evidence and witnesses at the hearing? ",
-37,Process,Flowchart Shapes,2,,,,,,,,"The notice has to say that the student has the right to bring an attorney at the family's expense.    This means that the school can't prevent an attorney from being at the hearing, if the family has one.  Did the letter say that the student had the right to bring an attorney to the hearing?",
-38,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the notice.  We'll ask more questions about that at the end of this section. Press next to continue. ,
-39,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the notice.  We'll ask more questions about that at the end of this section. Press next to continue. ,
-40,Process,Flowchart Shapes,2,,,,,,,,"Those are all the notice requirements.    If they've identified any concerns: You identified problem(s) related to the notice.  Do you want to include those problems in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-41,Process,Flowchart Shapes,2,,,,,,,,END OF SECTION PAGE,
-42,Process,Flowchart Shapes,2,,,,,,,,"Plain Language: You identified that the notice didn't say that the student had the right to present evidence and witnesses at the hearing.  Legal Language: The Principal failed to send appropriate notice to the student of a disciplinary hearing when they moved to exclude the student under chapter 37H, because the notice did not include the student's right to present evidence and witnesses at the hearing.”   Prompts: Provide more details in the box below.    Pop up: What should I include In the pop up: Include anything that happened because the notice didn’t include the information about the student’s rights.  If you would have been more prepared for the hearing if you knew that the student had those rights, include that information.",
-43,Process,Flowchart Shapes,2,,,,,,,,"Plain Language: You identified that the notice didn't say that the student had the right to present evidence and witnesses at the hearing.  Legal Language: The Principal failed to send appropriate notice to the student of a disciplinary hearing when they moved to exclude the student under chapter 37H, because the notice did not include the student's right to bring an attorney to the hearing.”   Prompts: Provide more details in the box below.  Include anything that happened because you didn't get that information.    pop up: What should I include?  in the pop up: Would you have brought an attorney if you knew you could?  Would that information have made you understand the seriousness of the situation? ",
-44,Process,Flowchart Shapes,2,,,,,,,,"Hearing Now we're going to go through some questions about the hearing.    Did the principal have the hearing, or a meeting to discuss the potential suspension or expulsion?",
-45,Process,Flowchart Shapes,2,,,,,,,,You identified that the principal didn't have a hearing.  Would you like to include that in your complaint?,
-46,Process,Flowchart Shapes,2,,,,,,,,"You identified that the principal didn't have a hearing.    This language will identify that problem in your complaint: ""the principal excluded the student under 37H without holding a hearing""  In the box below, describe what happened in detail:  Pop up: what should I include? In the pop up: The details you include will depend on your situation, but these are some questions you may want to answer:   How did you find out that the school decided to suspend or expel the student? Did the principal ever tell you why they made the decision to suspend or expel the student? Did you ask to have a meeting, or reach out to the school and yet they still didn't hold a hearing? Is the student frustrated because they never got to share their side of the story? WANT TO BE CLEAR IT'S NOT THE FAMILIES JOB TO ASK, IT'S JUST EXTRA EGREGIOUS IF THEY DID. ALSO WANT TO BE CLEAR THAT JUST HAVING THE STUDENT TELL THE PRINICPAL WHAT HAPPENED IN THE HALLWAY OR SOMETHING SIMILAR IS NOT ENOUGH.  ",
-47,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section. ",
-48,Process,Flowchart Shapes,2,,,,,,,,"if the family has an advocate or attorney, the student has the right to have that person at the hearing. This means that the school can't prevent an advocate from coming to the meeting if the family brings one. It also means that the school has to be reasonable in scheduling the hearing so the advocate can come.  Did the student try to bring an attorney or other advocate to the hearing?",
-49,Process,Flowchart Shapes,2,,,,,,,,Did the school allow the student's attorney or advocate to come to the hearing?,
-50,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the hearing.  We'll ask more questions about that at the end of this section.,
-51,Process,Flowchart Shapes,2,,,,,,,,"The student has the right to present evidence and witnesses at the hearing.  ""Present evidence"" means they can show the principal anything that supports their side of the story.    ""Present witnesses"" means they can have other people come to the hearing if they can support the student's side of the story.    Was the student able to present evidence and witnesses at the hearing? Question for marlies: do we want to add something about whether or not it was the principal or someone else?  Answer from Marlies - I don't think we need to - I feel like there is enough of a catch all that says if your concerns weren't addressed, call the helpline.",
-52,Process,Flowchart Shapes,2,,,,,,,,Did anything else stop the student from telling their side of the story at the hearing?,
-53,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the hearing.  We'll ask more questions about that at the end of this section.,
-54,Process,Flowchart Shapes,2,,,,,,,,"Plain Language: you identified that the student tried to bring an attorney to the hearing, but the school didn't let them.   Legal language: The student was not afforded the right to representation at a hearing with the principal pursuant to 71 MGL s.37H  Prompt questions:  In the box below, describe what happened in detail.  How did the school prevent the attorney from coming to the hearing? ",
-55,Sticky Note,Standard,2,,,,,,,,In 37H the part about the principals hearing says representation and the superintendents hearing says right to counsel.  I put the first one as atty or other advocate ,
-56,Process,Flowchart Shapes,2,,,,,,,,"Plain Language: you identified that the student wasn't able to present evidence and witnesses at the hearing.  Legal language: The student was not afforded the right to present evidence and witnesses at a hearing with the principal pursuant to MGL c.71 s.37H  Prompt questions:  In the box below, describe what happened in detail.  How did the principal prevent the student from presenting evidence and witnesses?  Was there specific evidence the student wanted to show the principal? Were there specific witnesses the student wanted to bring to the hearing?  Note: This can be more complicated if the witness the student wanted to bring was another student.  We recommend you call the EdLaw Project Help-line at 617-910-5829 to discuss this.",
-57,Process,Flowchart Shapes,2,,,,,,,,"Plain Language: you identified that the student wasn't able to tell their side of the story at the hearing.  Legal language: The principal did not hold an appropriate hearing pursuant to MGL c.71 s.37H.  Prompt questions:  In the box below, describe what happened at the hearing in detail.  What prevented the student from telling their side of the story? ",
-58,Process,Flowchart Shapes,2,,,,,,,,"Those are all the hearing requirements.    If they've identified any concerns: You identified problem(s) related to the notice.  Do you want to include those problems in your complaint? i think it may be clearer to do one at a time? people may not remember what they clicked?  If they haven't identified any concerns in this section:  You haven't identified a problem of a requirement included in this guide.  If you have problems about the school's communication about the hearing, you should still include them in the complaint.    Would you like to describe any problems to include in your complaint?  If you are not sure, call the EdLaw Project intake line at 617-910-5829 for help.",
-59,Process,Flowchart Shapes,2,,,,,,,,END OF SECTION PAGE,
-60,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section.",
-61,Process,Flowchart Shapes,2,,,,,,,,"Appeal If the school decided to expel the student, the student has the right to appeal their decision to the School District's superintendent.    Pop up: What is an ""appeal""? Inside the pop up: An ""appeal"" means that the student has the right to have the superintendent review the principal's decision.  If the student requests an appeal, they'll have another hearing with the superintendent where the superintendent decides whether or not they agree with the principal's decision.  The superintendent can change or reverse the principal's decision if they don't agree with it.    Was the student expelled?   pop-up: what does that mean?  inside the pop-up: ""Expelled"" means excluded from school for over 90 days. An expulsion can also mean that the student is excluded from school indefinitely, or permanently.",
-62,Process,Flowchart Shapes,2,,,,,,,,"To appeal the principal's decision, the student has 10 days from the date they're expelled to tell the superintendent they want to appeal.  Did the student request an appeal within 10 days?",
-63,Process,Flowchart Shapes,2,,,,,,,,"Once the student requests an appeal, the superintendent has to schedule a hearing on the appeal.  Did the superintendent have the  hearing?",
-64,Process,Flowchart Shapes,2,,,,,,,,The appeal has to actually be with the superintendent.  The superintendent can't send someone else to run the hearing.  Was the hearing with the superintendent?,
-65,Sticky Note,Standard,2,,,,,,,,Any ideas about how to explain how to find who the superintendent is if they're not sure?,
-66,Process,Flowchart Shapes,2,,,,,,,,"The student has the right to bring an attorney to the hearing, if their family pays for it.    Did the student hire an attorney to bring to the hearing?",
-67,Process,Flowchart Shapes,2,,,,,,,,"The superintendent had to allow the attorney to attend the hearing, and has to be reasonable in scheduling the hearing so that the attorney can come.  Was the attorney able to attend the hearing?",
-68,Process,Flowchart Shapes,2,,,,,,,,"During the appeal, the superintendent can look at the record from the hearing with the principal, but they can't rely on that record to make their decision.  The superintendent has to do the hearing from the beginning -- the student must be able to tell their side of the story, present evidence, and present witnesses again.    Did the superintendent conduct a full hearing from the beginning?",
-69,Process,Flowchart Shapes,2,,,,,,,,"Did the superintendent base their decision on what happened at the hearing with the principal instead?  options are Y/N/No, the superintendent didn't rely on the principal's decision, but the student didn't get to tell their side of the story, present evidence, or present witnesses)",
-70,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.,
-71,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.,
-72,Process,Flowchart Shapes,2,,,,,,,,"Those are all the requirements for the appeal.  If they've identified any concerns: You identified problem(s) related to the appeal.  Do you want to include those concerns in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-73,Process,Flowchart Shapes,2,,,,,,,,END OF SECTION PAGE,
-74,Process,Flowchart Shapes,2,,,,,,,,Was the student expelled less than 10 days ago? ,
-75,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the appeal hearing.  We'll ask more questions about that at the end of this section.,
-76,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.,
-77,Process,Flowchart Shapes,2,,,,,,,,"You identified that the student requested an appeal, but the superintendent hasn't held a hearing.  Would you like to include that in your complaint?",
-78,Process,Flowchart Shapes,2,,,,,,,,"You identified that the student requested an appeal, but the superintendent hasn't held a hearing.  This language will identify that in your complaint: ""The Superintendent failed to hold a hearing following the Student's request for an appeal of an expulsion pursuant to MGL c.71 s37H""  In the box below, explain what happened in detail.  Pop-up: what should I include? Inside the pop-up: describe everything that happened after the student requested the appeal.  Did the superintendent's office respond to the request at all? Have you or the student followed up on the request? ",
-79,Process,Flowchart Shapes,2,,,,,,,,"You identified that the superintendent didn't conduct the appeal.    This langauge will identify that in your complaint: ""The superintendent delegated an appeal of a 37H expulsion hearing. The appeal may not be delegated.    In the box below, describe what happened.  Who was the meeting with? Did the superintendent give any reason why they weren't at the meeting? ",
-80,Process,Flowchart Shapes,2,,,,,,,,"You identified that the student's attorney wasn't able to come to the appeal.  This langauge will identify that in your complaint: ""The student was not afforded the right to counsel at the appeal of the 37H hearing.""  In the box below, describe what happened.  How did the superintendent prevent the attorney from coming to the meeting?",
-81,Process,Flowchart Shapes,2,,,,,,,,"You identified that the superintendent relied on the principal's decision instead of having a new hearing from the beginning.  This langauge will identify that in your complaint: ""The superintendent did not review the principal's decision to expel the student under 37H de novo, the standard of review required by 37H.""  In the box below, describe what happened at the hearing. ",
-82,Process,Flowchart Shapes,2,,,,,,,,"You identified that the student didn't get to tell their side of the story and present evidence and witnesses at the appeal.  This language will identify that in your complaint: ""The superintendent failed to conduct an appropriate appeal of an expulsion hearing pursuant to 37H.  In the box below, describe what happened at the hearing. ",
-83,Process,Flowchart Shapes,2,,,,,,,,"Right to Continue Education  Next, we're going to go through the student's right to continue their education while they're out of school.  The student has the right to continue doing work and earning credits while they're out of school.    When the school decided to suspend or expel the student, did the school tell you that would the student be able to continue earning credits?  ",
-84,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the school's communication.  We'll ask more questions about that at the end of this section. ,
-85,Process,Flowchart Shapes,2,,,,,,,,"Students who are suspended for more than 10 days also have the right to get alternative education services.    Pop up: What does that mean? inside the pop up: ""alternative education services"" are options like tutoring, placement at a different school, Saturday school, or online learning, that a school offers to help a student continue their education while they're out of school.  When the school decides to suspend or expel a student, they have to tell you about the student's right to education services in a letter or email (not over the phone or in person).  Did the school send you a letter or email that told you the student could get education services? ",
-86,Process,Flowchart Shapes,2,,,,,,,,"The letter or email has to be in English and in your primary language, if your primary language isn't English.    Did the school send the letter or email in English and in your primary language?   (Yes/N/My primary language is English)",
-87,Process,Flowchart Shapes,2,,,,,,,,The school has to provide at least two options for alternative education services.    Did the letter include at least two alternative education services that the student could choose from?  ,
-88,Process,Flowchart Shapes,2,,,,,,,,Did the student choose an alternative education service option? ,
-89,Process,Flowchart Shapes,2,,,,,,,,"Was the student able to enroll in the option they chose?   pop up: What does this mean?  inside the pop up: the school district has to make sure the student is able to actually start doing the education service they choose.  For example, if the school offered tutoring as an education service, and the student chooses tutoring, the District has to make sure that the student knows how to sign up for tutoring.",
-90,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the the student's academic progress during the suspension.  We'll ask more questions about that at the end of this section. ,
-91,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the school's communication.  We'll ask more questions about that at the end of this section. ,
-92,Process,Flowchart Shapes,2,,,,,,,,You identified a problem.  We'll ask more questions about that at the end of this section. ,
-93,Process,Flowchart Shapes,2,,,,,,,,You identified a problem.  We'll ask more questions about that at the end of this section. ,
-94,Process,Flowchart Shapes,2,,,,,,,,Plain language: You identified that the school didn't tell the student they would be able to continue earning credits while they were out of school.    Legal Language:  “The School District failed to notify the student and parent of the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H.”   Prompts: Explain what happened.    pop up: what should I include:  Inside: Did the student ever find out that they would be able to earn credits? Did the student miss any opportunities to earn credits becuase they didn't know about them?,
-95,Process,Flowchart Shapes,2,,,,,,,,Plain language: You identified that the student wasn't able to make progress in their education while they were out of school.  Legal Language:  “The School District failed to give the student the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H.”   Prompts: Explain in detail why the student wasn't able to do work and earn credits in the box below.,
-96,Process,Flowchart Shapes,2,,,,,,,,Has the student actually been able to complete work and earn credits while out of school? ,
-97,Process,Flowchart Shapes,2,,,,,,,,"Plain language: You identified that the school didn't send you a letter or email to tell you that the student could get education services while they're out of school.  Legal Language:  “The principal failed to notify the student and parent about the student's right to alternative education services while the student was out of school due to discipline issued pursuant to 37H.  603 CMR 53.13(4)(a) requires that the principal notify the student and the parent of the opportunity to receive education services at the time the student is expelled or placed on long-term suspension.”   Prompts: In the box below, explain what happened in detail.    Pop up: what should I include:  Inside the pop up: Did you ever find out about education services? What happened because the school didn't tell you about them? ",
-98,Process,Flowchart Shapes,2,,,,,,,,"Plain language: You identified that the school didn't send the letter about alternative education services in your primary language.  Legal Language:  “The School District failed to give the student the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H. 603 CMR 53.13(4)(a) requires that the principal send notice of the opportunity to receive education services in English and in the primary language of the home.""  Prompts: Explain what happened, when you got the notice in the wrong language, and include what your primary language is. ",
-99,Process,Flowchart Shapes,2,,,,,,,,"Plain language: You identified that the school didn't give the student at least two educational services to choose from.    Legal Language:  ""The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H did not include a list of the specific education services available to the student, as is required by 603 CMR 53.13(4)(a)""  Prompts: Explain what was in the notice, and what happened because the required information was missing.",
-100,Process,Flowchart Shapes,2,,,,,,,,Did the letter about the education services tell the student who to contact if they had questions about the services? ,
-101,Process,Flowchart Shapes,2,,,,,,,,You identified a problem.  We'll ask more questions about that at the end of this section. ,
-102,Process,Flowchart Shapes,2,,,,,,,,"Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services.  Legal Language:  ""The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H did not include contact information for a school district staff member who could provide more detailed information about the services,as is required by 603 CMR 53.13(4)(a)""  Prompts: Explain what happened because the required information was missing.  If the student had questions, or didn't understand what the school meant by ""alternative education services,"" include that information.",
-103,Process,Flowchart Shapes,2,,,,,,,,"Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services.  Legal Language:  ""The principal failed to arrange for the education service that the student selected. 603 CMR 53.13 requires that the school-wide education service plan contain the process for arranding for such services.""  Prompts: Explain in detail why the student wasn't able to start the academic services.  ",
-104,Process,Flowchart Shapes,2,,,,,,,,"Those are all the requirements for the academic progress and education services..  If they've identified any concerns: You identified problem(s) related to the appeal.  Do you want to include those concerns in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-105,Process,Flowchart Shapes,2,,,,,,,,END OF SECTION PAGE,
-106,PDA,Cisco Network Icons,2,,,,,,,,,
-107,PDA,Cisco Network Icons,2,,,,,,,,,
-108,PDA,Cisco Network Icons,2,,,,,,,,,
-109,PDA,Cisco Network Icons,2,,,,,,,,,
-110,PDA,Cisco Network Icons,2,,,,,,,,,
-111,PDA,Cisco Network Icons,2,,,,,,,,,
-112,PDA,Cisco Network Icons,2,,,,,,,,,
-113,Process,Flowchart Shapes,2,,,,,,,,"This might not be the ride guide for you. Try one of the other guides, or call the Edlaw helpline if you're not sure what guide is best for you.",
-114,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section.",
-115,Sticky Note,Standard,2,,,,,,,,when do they find out about the right to appeal? should there be an option for if they didn't know they could?   If they're within the ten days should they call the helpline? Request the appeal? Is there a sample letter to link to?,
-116,Process,Flowchart Shapes,2,,,,,,,,Process,
-117,Note,Sticky Notes,2,,,,,,,,"not sure what to put here -- should there be a section where they can describe why not, or should we just skip the rest of this section?",
-118,Process,Flowchart Shapes,2,,,,,,,,"Did the school tell you that the student could receive services at all, even if it wasn't in a letter?",
-119,Process,Flowchart Shapes,2,,,,,,,,You identified that the school never told you that the student could receive alternative education services.  Would you like to include that in your complaint? ,
-120,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section.",
-121,Process,Flowchart Shapes,2,,,,,,,,"You identified that the school never told you that the student could receive alternative education services.  Would you like to include that in your complaint?   This language will identify that concern in your complaint: “The principal failed to notify the student and parent about the student's right to alternative education services while the student was out of school due to discipline issued pursuant to 37H.  603 CMR 53.13(4)(a) requires that the principal notify the student and the parent of the opportunity to receive education services at the time the student is expelled or placed on long-term suspension.”   In the box below, add details about what happened, and what the student is doing without the services.",
-122,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the school's communication about the services.  We'll ask more about that at the end of this section.,
-123,Process,Flowchart Shapes,2,,,,,,,,Does the student have a disability that the school knows about?  Pop up: What does this mean? Inside the pop up: the student has a disability that the school knows about if any of these apply to the student:  - they get special education services through an IEP or 504 plan  - someone has requested that the school do a special education evaluation for the student,
-124,Process,Flowchart Shapes,2,,,,,,,,MDR,
-125,Process,Flowchart Shapes,2,,,,,,,,END OF CONCERNS SECTION PAGE,
-126,Note,Sticky Notes,2,,,,,,,,Is there anything else that makes the school know?,
-127,Process,Flowchart Shapes,2,,,,,,,,"CAN WE DIVIDE THIS INTO MULTIPLE DIFFERENT BOXES?
-You said the school is not accusing the student of brining drugs to school. Is the school accusing the student of brining:
-                                                             1.Alcohol or tobacco to school?
-2.Something else?
-                                                                 2. Something else --> add call helping
-                                                          Alcohol/ tobacco -->  
-You said that the school is trying to expel the student because they are accusing them of bringing tobacco or alcohol to school. This is illegal and we recommend that you include it in your complaint. Would you like to include that in your complaint?",
-128,Process,Flowchart Shapes,2,,,,,,,,"You said that the school is trying to punish the student for bringing ""drugs"" to school, but what the student had was alcohol.    We recommend you include this paragraph in your complaint:  “The school is saying that they are disciplining the student for bringing drugs to school. However, the substance that they are accusing the student of bringing to school is alochol, which is not defined as a drug by MGL c.37H.  Therefore the school is improperly discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.”  In the box below, explain what happened.                      ADD: Is the school trying to expel the student? We recommend that you call the Edlaw project intake line for help! 617-910-5829. ",
-129,Process,Flowchart Shapes,2,,,,,,,,Is the school accusing the student of bringing alcohol or tobacco to school?  (options: alcohol/tobacco)              NEW BOX                                             Is the school trying to expel the student?,
-130,Process,Flowchart Shapes,2,,,,,,,,"You said that the school is trying to punish the student for bringing ""drugs"" to school, but what the student had was tobacco.    We recommend you include this paragraph in your complaint:  “The school is saying that they are disciplining the student for bringing drugs to school. However, the substance that they are accusing the student of bringing to school is tobacco, which is not defined as a drug by MGL c.37H.  Therefore the school is improperly discipline the student under 37H for alleged conduct that doesn’t fall within the offenses in 71 MGL s.37H.”  In the box below, explain what happened.                         ADD: Is the school trying to expel the student? We recommend that you call the Edlaw project helping for help! 617-910-5829. ADD HELPLINE BOX  ",
-131,Note,Sticky Notes,2,,,,,,,,Text,
-132,Note,Sticky Notes,2,,,,,,,,Text,
-133,Note,Sticky Notes,2,,,,,,,,Text,
-134,Note,Sticky Notes,2,,,,,,,,Text,
-135,Note,Sticky Notes,2,,,,,,,,Hello!,
-136,Sticky Note,Standard,2,,,,,,,,"It's before they can exclude? or is there a time limit? THIS IS A DEBATE BECAUSE THERE IS NO EMERGENCY REMOVAL FOR 37H, BUT WE WOULD SAY IT IS BEFORE THEY CAN EXCLUDE. ",
-137,Sticky Note,Standard,2,,,,,,,,"Is there notice of decision? we would say yes, although it's not in the statute? Marlies?",
-138,Note,Sticky Notes,2,,,,,,,,Text,
-139,Sticky Note,Standard,2,,,,,,,,"is there actually a definition? if not, is this the approach we want to use? can you figure out how to make the ""I swing my hand at your face"" sentence less ridiculous?  Question 7 in the old disciplinary advisory addresses this.  7. What is an ""assault?""
-Black's Law Dictionary(revised 4th edition) defines ""assault"" to mean ""an intentional, unlawful offer of corporal injury to another by force, or force unlawfully directed toward person of another,under such circumstances as create well-founded fear of imminent peril, coupled with apparent present ability to execute attempt, if not prevented."" [Emphasis added.] Because the potential penalty (expulsion from school) is so serious, we believe courts are likely to interpret the term in Section 37H(a) strictly, requiring either an actual physical assault, or at least a threat accompanied by the means to carry it out, in circumstances that create a reasonable fear of imminent danger.",
-140,Note,Sticky Notes,2,,,,,,,,orange sends them to the next section without the blue pages,
-141,Process,Flowchart Shapes,2,,,,,,,,I			                     We recommend that you call the EdLaw Project help-line at 617-910-5829 for help.,
-142,PDA,Cisco Network Icons,2,,,,,,,,,
-143,Text,Standard,2,,,,,,,,Is the school trying to expel the student?,
-144,Process,Flowchart Shapes,2,,,,,,,,We recommend that you call the EdLaw Project help-line at 617-910-5829 for help.,
-145,PDA,Cisco Network Icons,2,,,,,,,,,
-146,Text,Standard,2,,,,,,,,Is the school trying to expel the student?,
-147,Note,Sticky Notes,2,,,,,,,,End of section review page vs. one at a time?,
-148,Text,Standard,2,,,,,,,,Was the hearing recorded?,
-149,Text,Standard,2,,,,,,,,You identified a problem with the hearing.  We'll ask more about that at the end of this section.,
-150,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the hearing.  We'll ask more questions about that at the end of this section.,
-151,Process,Flowchart Shapes,2,,,,,,,,"Plain Language: you identified that the hearing wasn't recorded.  Legal language: The school district did not record the hearing WHERE DOES IT SAY THEY HAVE TO  RECORD IT?  Prompt questions:  In the box below, describe what happened.  If you asked them to record the hearing and they refused, include that. ",
-152,Sticky Note,Standard,2,,,,,,,,do you want them to include this themselves or call? ,
-153,Line,,2,,,5,3,None,Arrow,,discipline,
-154,Line,,2,,,3,7,None,Arrow,,No,
-155,Line,,2,,,4,8,None,Arrow,,weapon,
-156,Line,,2,,,3,4,None,Arrow,,yes,
-157,Line,,2,,,8,9,None,Arrow,,Next,
-158,Line,,2,,,9,10,None,Arrow,,No/I don't know,
-159,Line,,2,,,9,12,None,Arrow,,Yes,
-160,Line,,2,,,12,11,None,Arrow,,"Yes, but...",
-161,Line,,2,,,12,13,None,Arrow,,No,
-162,Line,,2,,,11,14,None,Arrow,,Yes,
-163,Line,,2,,,4,15,None,Arrow,,Drugs,
-164,Line,,2,,,15,16,None,Arrow,,next,
-165,Line,,2,,,16,17,None,Arrow,,No,
-166,Line,,2,,,16,18,None,Arrow,,Yes,
-167,Line,,2,,,18,20,None,Arrow,,Yes,
-168,Line,,2,,,4,21,None,Arrow,,Assaulting educational staff,
-169,Line,,2,,,4,22,None,Arrow,,felony or school rule,
-170,Line,,2,,,21,23,None,Arrow,,next,
-171,Line,,2,,,23,24,None,Arrow,,No,
-172,Line,,2,,,23,25,None,Arrow,,Yes,
-173,Line,,2,,,25,26,None,Arrow,, No or not sure,
-174,Line,,2,,,25,27,None,Arrow,,police,
-175,Line,,2,,,11,28,None,Arrow,,No,
-176,Line,,2,,,27,29,None,Arrow,,yes,
-177,Line,,2,,,27,30,None,Arrow,,No,
-178,Line,,2,,,28,31,None,Arrow,,next,
-179,Line,,2,,,30,31,None,Arrow,,,
-180,Line,,2,,,20,31,None,Arrow,,,
-181,Line,,2,,,31,32,None,Arrow,,No,
-182,Line,,2,,,32,33,None,Arrow,,No,
-183,Line,,2,,,31,35,None,Arrow,,Yes,
-184,Line,,2,,,32,34,None,Arrow,,yes,
-185,Line,,2,,,35,36,None,Arrow,,Next,
-186,Line,,2,,,36,37,None,Arrow,,Yes,
-187,Line,,2,,,36,38,None,Arrow,,,
-188,Line,,2,,,38,37,None,Arrow,,next,
-189,Line,,2,,,37,39,None,Arrow,,No,
-190,Line,,2,,,37,40,None,Arrow,,yes,
-191,Line,,2,,,40,41,None,Arrow,,Yes,
-192,Line,,2,,,38,42,None,Measure,,,
-193,Line,,2,,,39,43,None,Measure,,,
-194,Line,,2,,,41,44,None,Arrow,,Next,
-195,Line,,2,,,44,45,None,Arrow,,No,
-196,Line,,2,,,45,46,None,Arrow,,Yes,
-197,Line,,2,,,45,47,None,Arrow,,No,
-198,Line,,2,,,33,44,None,Arrow,,,
-199,Line,,2,,,44,48,None,Arrow,,Yes,
-200,Line,,2,,,48,49,None,Arrow,,Yes,
-201,Line,,2,,,49,50,None,Arrow,,No,
-202,Line,,2,,,48,51,None,Arrow,,No,
-203,Line,,2,,,50,51,None,Arrow,,Next,
-204,Line,,2,,,49,51,None,Arrow,,yes,
-205,Line,,2,,,51,150,None,Arrow,,No,
-206,Line,,2,,,51,52,None,Arrow,,Yes,
-207,Line,,2,,,52,53,None,Arrow,,Yes,
-208,Line,,2,,,50,54,None,Measure,,,
-209,Line,,2,,,150,56,None,Measure,,,
-210,Line,,2,,,53,57,None,Measure,,,
-211,Line,,2,,,52,148,None,Arrow,,No,
-212,Line,,2,,,58,59,None,Arrow,,yes,
-213,Line,,2,,,58,60,None,Arrow,,no,
-214,Line,,2,,,59,61,None,Arrow,,,
-215,Line,,2,,,61,62,None,Arrow,,Yes,
-216,Line,,2,,,62,63,None,Arrow,,,
-217,Line,,2,,,63,64,None,Arrow,,Yes,
-218,Line,,2,,,64,66,None,Arrow,,Yes,
-219,Line,,2,,,66,67,None,Arrow,,Yes,
-220,Line,,2,,,67,68,None,Arrow,,Yes,
-221,Line,,2,,,66,68,None,Arrow,,No,
-222,Line,,2,,,68,69,None,Arrow,,No,
-223,Line,,2,,,69,71,None,Arrow,,"No, but",
-224,Line,,2,,,69,70,None,Arrow,,Yes,
-225,Line,,2,,,68,72,None,Arrow,,Yes ,
-226,Line,,2,,,72,73,None,Arrow,,Yes,
-227,Line,,2,,,62,74,None,Arrow,,No,
-228,Line,,2,,,64,75,None,Arrow,,No,
-229,Line,,2,,,67,76,None,Arrow,,,
-230,Line,,2,,,63,77,None,Arrow,,No,
-231,Line,,2,,,77,78,None,Arrow,,Yes,
-232,Line,,2,,,75,79,None,Measure,,,
-233,Line,,2,,,76,80,None,Measure,,,
-234,Line,,2,,,70,81,None,Measure,,,
-235,Line,,2,,,71,82,None,Measure,,,
-236,Line,,2,,,71,72,None,Arrow,,Next,
-237,Line,,2,,,14,31,None,Arrow,,Next,
-238,Line,,2,,,34,44,None,Arrow,,,
-239,Line,,2,,,73,83,None,Arrow,,Next,
-240,Line,,2,,,83,84,None,Arrow,,No,
-241,Line,,2,,,85,86,None,Arrow,,Yes,
-242,Line,,2,,,86,87,None,Arrow,,yes,
-243,Line,,2,,,87,100,None,Arrow,,Yes,
-244,Line,,2,,,88,89,None,Arrow,,Yes,
-245,Line,,2,,,86,91,None,Arrow,,no,
-246,Line,,2,,,87,92,None,Arrow,,No,
-247,Line,,2,,,89,93,None,Arrow,,No,
-248,Line,,2,,,84,94,None,Measure,,,
-249,Line,,2,,,90,95,None,Measure,,,
-250,Line,,2,,,83,96,None,Arrow,,,
-251,Line,,2,,,96,90,None,Arrow,,no,
-252,Line,,2,,,96,85,None,Arrow,,yes,
-253,Line,,2,,,85,118,None,Arrow,,no,
-254,Line,,2,,,86,87,None,Arrow,,My primary...,
-255,Line,,2,,,122,97,None,Measure,,,
-256,Line,,2,,,91,98,None,Measure,,,
-257,Line,,2,,,92,99,None,Measure,,,
-258,Line,,2,,,100,88,None,Arrow,,yes,
-259,Line,,2,,,100,101,None,Arrow,,No,
-260,Line,,2,,,101,102,None,Measure,,,
-261,Line,,2,,,93,103,None,Arrow,,no,
-262,Line,,2,,,92,100,None,Arrow,,,
-263,Line,,2,,,91,87,None,Arrow,,,
-264,Line,,2,,,101,88,None,Arrow,,,
-265,Line,,2,,,89,104,None,Arrow,,Yes,
-266,Line,,2,,,104,105,None,Arrow,,Yes,
-267,Line,,2,,,88,104,None,Arrow,,no,
-268,Line,,2,,,7,113,None,Arrow,,,
-269,Line,,2,,,40,114,None,Arrow,,,
-270,Line,,2,,,114,44,None,Arrow,,next,
-271,Line,,2,,,60,61,None,Arrow,,,
-272,Line,,2,,,74,116,None,Arrow,,No,
-273,Line,,2,,,119,120,None,Arrow,,No,
-274,Line,,2,,,119,121,None,Arrow,,,
-275,Line,,2,,,118,122,None,Arrow,,Yes,
-276,Line,,2,,,118,119,None,Arrow,,No,
-277,Line,,2,,,122,88,None,Arrow,,Next,
-278,Line,,2,,,105,123,None,Arrow,,next,
-279,Line,,2,,,123,124,None,Arrow,,Yes,
-280,Line,,2,,,123,125,None,Arrow,,No,
-281,Line,,2,,,7,4,None,Measure,,yes,
-282,Line,,2,,,127,129,None,Arrow,,Yes,
-283,Line,,2,,,129,128,None,Arrow,,Alcohol,
-284,Line,,2,,,129,130,None,Arrow,,Tobacco,
-285,Line,,2,,,130,143,None,Arrow,,Next,
-286,Line,,2,,,128,143,None,Arrow,,Next,
-287,Line,,2,,,16,17,None,Arrow,,I Don't Know,
-288,Line,,2,,,18,129,None,Arrow,,No,
-289,Line,,2,,,18,19,None,Arrow,,,
-290,Line,,2,,,143,141,None,Arrow,,Yes,
-291,Line,,2,,,143,31,None,Arrow,,No,
-292,Line,,2,,,29,146,None,Arrow,,Next,
-293,Line,,2,,,146,144,None,Arrow,,Yes,
-294,Line,,2,,,146,31,None,Arrow,,No,
-295,Line,,2,,,148,149,None,Arrow,,No,
-296,Line,,2,,,148,58,None,Arrow,,Yes,
-297,Line,,2,,,149,151,None,Measure,,,
-298,Line,,2,,,47,61,None,Measure,,,
-299,Page,,,,,,,,,,37H1/2,
-300,Process,Flowchart Shapes,299,,,,,,,,Has the student already been suspended or expelled?,
-301,Process,Flowchart Shapes,299,,,,,,,,"Was the student being disciplined for (1) breaking a school rule, (2) bringing a weapon to school, (3) bringing drugs to school, (3) assaulting school staff, (4) an interaction with the court system?",
-302,Process,Flowchart Shapes,299,,,,,,,,"Are your concerns about discipline, special education, or bullying?",
-303,Process,Flowchart Shapes,299,,,,,,,,The user has already identified that they're the student's parent.,
-304,Text,Standard,299,,,,,,,,"The school can decide to suspend or expel a student because of a felony complaint or adjudication that's unrelated to school.    The suspension or expulsion doesn't happen automatically because of the felony.  The principal has to decide to exclude the student from school, and the student has rights during the process.  We're going to go through some questions about the student's rights and the process the school has to follow.  Please note that the complaint has to be a felony, it can't be any other type of delinquency charge.  If the school is trying to exclude a student because of an interaction with the court system that doesn't involve a felony, call the EdLaw project intake line at...",
-305,Process,Flowchart Shapes,299,,,,,,,,"Notice  The principal has to tell the student that they're deciding to suspend or expel them in a letter or email.  The letter or email is called ""notice.""   Did the school give the student ""notice""?",
-306,Process,Flowchart Shapes,299,,,,,,,,The student has to get the notice before they're suspended or expelled.  The student has the right to stay in school until they get the notice.  Did the student get the notice before they were suspended or expelled?,
-307,Process,Flowchart Shapes,299,,,,,,,,"The notice has to explain why they're suspending or expelling the student.  First, it has to say what the felony charge is.    Did the notice include a description of the felony charge? ",
-308,Process,Flowchart Shapes,299,,,,,,,,"The notice has to explain why the principal decided to suspend or expel the student becuase of the charge.  The principal can only exclude the student if they decide that the student's presence in school will have a negative effect on the rest of the students.  Did the notice explain why the principal decided to suspend or expel the student, separate from saying what the felony charge was? ",
-309,Sticky Note,Standard,299,,,,,,,,"Statute says ""written notification of the charges and the reasons for suspension,"" not sure if this is what that means. ",
-310,Process,Flowchart Shapes,299,,,,,,,,"The notice has to tell the student that they have the right to appeal the principal's decision to the superintendent.  Did the notice tell the student about their right to appeal?   Please note: The school has to tell the student about their right to appeal the decision, but it doesn't have to be in the same notice.   They can send a seperate letter or email about the student's right to appeal.",
-311,Process,Flowchart Shapes,299,,,,,,,,"The notice has to tell the student that they that they have to request the appeal within 5 days (calendar days, not school days) of the start of the suspension.    Did the notice tell the student that they had to request the appeal within 5 days?",
-312,Process,Flowchart Shapes,299,,,,,,,,You identified that the school didn't send a letter or email to tell the student that they wouldn't be allowed to come to school.  Do you want to include that in your complaint?,
-313,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the notice.  We'll ask more questions about that at the end of this section. ,
-314,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the notice.  We'll ask more questions about that at the end of this section. ,
-315,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the notice.  We'll ask more questions about that at the end of this section. ,
-316,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the notice.  We'll ask more questions about that at the end of this section. ,
-317,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the notice.  We'll ask more questions about that at the end of this section. ,
-318,PDA,Cisco Network Icons,299,,,,,,,,,
-319,Process,Flowchart Shapes,299,,,,,,,,"Those are all the notice requirements.  If they've identified any concerns: You identified problems(s) related to the appeal.  Do you want to include those concerns in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-320,Process,Flowchart Shapes,299,,,,,,,,END OF SECTION PAGE,
-321,Process,Flowchart Shapes,299,,,,,,,,"You identified that the school didn't send a letter or email to tell the student that they wouldn't be allowed to come to school.  This language will identify that in your complaint: “The Principal didn’t provide the notice required by MGL 71 s.37H½ to a student being excluded from school following a felony complaint.”  In the box below, desrcibe what happened in detail.",
-322,Process,Flowchart Shapes,299,,,,,,,,"Plain language: you identified that the student didn't get the notice before they were suspended or expelled.    Legal language: The student did not receive notice prior to their suspension taking affect pursuant to MGL c.71 s.37H1/2.  Prompts: In the box below, describe what happened in detail.",
-323,Process,Flowchart Shapes,299,,,,,,,,"Plain language: you identified that the notice didn't include a desrciption of the felony charge.    Legal language: The notice of suspension did not include a desrciption of the charge as required by MGL c71 s37H1/2.  Prompts: in the box below, add any relevant details.",
-324,Process,Flowchart Shapes,299,,,,,,,,"Plain language: you identified that the notice didn't explain why the principal decided to suspend or expel the student.   Legal language: The notice of suspension did not include the reasons for the suspension as required by MGL c71 s37H1/2.  Prompts: In the box below, add any relevant details.",
-325,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the notice didn't tell the student that they have the right to appeal the principal's decision.  Legal language: The student was not notified of their right to appeal the principal's decision to exclude them from school pursuant to MGL c71 s37H1/2.  Prompts: In the box below, add any relevant details.  If you did not appeal the decision because you didn't know you could, include that information.",
-326,Sticky Note,Standard,299,,,,,,,,Do we need that note/is that true? ,
-327,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the notice didn't tell the student that they have the right to appeal the principal's decision.  Legal language: The student was not notified of the process of appealing the principal's decision to exclude them from school pursuant to MGL c71 s37H1/2, including the requirement that they request the appeal within five days.  Prompts: In the box below, add any relevant details.  If you did not appeal the decision within the 5 day time limit because you didn't know you had to, include that information.",
-328,Sticky Note,Standard,299,,,,,,,,"Do we want questions about not expelling them until there's an adjudication?  If so, expelled means over 90 days (603 CMR 53.02) but here it can be indefinite? Does expelled mean permanent in this context?  Are there two hearings and appeals?",
-329,Process,Flowchart Shapes,299,,,,,,,,Appeal  Did the student request an appeal with the superintendent? ,
-330,Process,Flowchart Shapes,299,,,,,,,,"Would you like to include any reasons why the student didn't request the appeal that we didn't already cover in the notice section?   For example, if the student didn't know how, or if the student thought the suspension was automatic because of the felony, you could desribe those concerns.  ",
-331,Process,Flowchart Shapes,299,,,,,,,,"Okay, we'll move on to the next section.",
-332,Sticky Note,Standard,299,,,,,,,,"How to include hearing? If they don't request one should the school still have had one, or is it only if you request it? Are there requirements for what happens at the hearing?",
-333,Process,Flowchart Shapes,299,,,,,,,,"You identified that the student wasn't able to appeal the principal's decision to the superintendent.  This language will identify that concern in your complaint: The student was not afforded their right to appeal the principal's decision to exclude them from school to the superintendent pursuant to MGL c71 s37H.  In the box below, describe in detail what prevented the student from appealing the principal's decision.  ",
-334,Process,Flowchart Shapes,299,,,,,,,,The superintendent has to have the appeal within 3 days of the student's request.    Did the superintendent have the appeal within 3 days?,
-335,Process,Flowchart Shapes,299,,,,,,,,The superintendent has to invite you to the appeal.    Did the superintendent invite you to the appeal?,
-336,Process,Flowchart Shapes,299,,,,,,,,"Now we're going to go through some questions about what has to happen at the appeal.    The student has the right to present testimony at the appeal, meaning they can have someone else support their side of the story at the appeal. The person can come and speak at the appeal, or the person can write a letter for the Superintendent to read at the appeal.  Did the student get to present  testimony at the appeal? ",
-337,Process,Flowchart Shapes,299,,,,,,,,"The student has the right to bring an attorney to the meeting, if their family pays for it.",
-338,Process,Flowchart Shapes,299,,,,,,,,Did anything else happen at the appeal to prevent the student from getting to explain why the suspension should be overturned?,
-339,Process,Flowchart Shapes,299,,,,,,,,"Those are all the requirements for the appeal.  If they've identified any concerns: You identified problem(s) related to the appeal.  Do you want to include those concerns in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-340,Process,Flowchart Shapes,299,,,,,,,,END OF SECTION PAGE,
-341,Process,Flowchart Shapes,299,,,,,,,,Is the school thinking about suspending or expelling the student?,
-342,Process,Flowchart Shapes,299,,,,,,,,This guide doesn't apply to you (better wording),
-343,Note,Sticky Notes,299,,,,,,,,not sure if the last paragraph is necessary?,
-344,Process,Flowchart Shapes,299,,,,,,,,"Okay, we'll move on to the next section.",
-345,Process,Flowchart Shapes,299,,,,,,,,"Right to Continue Education  Next, we're going to go through the student's right to continue their education while they're out of school.  The student has the right to continue doing work and earning credits while they're out of school.    When the school decided to suspend or expel the student, did the school tell you that would the student be able to continue earning credits?  ",
-346,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the school's communication.  We'll ask more questions about that at the end of this section. ,
-347,Process,Flowchart Shapes,299,,,,,,,,"Students who are suspended for more than 10 days also have the right to get alternative education services.    Pop up: What does that mean? inside the pop up: ""alternative education services"" are options like tutoring, placement at a different school, Saturday school, or online learning, that a school offers to help a student continue their education while they're out of school.  When the school decides to suspend or expel a student, they have to tell you about the student's right to education services in a letter or email (not over the phone or in person).  Did the school send you a letter or email that told you the student could get education services? ",
-348,Process,Flowchart Shapes,299,,,,,,,,"The letter or email has to be in English and in your primary language, if your primary language isn't English.    Did the school send the letter or email in English and in your primary language?   (Yes/N/My primary language is English)",
-349,Process,Flowchart Shapes,299,,,,,,,,The school has to provide at least two options for alternative education services.    Did the letter include at least two alternative education services that the student could choose from?  ,
-350,Process,Flowchart Shapes,299,,,,,,,,Did the student choose an alternative education service option? ,
-351,Process,Flowchart Shapes,299,,,,,,,,"Was the student able to enroll in the option they chose?   pop up: What does this mean?  inside the pop up: the school district has to make sure the student is able to actually start doing the education service they choose.  For example, if the school offered tutoring as an education service, and the student chooses tutoring, the District has to make sure that the student knows how to sign up for tutoring.",
-352,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the the student's academic progress during the suspension.  We'll ask more questions about that at the end of this section. ,
-353,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the school's communication.  We'll ask more questions about that at the end of this section. ,
-354,Process,Flowchart Shapes,299,,,,,,,,You identified a problem.  We'll ask more questions about that at the end of this section. ,
-355,Process,Flowchart Shapes,299,,,,,,,,You identified a problem.  We'll ask more questions about that at the end of this section. ,
-356,Process,Flowchart Shapes,299,,,,,,,,Plain language: You identified that the school didn't tell the student they would be able to continue earning credits while they were out of school.    Legal Language:  “The School District failed to notify the student and parent of the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H1/2.”   Prompts: Explain what happened.    pop up: what should I include:  Inside: Did the student ever find out that they would be able to earn credits? Did the student miss any opportunities to earn credits becuase they didn't know about them?,
-357,Process,Flowchart Shapes,299,,,,,,,,Plain language: You identified that the student wasn't able to make progress in their education while they were out of school.  Legal Language:  “The School District failed to give the student the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H1/2.”   Prompts: Explain in detail why the student wasn't able to do work and earn credits in the box below.,
-358,Process,Flowchart Shapes,299,,,,,,,,Has the student actually been able to complete work and earn credits while out of school? ,
-359,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the school didn't send you a letter or email to tell you that the student could get education services while they're out of school.  Legal Language:  “The principal failed to notify the student and parent about the student's right to alternative education services while the student was out of school due to discipline issued pursuant to 37H1/2.  603 CMR 53.13(4)(a) requires that the principal notify the student and the parent of the opportunity to receive education services at the time the student is expelled or placed on long-term suspension.”   Prompts: In the box below, explain what happened in detail.    Pop up: what should I include:  Inside the pop up: Did you ever find out about education services? What happened because the school didn't tell you about them? ",
-360,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the school didn't send the letter about alternative education services in your primary language.  Legal Language:  “The School District failed to give the student the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H1/2. 603 CMR 53.13(4)(a) requires that the principal send notice of the opportunity to receive education services in English and in the primary language of the home.""  Prompts: Explain what happened, when you got the notice in the wrong language, and include what your primary language is. ",
-361,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the school didn't give the student at least two educational services to choose from.    Legal Language:  ""The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H1/2 did not include a list of the specific education services available to the student, as is required by 603 CMR 53.13(4)(a)""  Prompts: Explain what was in the notice, and what happened because the required information was missing.",
-362,Process,Flowchart Shapes,299,,,,,,,,Did the letter about the education services tell the student who to contact if they had questions about the services? ,
-363,Process,Flowchart Shapes,299,,,,,,,,You identified a problem.  We'll ask more questions about that at the end of this section. ,
-364,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services.  Legal Language:  ""The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H1/2 did not include contact information for a school district staff member who could provide more detailed information about the services,as is required by 603 CMR 53.13(4)(a)""  Prompts: Explain what happened because the required information was missing.  If the student had questions, or didn't understand what the school meant by ""alternative education services,"" include that information.",
-365,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services.  Legal Language:  ""The principal failed to arrange for the education service that the student selected. 603 CMR 53.13 requires that the school-wide education service plan contain the process for arranding for such services.""  Prompts: Explain in detail why the student wasn't able to start the academic services.  ",
-366,Process,Flowchart Shapes,299,,,,,,,,"Those are all the requirements for the academic progress and education services..  If they've identified any concerns: You identified problem(s) related to the appeal.  Do you want to include those concerns in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-367,Process,Flowchart Shapes,299,,,,,,,,END OF SECTION PAGE,
-368,Process,Flowchart Shapes,299,,,,,,,,"Did the school tell you that the student could receive services at all, even if it wasn't in a letter?",
-369,Process,Flowchart Shapes,299,,,,,,,,You identified that the school never told you that the student could receive alternative education services.  Would you like to include that in your complaint? ,
-370,Process,Flowchart Shapes,299,,,,,,,,"Okay, we'll move on to the next section.",
-371,Process,Flowchart Shapes,299,,,,,,,,"You identified that the school never told you that the student could receive alternative education services.  Would you like to include that in your complaint?   This language will identify that concern in your complaint: “The principal failed to notify the student and parent about the student's right to alternative education services while the student was out of school due to discipline issued pursuant to 37H1/2.  603 CMR 53.13(4)(a) requires that the principal notify the student and the parent of the opportunity to receive education services at the time the student is expelled or placed on long-term suspension.”   In the box below, add details about what happened, and what the student is doing without the services.",
-372,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the school's communication about the services.  We'll ask more about that at the end of this section.,
-373,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.,
-374,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.,
-375,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.,
-376,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.,
-377,Note,Sticky Notes,299,,,,,,,,"Do you think it's confusing to flip the y/n? if so, how would you rephrase this?",
-378,Process,Flowchart Shapes,299,,,,,,,,You identified a problem with the appeal.  We'll ask more questions about that at the end of this section.,
-379,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the student didn't get to present testimony at the appeal.    Legal language: The student wasn't afforded the right to present oral and written testimony at an appeal to the Superintendent pursuant to MGL c.71 s.37H1/2.  In the box below, describe why the student wasn't able to present the testimony at the appeal.",
-380,Note,Sticky Notes,299,,,,,,,,Oral and written testimony,
-381,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the superintendent didn't hold the appeal within three days.  Legal Language: The superintendent failed to hold a hearing within three calendar days of the student's request for an appeal pursuant to MGL c.71 s.37H1/2.  In the box below, add details.  Include how long the delay was, and describe what was happening with the student while you were waiting for the appeal.",
-382,Process,Flowchart Shapes,299,,,,,,,,Did the Superintendent ever have the appeal?,
-383,Process,Flowchart Shapes,299,,,,,,,,"You identified that the student requested an appeal, but the Superintendent never had the appeal.  This language will identify that concern in your complaint: The superintendent failed to hold a hearing on the student's request for an appeal pursuant to MGL c.71 s.37H1/2.  In the box below, desribe what happened.  Include any communication You had with the School District about the appeal.  Desrcibe what is happening with the student while you wait for the appeal.  ",
-384,Process,Flowchart Shapes,299,,,,,,,,"You identified that the student requested an appeal, but the superintendent never had the appeal.  Do you want to include that in your complaint?",
-385,Process,Flowchart Shapes,299,,,,,,,,"Okay, we'll move on to the next section.",
-386,Process,Flowchart Shapes,299,,,,,,,,"Plain language: You identified that the Superintendent didn't invite you to the appeal.  Legal Language: The superintendent failed to invite the student's parent to an appeal pursuant to MGL c.71 s.37H1/2  In the box below, explain what happened. If you didn't know about the appeal, or when it was being held, include that information.",
-387,Process,Flowchart Shapes,299,,,,,,,,Does the student have a disability that the school knows about?  Pop up: What does this mean? Inside the pop up: the student has a disability that the school knows about if any of these apply to the student:  - they get special education services through an IEP or 504 plan  - someone has requested that the school do a special education evaluation for the student,
-388,Process,Flowchart Shapes,299,,,,,,,,MDR,
-389,Process,Flowchart Shapes,299,,,,,,,,END OF CONCERNS SECTION PAGE,
-390,Note,Sticky Notes,299,,,,,,,,Is there anything else that makes the school know?,
-391,Note,Sticky Notes,299,,,,,,,,Text,
-392,Note,Sticky Notes,299,,,,,,,,Text,
-393,Note,Sticky Notes,299,,,,,,,,Text,
-394,Note,Sticky Notes,299,,,,,,,,Text,
-395,Note,Sticky Notes,299,,,,,,,,Text,
-396,Note,Sticky Notes,299,,,,,,,,Text,
-397,Line,,299,,,302,300,None,Arrow,,discipline,
-398,Line,,299,,,301,304,None,Arrow,,Court system,
-399,Line,,299,,,300,301,None,Arrow,,yes,
-400,Line,,299,,,305,306,None,Arrow,,Yes	,
-401,Line,,299,,,306,307,None,Arrow,,Yes,
-402,Line,,299,,,307,308,None,Arrow,,Yes,
-403,Line,,299,,,308,310,None,Arrow,,Yes,
-404,Line,,299,,,310,311,None,Arrow,,Yes,
-405,Line,,299,,,311,319,None,Arrow,,Yes,
-406,Line,,299,,,305,312,None,Arrow,,No,
-407,Line,,299,,,312,321,None,Arrow,,Yes,
-408,Line,,299,,,306,313,None,Arrow,,No,
-409,Line,,299,,,307,314,None,Arrow,,No,
-410,Line,,299,,,310,316,None,Arrow,,No,
-411,Line,,299,,,311,317,None,Arrow,,No,
-412,Line,,299,,,319,320,None,Arrow,,Yes,
-413,Line,,299,,,313,322,None,Measure,,,
-414,Line,,299,,,314,323,None,Measure,,,
-415,Line,,299,,,315,324,None,Measure,,,
-416,Line,,299,,,316,325,None,Measure,,,
-417,Line,,299,,,317,327,None,Measure,,,
-418,Line,,299,,,321,320,None,Arrow,,Next,
-419,Line,,299,,,313,307,None,Arrow,,Next,
-420,Line,,299,,,314,308,None,Arrow,,Next,
-421,Line,,299,,,315,310,None,Arrow,,next,
-422,Line,,299,,,316,311,None,Arrow,,Next,
-423,Line,,299,,,317,319,None,Arrow,,Next,
-424,Line,,299,,,304,305,None,Arrow,,next,
-425,Line,,299,,,320,329,None,Arrow,,,
-426,Line,,299,,,329,330,None,Arrow,,No,
-427,Line,,299,,,330,331,None,Arrow,,No,
-428,Line,,299,,,330,333,None,Arrow,,,
-429,Line,,299,,,329,334,None,Arrow,,yes,
-430,Line,,299,,,334,335,None,Arrow,,yes,
-431,Line,,299,,,335,336,None,Arrow,,yes,
-432,Line,,299,,,336,337,None,Arrow,,yes,
-433,Line,,299,,,337,338,None,Arrow,,yes,
-434,Line,,299,,,338,339,None,Arrow,,No,
-435,Line,,299,,,339,340,None,Arrow,,Yes,
-436,Line,,299,,,340,345,None,Arrow,,Next,
-437,Line,,299,,,300,341,None,Arrow,,No,
-438,Line,,299,,,341,342,None,Arrow,,No,
-439,Line,,299,,,312,344,None,Arrow,,No,
-440,Line,,299,,,308,315,None,Arrow,,No,
-441,Line,,299,,,345,346,None,Arrow,,No,
-442,Line,,299,,,347,348,None,Arrow,,Yes,
-443,Line,,299,,,348,349,None,Arrow,,yes,
-444,Line,,299,,,349,362,None,Arrow,,Yes,
-445,Line,,299,,,350,351,None,Arrow,,Yes,
-446,Line,,299,,,348,353,None,Arrow,,no,
-447,Line,,299,,,349,354,None,Arrow,,No,
-448,Line,,299,,,351,355,None,Arrow,,No,
-449,Line,,299,,,346,356,None,Measure,,,
-450,Line,,299,,,352,357,None,Measure,,,
-451,Line,,299,,,345,358,None,Arrow,,,
-452,Line,,299,,,358,352,None,Arrow,,no,
-453,Line,,299,,,358,347,None,Arrow,,yes,
-454,Line,,299,,,347,368,None,Arrow,,no,
-455,Line,,299,,,348,349,None,Arrow,,My primary...,
-456,Line,,299,,,372,359,None,Measure,,,
-457,Line,,299,,,353,360,None,Measure,,,
-458,Line,,299,,,354,361,None,Measure,,,
-459,Line,,299,,,362,350,None,Arrow,,yes,
-460,Line,,299,,,362,363,None,Arrow,,No,
-461,Line,,299,,,363,364,None,Measure,,,
-462,Line,,299,,,355,365,None,Arrow,,no,
-463,Line,,299,,,354,362,None,Arrow,,,
-464,Line,,299,,,353,349,None,Arrow,,,
-465,Line,,299,,,363,350,None,Arrow,,,
-466,Line,,299,,,351,366,None,Arrow,,Yes,
-467,Line,,299,,,366,367,None,Arrow,,Yes,
-468,Line,,299,,,350,366,None,Arrow,,no,
-469,Line,,299,,,369,370,None,Arrow,,No,
-470,Line,,299,,,369,371,None,Arrow,,,
-471,Line,,299,,,368,372,None,Arrow,,Yes,
-472,Line,,299,,,368,369,None,Arrow,,No,
-473,Line,,299,,,372,350,None,Arrow,,Next,
-474,Line,,299,,,338,376,None,Arrow,,yes,
-475,Line,,299,,,337,375,None,Arrow,,No,
-476,Line,,299,,,335,374,None,Arrow,,No,
-477,Line,,299,,,336,378,None,Arrow,,No,
-478,Line,,299,,,378,379,None,Measure,,,
-479,Line,,299,,,334,382,None,Arrow,,no,
-480,Line,,299,,,382,373,None,Arrow,,yes,
-481,Line,,299,,,382,384,None,Arrow,,No,
-482,Line,,299,,,384,383,None,Arrow,,Yes,
-483,Line,,299,,,384,385,None,Arrow,,No,
-484,Line,,299,,,373,381,None,Measure,,,
-485,Line,,299,,,374,386,None,Measure,,,
-486,Line,,299,,,374,336,None,Arrow,,Next,
-487,Line,,299,,,378,337,None,Arrow,,Next,
-488,Line,,299,,,376,339,None,Arrow,,Next,
-489,Line,,299,,,367,387,None,Arrow,,next,
-490,Line,,299,,,387,388,None,Arrow,,Yes,
-491,Line,,299,,,387,389,None,Arrow,,No,
-492,Page,,,,,,,,,,37H3/4 Combined,
-493,Process,Flowchart Shapes,492,,,,,,,,Was the student suspended or expelled?,
-494,Process,Flowchart Shapes,492,,,,,,,,"Was the student being disciplined for (1) breaking a school rule, (2) bringing a weapon to school, (3) bringing drugs to school, (3) assaulting school staff, (4) an interaction with the court system that is unrelated to school?",
-495,Process,Flowchart Shapes,492,,,,,,,,"We're going to walk through questions about a suspension for a code of conduct violation (breaking a school rule). Press next when you're ready to begin.  The school can't suspend a student for more than 90 days in one school year or expell the student for code of conduct violations.  If the school is trying to exclude the student for more than 90 days, or is trying to expel the student for something other than ... call the EdLaw Project intake line at ... instead of filling out this guide.",
-496,Process,Flowchart Shapes,492,,,,,,,,"Are your problems about discipline, special education, or bullying?",
-497,Process,Flowchart Shapes,492,,,,,,,,The user has already identified that they're the student's parent.,
-498,Process,Flowchart Shapes,492,,,,,,,,This guide doesn't apply to you (fix this language),
-499,Process,Flowchart Shapes,492,,,,,,,,Was the student suspended for longer than 10 days for this incident? ,
-500,Process,Flowchart Shapes,492,,,,,,,,Has the student been suspended for more than 10 days in total during this school year?,
-501,Process,Flowchart Shapes,492,,,,,,,,start short questions for short term,
-502,Process,Flowchart Shapes,492,,,,,,,,Is the school thinking about suspending or expelling the student?,
-503,Process,Flowchart Shapes,492,,,,,,,,Notice of a Suspension  The school is required to tell  you when they are thinking about suspending a student.  The communication with you about the potential suspension is called “notice.”  Did the school tell you that they were thinking of suspending the student?,
-504,Process,Flowchart Shapes,492,,,,,,,,You identified that the school didn't tell you when they were thinking about suspending the student.  Do you want to include that in your complaint.,
-505,Process,Flowchart Shapes,492,,,,,,,,"Okay, we'll move on to the next section.",
-506,Process,Flowchart Shapes,492,,,,,,,,"You identified that the school didn't tell you when they were thinking about suspending the student.    This language will identify that violation your complaint: 	
-“the school district failed to provide the notice required by 603 CMR 53.06 to the student and the parent prior to imposing a suspension as a consequence for a code of conduct violation.”  You can write more details about the violation in the box below.  You should include how you found out about the suspension, and anything that happened because the school didn't communicate with you about the suspension.  Press next when you're ready to move on to the next section.",
-507,Process,Flowchart Shapes,492,,,,,,,,"The notice has to follow certain requirements.  One of the requirements is that the school has to provide oral notice, meaning they have to call you or tell you about the suspension in person.    Did the school provide oral notice?",
-508,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-509,Process,Flowchart Shapes,492,,,,,,,,"Plain language: the school didn't call you or tell you about the suspension in person.  Legal Language: “The School District did not provide oral notice to the parent/guardian prior to implementing a suspension as a consequence for a code of conduct violation, pursuant to 603 CMR 53.06(1)”
-	 Prompts: In the box below, add details.  ",
-510,Process,Flowchart Shapes,492,,,,,,,,"The school also has to provide written notice, meaning they have to send a letter or an email.  Did the school provide written notice?",
-511,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-512,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The school didn't provide written notice of the suspension (a letter or email).  Legal Language: “The school district did not provide written notice to the parent/guardian prior to implementing a suspension as a consequence for a code of conduct violation, pursuant to 603 CMR 53.06(1)”  Prompts: In the box below, add details. ",
-513,Process,Flowchart Shapes,492,,,,,,,,"The school has to sent the notice in English and in your primary language, if it isn't English.    Did the school sent the notice in English and your primary language?  options: y/n/my primary language is English",
-514,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-515,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The school didn't give you notice in English and in your primary language  Legal Language: The school district failed to provide notice prior to implementing a suspension as a consequence for a code of conduct violation in the parent/guardian’s primary language, pursuant to 603 CMR 53.06(2).  Prompts: In the box below, add any details about what happened because the school sent the notice in the wrong language.",
-516,Process,Flowchart Shapes,492,,,,,,,,"Now we're going to go through the information that the school has to include in the notice.  If you have a copy of the notice, it may be helpful to pull it out to reference while you're answering these questions.",
-517,Process,Flowchart Shapes,492,,,,,,,,"The notice has to tell you why the school is suspending the student, include the rule that the school is saying the student broke.    Did the notice say which school rule they're saying the student broke?    The rule may be vague, like ""physical contact"" or ""threats,"" and may not explain exactly what the school is saying happened.",
-518,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-519,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The notice didn't tell you the rule the school is saying the student broke.  Legal Language: The School District did not include the disciplinary offense in the notice of the student’s suspension, pursuant to 603 CMR 53.06(2)(a)  Prompts: In the box below, add details.  If you are/were unsure of why the school was suspending the student, include that information.",
-520,Process,Flowchart Shapes,492,,,,,,,,"The notice has to include why the school is saying the student broke the rule.  For example, it may say ""a teacher reported the violation.""    Did the notice explain why the school thinks the student broke the rule?",
-521,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-522,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The notice didn't tell you why the school is saying that the student broke a school rule.  Legal Language: The School District did not include the basis for the charge in the notice of the student’s suspension, pursuant to 603 CMR 53.06(2)(b)  Prompts: In the box below, add details.  If you are/were unsure of why the school is accusing the student of breaking the rule, include that information.",
-523,Process,Flowchart Shapes,492,,,,,,,,The notice has to tell you how long the suspension would be.   Did the notice include the length of time the school was thinking of suspending the student for?,
-524,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-525,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The notice didn't tell you how long the student could be suspended for  Legal Language: The School District did not include the potential consequences, including the potential length of the student’s suspension, in the notice of the student’s suspension, pursuant to 603 CMR 53.06(2)(c)  Prompts: In the box below, add details.  If you are/were unsure of how long the suspension would be for, include that information. ",
-526,Process,Flowchart Shapes,492,,,,,,,,The notice has to tell you the student has the right to a hearing.    Did the notice say that the student would have a meeting (called a hearing) with the principal to talk about the suspension?,
-527,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-528,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The notice didn't tell you about the student's right to a hearing with the principal.  Legal Language: The School District did not include the opportunity for the student to have a hearing with the principal concerning the proposed suspension in the notice of the student’s suspension, pursuant to 603 CMR 53.06(2)(d)  Prompts: In the box below, describe what happened.  If you didn't attend the hearing  because you didn't know about it, include that information.",
-529,Process,Flowchart Shapes,492,,,,,,,,Did the notice say that you have the right to attend the hearing?,
-530,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-531,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The notice didn't tell you that you have the right to attend the hearing.  Legal Language: The school failed to notify the parent of their right to attend the hearing with the principal, pursuant to 603 CMR 53.06(2)(d)  Prompts: In the box below, add details.  If you didn't attend the hearing because you didn't know you could, include that information.",
-532,Process,Flowchart Shapes,492,,,,,,,,"Did the notice include the date, time, and location of the hearing?",
-533,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-534,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The notice didn't include the date, time, and location of the hearing  Legal Language: The School District did not include the date, time, and location of the hearing in the notice of the student’s suspension, pursuant to 603 CMR 53.06(2)(e)  Prompts: In the box below, add details.  If you weren't able to attend the hearing because you were missing the details about the time and location, include that information.",
-535,Process,Flowchart Shapes,492,,,,,,,,"Did the notice tell you that you could have an interpreter at the meeting, if you or the student needs one?",
-536,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-537,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The notice didn't tell you that you have the right to have an interpreter at the meeting if you need one.  Legal Language: The School District did not include the right to interpreter services  in the notice of the student’s suspension, pursuant to 603 CMR 53.06(2)(f)  Prompts: In the box below, add details.  If you would have wanted an interpreter but didn't know you could ask for one, include that information.",
-538,Process,Flowchart Shapes,492,,,,,,,,The student has additional rights at the hearing when the principal is considering a long-term suspension (more than 10 days total in one school year).  The notice has to tell you about those additional rights.    Did the notice tell you about ALL of the rights listed below? - the right to review the student's record and relevant documents - the right to be represented by counsel or a lay person of the student's choice at your expense - the right to produce witnesses - the right to cross examine witnesses presented by the school district - the right to have the hearing be recorded and receive a copy of the recording upon request ,
-539,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-540,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The notice didn't explain the additional rights that the student would have at the hearing because the school was considering a long-term suspension.  Legal Language: The School District failed to notify the parent/guardian of the additional rights set forth in 603 CMR 53.08(3)(b) when the school was contemplating issuing a long-term suspension pursuant to 603 CMR 53.06(2)(g).  Prompts: In the box below, add details.  If the student didn't know about those rights at the hearing, include that information.",
-541,Process,Flowchart Shapes,492,,,,,,,,Did the notice tell you that the student would have the right to appeal the principal's decision to the superintendent?,
-542,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice.  We'll ask more about that at the end of this section.,
-543,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The notice didn't tell you about the student's right to appeal the principal's decision to the superintendent.  Legal Language: The School District failed to include the student of their right to appeal the principal’s decision to the superintendent in the notice of suspension when the principal contemplating issuing a long term suspension, pursuant to 603 CMR 53.06(2)(g).  Prompts: In the box below, add details.  If the student didn't appeal the decision after the hearing because they didn't know they could, include that information.",
-544,Process,Flowchart Shapes,492,,,,,,,,"Those are all the notice requirements.    If they've identified any problems: You identified problems(s) related to the notice.  Do you want to include those problems in your complaint?  If they haven't identified any problems in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the student's academic progress during the suspension, you should still include them in the complaint.    Would you like to describe any problems to include in your complaint?",
-545,Process,Flowchart Shapes,492,,,,,,,,END OF SECTION PAGE,
-546,Note,Sticky Notes,492,,,,,,,,Skip green questions for short term,
-547,Process,Flowchart Shapes,492,,,,,,,,(DIRECT TO LAST PAGE IN SECTION) ,
-548,Process,Flowchart Shapes,492,,,,,,,,"Okay, we'll move on to the next section.",
-549,Process,Flowchart Shapes,492,,,,,,,,"At the hearing, the principal has to talk about why the student is being disciplined.    Did the principal talk about why the student was being disciplined, what the school was saying happened, and what rule the school was accusing the student of breaking?    The principal has to go into detail here about exactly what happened and how the school found out that it happened.",
-550,Process,Flowchart Shapes,492,,,,,,,,END OF SECTION PAGE,
-551,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the hearing.  We'll ask some more questions about that at the end of this section.  Press next to continue. ,
-552,Process,Flowchart Shapes,492,,,,,,,,"At the hearing, did the principal give the student an opportunity to tell their side of the story?",
-553,Process,Flowchart Shapes,492,,,,,,,,Did you attend the hearing?,
-554,Process,Flowchart Shapes,492,,,,,,,,Did the principal give you the opportunity to offer any information that you feel the principal should consider?,
-555,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the hearing.  We'll ask some more questions about that at the end of this section.  Press next to continue. ,
-556,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the hearing.  We'll ask some more questions about that at the end of this section.  Press next to continue. ,
-557,Process,Flowchart Shapes,492,,,,,,,,"Those are all the hearing requirements.    If they've identified any concerns: You identified problems(s) related to the hearing.  Do you want to include those concerns in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a violation of a hearing requirement included in this guide.  If you have concerns about the student's academic progress during the suspension, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-558,Process,Flowchart Shapes,492,,,,,,,,"Okay, we'll move on to the next section.",
-559,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The Principal didn't give you the opportunity to offer information at the hearing.  Legal Language: The principal failed to hold an appropriate hearing before issuing a suspension, as required by CMR 53.08(2), because the parent did not have an adequate opportunity to present information.  Prompts: In the box below, explain what happened at the hearing. Include anything that happened to prevent you from offering information.",
-560,Process,Flowchart Shapes,492,,,,,,,,The student had additional rights at the hearing because the principal was thinking about a long-term suspension.  Now we're going to go through some questions about those rights.,
-561,Process,Flowchart Shapes,492,,,,,,,,"The student has the right to review their school record before the hearing, and see any other documents that the principal will look at to decide whether to suspend the student.  Did the Principal let the student review the documents?",
-562,Process,Flowchart Shapes,492,,,,,,,,"The student has the right to have a lawyer or another advocate at the meeting, if their family pays for it.  If the student said they wanted to bring an advocate to the hearing, the school has to be reasonable in accommodating the advocate's schedule.    Did the student want to bring an an advocate to the hearing?",
-563,Process,Flowchart Shapes,492,,,,,,,,"The student has the right to have witnesses, or other people who saw what happened and can support the student's side of the story, come to the hearing.  Did the principal let the student bring witnesses to the hearing? ",
-564,Process,Flowchart Shapes,492,,,,,,,,The student has the right to ask questions of anyone presenting the school's version of the story at the hearing.    Did the principal allow the student to ask the school's witnesses questions?,
-565,Process,Flowchart Shapes,492,,,,,,,,"The student has the right to have the hearing recorded, and to get a copy of the recording after the hearing if they ask for one.   Did the student want to have the hearing recorded, and ask the principal for a copy of the recording. ",
-566,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the hearing.  We'll ask some more questions about that at the end of this section.  Press next to continue. ,
-567,Process,Flowchart Shapes,492,,,,,,,,Hearing Before a Suspension  Now we're going to go over the requirements for the hearing.    Before suspending the school principal has to give the student an opportunity to present their side of the story during a meeting called a ‘hearing.’ The principal has to consider the information presented at the hearing when they decide whether to suspend the student.    The principal has to have the hearing even if the suspension was only for one day.   Did the student have a suspension hearing? ,
-568,Process,Flowchart Shapes,492,,,,,,,,"The principal is allowed to do something called an ""emergency removal"" if they think that it's dangerous for the student to stay in school.  If the principal does an ""emergency removal"" the student still has the right to a hearing.  The only difference is that the hearing doesn't have to happen before the student is sent home.   Did the principal say that they thought keeping the student in school was dangerous?   Pop up: what counts as ""dangerous""  inside the pop up: the principal can decide to do an emergency removal if they think that the student is going to hurt someone, damage property, or seriously disrupt the school day for other students.   Options: Y/N/Yes, but I disagree with the principal's decision",
-569,Process,Flowchart Shapes,492,,,,,,,,"You identified that the principal did an emergency removal.  The principal has to tell you as soon as possible if they do an ""emergency removal."" They have to make a reasonable effort to reach you on the phone.  When they talk to you, they have to tell you that the student is being sent home, and the reason it counts as an emergency.  Did the principal call you to tell you about the emergency removal? ",
-570,Process,Flowchart Shapes,492,,,,,,,,"After the emergency removal the student can only be out of school for two days before getting a hearing.  The two days doesn't including the day the student is sent home, if they're sent home in the middle of the day.  After the two days, the student can't be excluded from school until the principal has a hearing.  Did the principal have a hearing within two days?",
-571,Process,Flowchart Shapes,492,,,,,,,,"You identified that the student had a suspension hearing, but it was after the suspension already started, and there was no emergency removal.  We'll ask more questions about this at the end of this section.",
-572,Process,Flowchart Shapes,492,,,,,,,,"This language will identify that in your complaint: 	
-The Principal failed to hold a hearing with the student before issuing a suspension, as required by CMR 53.08(2).  In the box below, add details.  Include anything that happened because the principal didn't have a hearing.  If you tried to set up a meeting, or reached out to the school at all, include that information.   ",
-573,Process,Flowchart Shapes,492,,,,,,,,You identified that the principal didn't call you to tell you they had done an emergency removal and sent the student home.  We'll ask more questions about that at the end of this section.,
-574,Process,Flowchart Shapes,492,,,,,,,,"The hearing has to happen before the suspension starts, except if the principal thinks that keeping the student in school would be dangerous.  Was the student allowed to stay in school until the hearing?  ",
-575,Process,Flowchart Shapes,492,,,,,,,,You identified that the student didn't have a suspension hearing.  Would you like to include that in your complaint?,
-576,Process,Flowchart Shapes,492,,,,,,,,"Okay, we'll move on to the next section.",
-577,Process,Flowchart Shapes,492,,,,,,,,"The principal can't send the student home, even if it's an emergency removal, without making sure that the student had safe transportation to get home.  Did the principal make sure that the student had a way to get home before the student left the school building?",
-578,Process,Flowchart Shapes,492,,,,,,,,You identified that the principal didn't make sure the student had a safe way to get home. We'll ask more questions about that at the end of this section.,
-579,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The student wasn't allowed to stay in school until the suspension hearing.  Legal Language: ""The principal excluded the student from school prior to holding a hearing, and where there was no emergency removal.  The student had the right to stay in school until there was a hearing.  603 CMR 53.06 requires that the principal hold a hearing prior to imposing a suspension under 37H3/4 where there is no emergency removal.""  Prompts: In the box below, add details.  Include how long the student was out of school before they had a hearing.  Pop up: What else should I include? Inside the pop up: Explain how the school told the student to leave before the hearing.  Was the student sent home from school early? Was the student told to leave when they arrived for school the next day?",
-580,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The principal didn't call to tell you about the ""emergency removal""   Legal Language: ""The student was excluded from school on an emergency basis pursuant to 603 CMR 53.07, and the principal failed to notify the parent""  Prompts: In the box below, add details.  If you didn't know that the student had been sent home, include that information, as well as anything that happened because you didn't know.",
-581,Process,Flowchart Shapes,492,,,,,,,,You identified that the student was out of school for more than two days following an emergency removal without getting a hearing.  We'll ask more questions about that at the end of this section.,
-582,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The principal didn't make sure the student had safe transportation before sending them home from school.  Legal Language: ""The principal did not provide for the student's safety and transportation before removing them from school pursuant to 603 CMR 53.07  Prompts: in the box below, describe what happened in detail.  What did the student do when they had to leave school?",
-583,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: the student was out of school for more than two days after an emergency removal without getting a hearing.   Legal Language: ""The student was removed on an emergency basis pursuant to 603 CMR 53.07, and was therefore entitled to a hearing or to return to school after the two-day temporary removal period.  The school kept the student out of school for longer than two days without a hearing.  Prompts: In the box below, add details.  Include how long the student was out of school before getting a hearing.",
-584,Note,Sticky Notes,492,,,,,,,,what else?,
-585,Process,Flowchart Shapes,492,,,,,,,,"You identified that the principal did an emergency removal because they thought the student was dangerous, but you disagree with their decision.  We'll ask more questions about that at the end of this section.",
-586,Process,Flowchart Shapes,492,,,,,,,,"Plain language: You identified that the principal did an emergency removal because they thought the student was dangerous, but you disagree with their decision.  We'll ask more questions about that at the end of this section.  Legal Language: 603 CMR 53.07(1) provides that the principal may temporarily exclude a student when ""the continued presence of the student poses a danger to persons or property, or materially and substantially disrupts the order of the school, and, in the principal's judgment, there is no alternative available to alleviate the danger or disruption.""  Here, the principal excluded the student before holding a hearing, and the requisite conditions were not met.  prompts: In the box below, add details.  Explain why you don't feel the student had to leave school.  Include any reasons why it wasn't dangerous for the student to be in school, or any alternatives the principal could have used instead of sending the student home.",
-587,Process,Flowchart Shapes,492,,,,,,,,Those are all the questions about the hearing happening after the student was excluded from school.  Now we're going to go through questions about what has to happen at the hearing.,
-588,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: At the hearing, the Principal didn't talk about why the student was being suspended in detail.  Legal Language: The principal failed to hold an appropriate hearing before issuing a suspension, as required by CMR 53.08(2), because the principal failed to adequately discuss the disciplinary offense.  Prompts: In the box below, explain what happened at the hearing.  If you weren't sure why the student was being disciplined, include that information.  If you had questions but the principal didn't listen, include that.",
-589,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The Principal didn't give the student a chance to tell their side of the story.  Legal Language: The principal failed to hold an appropriate hearing before issuing a suspension, as required by CMR 53.08(2), because the student did not have an adequate opportunity to present information.  Prompts: In the box below, explain what happened at the hearing.  Include anything that happened to prevent the student from telling their side of the story.",
-590,Process,Flowchart Shapes,492,,,,,,,,Did the principal let the advocate attend the hearing?,
-591,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the hearing.  We'll ask some more questions about that at the end of this section.  Press next to continue. ,
-592,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The Principal didn't give the student a chance to review their record and other documents the Principal was going to rely on at the hearing.  Legal Language: The principal did not afford the student the rights required by CMR 53.08(3) when deciding whether to issue a long term suspension, because they failed to allow the student to review their record and the documents upon which the principal may rely in making a determination to suspend the student.  Prompts: Explain what happened.  If the student didn't get to review the documents because you didn't know they could, include that information.  ",
-593,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The Principal didn't let the student bring a lawyer or advocate to the hearing.    Legal Language: The principal did not afford the student the rights required by CMR 53.08(3) when deciding whether to issue a long term suspension, because the student wasn’t afforded the right to be represented by counsel or a lay person of the student’s choice.  Prompts: Explain what happened.  If the student didn't get to bring an advocate to the hearing because you didn't know they could, include that information. If the student wanted to bring someone to the hearing and the school wouldn't schedule the meeting to accommodate their schedule, include that information.",
-594,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The Principal didn't let the student bring witnesses to the hearing to support the student's side of the story.   Legal Language: The principal did not afford the student the rights required by CMR 53.08(3) when deciding whether to issue a long term suspension, because the student wasn’t afforded the right to produce witnesses.  Prompts: Explain what happened.  If the student didn't get to bring witnesses to the hearing because you didn't know they could, include that information. ",
-595,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The Principal didn't let the student ask the school's witnesses questions.   Legal Language: The principal did not afford the student the rights required by CMR 53.08(3) when deciding whether to issue a long term suspension, because the student wasn’t afforded the right to cross-examine witnesses presented by the District.  Prompts: Explain what happened during the hearing. If the student didn't ask questions because they didn't know they could, include that information.  ",
-596,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The student wasn't able to have the hearing recorded.  Legal Language: The principal did not afford the student the rights required by CMR 53.08(3) when deciding whether to issue a long term suspension, because the student wasn’t afforded the right to request that the hearing be recorded by the principal, and to receive a copy of the recording upon request.  Prompts: In the box below, explain what happened when the student asked for the recording.",
-597,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the hearing.  We'll ask some more questions about that at the end of this section.  Press next to continue. ,
-598,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the hearing.  We'll ask some more questions about that at the end of this section.  Press next to continue. ,
-599,Process,Flowchart Shapes,492,,,,,,,,"Did the principal record the hearing, and provide the student with a copy of the recording?",
-600,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the hearing.  We'll ask some more questions about that at the end of this section.  Press next to continue. ,
-601,Process,Flowchart Shapes,492,,,,,,,,"Notice of Hearing Decision  Once the school decides to suspend the student, they have to send a second notice, called a ""Decision Notice.""  This is different than the first suspension notice, which the school sends and before they decide whether or not to suspend the student.  The school has to send the Decision Notice after the hearing. If they failed to have a hearing, they still have to send the notice.  Did the school send you a letter or email with information about their decision to suspend the student? ",
-602,Process,Flowchart Shapes,492,,,,,,,,You identified that you didn't get notice of the principal's decision after the hearing.  Would you like to include this problem in your complaint? ,
-603,Process,Flowchart Shapes,492,,,,,,,,"This language will identify that violation in your complaint: 	 
-""The principal did not provide written notice to the student and the parent/guardian of their determination following the suspension hearing, as required by CMR 53.08(2).""  Add details in the box below, including what happened after the hearing.  If you weren't sure what the principal decided at the hearing, include that information.  ",
-604,Process,Flowchart Shapes,492,,,,,,,,"Okay, we'll move on to the next section.",
-605,Process,Flowchart Shapes,492,,,,,,,,Did the notice tell you why the principal decided to suspend the student?,
-606,Process,Flowchart Shapes,492,,,,,,,,"Those are all the notice of decision requirements.  If they've identified any concerns: You identified problem(s) related to the hearing.  Do you want to include those concerns in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a violation of a hearing requirement included in this guide.  If you have concerns about the student's academic progress during the suspension, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-607,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The hearing decision didn't tell you why the principal decided to suspend the student.    Legal Language: The principal failed to notify the parent of the reasons for their decision to suspend the student following the hearing, as required by CMR 53.08(2).  Prompts: In the box below, add details.  If you were/are unsure of why the principal decided to suspend the student, include that information.",
-608,Process,Flowchart Shapes,492,,,,,,,,END OF SECTION PAGE,
-609,Process,Flowchart Shapes,492,,,,,,,,"Okay, we'll move on to the next section.",
-610,Process,Flowchart Shapes,492,,,,,,,,"Alternatives to Suspension The school has to try to work with the student to figure out how to address the behavior that the school is concerned about before they move to exclude the student from school.    Pop up: what kind of alternatives should the school try? inside the pop up: The alternatives will depend on what behavior they're concerned about, but here are some examples:  - The school might try using restorative justice practices or doing a mediation.  The school might ask the student to apologize for the behavior as a part of these strategies. - The school might add supports throughout the student's day, like clear routines and chances to take a break when the student needs one.   - The school might use a different kind of discipline, like detention, that doesn't happen during the school day.  Did the school try anything else before moving to suspend the student?  ",
-611,Process,Flowchart Shapes,492,,,,,,,,You identified that the school didn't try any alternatives before moving to suspend the student.  Would you like to include that concern in your complaint? ,
-612,Process,Flowchart Shapes,492,,,,,,,,"You identified that the school didn't try any alternatives before moving to suspend the student.  This language will identify that in your complaint: ""The school failed to attempt alternatives prior to exclusion as required by 603 CMR 53.05.  Add details in the box below.   Pop up: What should I include:  inside the pop up: Explain why the school should have tried something else before suspending the student.  The details will depend on your situation, but here are some examples:  - If there have been strategies that the school has used in the past that were helpful to the student, like taking a break during the day, you can desrcibe those strategies.  - If the school hasn't disciplined the student many times before, you can include that information.  - If the student offered to apologize but the school didn't offer the student the opportunity to apologize, you can include that information.  Please note that students with disabilities have additional rights when the school excludes them from school.    SHOW THIS IF IT'S A LONG TERM SUSPENSION: If the alternatives the school could have tried relate to the services in the student's IEP (for example, the school changed the student's routine and it caused the behavior) you can mention the issue here, but we will cover the concern in more detail in a later section.",
-613,Process,Flowchart Shapes,492,,,,,,,,"Did the notice tell you how many days the suspension would be, and whether the suspension would be in-school or out-of-school?",
-614,Process,Flowchart Shapes,492,,,,,,,,DId the notice tell you that the student could make up work while they're out of the classroom?,
-615,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice. We'll ask more about that at the end of this section.,
-616,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice. We'll ask more about that at the end of this section.,
-617,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the notice. We'll ask more about that at the end of this section.,
-618,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The hearing decision didn't tell you how long the student was suspended, and whether the suspension was in-school or out-of-school.  Legal Language: The principal failed to notify the parent of the type and duration of the suspension following a hearing pursuant to CMR 53.08(2).  Prompts: In the box below, add details. ",
-619,Process,Flowchart Shapes,492,,,,,,,,"Plain Language: The hearing decision didn't tell you that the student would be able to make up work while they were out of school.  Legal Language: The principal failed to notify the parent of the student's opportunity to make up school work during the suspension in the decision notice following the suspension hearing, pursuant to CMR 53.08(2).  Prompts: In the box below, add details.   Please note that we'll go over some questions about the student's right to make up work in a later section.  If they missed work because they didn't know they could make it up, include that information here, but you don't need to go into too much detail about the work they missed yet.",
-620,Process,Flowchart Shapes,492,,,,,,,,"Okay, that's the only requirement related to suspension alternatives, so we'll move on to the next section.",
-621,Process,Flowchart Shapes,492,,,,,,,,"Right to Continue Education  Next, we're going to go through the student's right to continue their education while they're out of school.  The student has the right to continue doing work and earning credits while they're out of school.    When the school decided to suspend or expel the student, did the school tell you that would the student be able to continue earning credits?  ",
-622,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the school's communication.  We'll ask more questions about that at the end of this section. ,
-623,Process,Flowchart Shapes,492,,,,,,,,"Students who are suspended for more than 10 days also have the right to get alternative education services.    Pop up: What does that mean? inside the pop up: ""alternative education services"" are options like tutoring, placement at a different school, Saturday school, or online learning, that a school offers to help a student continue their education while they're out of school.  When the school decides to suspend or expel a student, they have to tell you about the student's right to education services in a letter or email (not over the phone or in person).  Did the school send you a letter or email that told you the student could get education services? ",
-624,Process,Flowchart Shapes,492,,,,,,,,"The letter or email has to be in English and in your primary language, if your primary language isn't English.    Did the school send the letter or email in English and in your primary language?   (Yes/N/My primary language is English)",
-625,Process,Flowchart Shapes,492,,,,,,,,The school has to provide at least two options for alternative education services.    Did the letter include at least two alternative education services that the student could choose from?  ,
-626,Process,Flowchart Shapes,492,,,,,,,,Did the student choose an alternative education service option? ,
-627,Process,Flowchart Shapes,492,,,,,,,,"Was the student able to enroll in the option they chose?   pop up: What does this mean?  inside the pop up: the school district has to make sure the student is able to actually start doing the education service they choose.  For example, if the school offered tutoring as an education service, and the student chooses tutoring, the District has to make sure that the student knows how to sign up for tutoring.",
-628,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the the student's academic progress during the suspension.  We'll ask more questions about that at the end of this section. ,
-629,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the school's communication.  We'll ask more questions about that at the end of this section. ,
-630,Process,Flowchart Shapes,492,,,,,,,,You identified a problem.  We'll ask more questions about that at the end of this section. ,
-631,Process,Flowchart Shapes,492,,,,,,,,You identified a problem.  We'll ask more questions about that at the end of this section. ,
-632,Process,Flowchart Shapes,492,,,,,,,,Plain language: You identified that the school didn't tell the student they would be able to continue earning credits while they were out of school.    Legal Language:  “The School District failed to notify the student and parent of the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H3/4.”   Prompts: Explain what happened.    pop up: what should I include:  Inside: Did the student ever find out that they would be able to earn credits? Did the student miss any opportunities to earn credits becuase they didn't know about them?,
-633,Process,Flowchart Shapes,492,,,,,,,,Plain language: You identified that the student wasn't able to make progress in their education while they were out of school.  Legal Language:  “The School District failed to give the student the opportunity to make academic progress while they were out of school due to discipline issued pursuant to 37H3/4.”   Prompts: Explain in detail why the student wasn't able to do work and earn credits in the box below.,
-634,Process,Flowchart Shapes,492,,,,,,,,Has the student actually been able to complete work and earn credits while out of school? ,
-635,Process,Flowchart Shapes,492,,,,,,,,"Plain language: You identified that the school didn't send you a letter or email to tell you that the student could get education services while they're out of school.  Legal Language:  “The principal failed to notify the student and parent about the student's right to alternative education services while the student was out of school due to discipline issued pursuant to 37H3/4.  603 CMR 53.13(4)(a) requires that the principal notify the student and the parent of the opportunity to receive education services at the time the student is expelled or placed on long-term suspension.”   Prompts: In the box below, explain what happened in detail.    Pop up: what should I include:  Inside the pop up: Did you ever find out about education services? What happened because the school didn't tell you about them? ",
-636,Process,Flowchart Shapes,492,,,,,,,,"Plain language: You identified that the school didn't send the letter about alternative education services in your primary language.  Legal Language:  “The School District failed to give the student the opportunity to make academic progress while they were suspended. 603 CMR 53.13(4)(a) requires that the principal send notice of the opportunity to receive education services in English and in the primary language of the home.""  Prompts: Explain what happened, when you got the notice in the wrong language, and include what your primary language is. ",
-637,Process,Flowchart Shapes,492,,,,,,,,"Plain language: You identified that the school didn't give the student at least two educational services to choose from.    Legal Language:  ""The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H3/4 did not include a list of the specific education services available to the student, as is required by 603 CMR 53.13(4)(a)""  Prompts: Explain what was in the notice, and what happened because the required information was missing.",
-638,Process,Flowchart Shapes,492,,,,,,,,Did the letter about the education services tell the student who to contact if they had questions about the services? ,
-639,Process,Flowchart Shapes,492,,,,,,,,You identified a problem.  We'll ask more questions about that at the end of this section. ,
-640,Process,Flowchart Shapes,492,,,,,,,,"Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services.  Legal Language:  ""The notice of the opportunity to receive education services during a period of exclusion due to discipline issued pursuant to 37H3/4 did not include contact information for a school district staff member who could provide more detailed information about the services,as is required by 603 CMR 53.13(4)(a)""  Prompts: Explain what happened because the required information was missing.  If the student had questions, or didn't understand what the school meant by ""alternative education services,"" include that information.",
-641,Process,Flowchart Shapes,492,,,,,,,,"Plain language: You identified that the letter about education services didn't include a person to contact with questions about the services.  Legal Language:  ""The principal failed to arrange for the education service that the student selected. 603 CMR 53.13 requires that the school-wide education service plan contain the process for arranding for such services.""  Prompts: Explain in detail why the student wasn't able to start the academic services.  ",
-642,Process,Flowchart Shapes,492,,,,,,,,"Those are all the requirements for the academic progress and education services..  If they've identified any concerns: You identified problem(s) related to the appeal.  Do you want to include those concerns in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have concerns about the school's communication about the hearing, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-643,Process,Flowchart Shapes,492,,,,,,,,END OF SECTION PAGE,
-644,Process,Flowchart Shapes,492,,,,,,,,"Did the school tell you that the student could receive services at all, even if it wasn't in a letter?",
-645,Process,Flowchart Shapes,492,,,,,,,,You identified that the school never told you that the student could receive alternative education services.  Would you like to include that in your complaint? ,
-646,Process,Flowchart Shapes,492,,,,,,,,"Okay, we'll move on to the next section.",
-647,Process,Flowchart Shapes,492,,,,,,,,"You identified that the school never told you that the student could receive alternative education services.  Would you like to include that in your complaint?   This language will identify that concern in your complaint: “The principal failed to notify the student and parent about the student's right to alternative education services while the student was out of school due to discipline issued pursuant to 37H3/4.  603 CMR 53.13(4)(a) requires that the principal notify the student and the parent of the opportunity to receive education services at the time the student is expelled or placed on long-term suspension.”   In the box below, add details about what happened, and what the student is doing without the services.",
-648,Process,Flowchart Shapes,492,,,,,,,,You identified a problem with the school's communication about the services.  We'll ask more about that at the end of this section.,
-649,Process,Flowchart Shapes,492,,,,,,,,Does the student have a disability that the school knows about?  Pop up: What does this mean? Inside the pop up: the student has a disability that the school knows about if any of these apply to the student:  - they get special education services through an IEP or 504 plan  - someone has requested that the school do a special education evaluation for the student,
-650,Process,Flowchart Shapes,492,,,,,,,,MDR,
-651,Process,Flowchart Shapes,492,,,,,,,,END OF CONCERNS SECTION PAGE,
-652,Note,Sticky Notes,492,,,,,,,,Is there anything else that makes the school know?,
-653,Text,Standard,492,,,,,,,,"Go to the next section, skip the end of section page.",
-654,Text,Standard,492,,,,,,,,Language to plug in on end of section page.,
-655,Text,Standard,492,,,,,,,,Go back to the previous section.,
-656,Text,Standard,492,,,,,,,,Stop filling out the complaint and call the helpline.,
-657,Sticky Note,Standard,492,,,,,,,,Questions where we're still editing/working out language.,
-658,Text,Standard,492,,,,,,,,"Only applies to long term suspensions, skip these questions if it's a short term suspension.",
-659,Note,Sticky Notes,492,,,,,,,,Text,
-660,Note,Sticky Notes,492,,,,,,,,Text,
-661,Note,Sticky Notes,492,,,,,,,,Text,
-662,Note,Sticky Notes,492,,,,,,,,Text,
-663,Note,Sticky Notes,492,,,,,,,,Text,
-664,Note,Sticky Notes,492,,,,,,,,Text,
-665,Line,,492,,,496,493,None,Arrow,,discipline,
-666,Line,,492,,,499,500,None,Arrow,,No,
-667,Line,,492,,,494,499,None,Arrow,,School Rule,
-668,Line,,492,,,493,494,None,Arrow,,yes,
-669,Line,,492,,,500,501,None,Arrow,,No,
-670,Line,,492,,,500,495,None,Arrow,,Yes,
-671,Line,,492,,,499,495,None,Arrow,,Yes,
-672,Line,,492,,,493,502,None,Arrow,,No,
-673,Line,,492,,,502,498,None,Arrow,,No,
-674,Line,,492,,,495,503,None,Arrow,,Next,
-675,Line,,492,,,503,504,None,Arrow,,No,
-676,Line,,492,,,504,505,None,Arrow,,No,
-677,Line,,492,,,504,506,None,Arrow,,yes,
-678,Line,,492,,,503,507,None,Arrow,,yes,
-679,Line,,492,,,507,508,None,Arrow,,No,
-680,Line,,492,,,508,509,None,Measure,,,
-681,Line,,492,,,507,510,None,Arrow,,yes,
-682,Line,,492,,,510,511,None,Arrow,,No,
-683,Line,,492,,,511,512,None,Measure,,,
-684,Line,,492,,,510,513,None,Arrow,,Yes,
-685,Line,,492,,,513,514,None,Arrow,,No,
-686,Line,,492,,,514,515,None,Measure,,,
-687,Line,,492,,,513,516,None,Arrow,,Yes,
-688,Line,,492,,,513,516,None,Arrow,,my primary...,
-689,Line,,492,,,516,517,None,Arrow,,Next,
-690,Line,,492,,,517,518,None,Arrow,,No,
-691,Line,,492,,,518,519,None,Measure,,,
-692,Line,,492,,,517,520,None,Arrow,,Yes,
-693,Line,,492,,,520,521,None,Arrow,,No,
-694,Line,,492,,,521,522,None,Measure,,,
-695,Line,,492,,,520,523,None,Arrow,,Yes,
-696,Line,,492,,,523,524,None,Arrow,,no,
-697,Line,,492,,,,525,None,Measure,,,
-698,Line,,492,,,523,526,None,Arrow,,yes,
-699,Line,,492,,,526,527,None,Arrow,,No,
-700,Line,,492,,,527,528,None,Measure,,,
-701,Line,,492,,,524,526,None,Arrow,,,
-702,Line,,492,,,521,523,None,Arrow,,,
-703,Line,,492,,,518,520,None,Arrow,,,
-704,Line,,492,,,529,530,None,Arrow,,no,
-705,Line,,492,,,530,531,None,Measure,,,
-706,Line,,492,,,527,544,None,Arrow,,,
-707,Line,,492,,,526,532,None,Arrow,,yes,
-708,Line,,492,,,532,529,None,Arrow,,yes,
-709,Line,,492,,,532,533,None,Arrow,,no,
-710,Line,,492,,,533,534,None,Measure,,,
-711,Line,,492,,,529,535,None,Arrow,,yes,
-712,Line,,492,,,535,536,None,Arrow,,no,
-713,Line,,492,,,536,537,None,Measure,,,
-714,Line,,492,,,535,538,None,Arrow,,yes,
-715,Line,,492,,,538,539,None,Arrow,,no,
-716,Line,,492,,,539,540,None,Measure,,,
-717,Line,,492,,,530,535,None,Arrow,,,
-718,Line,,492,,,536,538,None,Arrow,,,
-719,Line,,492,,,533,529,None,Arrow,,,
-720,Line,,492,,,538,541,None,Arrow,,yes,
-721,Line,,492,,,541,542,None,Arrow,,no,
-722,Line,,492,,,542,543,None,Measure,,,
-723,Line,,492,,,541,544,None,Arrow,,yes,
-724,Line,,492,,,544,545,None,Arrow,,,
-725,Line,,492,,,511,547,None,Arrow,,,
-726,Line,,492,,,544,548,None,Arrow,,,
-727,Line,,492,,,549,551,None,Arrow,,no,
-728,Line,,492,,,551,552,None,Arrow,,next,
-729,Line,,492,,,553,554,None,Arrow,,Yes,
-730,Line,,492,,,552,555,None,Arrow,,No,
-731,Line,,492,,,555,553,None,Arrow,,next,
-732,Line,,492,,,554,556,None,Arrow,,no,
-733,Line,,492,,,557,550,None,Arrow,,Yes,
-734,Line,,492,,,549,552,None,Arrow,,Yes,
-735,Line,,492,,,552,553,None,Arrow,,Yes,
-736,Line,,492,,,557,558,None,Arrow,,No,
-737,Line,,492,,,555,589,None,Measure,,,
-738,Line,,492,,,556,559,None,Measure,,,
-739,Line,,492,,,553,560,None,Arrow,,No,
-740,Line,,492,,,556,560,None,Arrow,,Next,
-741,Line,,492,,,560,561,None,Arrow,,next,
-742,Line,,492,,,561,562,None,Arrow,,Yes,
-743,Line,,492,,,563,564,None,Arrow,,Yes,
-744,Line,,492,,,564,565,None,Arrow,,Yes,
-745,Line,,492,,,561,566,None,Arrow,,No,
-746,Line,,492,,,566,562,None,Arrow,,next,
-747,Line,,492,,,591,563,None,Arrow,,next,
-748,Line,,492,,,567,575,None,Arrow,,No,
-749,Line,,492,,,575,576,None,Arrow,,No,
-750,Line,,492,,,575,572,None,Arrow,,Yes,
-751,Line,,492,,,567,574,None,Arrow,,Yes,
-752,Line,,492,,,574,568,None,Arrow,,No,
-753,Line,,492,,,568,569,None,Arrow,,Yes,
-754,Line,,492,,,569,577,None,Arrow,,yes,
-755,Line,,492,,,571,579,None,Measure,,,
-756,Line,,492,,,568,571,None,Arrow,,No,
-757,Line,,492,,,569,573,None,Arrow,,No,
-758,Line,,492,,,577,578,None,Arrow,,No,
-759,Line,,492,,,570,581,None,Arrow,,No,
-760,Line,,492,,,573,580,None,Measure,,,
-761,Line,,492,,,578,582,None,Measure,,,
-762,Line,,492,,,581,583,None,Measure,,,
-763,Line,,492,,,571,569,None,Arrow,,next,
-764,Line,,492,,,573,577,None,Arrow,,next,
-765,Line,,492,,,578,570,None,Arrow,,next,
-766,Line,,492,,,577,570,None,Arrow,,yes,
-767,Line,,492,,,545,567,None,Arrow,,,
-768,Line,,492,,,568,585,None,Arrow,,"Yes, but...",
-769,Line,,492,,,585,586,None,Measure,,,
-770,Line,,492,,,585,569,None,Arrow,,,
-771,Line,,492,,,581,587,None,Arrow,,next,
-772,Line,,492,,,587,549,None,Arrow,,next,
-773,Line,,492,,,570,587,None,Arrow,,next,
-774,Line,,492,,,574,549,None,Arrow,,Yes,yes
-775,Line,,492,,,551,588,None,Measure,,,
-776,Line,,492,,,554,560,None,Arrow,,yes,
-777,Line,,492,,,562,590,None,Arrow,,yes,
-778,Line,,492,,,590,591,None,Arrow,,No,
-779,Line,,492,,,590,563,None,Arrow,,yes,
-780,Line,,492,,,562,563,None,Arrow,,no,
-781,Line,,492,,,566,592,None,Measure,,,
-782,Line,,492,,,591,593,None,Measure,,,
-783,Line,,492,,,563,597,None,Arrow,,No,
-784,Line,,492,,,597,594,None,Measure,,,
-785,Line,,492,,,564,598,None,Arrow,,No,
-786,Line,,492,,,597,564,None,Arrow,,,
-787,Line,,492,,,598,595,None,Measure,,,
-788,Line,,492,,,565,599,None,Arrow,,yes,
-789,Line,,492,,,600,596,None,Measure,,,
-790,Line,,492,,,599,600,None,Arrow,,No,
-791,Line,,492,,,565,557,None,Arrow,,no,
-792,Line,,492,,,602,603,None,Arrow,,Yes,
-793,Line,,492,,,602,604,None,Arrow,,No,
-794,Line,,492,,,605,615,None,Arrow,,No,
-795,Line,,492,,,615,607,None,Measure,,,
-796,Line,,492,,,606,608,None,Arrow,,Yes,
-797,Line,,492,,,606,609,None,Arrow,,No,
-798,Line,,492,,,609,610,None,Arrow,,,
-799,Line,,492,,,608,610,None,Arrow,,,
-800,Line,,492,,,601,605,None,Arrow,,next,
-801,Line,,492,,,601,602,None,Arrow,,No,
-802,Line,,492,,,611,612,None,Arrow,,Yes,
-803,Line,,492,,,550,601,None,Arrow,,,
-804,Line,,492,,,558,601,None,Arrow,,,
-805,Line,,492,,,605,613,None,Arrow,,yes,
-806,Line,,492,,,613,614,None,Arrow,,yes,
-807,Line,,492,,,613,616,None,Arrow,,No,
-808,Line,,492,,,614,617,None,Arrow,,No,
-809,Line,,492,,,615,613,None,Arrow,,,
-810,Line,,492,,,616,614,None,Arrow,,,
-811,Line,,492,,,616,618,None,Measure,,,
-812,Line,,492,,,617,619,None,Measure,,,
-813,Line,,492,,,617,606,None,Arrow,,,
-814,Line,,492,,,614,606,None,Arrow,,Yes,
-815,Line,,492,,,610,611,None,Arrow,,No,
-816,Line,,492,,,610,620,None,Arrow,,,
-817,Line,,492,,,621,622,None,Arrow,,No,
-818,Line,,492,,,623,624,None,Arrow,,Yes,
-819,Line,,492,,,624,625,None,Arrow,,yes,
-820,Line,,492,,,625,638,None,Arrow,,Yes,
-821,Line,,492,,,626,627,None,Arrow,,Yes,
-822,Line,,492,,,624,629,None,Arrow,,no,
-823,Line,,492,,,625,630,None,Arrow,,No,
-824,Line,,492,,,627,631,None,Arrow,,No,
-825,Line,,492,,,622,632,None,Measure,,,
-826,Line,,492,,,628,633,None,Measure,,,
-827,Line,,492,,,621,634,None,Arrow,,,
-828,Line,,492,,,634,628,None,Arrow,,no,
-829,Line,,492,,,634,623,None,Arrow,,yes,
-830,Line,,492,,,623,644,None,Arrow,,no,
-831,Line,,492,,,624,625,None,Arrow,,My primary...,
-832,Line,,492,,,648,635,None,Measure,,,
-833,Line,,492,,,629,636,None,Measure,,,
-834,Line,,492,,,630,637,None,Measure,,,
-835,Line,,492,,,638,626,None,Arrow,,yes,
-836,Line,,492,,,638,639,None,Arrow,,No,
-837,Line,,492,,,639,640,None,Measure,,,
-838,Line,,492,,,631,641,None,Arrow,,no,
-839,Line,,492,,,630,638,None,Arrow,,,
-840,Line,,492,,,629,625,None,Arrow,,,
-841,Line,,492,,,639,626,None,Arrow,,,
-842,Line,,492,,,627,642,None,Arrow,,Yes,
-843,Line,,492,,,642,643,None,Arrow,,Yes,
-844,Line,,492,,,626,642,None,Arrow,,no,
-845,Line,,492,,,645,646,None,Arrow,,No,
-846,Line,,492,,,645,647,None,Arrow,,,
-847,Line,,492,,,644,648,None,Arrow,,Yes,
-848,Line,,492,,,644,645,None,Arrow,,No,
-849,Line,,492,,,648,626,None,Arrow,,Next,
-850,Line,,492,,,612,621,None,Arrow,,,
-851,Line,,492,,,649,650,None,Arrow,,Yes,
-852,Line,,492,,,649,651,None,Arrow,,No,
-853,Line,,492,,,643,649,None,Arrow,,,
-854,Line,,492,,,643,651,None,Arrow,,,
-855,Page,,,,,,,,,,MDR,
-856,Process,Flowchart Shapes,855,,,,,,,,"Manifestation Determination Review Students with disabilities have additional school discipline rights.  Students with disabilities have the right to a meeting with their IEP team when they're excluded from school for more than 10 days.  The meeting is called a Manifestation Determination Review, or MDR.    The point of the MDR is to figure out whether the student's behavior was caused by the school's failure to give the student the special education services they need.  We're going to go through some questions about the MDR.  Pop up: What is an IEP team? inside the pop up: The student's IEP team is the group of people who meet to make the student's special education plan every year.  If the student didn't have a special education plan when the discipline happened, but the school knew the student has a disability, then the IEP team would be ... ",
-857,Process,Flowchart Shapes,855,,,,,,,,Did the school have a meeting with the student's IEP team to talk about the discipline?,
-858,Process,Flowchart Shapes,855,,,,,,,,You identified that the school excluded the student for over 10 days without having an MDR.  Would you like to include this in your complaint?,
-859,Process,Flowchart Shapes,855,,,,,,,,The meeting has to be within 10 school days of the decision to suspend or expel the student.    Did the school have the meeting within 10 days? ,
-860,Process,Flowchart Shapes,855,,,,,,,,"At the meeting, the student's IEP team has to decide whether the student's behavior was related to their disability, and/or caused by the school not providing the student's special education services. To make the decision, the IEP team should review the student's file and consider any information that you provide.  Pop up: how does the team decide? Inside the pop up:  at the meeting, the IEP team has to go through these two questions:  1. Is the conduct a direct result of the district's failure to implement the student's IEP, and  2. Does the behavior have a direct and substantial relationship to the student's disability? If the answer to either question is yes, then the behavior is related to the student's disability  Did the school decide whether the behavior they're accusing the student of was related to the student's disability or the school's failure to give the student their special education serivices?",
-861,Note,Sticky Notes,855,,,,,,,,Do they get notice?,
-862,Process,Flowchart Shapes,855,,,,,,,,"If the IEP team decides that the behavior was related to the student's disability, or caused by the school not giving the student their services, the school can't proceed with the discipline.    Did the IEP team decide that the behavior was related to the student's disability or caused by the school not giving the student their services?  OPTIONS: Y/N/No, but I disagree.",
-863,Process,Flowchart Shapes,855,,,,,,,,"You identified that the IEP team didn't think that the behavior was related to the student's disability, but you disagree.  Would you like to include that in your complaint?",
-864,Process,Flowchart Shapes,855,,,,,,,,Those are all the requirements for the MDR.  You haven't identified a violation of a right included in this guide.  Do you have other concerns about the MDR that you want to describe in your complaint?,
-865,Process,Flowchart Shapes,855,,,,,,,,"Okay, we'll move on to the next section.",
-866,Process,Flowchart Shapes,855,,,,,,,,NO VIOLATIONS PAGE,
-867,Process,Flowchart Shapes,855,,,,,,,,"You identified that the IEP team didn't think that the behavior was related to the student's disability, but you disagree.  This language will identify that concern in your complaint: ""The School District found that the behavior was not a manifestation of the student's disability, but I disagree.""  In the box below, explain why you disagree in detail.  Describe why the behavior was related to the student's disability, and/or why the behavior was caused by the school's failure to give the student their special education services.  If the student doesn't have an IEP or 504 plan, you should also explain how the school knew that the student has a disability.  For example, you might say ""I sent an email to the school to ask for a special education evaluation at the end of last month.""",
-868,Process,Flowchart Shapes,855,,,,,,,,"When the IEP team decides that the behavior was caused by the student's disability or the school's failure to provide the student's services, they can't exclude the student.    Did the school stop excluding the student after the meeting?",
-869,Process,Flowchart Shapes,855,,,,,,,,"You identified that the IEP team determined that the behavior was related to the student's disability, but didn't let the student come back to school.  We'll ask more questions about that at the end of this section.",
-870,Process,Flowchart Shapes,855,,,,,,,,"When the IEP team decides that the behavior was caused by the student's disability, it means that the school wasn't providing the student with the special education services they need.  The school has to take immediate steps to figure out what services the student needs.    The first step the school has to take is to do an evaluation of the student's needs called a Functional Behavioral Assessment, or FBA.  If the student already has one, the school has to review and update the assessment.  Did the school do an FBA?",
-871,Process,Flowchart Shapes,855,,,,,,,,You identified that the school didn't do a Functional Behavioral Assessment.  We'll ask more questions about that at the end of this section.,
-872,Process,Flowchart Shapes,855,,,,,,,,"The next step the school has to take is to make a Behavioral Intervention Plan, or BIP, for the student.  If the student already has one, the school has to review and update it.    Did the school create a BIP, or review and update a BIP that the student already had?",
-873,Process,Flowchart Shapes,855,,,,,,,,END OF SECTION PAGE,
-874,Process,Flowchart Shapes,855,,,,,,,,"Those are all the requirements for the MDR.  If they've identified any problems: You identified problems(s) related to the notice.  Do you want to include those problems in your complaint?  If they haven't identified any concerns in this section:  You haven't identified a problem with a requirement included in this guide.  If you have problems about the student's academic progress during the suspension, you should still include them in the complaint.    Would you like to describe any concerns to include in your complaint?",
-875,Note,Sticky Notes,855,,,,,,,,is there a written decision or anything from the meeting?,
-876,Process,Flowchart Shapes,855,,,,,,,,Did the student already have an FBA?,
-877,Process,Flowchart Shapes,855,,,,,,,,Did the school review and update the old FBA?,
-878,Process,Flowchart Shapes,855,,,,,,,,You identified that the school didn't review and update the student's Functional Behavioral Assessment. We'll ask more questions about that at the end of this section.,
-879,Process,Flowchart Shapes,855,,,,,,,,You identified that the school didn't create a Behavioral Intervention Plan. We'll ask more questions about that at the end of this section.,
-880,Process,Flowchart Shapes,855,,,,,,,,Did the student already have an BIP?,
-881,Process,Flowchart Shapes,855,,,,,,,,Did the school review and update the old BIP?,
-882,Process,Flowchart Shapes,855,,,,,,,,You identified that the school didn't review and update the student's Behavioral Intervention Plan.  We'll ask more questions about that at the end of this section.,
-883,Note,Sticky Notes,855,,,,,,,,what does review and update mean?,
-884,Process,Flowchart Shapes,855,,,,,,,,You identified that the school didn't have the MDR within 10 days of the decision to suspend or expel the student.  We'll ask more questions about that at the end of this section.,
-885,Process,Flowchart Shapes,855,,,,,,,,"This language will identify that in your complaint: ""The School District failed to hold a manifestation determination review meeting after changing the student's placement due to a disciplinary removal.  34 CFR §300.536(e) requires that the District convene an IEP meeting within 10 school days of the decision to change the student's placement.""  In the box below, describe what happened.  If you didn't know that the school had to have the meeting, include that information.  If you asked the school to have the meeting and they refused, include that.  You should also describe what has happened since the student has been out of school, and whether the student has been able to get any of their services.  If the student doesn't have an IEP or 504 plan, you should also explain how the school knew that the student has a disability.  For example, you might say ""I sent an email to the school to ask for a special education evaluation at the end of last month.""",
-886,Process,Flowchart Shapes,855,,,,,,,,"Okay, we'll move on to the next section.",
-887,Process,Flowchart Shapes,855,,,,,,,,You identified that the IEP team didn't decide whether the behavior was related to the student's disability or the school's failure to provide special edcuation services.  Would you like to include that problem in your complaint?,
-888,Process,Flowchart Shapes,855,,,,,,,,"Okay, we'll move on to the next section.",
-889,Note,Sticky Notes,855,,,,,,,,include that they have to get services while they're excluded?,
-890,Process,Flowchart Shapes,855,,,,,,,,"You identified that there was a meeting with the student's IEP team, but the team didn't decide whether the behavior was related to the student's disability.    This language will identify that in your complaint: At the manifestation determination review following a change of placement due to a disciplinary removal, the school failed to determine whether the conduct in question was caused by the student's disability, or whether the conduct in question was the direct result of the LEA's failure to implement the student's IEP.  34 CFR §300.530(e) requires that the school determine the answers to those questions to determine whether the conduct was a manifestation of the student's disability.  In the box below, describe what happened at the meeting.  Include who was at the meeting, whether you were able to participate in the meeting, and what happened to prevent the IEP team from answering the questions.  ",
-891,Note,Sticky Notes,855,,,,,,,,Explain what an IEP team is for students with known disabilities but no IEP? who would be at the meeting for them?,
-892,Process,Flowchart Shapes,855,,,,,,,,"Plain language: You identified that the IEP team determined that the behavior was related to the student's disability, but didn't let the student come back to school.   Legal language: Following a determination that the student's behavior was a manifestation of their disability pursuant to 34 CFR 300.530(e), the school proceeded with the disciplinary removal rather than taking immediate steps to remedy the deficiencies, as required by 34 CFR 300.530(e)(3).  In the box below, explain what happened.  If the school never told you that the student had the right to come back to school, include that.  If you wanted the student to return to school but the school said they couldn't, include that information.  ",
-893,Note,Sticky Notes,855,,,,,,,,Do they have to do a FBA and BIP or is that just what they usually do?,
-894,Note,Sticky Notes,855,,,,,,,,Text,
-895,Note,Sticky Notes,855,,,,,,,,Text,
-896,Note,Sticky Notes,855,,,,,,,,Text,
-897,Note,Sticky Notes,855,,,,,,,,Text,
-898,Note,Sticky Notes,855,,,,,,,,Text,
-899,Note,Sticky Notes,855,,,,,,,,Text,
-900,Line,,855,,,856,857,None,Arrow,,,
-901,Line,,855,,,857,858,None,Arrow,,,
-902,Line,,855,,,857,859,None,Arrow,,Yes,
-903,Line,,855,,,859,860,None,Arrow,,Yes,
-904,Line,,855,,,860,862,None,Arrow,,Yes,
-905,Line,,855,,,862,863,None,Arrow,,"No, but",
-906,Line,,855,,,862,864,None,Arrow,,No,
-907,Line,,855,,,863,865,None,Arrow,,No,
-908,Line,,855,,,864,866,None,Arrow,,Yes,
-909,Line,,855,,,863,867,None,Arrow,,Yes,
-910,Line,,855,,,862,868,None,Arrow,,Yes,
-911,Line,,855,,,868,869,None,Arrow,,No,
-912,Line,,855,,,868,870,None,Arrow,,Yes,
-913,Line,,855,,,870,872,None,Arrow,,Yes,
-914,Line,,855,,,872,874,None,Arrow,,Yes,
-915,Line,,855,,,874,873,None,Arrow,,Next,
-916,Line,,855,,,870,876,None,Arrow,,,
-917,Line,,855,,,876,871,None,Arrow,,No,
-918,Line,,855,,,876,877,None,Arrow,,Yes,
-919,Line,,855,,,877,878,None,Arrow,,No,
-920,Line,,855,,,872,880,None,Arrow,,No,
-921,Line,,855,,,880,881,None,Arrow,,Yes,
-922,Line,,855,,,880,879,None,Arrow,,No,
-923,Line,,855,,,881,882,None,Arrow,,No,
-924,Line,,855,,,859,884,None,Arrow,,No,
-925,Line,,855,,,858,885,None,Arrow,,,
-926,Line,,855,,,858,886,None,Arrow,,,
-927,Line,,855,,,860,887,None,Arrow,,No,
-928,Line,,855,,,887,888,None,Arrow,,,
-929,Line,,855,,,887,890,None,Arrow,,Yes,
-930,Line,,855,,,869,892,None,Measure,,,

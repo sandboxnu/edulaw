@@ -20,7 +20,6 @@ import { GetStaticProps } from 'next'
 import { parse } from 'csv-parse/sync'
 import fs from 'fs'
 import path from 'path'
-import { questions } from '../../constants'
 
 let startingAnswer: FormAnswer
 
@@ -72,9 +71,17 @@ const csvToQuestionArray = (csv: string[][]): Question[] => {
       (answer: string[]) =>
         answer[rowTitles.indexOf('Line Source')] === question[0]
     )
+    let questionType = 'RESULT'
     const relevantAnswersObjects = relevantAnswers.map((answer: string[]) => {
+      questionType = 'RADIO'
+      if (
+        answer[rowTitles.indexOf('Text Area 1')] === 'CONTINUE' ||
+        answer[rowTitles.indexOf('Text Area 1')] === 'TEXT'
+      ) {
+        questionType = 'TEXT' //answer[rowTitles.indexOf('Text Area 1')]; - for when we add in continue type
+      }
       return {
-        ...(answer[rowTitles.indexOf('Text Area 1')] !== ''
+        ...(questionType === 'RADIO'
           ? {
               content: answer[rowTitles.indexOf('Text Area 1')],
             }
@@ -85,43 +92,22 @@ const csvToQuestionArray = (csv: string[][]): Question[] => {
     relevantAnswersObjects.sort((a, b) =>
       (a.content || '') < (b.content || '') ? -1 : 1
     )
-    const startingQuestion = relevantAnswersObjects.findIndex((answer) => {
-      const uppercase = answer.content?.toUpperCase()
-      return (
-        uppercase === 'DISCIPLINE' ||
-        uppercase === 'BULLYING' ||
-        uppercase === 'SPECIAL EDUCATION'
-      )
-    })
     return {
-      id: startingQuestion === -1 ? parseInt(question[0]) : -1,
-      question: question[rowTitles.indexOf('Text Area 1')],
-      type:
-        relevantAnswersObjects.length === 0
-          ? 'RESULT'
-          : relevantAnswersObjects.length === 1
-          ? 'TEXT'
-          : 'RADIO',
+      id: parseInt(question[0]),
+      question: question[rowTitles.indexOf('Text Area 1')].replaceAll(
+        /(\s{2,})|(\r?\n)|(\r)|(\u2028)/g,
+        '\n'
+      ),
+      type: questionType,
       answers: relevantAnswersObjects,
     }
   })
 }
 
-const files = [
-  '../../../constants/Bullying.csv',
-  '../../../constants/Discipline.csv',
-]
+const files = ['../../../constants/EdLaw Combined Flowchart.csv']
 
 export const getStaticProps: GetStaticProps = (context) => {
-  const questions: Question[] = [
-    {
-      id: 0,
-      question:
-        'Are you having problems with bullying, discipline, or special education?',
-      type: 'RADIO',
-      answers: [],
-    },
-  ]
+  const questions: Question[] = []
 
   files.forEach((file: string) => {
     const f = fs.readFileSync(path.resolve(__dirname, file))
@@ -131,14 +117,6 @@ export const getStaticProps: GetStaticProps = (context) => {
       idMap.set(question.id, questions.length + index)
     })
     const updatedQuestionIds = questionsFromF.map((question: Question) => {
-      if (question.id === -1) {
-        const a = question.answers[0]
-        const newRoute = idMap.get(a.route)
-        questions[0].answers.push({
-          ...a,
-          route: newRoute === undefined ? -1 : newRoute,
-        })
-      }
       const newQuestionId = idMap.get(question.id)
       return {
         ...question,
