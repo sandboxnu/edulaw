@@ -58,7 +58,7 @@ const TitleText = styled.h1`
   font-size: large;
 `
 
-const csvToQuestionArray = (csv: string[][]): Question[] => {
+const csvToQuestionArray2 = (csv: string[][]): Question[] => {
   const rowTitles = csv[0]
   const questionsArray = csv.filter(
     (entry: string[]) => entry[rowTitles.indexOf('Name')] === 'Process'
@@ -104,14 +104,70 @@ const csvToQuestionArray = (csv: string[][]): Question[] => {
   })
 }
 
+const csvToQuestionArray = (csv: CsvType[]): Question[] => {
+  console.log(csv)
+  const questionsArray = csv.filter(
+    (entry: CsvType) => entry.Name === 'Process'
+  )
+  const answersArray = csv.filter((entry: CsvType) => entry.Name === 'Line')
+  const finalQuestions = questionsArray.map(
+    (question: CsvType, index: number) => {
+      const relevantAnswers = answersArray.filter(
+        (answer: CsvType) => answer['Line Source'] === question.Id
+      )
+      let questionType = 'RESULT'
+      const relevantAnswersObjects = relevantAnswers.map(
+        (answer: CsvType): Answer => {
+          questionType = 'RADIO'
+          if (
+            answer['Text Area 1'] === 'CONTINUE' ||
+            answer['Text Area 1'] === 'TEXT'
+          ) {
+            questionType = 'TEXT' //answer[rowTitles.indexOf('Text Area 1')]; - for when we add in continue type
+          }
+          return {
+            ...(questionType === 'RADIO'
+              ? {
+                  content: answer['Text Area 1'],
+                }
+              : {}),
+            route: parseInt(answer['Line Destination']),
+          }
+        }
+      )
+      relevantAnswersObjects.sort((a, b) =>
+        (a.content || '') < (b.content || '') ? -1 : 1
+      )
+      return {
+        id: parseInt(question.Id),
+        question: question['Text Area 1'].replace(
+          /(\s{2,})|(\r?\n)|(\r)|(\u2028)/g,
+          '\n'
+        ),
+        type: questionType,
+        answers: relevantAnswersObjects,
+      }
+    }
+  )
+  return finalQuestions
+}
+
 const files = ['../../../constants/EdLaw Combined Flowchart.csv']
+
+type CsvType = {
+  Id: string
+  Name: string
+  'Line Source': string
+  'Line Destination': string
+  'Text Area 1': string
+}
 
 export const getStaticProps: GetStaticProps = (context) => {
   const questions: Question[] = []
 
   files.forEach((file: string) => {
     const f = fs.readFileSync(path.resolve(__dirname, file))
-    const questionsFromF = csvToQuestionArray(parse(f))
+    const questionsFromF = csvToQuestionArray(parse(f, { columns: true }))
     const idMap = new Map<number, number>()
     questionsFromF.forEach((question: Question, index: number) => {
       idMap.set(question.id, questions.length + index)
