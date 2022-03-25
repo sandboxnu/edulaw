@@ -1,96 +1,101 @@
-Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Status,Text Area 1
-1,Document,,,,,,,,,,EdLaw Combined Flowchart
-2,Page,,,,,,,,,,Bullying
-3,Process,Flowchart Shapes,2,,,,,,,,"Are you having problems with special education, discipline, or bullying?"
-4,Process,Flowchart Shapes,2,,,,,,,,There are requirements the school must follow when they learn that a student has been bullied.  Are your concerns about a student who was bullied?
-5,Process,Flowchart Shapes,2,,,,,,,,Schools must take certain steps to prevent bullying. Schools must create a school-wide bullying prevention plan. Are your concerns about the school's bullying prevention plan?
-6,Process,Flowchart Shapes,2,,,,,,,,"It looks like the questions in this guide don't address your concerns.  You can still file a complaint with PRS (here).  If you aren't sure how to proceed, call the EdLaw Project intake line at 617-910-5829, or fill out the online intake form (here)."
-7,Process,Flowchart Shapes,2,,,,,,,,Did someone at the school know that the student was being bullied?
-8,Process,Flowchart Shapes,2,,,,,,,,"If someone at the school knows about the bullying, they must tell the principal. They can also tell someone else like the vice principal.
-Did the person tell the principal about the bullying?"
-9,Process,Flowchart Shapes,2,,,,,,,,Do you want to include the failure to tell the principal in your complaint?
-10,Process,Flowchart Shapes,2,,,,,,,,"When the principal found out about the bullying, did they do an investigation?  Pop up: ""what is an investigation?"" inside the pop up: The principal must take steps to figure out what happened.  They may..."
-11,Process,Flowchart Shapes,2,,,,,,,,Did the school find that the student was bullied?
-12,Process,Flowchart Shapes,2,,,,,,,,You identified that the school didn't think the student had been bullied. Do you want to include that in your complaint?  
-13,Process,Flowchart Shapes,2,,,,,,,,Did the school send you a letter or email after the investigation that told you about the action they're taking to prevent the bullying from happening again? 
-14,Process,Flowchart Shapes,2,,,,,,,,Did the letter give you information about PRS and the process for filing a complaint? 
-15,Process,Flowchart Shapes,2,,,,,,,, It looks like the school might not have communicated with you appropriately following their investigation.  Do you want to include that in your complaint? 
-16,Process,Flowchart Shapes,2,,,,,,,,It looks like you've identified that the school didn't respond appropriately when they found out the student was being bullied.  Do you want to include information about that in your complaint? 
-17,Process,Flowchart Shapes,2,,,,,,,,"You identified that the school didn't think the student had been bullied, but you disagree.  This language will be used in your complaint: ""The school determined through an investigation pursuant to MGL c.71 s.37O(g) that no incident of bullying occurred.  I disagree with their finding.""    In the box below, describe what happened in detail.  Describe how the principal investigated whether the student was being bullied, and any reasons the principal gave for their decision.  Be sure to explain why you disagree.  If you don't think the investigation was thorough, include that information. "
-18,Process,Flowchart Shapes,2,,,,,,,,"You haven't identified a violation of a requirement included in this guide.  If you have concerns about the school's response, you should still include them in your complaint.  Would you like to describe any concerns to include in your complaint? "
-19,Process,Flowchart Shapes,2,,,,,,,,"You identified that someone at the school found out about the bullying, and didn't tell the principal.    This language will be used in your complaint: ""School staff failed to report an incident of bullying pursuant to MGL c71 s.37O(g)""  In the box below, describe what happened in detail.  Be sure to include who knew about the bullying, and how you know that they were aware of the bullying.    pop up: ""What does that mean?""  inside the pop-up: ""after you describe what happened, include who knew about the bullying and how you know that they were aware of the bullying.  For example:  - If you told someone at the school,  include who you told and when.   - If the student told someone at the school, include who they told and when. - If the student's teacher mentioned something about the bullying, include what they said and when."
-20,Process,Flowchart Shapes,2,,,,,,,,"You identified that the school didn't do an investigation when they learned that the student was being bullied.  This language will identify that violation in your complaint: ""The School District failed to investigate an incident of bullying pursuant to MGL c71 s.37O(g)""  In the box below, describe what happened in detail.   Desribe what was happening with the student, how the principal found out about the bullying, and what happened after the principal found out. "
-21,Process,Flowchart Shapes,2,,,,,,,,You identified a problem with the school's communication with you about the investigation.  We'll ask some more questions about that at the end of this section.  Press next to continue.
-22,Process,Flowchart Shapes,2,,,,,,,,"You identified that the school didn't tell you about PRS in their letter about the investigation.    This language will identify that concern in your complaint: ""The School District failed to include information about PRS in their notice to parents about a finding that bullying occurred after an investigation conducted pursuant to MGL c.71 s.37O(g)""  In the box below, desribe what happened in detail.  If you didn't file a complaint earlier because you didn't know you could, include that information."
-23,Process,Flowchart Shapes,2,,,,,,,,"Bullying Prevention Plan  Schools have to have a plan for preventing, identifying, and responding to bullying.  The school has to have the plan in place whether or not any students have been bullied.  Do you want to go through some questions about the requirements for the school-wide plan?"
-24,Process,Flowchart Shapes,2,,,,,,,,"Every year, the school has to send you information about their bullying prevention plan. The information has to include all the parts of the plan that relate to students.  The school doesn't have to include information about their internal policies and procedures that only involve staff.    Did the school send you information about the plan? "
-25,Process,Flowchart Shapes,2,,,,,,,,"The school district has to post the whole plan on their website.  The plan may not be on a school's individual website, but has to be on the district's website.   Does the school district have their bullying prevention plan on their website?  "
-26,Process,Flowchart Shapes,2,,,,,,,,"In addition to information about the school's bullying prevention plan, schools have to provide families with information about how they can support the bullying prevention efforts at home.  The school has to at least provide:  -  information on how families can reinforce the bullying prevention curriculum at home - information on what bullying looks like in schools, and how to identify bullying.  This might be called ""bullying dynamics."" - information on cyber-bullying, and how to be safe online.  Did the school provide you with all of the information listed above?  "
-27,Process,Flowchart Shapes,2,,,,,,,,"You identified that the school doesn't have their bullying prevention plan posted on their website.  This language will identify that concern in your complaint:""The School District failed to post their bullying prevention plan on their website pursuant to MCL c.71 s.37O""  In the box below, include any additional details.  Did you want information about the plan, or ask the school about it? Do you think the school doesn't have a plan in place?"
-28,Process,Flowchart Shapes,2,,,,,,,,"You identified that the school didn't send you information about their bullying prevention plan.   This language will identify that concern in your complaint: "": “The School District failed to make student-related sections of their bullying prevention and intervention plan available to families pursuant to MGL c71 ss37O.”   In the box below, inlcude any additional details.  Did you want information about their plan, or ask the school about it?  Do you think the school doesn't have a plan in place?"
-29,Process,Flowchart Shapes,2,,,,,,,,"You identified that the school didn't provide any information about how families can support the bullying prevention plan at home.   This language will identify that concern in your complaint: ""“the School District failed to inform parents/guardians about the bullying prevention curriculum of the school, and therefore failed to implement an appropriate plan to address bullying prevention and intervention, pursuant to MGL c71 s37O(d)(5).""  In the box below, include any additional details.  "
-30,Process,Flowchart Shapes,2,,,,,,,,"Those are all the questions about the bullying prevention plan.
+Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Status,Text Area 1,Text Area 2
+1,Document,,,,,,,,,,EdLaw Combined Flowchart,
+2,Page,,,,,,,,,,Bullying,
+3,Rectangle Container,Flowchart Shapes,2,,,,,,,,Bullying,
+4,Rectangle Container,Flowchart Shapes,2,,,,,,,,Bullying Prevention Plan,
+5,Process,Flowchart Shapes,2,,,,,,,,"Are you having problems with special education, discipline, or bullying?",
+6,Process,Flowchart Shapes,2,,,,,,,,"It looks like the questions in this guide don't address your concerns.  You can still file a complaint with PRS (here).  If you aren't sure how to proceed, call the EdLaw Project intake line at 617-910-5829, or fill out the online intake form (here).",
+7,Process,Flowchart Shapes,2,4,,,,,,,"Bullying Prevention Plan  Schools have to have a plan for preventing, identifying, and responding to bullying.  The school has to have the plan in place whether or not any students have been bullied.  Do you want to go through some questions about the requirements for the school-wide plan?",
+8,Process,Flowchart Shapes,2,4,,,,,,,"Every year, the school has to send you information about their bullying prevention plan. The information has to include all the parts of the plan that relate to students.  The school doesn't have to include information about their internal policies and procedures that only involve staff.    Did the school send you information about the plan? ",
+9,Process,Flowchart Shapes,2,4,,,,,,,"The school district has to post the whole plan on their website.  The plan may not be on a school's individual website, but has to be on the district's website.   Does the school district have their bullying prevention plan on their website?  ",
+10,Process,Flowchart Shapes,2,4,,,,,,,"In addition to information about the school's bullying prevention plan, schools have to provide families with information about how they can support the bullying prevention efforts at home.  The school has to at least provide:  -  information on how families can reinforce the bullying prevention curriculum at home - information on what bullying looks like in schools, and how to identify bullying.  This might be called ""bullying dynamics."" - information on cyber-bullying, and how to be safe online.  Did the school provide you with all of the information listed above?  ",
+11,Process,Flowchart Shapes,2,4,,,,,,,"You identified that the school doesn't have their bullying prevention plan posted on their website.  This language will identify that concern in your complaint:""The School District failed to post their bullying prevention plan on their website pursuant to MCL c.71 s.37O""  In the box below, include any additional details.  Did you want information about the plan, or ask the school about it? Do you think the school doesn't have a plan in place?",
+12,Process,Flowchart Shapes,2,4,,,,,,,"You identified that the school didn't send you information about their bullying prevention plan.   This language will identify that concern in your complaint: "": “The School District failed to make student-related sections of their bullying prevention and intervention plan available to families pursuant to MGL c71 ss37O.”   In the box below, inlcude any additional details.  Did you want information about their plan, or ask the school about it?  Do you think the school doesn't have a plan in place?",
+13,Process,Flowchart Shapes,2,4,,,,,,,"You identified that the school didn't provide any information about how families can support the bullying prevention plan at home.   This language will identify that concern in your complaint: ""“the School District failed to inform parents/guardians about the bullying prevention curriculum of the school, and therefore failed to implement an appropriate plan to address bullying prevention and intervention, pursuant to MGL c71 s37O(d)(5).""  In the box below, include any additional details.  ",
+14,Process,Flowchart Shapes,2,,,,,,,,"Those are all the questions about the bullying prevention plan.
 
-We're going to continue with the rest of your complaint."
-31,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section."
-32,Process,Flowchart Shapes,2,,,,,,,,"You identified that the school didn't do an investigation when they learned that the student was being bullied.  This language will identify that violation in your complaint: ""The School District failed to investigate an incident of bullying pursuant to MGL c71 s.37O(g)""  In the box below, describe what happened in detail.   Desribe what was happening with the student, how the principal found out about the bullying, and what happened after the principal found out. "
-33,Process,Flowchart Shapes,2,,,,,,,,"Bullying Prevention Plan  Schools have to have a plan for preventing, identifying, and responding to bullying.  The school has to have the plan in place whether or not any students have been bullied.  Do you want to go through some questions about the requirements for the school-wide plan?"
-34,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section."
-35,Process,Flowchart Shapes,2,,,,,,,,We're going to continue with the rest of your complaint
-36,Process,Flowchart Shapes,2,,,,,,,,"The school district has to post the whole plan on their website.  The plan may not be on a school's individual website, but has to be on the district's website.   Does the school district have their bullying prevention plan on their website?  "
-37,Process,Flowchart Shapes,2,,,,,,,,"In addition to information about the school's bullying prevention plan, schools have to provide families with information about how they can support the bullying prevention efforts at home.  The school has to at least provide:  -  information on how families can reinforce the bullying prevention curriculum at home - information on what bullying looks like in schools, and how to identify bullying.  This might be called ""bullying dynamics."" - information on cyber-bullying, and how to be safe online.  Did the school provide you with all of the information listed above?  "
-38,Process,Flowchart Shapes,2,,,,,,,,"Okay, please describe your concerns below."
-39,Line,,2,,,3,4,None,Arrow,,Bullying
-40,Line,,2,,,4,5,None,Arrow,,No
-41,Line,,2,,,5,6,None,Arrow,,No
-42,Line,,2,,,4,7,None,Arrow,,Yes
-43,Line,,2,,,7,8,None,Arrow,,Yes
-44,Line,,2,,,8,9,None,Arrow,,No
-45,Line,,2,,,8,10,None,Arrow,,Yes
-46,Line,,2,,,10,11,None,Arrow,,Yes
-47,Line,,2,,,11,12,None,Arrow,,No
-48,Line,,2,,,11,13,None,Arrow,,Yes
-49,Line,,2,,,13,14,None,Arrow,,Yes
-50,Line,,2,,,11,15,None,Arrow,,The school never told me the results of the investigation
-51,Line,,2,,,10,16,None,Arrow,,No
-52,Line,,2,,,14,18,None,Arrow,,Yes
-53,Line,,2,,,9,19,None,Arrow,,Yes
-54,Line,,2,,,16,20,None,Arrow,,Yes
-55,Line,,2,,,13,21,None,Arrow,,No
-56,Line,,2,,,21,31,None,Arrow,,TEXT
-57,Line,,2,,,14,22,None,Arrow,,No
-58,Line,,2,,,22,34,None,Arrow,,TEXT
-59,Line,,2,,,23,6,None,Arrow,,No
-60,Line,,2,,,23,24,None,Arrow,,Yes
-61,Line,,2,,,24,28,None,Arrow,,No
-62,Line,,2,,,24,36,None,Arrow,,Yes
-63,Line,,2,,,28,25,None,Arrow,,TEXT
-64,Line,,2,,,25,26,None,Arrow,,Yes
-65,Line,,2,,,25,27,None,Arrow,,No
-66,Line,,2,,,27,26,None,Arrow,,TEXT
-67,Line,,2,,,26,29,None,Arrow,,No
-68,Line,,2,,,26,30,None,Arrow,,Yes
-69,Line,,2,,,29,30,None,Arrow,,TEXT
-70,Line,,2,,,5,31,None,Arrow,,Yes
-71,Line,,2,,,15,31,None,Arrow,,No
-72,Line,,2,,,31,23,None,Arrow,,CONTINUE
-73,Line,,2,,,15,32,None,Arrow,,Yes
-74,Line,,2,,,32,34,None,Arrow,,TEXT
-75,Line,,2,,,20,34,None,Arrow,,TEXT
-76,Line,,2,,,19,34,None,Arrow,,TEXT
-77,Line,,2,,,16,31,None,Arrow,,No
-78,Line,,2,,,12,17,None,Arrow,,Yes
-79,Line,,2,,,17,34,None,Arrow,,TEXT
-80,Line,,2,,,7,6,None,Arrow,,No
-81,Line,,2,,,9,31,None,Arrow,,No
-82,Line,,2,,,12,31,None,Arrow,,No
-83,Line,,2,,,18,31,None,Arrow,,No
-84,Line,,2,,,34,33,None,Arrow,,CONTINUE
-85,Line,,2,,,33,24,None,Arrow,,Yes
-86,Line,,2,,,33,35,None,Arrow,,No
-87,Line,,2,,,36,37,None,Arrow,,Yes
-88,Line,,2,,,36,27,None,Arrow,,No
-89,Line,,2,,,37,29,None,Arrow,,No
-90,Line,,2,,,37,6,None,Arrow,,Yes
-91,Line,,2,,,18,38,None,Arrow,,Yes
-92,Line,,2,,,38,34,None,Arrow,,TEXT
+We're going to continue with the rest of your complaint.",
+15,Process,Flowchart Shapes,2,4,,,,,,,"Bullying Prevention Plan  Schools have to have a plan for preventing, identifying, and responding to bullying.  The school has to have the plan in place whether or not any students have been bullied.  Do you want to go through some questions about the requirements for the school-wide plan?",
+16,Process,Flowchart Shapes,2,,,,,,,,We're going to continue with the rest of your complaint,
+17,Process,Flowchart Shapes,2,4,,,,,,,"The school district has to post the whole plan on their website.  The plan may not be on a school's individual website, but has to be on the district's website.   Does the school district have their bullying prevention plan on their website?  ",
+18,Process,Flowchart Shapes,2,4,,,,,,,"In addition to information about the school's bullying prevention plan, schools have to provide families with information about how they can support the bullying prevention efforts at home.  The school has to at least provide:  -  information on how families can reinforce the bullying prevention curriculum at home - information on what bullying looks like in schools, and how to identify bullying.  This might be called ""bullying dynamics."" - information on cyber-bullying, and how to be safe online.  Did the school provide you with all of the information listed above?  ",
+19,Process,Flowchart Shapes,2,4,,,,,,,"Every year, the school has to send you information about their bullying prevention plan. The information has to include all the parts of the plan that relate to students.  The school doesn't have to include information about their internal policies and procedures that only involve staff.    Did the school send you information about the plan? ",
+20,Process,Flowchart Shapes,2,3,,,,,,,There are requirements the school must follow when they learn that a student has been bullied.  Are your concerns about a student who was bullied?,
+21,Process,Flowchart Shapes,2,3,,,,,,,Schools must take certain steps to prevent bullying. Schools must create a school-wide bullying prevention plan. Are your concerns about the school's bullying prevention plan?,
+22,Process,Flowchart Shapes,2,3,,,,,,,Did someone at the school know that the student was being bullied?,
+23,Process,Flowchart Shapes,2,3,,,,,,,"If someone at the school knows about the bullying, they must tell the principal. They can also tell someone else like the vice principal.
+Did the person tell the principal about the bullying?",
+24,Process,Flowchart Shapes,2,3,,,,,,,Do you want to include the failure to tell the principal in your complaint?,
+25,Process,Flowchart Shapes,2,3,,,,,,,"When the principal found out about the bullying, did they do an investigation?  Pop up: ""what is an investigation?"" inside the pop up: The principal must take steps to figure out what happened.  They may...",
+26,Process,Flowchart Shapes,2,3,,,,,,,Did the school find that the student was bullied?,
+27,Process,Flowchart Shapes,2,3,,,,,,,You identified that the school didn't think the student had been bullied. Do you want to include that in your complaint?  ,
+28,Process,Flowchart Shapes,2,3,,,,,,,Did the school send you a letter or email after the investigation that told you about the action they're taking to prevent the bullying from happening again? ,
+29,Process,Flowchart Shapes,2,3,,,,,,,Did the letter give you information about PRS and the process for filing a complaint? ,
+30,Process,Flowchart Shapes,2,3,,,,,,, It looks like the school might not have communicated with you appropriately following their investigation.  Do you want to include that in your complaint? ,
+31,Process,Flowchart Shapes,2,3,,,,,,,It looks like you've identified that the school didn't respond appropriately when they found out the student was being bullied.  Do you want to include information about that in your complaint? ,
+32,Process,Flowchart Shapes,2,3,,,,,,,"You identified that the school didn't think the student had been bullied, but you disagree.  This language will be used in your complaint: ""The school determined through an investigation pursuant to MGL c.71 s.37O(g) that no incident of bullying occurred.  I disagree with their finding.""    In the box below, describe what happened in detail.  Describe how the principal investigated whether the student was being bullied, and any reasons the principal gave for their decision.  Be sure to explain why you disagree.  If you don't think the investigation was thorough, include that information. ",
+33,Process,Flowchart Shapes,2,3,,,,,,,"You haven't identified a violation of a requirement included in this guide.  If you have concerns about the school's response, you should still include them in your complaint.  Would you like to describe any concerns to include in your complaint? ",
+34,Process,Flowchart Shapes,2,3,,,,,,,"You identified that someone at the school found out about the bullying, and didn't tell the principal.    This language will be used in your complaint: ""School staff failed to report an incident of bullying pursuant to MGL c71 s.37O(g)""  In the box below, describe what happened in detail.  Be sure to include who knew about the bullying, and how you know that they were aware of the bullying.    pop up: ""What does that mean?""  inside the pop-up: ""after you describe what happened, include who knew about the bullying and how you know that they were aware of the bullying.  For example:  - If you told someone at the school,  include who you told and when.   - If the student told someone at the school, include who they told and when. - If the student's teacher mentioned something about the bullying, include what they said and when.",
+35,Process,Flowchart Shapes,2,3,,,,,,,"You identified that the school didn't do an investigation when they learned that the student was being bullied.  This language will identify that violation in your complaint: ""The School District failed to investigate an incident of bullying pursuant to MGL c71 s.37O(g)""  In the box below, describe what happened in detail.   Desribe what was happening with the student, how the principal found out about the bullying, and what happened after the principal found out. ",
+36,Process,Flowchart Shapes,2,3,,,,,,,You identified a problem with the school's communication with you about the investigation.  We'll ask some more questions about that at the end of this section.  Press next to continue.,
+37,Process,Flowchart Shapes,2,3,,,,,,,"You identified that the school didn't tell you about PRS in their letter about the investigation.    This language will identify that concern in your complaint: ""The School District failed to include information about PRS in their notice to parents about a finding that bullying occurred after an investigation conducted pursuant to MGL c.71 s.37O(g)""  In the box below, desribe what happened in detail.  If you didn't file a complaint earlier because you didn't know you could, include that information.",
+38,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section.",
+39,Process,Flowchart Shapes,2,3,,,,,,,"You identified that the school didn't do an investigation when they learned that the student was being bullied.  This language will identify that violation in your complaint: ""The School District failed to investigate an incident of bullying pursuant to MGL c71 s.37O(g)""  In the box below, describe what happened in detail.   Desribe what was happening with the student, how the principal found out about the bullying, and what happened after the principal found out. ",
+40,Process,Flowchart Shapes,2,,,,,,,,"Okay, we'll move on to the next section.",
+41,Process,Flowchart Shapes,2,3,,,,,,,Please describe your concerns below.,
+42,Line,,2,,,5,20,None,Arrow,,Bullying,
+43,Line,,2,,,7,6,None,Arrow,,No,
+44,Line,,2,,,7,8,None,Arrow,,Yes,Text
+45,Line,,2,,,8,12,None,Arrow,,No,
+46,Line,,2,,,8,17,None,Arrow,,Yes,
+47,Line,,2,,,12,9,None,Arrow,,TEXT,
+48,Line,,2,,,9,10,None,Arrow,,Yes,
+49,Line,,2,,,9,11,None,Arrow,,No,
+50,Line,,2,,,11,10,None,Arrow,,TEXT,
+51,Line,,2,,,10,13,None,Arrow,,No,
+52,Line,,2,,,10,14,None,Arrow,,Yes,
+53,Line,,2,,,13,14,None,Arrow,,TEXT,
+54,Line,,2,,,40,15,None,Arrow,,CONTINUE,
+55,Line,,2,,,15,19,None,Arrow,,Yes,
+56,Line,,2,,,15,16,None,Arrow,,No,
+57,Line,,2,,,17,18,None,Arrow,,Yes,
+58,Line,,2,,,17,11,None,Arrow,,No,
+59,Line,,2,,,18,13,None,Arrow,,No,
+60,Line,,2,,,18,6,None,Arrow,,Yes,
+61,Line,,2,,,19,12,None,Arrow,,No,
+62,Line,,2,,,19,9,None,Arrow,,Yes,
+63,Line,,2,,,20,21,None,Arrow,,No,
+64,Line,,2,,,21,6,None,Arrow,,No,
+65,Line,,2,,,20,22,None,Arrow,,Yes,
+66,Line,,2,,,22,23,None,Arrow,,Yes,
+67,Line,,2,,,23,24,None,Arrow,,No,
+68,Line,,2,,,23,25,None,Arrow,,Yes,
+69,Line,,2,,,25,26,None,Arrow,,Yes,
+70,Line,,2,,,26,27,None,Arrow,,No,
+71,Line,,2,,,26,28,None,Arrow,,Yes,
+72,Line,,2,,,28,29,None,Arrow,,Yes,
+73,Line,,2,,,26,30,None,Arrow,,The school never told me the results of the investigation,
+74,Line,,2,,,25,31,None,Arrow,,No,
+75,Line,,2,,,29,33,None,Arrow,,Yes,
+76,Line,,2,,,24,34,None,Arrow,,Yes,
+77,Line,,2,,,31,35,None,Arrow,,Yes,
+78,Line,,2,,,28,36,None,Arrow,,No,
+79,Line,,2,,,36,38,None,Arrow,,TEXT,
+80,Line,,2,,,29,37,None,Arrow,,No,
+81,Line,,2,,,37,40,None,Arrow,,TEXT,
+82,Line,,2,,,21,38,None,Arrow,,Yes,
+83,Line,,2,,,30,38,None,Arrow,,No,
+84,Line,,2,,,38,7,None,Arrow,,CONTINUE,
+85,Line,,2,,,30,39,None,Arrow,,Yes,
+86,Line,,2,,,39,40,None,Arrow,,TEXT,
+87,Line,,2,,,35,40,None,Arrow,,TEXT,
+88,Line,,2,,,34,40,None,Arrow,,TEXT,
+89,Line,,2,,,31,38,None,Arrow,,No,
+90,Line,,2,,,27,32,None,Arrow,,Yes,
+91,Line,,2,,,32,40,None,Arrow,,TEXT,
+92,Line,,2,,,22,6,None,Arrow,,No,
+93,Line,,2,,,24,38,None,Arrow,,No,
+94,Line,,2,,,27,38,None,Arrow,,No,
+95,Line,,2,,,33,38,None,Arrow,,No,
+96,Line,,2,,,33,41,None,Arrow,,Yes,
+97,Line,,2,,,41,40,None,Arrow,,TEXT,

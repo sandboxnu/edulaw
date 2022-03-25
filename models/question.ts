@@ -11,4 +11,5 @@ export interface Question {
   description?: string
   type: string
   answers: Answer[]
+  section: string
 }

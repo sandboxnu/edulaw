@@ -100,6 +100,7 @@ const csvToQuestionArray2 = (csv: string[][]): Question[] => {
       ),
       type: questionType,
       answers: relevantAnswersObjects,
+      section: '',
     }
   })
 }
@@ -146,6 +147,10 @@ const csvToQuestionArray = (csv: CsvType[]): Question[] => {
         ),
         type: questionType,
         answers: relevantAnswersObjects,
+        section:
+          csv.find(
+            (element: CsvType) => element.Id === question['Contained By']
+          )?.['Text Area 1'] || 'PRS Complaint',
       }
     }
   )
@@ -160,6 +165,7 @@ type CsvType = {
   'Line Source': string
   'Line Destination': string
   'Text Area 1': string
+  'Contained By': string
 }
 
 export const getStaticProps: GetStaticProps = (context) => {
@@ -336,7 +342,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
       <NavBar></NavBar>
       <HorizontalBox>
         <VerticalBox>
-          <TitleText>Pet Lover Section</TitleText>
+          <TitleText>{currentQuestion.section}</TitleText>
           <div>
             <Formik
               initialValues={formValues}
