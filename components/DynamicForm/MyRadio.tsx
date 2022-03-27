@@ -11,7 +11,7 @@ interface MyRadioProps {
   label: string
   options: Answer[]
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  ans: FormAnswer
+  ans?: FormAnswer
 }
 
 export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
@@ -46,7 +46,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
   const answers = props.options.map(function (option, i) {
     return (
       <div key={option.content}>
-        {initialRadio(option.id)}
+        {initialRadio(i)}
         <label>{option.content}</label>
       </div>
     )

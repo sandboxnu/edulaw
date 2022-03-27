@@ -5,9 +5,10 @@ import {
   answers,
   AnswersKeys,
   forms,
+  Answer,
 } from '../../models'
 import { Form, Formik } from 'formik'
-import React, { ChangeEvent, useContext, useState } from 'react'
+import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
@@ -22,8 +23,8 @@ const firstQuestionId: QuestionsKeys =
 const startingQuestion: Question = questions[firstQuestionId] as Question
 let startingAnswer: FormAnswer
 
-function getNextQuestion(answerId: AnswersKeys): Question {
-  const id: QuestionsKeys = answers[answerId].route.toString() as QuestionsKeys
+function getNextQuestion(answer: Answer): Question {
+  const id: number = answer.route
   return questions[id] as Question
 }
 
@@ -76,71 +77,77 @@ const DynamicPOC: React.FC = () => {
   ) {
     const answer = {
       questionId: event.target.name,
-      answerId: isUserInput
-        ? _getInputAnswerId(event.target.name)
-        : event.target.value,
+      answerId: isUserInput ? '0' : event.target.value,
       userAnswer: isUserInput ? event.target.value : undefined,
     }
 
     setCurrentAnswer(answer)
   }
 
-  function _getInputAnswerId(questionId: string): string {
-    const question: Question = questions[
-      questionId as QuestionsKeys
-    ] as Question
-    return question.answers[0].toString() // TODO: Probably error check this or something
-  }
-
   /**
    * handles getting the next question based on current question's answer
    */
   function _handleNext() {
-    if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
+    if (
+      !currentAnswer ||
+      currentAnswer.questionId !== currentQuestion.id.toString()
+    ) {
+      return
+    }
+    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       _handleQuestionExists()
     } else {
+      const nextQuestion = getNextQuestion(
+        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+      )
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
-        currentQuestion,
+        nextQuestion,
       ])
-      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setCurrentQuestion(nextQuestion)
+      if (formValues.formAnswers[nextQuestion.id]) {
+        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      }
     }
-    formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
-      setCurrentIndex(currentIndex + 1)
-    }
+    // if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
+    setCurrentIndex(currentIndex + 1)
+    // }
   }
 
   /**
    * Modifies question history and routes form depending on whether answer has been changed
    */
   function _handleQuestionExists() {
+    const nextQuestion = getNextQuestion(
+      questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+    )
     if (
-      formValues.formAnswers[currentAnswer.questionId]['answerId'] !==
+      formValues.formAnswers[currentQuestion.id]['answerId'] !==
       currentAnswer['answerId']
     ) {
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
         delete formValues.formAnswers[questionHistory[i].id]
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
-      setQuestionHistory([...questionSlice, currentQuestion])
-      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
-    } else {
-      if (formValues.formAnswers[currentQuestion.id]) {
-        setCurrentQuestion(
-          getNextQuestion(
-            formValues.formAnswers[currentQuestion.id].answerId as AnswersKeys
-          )
-        )
-      }
+      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setQuestionHistory([...questionSlice, nextQuestion])
+    }
+    setCurrentQuestion(nextQuestion)
+    if (formValues.formAnswers[nextQuestion.id]) {
+      setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
     }
   }
 
   function _handleBack() {
     if (currentIndex !== 0) {
-      setCurrentIndex(currentIndex - 1)
-      const newQuestion = questionHistory[currentIndex]
+      const newQuestion = questionHistory[currentIndex - 1]
+      if (currentQuestion.id.toString() === currentAnswer.questionId) {
+        formValues.formAnswers[currentQuestion.id] = currentAnswer
+        setCurrentAnswer(formValues.formAnswers[newQuestion.id])
+      }
       setCurrentQuestion(newQuestion)
+      setCurrentIndex(currentIndex - 1)
     }
   }
 

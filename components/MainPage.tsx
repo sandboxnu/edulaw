@@ -5,19 +5,22 @@ import Typography from '@material-ui/core/Typography'
 import Link from 'next/link'
 
 function MainPage() {
-  const ContinueButton = withStyles({
-    root: {
-      backgroundColor: '#5064C7',
-      width: '100%',
-      color: '#FFFFFF',
-      padding: '10px',
-      borderRadius: '8px',
-      margin: '0 auto',
-      '&:hover': {
+  const ContinueButton = withStyles(
+    {
+      root: {
         backgroundColor: '#5064C7',
+        width: '100%',
+        color: '#FFFFFF',
+        padding: '10px',
+        borderRadius: '8px',
+        margin: '0 auto',
+        '&:hover': {
+          backgroundColor: '#5064C7',
+        },
       },
     },
-  })(Button)
+    { name: 'ContinueButtonMain' }
+  )(Button)
 
   return (
     <div className="mainpage">

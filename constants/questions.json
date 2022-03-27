@@ -1,54 +1,71 @@
-{
-    "0": {
-        "id": 0,
-        "question": "Do you like dogs?",
-        "description": "This is an optional description of the dog question",
-        "type": "RADIO",
-        "answers": [
-            0,
-            1
-        ]
-    },
-    "1": {
-        "id": 1,
-        "question": "What about cats?",
-        "description": null,
-        "type": "RADIO",
-        "answers": [
-            2,
-            3
-        ]
-    },
-    "2": {
-        "id": 2,
-        "question": "Do you have a pet?",
-        "description": null,
-        "type": "RADIO",
-        "answers": [
-            5, 6
-        ]
-    },
-    "3": {
-        "id": 3,
-        "question": "Why don't you like dogs or cats?",
-        "description": "Tell us about your feelings or whatever",
-        "type": "TEXT",
-        "answers": [
-            4
-        ]
-    },
-    "4": {
-        "id": 4,
-        "question": "You are not a fan of animals",
-        "description": null,
-        "type": "RESULT",
-        "answers": []
-    },
-    "5": {
-        "id": 5,
-        "question": "You are an animal lover",
-        "description": null,
-        "type": "RESULT",
-        "answers": []
-    }
-}
+[
+  {
+    "id": 0,
+    "question": "Do you like dogs?",
+    "description": "This is an optional description of the dog question",
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 1
+      },
+      {
+        "content": "Yes",
+        "route": 2
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "question": "What about cats?",
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "Yes",
+        "route": 2
+      },
+      {
+        "content": "No",
+        "route": 3
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Do you have a pet?",
+    "type": "RADIO",
+    "answers": [
+      {
+        "content": "No",
+        "route": 4
+      },
+      {
+        "content": "Yes",
+        "route": 5
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Why don't you like dogs or cats?",
+    "description": "Tell us about your feelings or whatever",
+    "type": "TEXT",
+    "answers": [
+      {
+        "route": 4
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "You are not a fan of animals",
+    "type": "RESULT",
+    "answers": []
+  },
+  {
+    "id": 5,
+    "question": "You are an animal lover",
+    "type": "RESULT",
+    "answers": []
+  }
+]
