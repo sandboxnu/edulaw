@@ -43,7 +43,9 @@
         "content": "Yes",
         "route": 5
       }
-    ]
+    ], 
+    "tooltipText": "Do younger siblings count?",
+    "tooltipHoveredText": "Younger siblings do not count."
   },
   {
     "id": 3,

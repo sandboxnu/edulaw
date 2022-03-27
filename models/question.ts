@@ -11,6 +11,8 @@ export interface Question {
   description?: string
   type: string
   answers: Answer[]
+  tooltipText?: string
+  tooltipHoveredText?: string
 }
 
 export { typedQuestions as questions }
