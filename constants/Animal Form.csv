@@ -9,7 +9,7 @@ Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,So
 8,Process,Flowchart Shapes,2,3,,,,,,,You are not a fan of animals.
 9,Process,Flowchart Shapes,2,3,,,,,,,You are an animal lover!
 10,Process,Flowchart Shapes,2,3,,,,,,,Do younger siblings count?
-11,Process,Flowchart Shapes,2,3,,,,,,,"No, younger siblings do no count."
+11,Process,Flowchart Shapes,2,3,,,,,,,"No, younger siblings do not count."
 12,Process,Flowchart Shapes,2,3,,,,,,,You should love animals.
 13,Line,,2,,,4,5,None,Arrow,,Yes
 14,Line,,2,,,4,6,None,Arrow,,No
