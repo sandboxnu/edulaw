@@ -106,7 +106,6 @@ const csvToQuestionArray2 = (csv: string[][]): Question[] => {
 }
 
 const csvToQuestionArray = (csv: CsvType[]): Question[] => {
-  console.log(csv)
   const questionsArray = csv.filter(
     (entry: CsvType) => entry.Name === 'Process'
   )
