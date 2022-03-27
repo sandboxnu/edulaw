@@ -109,7 +109,10 @@ const csvToQuestionArray = (csv: CsvType[]): Question[] => {
   return finalQuestions
 }
 
-const files = ['../../../constants/EdLaw Combined Flowchart.csv']
+const files = {
+  animalForm: '../../../constants/Animal Form.csv',
+  actualForm: '../../../constants/EdLaw Combined Flowchart.csv',
+}
 
 type CsvType = {
   Id: string
@@ -121,32 +124,29 @@ type CsvType = {
 }
 
 export const getStaticProps: GetStaticProps = (context) => {
-  const questions: Question[] = []
+  const file = files.animalForm
 
-  files.forEach((file: string) => {
-    const f = fs.readFileSync(path.resolve(__dirname, file))
-    const questionsFromF = csvToQuestionArray(parse(f, { columns: true }))
-    const idMap = new Map<number, number>()
-    questionsFromF.forEach((question: Question, index: number) => {
-      idMap.set(question.id, questions.length + index)
-    })
-    const updatedQuestionIds = questionsFromF.map((question: Question) => {
-      const newQuestionId = idMap.get(question.id)
-      return {
-        ...question,
-        id: newQuestionId === undefined ? -1 : newQuestionId,
-        answers: [
-          ...question.answers.map((answer: Answer) => {
-            const newRoute = idMap.get(answer.route)
-            return {
-              ...answer,
-              route: newRoute === undefined ? -1 : newRoute,
-            }
-          }),
-        ],
-      }
-    })
-    questions.push(...updatedQuestionIds)
+  const f = fs.readFileSync(path.resolve(__dirname, file))
+  const questionsFromF = csvToQuestionArray(parse(f, { columns: true }))
+  const idMap = new Map<number, number>()
+  questionsFromF.forEach((question: Question, index: number) => {
+    idMap.set(question.id, index)
+  })
+  const questions = questionsFromF.map((question: Question) => {
+    const newQuestionId = idMap.get(question.id)
+    return {
+      ...question,
+      id: newQuestionId === undefined ? -1 : newQuestionId,
+      answers: [
+        ...question.answers.map((answer: Answer) => {
+          const newRoute = idMap.get(answer.route)
+          return {
+            ...answer,
+            route: newRoute === undefined ? -1 : newRoute,
+          }
+        }),
+      ],
+    }
   })
 
   return {
