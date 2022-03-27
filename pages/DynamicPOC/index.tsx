@@ -76,7 +76,7 @@ const csvToQuestionArray = (csv: CsvType[]): Question[] => {
             answer['Text Area 1'] === 'CONTINUE' ||
             answer['Text Area 1'] === 'TEXT'
           ) {
-            questionType = 'TEXT' //answer[rowTitles.indexOf('Text Area 1')]; - for when we add in continue type
+            questionType = answer['Text Area 1']
           }
           return {
             ...(questionType === 'RADIO'
