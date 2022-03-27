@@ -15,8 +15,10 @@ function Tooltip(props: TooltipProps) {
 
   return (
     <MuiTooltip title={props.tooltipHoveredText!} placement="top-start">
-      <div>
-        <HelpIcon />
+      <div style={{ display: 'flex' }}>
+        <HelpIcon
+          style={{ display: 'flex', alignItems: 'center', marginRight: 4 }}
+        />
         {props.tooltipText!}
       </div>
     </MuiTooltip>
