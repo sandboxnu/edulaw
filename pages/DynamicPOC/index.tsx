@@ -58,53 +58,6 @@ const TitleText = styled.h1`
   font-size: large;
 `
 
-const csvToQuestionArray2 = (csv: string[][]): Question[] => {
-  const rowTitles = csv[0]
-  const questionsArray = csv.filter(
-    (entry: string[]) => entry[rowTitles.indexOf('Name')] === 'Process'
-  )
-  const answersArray = csv.filter(
-    (entry: string[]) => entry[rowTitles.indexOf('Name')] === 'Line'
-  )
-  return questionsArray.map((question: string[], index: number) => {
-    const relevantAnswers = answersArray.filter(
-      (answer: string[]) =>
-        answer[rowTitles.indexOf('Line Source')] === question[0]
-    )
-    let questionType = 'RESULT'
-    const relevantAnswersObjects = relevantAnswers.map((answer: string[]) => {
-      questionType = 'RADIO'
-      if (
-        answer[rowTitles.indexOf('Text Area 1')] === 'CONTINUE' ||
-        answer[rowTitles.indexOf('Text Area 1')] === 'TEXT'
-      ) {
-        questionType = 'TEXT' //answer[rowTitles.indexOf('Text Area 1')]; - for when we add in continue type
-      }
-      return {
-        ...(questionType === 'RADIO'
-          ? {
-              content: answer[rowTitles.indexOf('Text Area 1')],
-            }
-          : {}),
-        route: parseInt(answer[rowTitles.indexOf('Line Destination')]),
-      }
-    })
-    relevantAnswersObjects.sort((a, b) =>
-      (a.content || '') < (b.content || '') ? -1 : 1
-    )
-    return {
-      id: parseInt(question[0]),
-      question: question[rowTitles.indexOf('Text Area 1')].replace(
-        /(\s{2,})|(\r?\n)|(\r)|(\u2028)/g,
-        '\n'
-      ),
-      type: questionType,
-      answers: relevantAnswersObjects,
-      section: '',
-    }
-  })
-}
-
 const csvToQuestionArray = (csv: CsvType[]): Question[] => {
   const questionsArray = csv.filter(
     (entry: CsvType) => entry.Name === 'Process'
