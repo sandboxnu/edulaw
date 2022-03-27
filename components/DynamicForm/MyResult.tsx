@@ -29,20 +29,27 @@ export function buildResults(
   questions: Question[]
 ): FormAnswer[] {
   const questionKeys = Object.keys(formAnswers)
-  const results = questionKeys.map((key) => {
-    const idBasedFormAnswer: FormAnswer = formAnswers[key]
-    const contentBasedFormAnswer: FormAnswer = {
-      questionId: idBasedFormAnswer.questionId,
-      question: questions[parseInt(idBasedFormAnswer.questionId)].question,
-      answerId: idBasedFormAnswer.answerId,
-      answer:
-        questions[parseInt(idBasedFormAnswer.questionId)].answers[
-          parseInt(idBasedFormAnswer.answerId)
-        ].content,
-      userAnswer: idBasedFormAnswer.userAnswer ?? undefined,
-    }
-    return contentBasedFormAnswer
-  })
+  const results = questionKeys
+    .filter((key) => {
+      const idBasedFormAnswer: FormAnswer = formAnswers[key]
+      return (
+        questions[parseInt(idBasedFormAnswer.questionId)].type !== 'CONTINUE'
+      )
+    })
+    .map((key) => {
+      const idBasedFormAnswer: FormAnswer = formAnswers[key]
+      const contentBasedFormAnswer: FormAnswer = {
+        questionId: idBasedFormAnswer.questionId,
+        question: questions[parseInt(idBasedFormAnswer.questionId)].question,
+        answerId: idBasedFormAnswer.answerId,
+        answer:
+          questions[parseInt(idBasedFormAnswer.questionId)].answers[
+            parseInt(idBasedFormAnswer.answerId)
+          ].content,
+        userAnswer: idBasedFormAnswer.userAnswer ?? undefined,
+      }
+      return contentBasedFormAnswer
+    })
 
   return results
 }
@@ -84,8 +91,6 @@ export const MyResult: React.FC<MyResultProps> = ({
           <QuestionText>{key.answer}</QuestionText>
         </HorizontalDiv>
 
-        {/*<p>{key.question}</p>*/}
-        {/*<p>{key.answer}</p>*/}
         {key.userAnswer ? (
           <StyledTextInput
             name={key.userAnswer}

@@ -7,7 +7,7 @@ import {
   Answer,
 } from '../../models'
 import { Form, Formik } from 'formik'
-import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
@@ -172,13 +172,14 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   }
 
   function _updateCurrentAnswer(
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    isUserInput: boolean
+    questionId: string,
+    answerId: string,
+    userAnswer?: string
   ) {
     const answer = {
-      questionId: event.target.name,
-      answerId: isUserInput ? '0' : event.target.value,
-      userAnswer: isUserInput ? event.target.value : undefined,
+      questionId,
+      answerId,
+      userAnswer,
     }
 
     setCurrentAnswer(answer)
@@ -188,10 +189,8 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
    * handles getting the next question based on current question's answer
    */
   function _handleNext() {
-    if (
-      !currentAnswer ||
-      currentAnswer.questionId !== currentQuestion.id.toString()
-    ) {
+    console.log('you got here')
+    if (!currentAnswer) {
       return
     }
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
@@ -210,9 +209,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
         setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
       }
     }
-    // if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
     setCurrentIndex(currentIndex + 1)
-    // }
   }
 
   /**
@@ -270,7 +267,6 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
           .text('\t' + item.userAnswer + '\n\n', x, y)
         y += y_inc
       }
-      console.log('results', results)
     })
 
     return doc
@@ -317,7 +313,6 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
                   questions={questions}
                 />
                 <Button type="button" onClick={() => _handleBack()}>
-                  {' '}
                   {'Back'}
                 </Button>
                 <Button primary type="submit">

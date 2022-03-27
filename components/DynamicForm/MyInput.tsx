@@ -1,16 +1,18 @@
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
-import { answers } from '../../constants'
 import { FormAnswer } from '../../utils/FormContext'
 import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
 import { StyledTextInput } from '../FormStyles/InputBox'
+import Tooltip from './Tooltip'
 
 interface InputProps {
   name: string
   label: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
   ans: FormAnswer
+  tooltipText?: string
+  tooltipHoveredText?: string
 }
 
 export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
@@ -20,11 +22,12 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
   return (
     <div key={props.name}>
       <QuestionLayout
-        questionText={
-          <QuestionText>
-            {' '}
-            {/*htmlFor={`${props.id}-${props.name}`}*/} {props.label}
-          </QuestionText>
+        questionText={<QuestionText>{props.label}</QuestionText>}
+        tooltip={
+          <Tooltip
+            tooltipText={props.tooltipText}
+            tooltipHoveredText={props.tooltipHoveredText}
+          />
         }
         input={
           <StyledTextInput
