@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useContext } from 'react'
+import React from 'react'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import Typography from '@mui/material/Typography'
 import { Button } from '../FormStyles/Button'
@@ -39,7 +39,6 @@ export const ButtonRow = styled.div`
   margin-top: 15%;
 `
 
-// at this point i'm just trolling
 export const OuterDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -70,12 +69,7 @@ interface FormValues {
   zip: string
 }
 
-// note to self : ask Daniel about this (and everthing??) again
-interface FormContextInterface {
-  formValues: FormValues
-  updateFormValues?: (f: FormValues) => void
-}
-
+// contact form that includes validation for the below fields
 const ContactFormik: React.FC = () => {
   // function ContactInfo() {
   const initValues: FormValues = {
@@ -89,15 +83,9 @@ const ContactFormik: React.FC = () => {
     zip: '',
   }
 
-  const defaultFormState: FormContextInterface = {
-    formValues: initValues,
-  }
-
-  const spain =
+  const phoneCheck =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-  const FormCtx = React.createContext<FormContextInterface>(defaultFormState)
 
-  //const { updateFormValues } = useContext(FormCtx)
   return (
     <Formik
       initialValues={initValues}
@@ -110,7 +98,7 @@ const ContactFormik: React.FC = () => {
           .required('Required'),
         email: Yup.string().email('Invalid email address').required('Required'),
         phoneNumber: Yup.string()
-          .matches(spain, 'Phone number is not valid')
+          .matches(phoneCheck, 'Phone number is not valid')
           .required('Required'),
         address: Yup.string()
           .max(60, 'Must be 60 characters or less')
@@ -148,7 +136,7 @@ const ContactFormik: React.FC = () => {
                   width="330px"
                   height="53px"
                   name="firstName"
-                  placeholder="First name"
+                  placeholder="First Name"
                 />
 
                 <StyledTextInput

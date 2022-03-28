@@ -81,7 +81,6 @@ const DynamicPOC: React.FC = () => {
    * handles getting the next question based on current question's answer
    */
   function _handleNext() {
-    console.log('you got here')
     if (!currentAnswer) {
       return
     }
@@ -108,6 +107,9 @@ const DynamicPOC: React.FC = () => {
    * Modifies question history and routes form depending on whether answer has been changed
    */
   function _handleQuestionExists() {
+    const nextQuestion = getNextQuestion(
+      questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+    )
     if (
       formValues.formAnswers[currentQuestion.id]['answerId'] !==
       currentAnswer['answerId']
