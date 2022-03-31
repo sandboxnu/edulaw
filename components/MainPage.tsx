@@ -82,7 +82,7 @@ function MainPage() {
             justifyContent: 'center',
           }}
         >
-          <Link href="/DynamicPOC/" passHref>
+          <Link href="/signin" passHref>
             <ContinueButton>
               <Typography
                 variant="button"

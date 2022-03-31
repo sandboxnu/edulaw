@@ -18,32 +18,55 @@ export const InputBox = styled.input`
   line-height: 26px;
 `
 
+export const ErrorDiv = styled.div`
+  color: #ff0000;
+`
+
 interface InputProps {
   name: string
   width: string
   height: string
   defaultValue?: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  type?: string
+  placeholder?: string
 }
 
 export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =
   ({ ...props }) => {
     const [field, meta] = useField(props)
 
-    return (
-      <div key={props.name}>
-        {/* <label htmlFor={`${props.id}-${props.name}`}>{props.label}</label> */}
+    function onChangeInput(): JSX.Element {
+      if (props.onChange) {
+        return (
+          <InputBox
+            width={`${props.width}`}
+            height={`${props.height}`}
+            defaultValue={props.defaultValue}
+            {...field}
+            onChange={props.onChange}
+            type={props.type}
+            placeholder={props.placeholder}
+          />
+        )
+      }
+      return (
         <InputBox
           width={`${props.width}`}
           height={`${props.height}`}
           defaultValue={props.defaultValue}
-          type="text"
           {...field}
-          onChange={props.onChange}
+          type={props.type}
+          placeholder={props.placeholder}
         />
+      )
+    }
 
+    return (
+      <div key={props.name}>
+        {onChangeInput()}
         {meta.touched && meta.error ? (
-          <div className="error">{meta.error}</div>
+          <ErrorDiv className="error">{meta.error}</ErrorDiv>
         ) : null}
       </div>
     )

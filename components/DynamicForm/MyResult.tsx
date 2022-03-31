@@ -41,7 +41,6 @@ export function buildResults(formAnswers: {
       }
       return contentBasedFormAnswer
     })
-
   return results
 }
 
