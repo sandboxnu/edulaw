@@ -44,8 +44,10 @@
         "route": 5
       }
     ], 
-    "tooltipText": "Do younger siblings count?",
-    "tooltipHoveredText": "Younger siblings do not count."
+    "tooltip": {
+      "tooltipText": "Do younger siblings count?",
+      "tooltipHoveredText": "Younger siblings do not count."
+    }
   },
   {
     "id": 3,
