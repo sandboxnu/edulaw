@@ -29,8 +29,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
             props.onChange(event.target.name, event.target.value)
           }
           ans={props.answers}
-          tooltipText={props.question.tooltipText}
-          tooltipHoveredText={props.question.tooltipHoveredText}
+          tooltip={props.question.tooltip}
         />
       )
     }
@@ -43,8 +42,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
             props.onChange(event.target.name, '0', event.target.value)
           }
           ans={props.answers}
-          tooltipText={props.question.tooltipText}
-          tooltipHoveredText={props.question.tooltipHoveredText}
+          tooltip={props.question.tooltip}
         />
       )
     }

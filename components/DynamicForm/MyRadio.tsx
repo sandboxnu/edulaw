@@ -13,8 +13,7 @@ interface MyRadioProps {
   options: Answer[]
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
   ans?: FormAnswer
-  tooltipText?: string
-  tooltipHoveredText?: string
+  tooltip?: { tooltipText: string; tooltipHoveredText: string }
 }
 
 export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
@@ -59,12 +58,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
     <div key={props.name} role="group" aria-labelledby="my-radio-group">
       <QuestionLayout
         questionText={<QuestionText>{props.label}</QuestionText>}
-        tooltip={
-          <Tooltip
-            tooltipText={props.tooltipText}
-            tooltipHoveredText={props.tooltipHoveredText}
-          />
-        }
+        tooltip={<Tooltip tooltip={props.tooltip} />}
         input={<>{answers}</>}
       />
 

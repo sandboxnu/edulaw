@@ -11,8 +11,7 @@ interface InputProps {
   label: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
   ans: FormAnswer
-  tooltipText?: string
-  tooltipHoveredText?: string
+  tooltip?: { tooltipText: string; tooltipHoveredText: string }
 }
 
 export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
@@ -23,12 +22,7 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
     <div key={props.name}>
       <QuestionLayout
         questionText={<QuestionText>{props.label}</QuestionText>}
-        tooltip={
-          <Tooltip
-            tooltipText={props.tooltipText}
-            tooltipHoveredText={props.tooltipHoveredText}
-          />
-        }
+        tooltip={<Tooltip tooltip={props.tooltip} />}
         input={
           <StyledTextInput
             type="text"

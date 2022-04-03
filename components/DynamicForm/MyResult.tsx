@@ -50,7 +50,6 @@ export function buildResults(
       }
       return contentBasedFormAnswer
     })
-
   return results
 }
 

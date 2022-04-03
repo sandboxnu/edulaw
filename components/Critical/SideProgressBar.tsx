@@ -29,13 +29,7 @@ const StyledListItemText = withStyles(
 const StyledListItem = withStyles(
   {
     root: {
-      '&.Mui-selected': {
-        background:
-          'linear-gradient(to right, #5064C7 0%, #5064C7 2%, #FFFFFF 2%, #FFFFFF 100%)',
-        boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.15)',
-      },
-      '&:hover': {
-        // repetitive send help
+      '&.Mui-selected, &:hover': {
         background:
           'linear-gradient(to right, #5064C7 0%, #5064C7 2%, #FFFFFF 2%, #FFFFFF 100%)',
         boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.15)',

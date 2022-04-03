@@ -7,6 +7,10 @@ interface ContinueProps {
   description?: string
 }
 
+/*
+Represents a "Continue" question in the form, which just displays some information and allows user to keep on moving forward
+(no answers to choose)
+*/
 const MyContinue: React.FC<ContinueProps> = ({
   label,
   onMount,

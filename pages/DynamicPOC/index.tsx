@@ -135,12 +135,23 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
         delete formValues.formAnswers[questionHistory[i].id]
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      const nextQuestion = getNextQuestion(
+        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+      )
       setQuestionHistory([...questionSlice, nextQuestion])
-    }
-    setCurrentQuestion(nextQuestion)
-    if (formValues.formAnswers[nextQuestion.id]) {
-      setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setCurrentQuestion(nextQuestion)
+      if (formValues.formAnswers[nextQuestion.id]) {
+        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      }
+    } else {
+      const nextQuestion = getNextQuestion(
+        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+      )
+      setCurrentQuestion(nextQuestion)
+      if (formValues.formAnswers[nextQuestion.id]) {
+        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      }
     }
   }
 
