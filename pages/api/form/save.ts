@@ -2,7 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { MongoClient, WithId, Document } from 'mongodb'
 import { FormAnswer } from '../../../utils/FormContext'
 
-const client = new MongoClient(' ')
+const client = new MongoClient(
+  'mongodb://mongoadmin:secret@localhost:8080/?authSource=admin'
+)
 
 export interface FormAnswerDB extends WithId<Document> {
   userID: number
