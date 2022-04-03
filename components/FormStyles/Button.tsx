@@ -19,7 +19,7 @@ export const Button = styled.button`
   height: 42px;
   margin: 0;
   &:hover {
-    background: red;
+    cursor: pointer;
   }
 
   ${(props: buttonProps) =>
