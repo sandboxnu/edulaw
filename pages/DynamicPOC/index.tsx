@@ -11,6 +11,7 @@ import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
+import { QuestionType } from '../../models/question'
 
 let startingAnswer: FormAnswer
 
@@ -218,7 +219,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
                   updateFormValues(values)
                 }
                 _handleNext()
-                if (currentQuestion.type === 'RESULT') {
+                if (currentQuestion.type === QuestionType.RESULT) {
                   _handleSubmit(values)
                   setSubmitting(false)
                 }
@@ -235,7 +236,9 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
                   {'Back'}
                 </Button>
                 <Button primary type="submit">
-                  {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
+                  {currentQuestion.type === QuestionType.RESULT
+                    ? 'End'
+                    : 'Next'}
                 </Button>
               </Form>
             </Formik>{' '}

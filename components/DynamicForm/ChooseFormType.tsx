@@ -5,6 +5,7 @@ import { MyRadio } from './MyRadio'
 import { MyResult } from './MyResult'
 import { FormAnswer } from '../../utils/FormContext'
 import MyContinue from './MyContinue'
+import { QuestionType } from '../../models/question'
 
 interface ChooseFormTypeProps {
   question: Question
@@ -19,7 +20,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
   const answerChoices: Answer[] = props.question.answers
 
   switch (props.question.type) {
-    case 'RADIO': {
+    case QuestionType.RADIO: {
       return (
         <MyRadio
           name={props.question.id.toString()}
@@ -33,7 +34,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
         />
       )
     }
-    case 'TEXT': {
+    case QuestionType.TEXT: {
       return (
         <MyTextInput
           name={props.question.id.toString()}
@@ -46,7 +47,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
         />
       )
     }
-    case 'RESULT': {
+    case QuestionType.RESULT: {
       return (
         <MyResult
           label={props.question.question}
@@ -55,7 +56,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
         />
       )
     }
-    case 'CONTINUE': {
+    case QuestionType.CONTINUE: {
       return (
         <MyContinue
           label={props.question.question}
