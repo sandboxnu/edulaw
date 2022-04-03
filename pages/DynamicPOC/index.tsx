@@ -82,8 +82,8 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   }
 
   function _updateCurrentAnswer(
-    questionId: string,
-    answerId: string,
+    questionId: number,
+    answerId: number,
     userAnswer?: string
   ) {
     const answer = {
@@ -102,20 +102,20 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     if (!currentAnswer) {
       return
     }
-    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
+    if (formValues.hasOwnProperty(currentQuestion.id)) {
       _handleQuestionExists()
     } else {
       const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+        questions[currentQuestion.id].answers[currentAnswer.answerId]
       )
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
         nextQuestion,
       ])
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      formValues[currentQuestion.id] = currentAnswer
       setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      if (formValues[nextQuestion.id]) {
+        setCurrentAnswer(formValues[nextQuestion.id])
       }
     }
     setCurrentIndex(currentIndex + 1)
@@ -126,32 +126,31 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
    */
   function _handleQuestionExists() {
     const nextQuestion = getNextQuestion(
-      questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+      questions[currentQuestion.id].answers[currentAnswer.answerId]
     )
     if (
-      formValues.formAnswers[currentQuestion.id]['answerId'] !==
-      currentAnswer['answerId']
+      formValues[currentQuestion.id]['answerId'] !== currentAnswer['answerId']
     ) {
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
-        delete formValues.formAnswers[questionHistory[i].id]
+        delete formValues[questionHistory[i].id]
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
       const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+        questions[currentQuestion.id].answers[currentAnswer.answerId]
       )
       setQuestionHistory([...questionSlice, nextQuestion])
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      formValues[currentQuestion.id] = currentAnswer
       setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      if (formValues[nextQuestion.id]) {
+        setCurrentAnswer(formValues[nextQuestion.id])
       }
     } else {
       const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+        questions[currentQuestion.id].answers[currentAnswer.answerId]
       )
       setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      if (formValues[nextQuestion.id]) {
+        setCurrentAnswer(formValues[nextQuestion.id])
       }
     }
   }
@@ -159,9 +158,9 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   function _handleBack() {
     if (currentIndex !== 0) {
       const newQuestion = questionHistory[currentIndex - 1]
-      if (currentQuestion.id.toString() === currentAnswer.questionId) {
-        formValues.formAnswers[currentQuestion.id] = currentAnswer
-        setCurrentAnswer(formValues.formAnswers[newQuestion.id])
+      if (currentQuestion.id === currentAnswer.questionId) {
+        formValues[currentQuestion.id] = currentAnswer
+        setCurrentAnswer(formValues[newQuestion.id])
       }
       setCurrentQuestion(newQuestion)
       setCurrentIndex(currentIndex - 1)
@@ -200,7 +199,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     }
 
     let doc = new jsPDF()
-    const results = buildResults(values['formAnswers'], questions)
+    const results = buildResults(values, questions)
     doc = _buildDoc(doc, results)
     doc.save('a4.pdf')
   }
@@ -229,7 +228,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
                 <ChooseFormType
                   question={currentQuestion}
                   onChange={_updateCurrentAnswer}
-                  answers={formValues.formAnswers[currentQuestion.id]}
+                  answers={formValues[currentQuestion.id]}
                   questions={questions}
                 />
                 <Button type="button" onClick={() => _handleBack()}>

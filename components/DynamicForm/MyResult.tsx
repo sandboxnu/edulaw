@@ -27,19 +27,17 @@ export function buildResults(
   const results = questionKeys
     .filter((key) => {
       const idBasedFormAnswer: FormAnswer = formAnswers[key]
-      return (
-        questions[parseInt(idBasedFormAnswer.questionId)].type !== 'CONTINUE'
-      )
+      return questions[idBasedFormAnswer.questionId].type !== 'CONTINUE'
     })
     .map((key) => {
       const idBasedFormAnswer: FormAnswer = formAnswers[key]
       const contentBasedFormAnswer: FormAnswer = {
         questionId: idBasedFormAnswer.questionId,
-        question: questions[parseInt(idBasedFormAnswer.questionId)].question,
+        question: questions[idBasedFormAnswer.questionId].question,
         answerId: idBasedFormAnswer.answerId,
         answer:
-          questions[parseInt(idBasedFormAnswer.questionId)].answers[
-            parseInt(idBasedFormAnswer.answerId)
+          questions[idBasedFormAnswer.questionId].answers[
+            idBasedFormAnswer.answerId
           ].content,
         userAnswer: idBasedFormAnswer.userAnswer ?? undefined,
       }
@@ -51,12 +49,12 @@ export function buildResults(
 // updates the form values for the given question in the given context with the contents of the given event
 function _updateTextInputs(
   ctx: FormContextInterface,
-  questionId: string,
+  questionId: number,
   event: ChangeEvent<HTMLInputElement>
 ) {
   const formValues: FormValues = ctx.formValues
   const userInput: string = event.target.value
-  formValues.formAnswers[questionId].userAnswer = userInput
+  formValues[questionId].userAnswer = userInput
   if (ctx.updateFormValues) {
     ctx.updateFormValues(formValues)
   }
@@ -72,8 +70,7 @@ export const MyResult: React.FC<MyResultProps> = ({
   ...props
 }): JSX.Element => {
   const ctx = useContext(FormCtx)
-  const formAnswers = ctx.formValues.formAnswers
-  const results = buildResults(formAnswers, props.questions).map((key) => {
+  const results = buildResults(ctx.formValues, props.questions).map((key) => {
     function _onChange(event: ChangeEvent<HTMLInputElement>) {
       _updateTextInputs(ctx, key.questionId, event)
     }

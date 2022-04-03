@@ -9,7 +9,7 @@ import { QuestionType } from '../../models/question'
 
 interface ChooseFormTypeProps {
   question: Question
-  onChange: (questionId: string, answerId: string, userAnswer?: string) => void
+  onChange: (questionId: number, answerId: number, userAnswer?: string) => void
   answers: FormAnswer
   questions: Question[]
 }
@@ -18,9 +18,6 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
   ...props
 }): JSX.Element => {
   const answerChoices: Answer[] = props.question.answers
-
-  console.log(props.question.type)
-  console.log(QuestionType.RADIO)
   switch (props.question.type) {
     case QuestionType.RADIO: {
       return (
@@ -29,7 +26,10 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           label={props.question.question}
           options={answerChoices}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(event.target.name, event.target.value)
+            props.onChange(
+              parseInt(event.target.name),
+              parseInt(event.target.value)
+            )
           }
           ans={props.answers}
           tooltip={props.question.tooltip}
@@ -42,7 +42,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           name={props.question.id.toString()}
           label={props.question.question}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(event.target.name, '0', event.target.value)
+            props.onChange(parseInt(event.target.name), 0, event.target.value)
           }
           ans={props.answers}
           tooltip={props.question.tooltip}
@@ -63,7 +63,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
         <MyContinue
           label={props.question.question}
           description={props.question.description}
-          onMount={() => props.onChange(props.question.id.toString(), '0')}
+          onMount={() => props.onChange(props.question.id, 0)}
         />
       )
     }

@@ -14,9 +14,9 @@ interface InputProps {
   tooltip?: { tooltipText: string; tooltipHoveredText: string }
 }
 
-export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
-  ...props
-}) => {
+export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
+  props
+) => {
   const [field, meta] = useField(props)
   return (
     <div key={props.name}>

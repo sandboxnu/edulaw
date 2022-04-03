@@ -16,14 +16,14 @@ interface MyRadioProps {
   tooltip?: { tooltipText: string; tooltipHoveredText: string }
 }
 
-export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
-  ...props
-}): JSX.Element => {
+export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = (
+  props
+): JSX.Element => {
   const [field, meta] = useField(props)
   // renders input type radio, determines whether or not it should be checked initially
   function initialRadio(optionId: number): JSX.Element {
     if (props.ans) {
-      if (optionId.toString() === props.ans.answerId) {
+      if (optionId === props.ans.answerId) {
         return (
           <RadioButton
             type="radio"

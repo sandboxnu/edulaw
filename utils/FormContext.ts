@@ -1,15 +1,11 @@
 import React from 'react'
 
-export interface FormValues {
-  formAnswers: {
-    [key: string]: FormAnswer
-  }
-}
+export type FormValues = { [key: string]: FormAnswer }
 
 export interface FormAnswer {
-  questionId: string
+  questionId: number
   question?: string
-  answerId: string
+  answerId: number
   answer?: string
   userAnswer?: string
 }
@@ -20,9 +16,7 @@ export interface FormContextInterface {
   updateFormValues?: (formValues: FormValues) => void
 }
 
-export const emptyFormValues: FormValues = {
-  formAnswers: {},
-}
+export const emptyFormValues: FormValues = {}
 
 export const defaultFormState: FormContextInterface = {
   formValues: emptyFormValues,

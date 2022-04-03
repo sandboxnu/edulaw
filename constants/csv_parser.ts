@@ -2,6 +2,7 @@ import { Question, Answer } from '../models'
 import fs from 'fs'
 import path from 'path'
 import { parse } from 'csv-parse/sync'
+import { QuestionType } from '../models/question'
 
 // The type containing columns that we care about in the Flowchart CSV
 type CsvType = {
@@ -9,7 +10,7 @@ type CsvType = {
   Name: string
   'Line Source': string
   'Line Destination': string
-  'Text Area 1': string
+  'Text Area 1': QuestionType | 'TOOLTIP-TEXT'
   'Contained By': string
 }
 
@@ -149,12 +150,14 @@ const csvToQuestionArray = (fileName: string): Question[] => {
       idMap.set(id, index)
       const answers = answersMap.get(id) || []
       // determine the question type based on the answers
-      const type =
+      const type: QuestionType =
         answers.length === 0
-          ? 'RESULT'
+          ? QuestionType.RESULT
           : answers.length > 1
-          ? 'RADIO'
-          : answers[0]['Text Area 1']
+          ? QuestionType.RADIO
+          : answers[0]['Text Area 1'] === 'CONTINUE'
+          ? QuestionType.CONTINUE
+          : QuestionType.TEXT
       // only add tooltip if text and hoverText are present (undefined causes bugs with getStaticProps)
       let tooltip:
         | { tooltipText: string; tooltipHoveredText: string }
