@@ -1,16 +1,19 @@
-import dbConnect from './dbConnect'
+import { dbConnect, getDB } from './dbConnect'
+import * as mongoDB from 'mongodb'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
-  name: string
-}
+// type Data = {
+//   name: any
+// }
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
   console.log('connecting...')
-  await dbConnect()
+  dbConnect()
+  const db = getDB()
   console.log('connected!')
-  res.status(200).json({ name: 'hello' })
+  const pet = await db.collection('pets').findOne()
+  res.status(200).json({ pet: pet })
 }
