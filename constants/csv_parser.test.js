@@ -20,8 +20,10 @@ const expected = [
       { content: 'Yes', route: 5 },
     ],
     section: 'Pet Lover Section',
-    tooltipText: 'Do younger siblings count?',
-    tooltipHoveredText: 'No, younger siblings do not count.',
+    tooltip: {
+      tooltipText: 'Do younger siblings count?',
+      tooltipHoveredText: 'No, younger siblings do not count.',
+    },
   },
   {
     id: 2,

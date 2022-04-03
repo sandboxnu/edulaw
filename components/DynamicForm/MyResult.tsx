@@ -5,12 +5,7 @@ import {
   FormCtx,
   FormValues,
 } from '../../utils/FormContext'
-import {
-  answers,
-  AnswersKeys,
-  Question,
-  /*questions,*/ QuestionsKeys,
-} from '../../models'
+import { answers, AnswersKeys, Question } from '../../models'
 import { QuestionText } from '../FormStyles/QuestionText'
 import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
