@@ -3,6 +3,7 @@ import styled from 'styled-components'
 interface QuestionProps {
   questionText: JSX.Element
   input: JSX.Element
+  tooltip?: JSX.Element
 }
 
 const QuestionDiv = styled.div`
@@ -19,10 +20,15 @@ const InputDiv = styled.div`
 `
 
 // how to attach this to formik? hopefully input will already be attached...
-const QuestionLayout: React.FC<QuestionProps> = ({ questionText, input }) => {
+const QuestionLayout: React.FC<QuestionProps> = ({
+  questionText,
+  tooltip,
+  input,
+}) => {
   return (
     <QuestionDiv>
       {questionText}
+      {tooltip}
       <InputDiv>{input}</InputDiv>
     </QuestionDiv>
   )

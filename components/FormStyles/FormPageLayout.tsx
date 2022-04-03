@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import NavBar from '../Critical/NavBar'
 import SideProgressBar from '../Critical/SideProgressBar'
 
+// THIS IS NEVER USED ANYWHERE (I THINK)
+
 interface MyLayoutProps {
   question: JSX.Element
 }
