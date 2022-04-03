@@ -19,6 +19,8 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
 }): JSX.Element => {
   const answerChoices: Answer[] = props.question.answers
 
+  console.log(props.question.type)
+  console.log(QuestionType.RADIO)
   switch (props.question.type) {
     case QuestionType.RADIO: {
       return (

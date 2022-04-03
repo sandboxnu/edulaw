@@ -1,10 +1,10 @@
 import { Answer } from './answer'
 
 export enum QuestionType {
-  'RESULT',
-  'CONTINUE',
-  'RADIO',
-  'TEXT',
+  'RESULT' = 'RESULT',
+  'CONTINUE' = 'CONTINUE',
+  'RADIO' = 'RADIO',
+  'TEXT' = 'TEXT',
 }
 
 export interface Question {
