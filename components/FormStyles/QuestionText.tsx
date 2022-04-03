@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { COLORS } from '../../constants/colors'
 
 export const QuestionText = styled.label`
   font-family: Source Sans Pro;
@@ -7,5 +8,5 @@ export const QuestionText = styled.label`
   font-size: 26px;
   line-height: 33px;
 
-  color: #3d3d3d;
+  color: ${COLORS.DARK_TEXT};
 `

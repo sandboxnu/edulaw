@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
+import { COLORS } from '../../constants/colors'
 
 const firstQuestionId: QuestionsKeys =
   forms.animalForm.toString() as QuestionsKeys
@@ -26,21 +27,44 @@ const Main = styled.div`
   height: 100vh;
   align-items: stretch;
 `
-
-const VerticalBox = styled.div`
+const BottomButtonBar = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 80px;
+  border-top: 1px solid ${COLORS.SHADOW_GREY};
+  background-color: ${COLORS.LIGHT_GREY};
+`
+const FormContentWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding-left: 15%;
-  justify-content: center;
+  justify-content: space-between;
 `
-const GreyBar = styled.div`
+const QuestionDisplayWrapper = styled.div`
+  padding-left: 10%;
+  margin-top: 64px;
+`
+
+const NextEndButton = styled(Button)`
+  background: ${COLORS.EDLAW_BLUE};
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`
+const BackButton = styled(Button)`
+  border: none;
+  width: 80px;
+  color: ${COLORS.EDLAW_BLUE};
+`
+const GreySideBar = styled.div`
   width: 30%;
-  min-width: 250px;
-  max-width: 400px;
-  background-color: #e5e5e5;
+  min-width: 200px;
+  max-width: 300px;
+  background-color: ${COLORS.LIGHT_GREY};
   height: 100%;
+  border-right: 1px solid ${COLORS.SHADOW_GREY};
 `
 // horizontal box
 const HorizontalBox = styled.div`
@@ -52,7 +76,7 @@ const HorizontalBox = styled.div`
   justify-content: center;
 `
 const TitleText = styled.h1`
-  font-size: large;
+  font-size: 26px;
 `
 
 const DynamicPOC: React.FC = () => {
@@ -191,41 +215,43 @@ const DynamicPOC: React.FC = () => {
     <Main>
       <NavBar></NavBar>
       <HorizontalBox>
-        <VerticalBox>
-          <TitleText>Pet Lover Section</TitleText>
-          <div>
-            <Formik
-              initialValues={formValues}
-              onSubmit={(values: FormValues, { setSubmitting }) => {
-                if (updateFormValues) {
-                  updateFormValues(values)
-                }
-                _handleNext()
-                if (currentQuestion.type === 'RESULT') {
-                  _handleSubmit(values)
-                  setSubmitting(false)
-                }
-              }}
-            >
-              <Form>
+        <GreySideBar>
+          <SideProgressBar />
+        </GreySideBar>
+        <Formik
+          initialValues={formValues}
+          onSubmit={(values: FormValues, { setSubmitting }) => {
+            if (updateFormValues) {
+              updateFormValues(values)
+            }
+            _handleNext()
+            if (currentQuestion.type === 'RESULT') {
+              _handleSubmit(values)
+              setSubmitting(false)
+            }
+          }}
+        >
+          <Form style={{ width: '100%', display: 'flex' }}>
+            <FormContentWrapper>
+              <QuestionDisplayWrapper>
+                <TitleText>Pet Lover Section</TitleText>
                 <ChooseFormType
                   question={currentQuestion}
                   onChange={_updateCurrentAnswer}
                   answers={formValues.formAnswers[currentQuestion.id]}
                 />
-                <Button type="button" onClick={() => _handleBack()}>
-                  {'Back'}
-                </Button>
-                <Button primary type="submit">
+              </QuestionDisplayWrapper>
+              <BottomButtonBar>
+                <BackButton type="button" onClick={() => _handleBack()}>
+                  Back
+                </BackButton>
+                <NextEndButton type="submit">
                   {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
-                </Button>
-              </Form>
-            </Formik>{' '}
-          </div>
-        </VerticalBox>
-        <GreyBar>
-          <SideProgressBar />
-        </GreyBar>
+                </NextEndButton>
+              </BottomButtonBar>
+            </FormContentWrapper>
+          </Form>
+        </Formik>
       </HorizontalBox>
     </Main>
   )

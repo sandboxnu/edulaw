@@ -1,23 +1,26 @@
 import styled, { css } from 'styled-components'
+import { COLORS } from '../../constants/colors'
 
 interface buttonProps {
   primary?: boolean
 }
 
 export const Button = styled.button`
-  background: white;
+  background: ${COLORS.LIGHT_GREY};
   border-width: 1px;
-  border-color: #777777;
+  border-color: ${COLORS.SHADOW_GREY};
   border-style: solid;
   text-align: center;
-  font-size: 24px;
-  font-family: 'Source Sans Pro';
+  font-size: 16px;
   display: inline-block;
-  border-radius: 6px;
-  color: black;
-  width: 140px;
-  height: 54px;
+  border-radius: 4px;
+  color: ${COLORS.TEXT_GREY};
+  width: 150px;
+  height: 42px;
   margin: 0;
+  &:hover {
+    background: red;
+  }
 
   ${(props: buttonProps) =>
     props.primary &&
