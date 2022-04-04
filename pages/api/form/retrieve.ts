@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { MongoClient } from 'mongodb'
-import { FormAnswer } from '../../../utils/FormContext'
+import { FormValues } from '../../../utils/FormContext'
 import { FormAnswerDB } from './save'
 
 const client = new MongoClient(
@@ -9,14 +9,19 @@ const client = new MongoClient(
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<FormAnswer>
+  res: NextApiResponse<FormValues | { error: string }>
 ) {
+  await client.connect()
   const userID: number = req.body.userID
   const formCollection = client.db('edlaw').collection('form')
 
   const result = (await formCollection.findOne({
     userID: userID,
-  })) as FormAnswerDB
+  })) as FormAnswerDB | null
   console.log(result)
-  return result.formanswer
+  if (result) {
+    res.status(200).json(result.formAnswers)
+  } else {
+    res.status(401).json({ error: 'User does not have saved formAnswer' })
+  }
 }

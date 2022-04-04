@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { MongoClient, WithId, Document } from 'mongodb'
-import { FormAnswer } from '../../../utils/FormContext'
+import { FormValues } from '../../../utils/FormContext'
 
 const client = new MongoClient(
   'mongodb://mongoadmin:secret@localhost:8080/?authSource=admin'
@@ -8,7 +8,7 @@ const client = new MongoClient(
 
 export interface FormAnswerDB extends WithId<Document> {
   userID: number
-  formanswer: FormAnswer
+  formAnswers: FormValues
 }
 
 export default async function handler(
@@ -19,8 +19,13 @@ export default async function handler(
 
   const doc: FormAnswerDB = req.body
   const formCollection = await client.db('edlaw').collection('form')
-  const result = formCollection.updateOne({ userID: doc.userID }, doc, {
+  const result = await formCollection.replaceOne({ userID: doc.userID }, doc, {
     upsert: true,
   })
-  console.log(result)
+  console.log(result.modifiedCount)
+  if (result.acknowledged) {
+    res.status(200).json({ success: true })
+  } else {
+    res.status(401).json({ error: 'An error occurred while saving' })
+  }
 }
