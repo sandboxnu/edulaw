@@ -1,0 +1,14 @@
+services:
+  mongo:
+    container_name: mongo-on-docker
+    image: mongo:5.0.6
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    ports:
+      - "8080:27017"
+    volumes:
+      - ./edulaw-data:/data/db
+
+volumes:
+  edulaw_data:
