@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth'
 import CredentialProvider from 'next-auth/providers/credentials'
-import { dbConnect } from '../dbConnect'
+import { dbConnect } from '../_dbConnect'
 
 /* eslint-disable */
 export default NextAuth({

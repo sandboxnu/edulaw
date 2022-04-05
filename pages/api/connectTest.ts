@@ -1,4 +1,4 @@
-import { dbConnect } from './dbConnect'
+import { dbConnect } from './_dbConnect'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -11,5 +11,5 @@ export default async function handler(
   } else {
     res.status(200).json({ success: 'Client connected successfully' })
   }
-  client?.close()
+  await client?.close()
 }

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { dbConnect } from '../dbConnect'
+import { dbConnect } from '../_dbConnect'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const client = await dbConnect()
@@ -18,6 +18,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const newUser = await users.insertOne(req.body)
     res.status(200).json({ id: newUser.insertedId })
   }
-
-  client.close()
+  await client.close()
 }
