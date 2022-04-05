@@ -15,14 +15,26 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  await client.connect()
+  if (req.method !== 'POST') {
+    res.status(400).json({ error: 'Expected POST request' })
+    return
+  }
 
-  const doc: FormAnswerDB = req.body
+  const { userID, formAnswers } = req.body
+  if (typeof userID !== 'number') {
+    res.status(400).json({ error: 'UserID is malformed' })
+    return
+  }
+  await client.connect()
   const formCollection = await client.db('edlaw').collection('form')
-  const result = await formCollection.replaceOne({ userID: doc.userID }, doc, {
-    upsert: true,
-  })
-  console.log(result.modifiedCount)
+  const result = await formCollection.replaceOne(
+    { userID: userID },
+    { userID: userID, formAnswer: formAnswers },
+    {
+      upsert: true,
+    }
+  )
+  console.log(result)
   if (result.acknowledged) {
     res.status(200).json({ success: true })
   } else {
