@@ -1,10 +1,12 @@
 import { MongoClient } from 'mongodb'
 // Connection URI
-const uri = 'mongodb://mongoadmin:secret@localhost:8080/?authSource=admin'
+const uri = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@localhost:8080/?authSource=admin`
+
+const client = new MongoClient(uri)
 
 export const dbConnect = async (): Promise<MongoClient | undefined> => {
   try {
-    const client = new MongoClient(uri)
+    console.log(uri)
     // Connect the client to the server
     await client.connect()
     // Establish and verify connection

@@ -3,8 +3,8 @@ services:
     container_name: mongo-on-docker
     image: mongo:5.0.6
     environment:
-      MONGO_INITDB_ROOT_USERNAME: mongoadmin
-      MONGO_INITDB_ROOT_PASSWORD: secret
+      MONGO_INITDB_ROOT_USERNAME: "${MONGO_INITDB_ROOT_USERNAME}"
+      MONGO_INITDB_ROOT_PASSWORD: "${MONGO_INITDB_ROOT_PASSWORD}"
     ports:
       - "8080:27017"
     volumes:

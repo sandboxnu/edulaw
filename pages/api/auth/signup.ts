@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { dbConnect } from './dbConnect'
+import { dbConnect } from '../dbConnect'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const client = await dbConnect()
   if (!client) {
-    res.status(500)
+    res.status(500).json({ error: 'Could not connect to client' })
     return null
   }
 
@@ -14,8 +14,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const exists = await users.findOne({ username: username })
   if (exists) {
     res.status(401).json({ error: 'User already exists' })
-    return
+  } else {
+    const newUser = await users.insertOne(req.body)
+    res.status(200).json({ id: newUser.insertedId })
   }
-  const newUser = await users.insertOne(req.body)
-  res.status(200).json({ id: newUser.insertedId })
+
+  client.close()
 }

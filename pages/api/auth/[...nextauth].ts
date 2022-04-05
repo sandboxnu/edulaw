@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth'
 import CredentialProvider from 'next-auth/providers/credentials'
-import { dbConnect } from './dbConnect'
+import { dbConnect } from '../dbConnect'
 
 /* eslint-disable */
 export default NextAuth({
@@ -24,13 +24,10 @@ export default NextAuth({
           return null
         }
         console.log('connected')
-        const existingUser = await client
-          .db()
-          .collection('user')
-          .findOne({
-            username: credentials.username,
-            password: credentials.password,
-          })
+        const existingUser = await client.db().collection('user').findOne({
+          username: credentials.username,
+          password: credentials.password,
+        })
         if (existingUser) {
           console.log('user existed')
           client?.close()
