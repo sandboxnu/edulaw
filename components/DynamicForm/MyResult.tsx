@@ -57,7 +57,7 @@ function _updateTextInputs(
   updatedUserInput: string
 ) {
   const formValues: FormValues = ctx.formValues
-  const currentQuestion = formValues[questionId]
+  const currentQuestion = formValues.formAnswers[questionId]
   if (currentQuestion.type === QuestionType.TEXT)
     currentQuestion.userAnswer = updatedUserInput
   if (ctx.updateFormValues) {
@@ -75,7 +75,7 @@ export const MyResult: React.FC<MyResultProps> = ({
   ...props
 }): JSX.Element => {
   const ctx = useContext(FormCtx)
-  const results = buildResults(ctx.formValues, props.questions).map(
+  const results = buildResults(ctx.formValues.formAnswers, props.questions).map(
     ({ formAnswer, question, answer }) => {
       function _onChange(event: ChangeEvent<HTMLInputElement>) {
         _updateTextInputs(ctx, formAnswer.questionId, event.target.value)

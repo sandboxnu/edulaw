@@ -1,7 +1,11 @@
 import React from 'react'
 import { QuestionType } from '../models/question'
 
-export type FormValues = { [key: string]: FormAnswer }
+export interface FormValues {
+  formAnswers: {
+    [key: string]: FormAnswer
+  }
+}
 
 export type FormAnswer =
   | RadioFormAnswer
@@ -37,7 +41,7 @@ export interface FormContextInterface {
   updateFormValues?: (formValues: FormValues) => void
 }
 
-export const emptyFormValues: FormValues = {}
+export const emptyFormValues: FormValues = { formAnswers: {} }
 
 export const defaultFormState: FormContextInterface = {
   formValues: emptyFormValues,
