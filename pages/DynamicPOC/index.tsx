@@ -14,7 +14,7 @@ import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
-import next, { GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
 import { QuestionType } from '../../models/question'
 

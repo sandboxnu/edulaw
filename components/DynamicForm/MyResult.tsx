@@ -71,9 +71,7 @@ const HorizontalDiv = styled.div`
   margin-bottom: 2em;
   flex-direction: row;
 `
-export const MyResult: React.FC<MyResultProps> = ({
-  ...props
-}): JSX.Element => {
+export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   const ctx = useContext(FormCtx)
   const results = buildResults(ctx.formValues.formAnswers, props.questions).map(
     ({ formAnswer, question, answer }) => {
