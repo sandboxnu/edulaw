@@ -1,34 +1,22 @@
 import React, { useEffect } from 'react'
 import { QuestionText } from '../FormStyles/QuestionText'
+import QuestionLayout from '../FormStyles/QuestionLayout'
 
 interface ContinueProps {
   label: string
   onMount: () => void
-  description?: string
 }
 
 /*
 Represents a "Continue" question in the form, which just displays some information and allows user to keep on moving forward
 (no answers to choose)
 */
-const MyContinue: React.FC<ContinueProps> = ({
-  label,
-  onMount,
-  description,
-}) => {
+const MyContinue: React.FC<ContinueProps> = ({ label, onMount }) => {
   useEffect(() => {
     onMount()
   }, [])
 
-  return (
-    <div>
-      <br />
-      <QuestionText>{label}</QuestionText>
-      {description ? <p>{description}</p> : null}
-      <br />
-      <br />
-    </div>
-  )
+  return <QuestionLayout questionText={label} input={<div />} />
 }
 
 export default MyContinue

@@ -21,8 +21,8 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
   return (
     <div key={props.name}>
       <QuestionLayout
-        questionText={<QuestionText>{props.label}</QuestionText>}
-        tooltip={<Tooltip tooltip={props.tooltip} />}
+        questionText={props.label}
+        tooltip={props.tooltip}
         input={
           <StyledTextInput
             type="text"

@@ -6,15 +6,15 @@ import {
   FormResult,
   FormValues,
 } from '../../utils/FormContext'
-import { answers, AnswersKeys, Question } from '../../models'
+import { Question } from '../../models'
 import { QuestionText } from '../FormStyles/QuestionText'
 import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { QuestionType } from '../../models/question'
+import QuestionLayout from '../FormStyles/QuestionLayout'
 
 interface MyResultProps {
   label: string
-  description?: string
   questions: Question[]
 }
 
@@ -104,13 +104,10 @@ export const MyResult: React.FC<MyResultProps> = ({
   )
 
   return (
-    <div>
-      {results}
-      <br />
-      <QuestionText>{props.label}</QuestionText>
-      {props.description ? <p>{props.description}</p> : null}
-      <br />
-      <br />
-    </div>
+    <QuestionLayout
+      results={results}
+      questionText={props.label}
+      input={<div />}
+    />
   )
 }

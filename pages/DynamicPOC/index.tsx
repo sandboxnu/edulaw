@@ -192,7 +192,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
 
   return (
     <Main>
-      <NavBar></NavBar>
+      <NavBar />
       <HorizontalBox>
         <VerticalBox>
           <TitleText>{currentQuestion.section}</TitleText>

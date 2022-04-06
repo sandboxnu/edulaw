@@ -56,19 +56,12 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = (
       )
     }
     case QuestionType.RESULT: {
-      return (
-        <MyResult
-          label={props.question.question}
-          description={props.question.description}
-          {...props}
-        />
-      )
+      return <MyResult label={props.question.question} {...props} />
     }
     case QuestionType.CONTINUE: {
       return (
         <MyContinue
           label={props.question.question}
-          description={props.question.description}
           onMount={() =>
             props.onChange({
               questionId: props.question.id,
