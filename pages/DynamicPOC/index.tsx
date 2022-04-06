@@ -14,7 +14,7 @@ import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
-import { GetStaticProps } from 'next'
+import next, { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
 import { QuestionType } from '../../models/question'
 
@@ -81,26 +81,32 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  function getNextQuestionOld(answer: Answer): Question {
-    const id: number = answer.route
-    return questions[id]
-  }
-
   /**
    * Returns the next question based on whether or not current question is a radio, continue, or text,
    * taking advantage that continue and text qs only have one route after (or should..)
    */
   function getNextQuestion(q: Question, a: FormAnswer): Question {
-    if (a.type === QuestionType.CONTINUE || a.type === QuestionType.TEXT) {
-      return questions[q.answers[0].route]
+    return questions[
+      q.answers[a.type === QuestionType.RADIO ? a.answerId : 0].route
+    ]
+  }
+
+  /**
+   * Handles changing the old question to the given question
+   */
+  function _handleQuestionChange(nextQuestion: Question) {
+    formValues.formAnswers[currentQuestion.id] = currentAnswer
+    setCurrentQuestion(nextQuestion)
+    if (formValues.formAnswers[nextQuestion.id]) {
+      setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
     }
-    return questions[q.answers[a.answerId].route]
   }
 
   /**
    * handles getting the next question based on current question's answer
    */
   function _handleNext() {
+    // if the question is not answered, don't let the user continue
     if (!currentAnswer || currentAnswer.questionId !== currentQuestion.id) {
       return
     }
@@ -108,15 +114,8 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
       _handleQuestionExists()
     } else {
       const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
-      setQuestionHistory((questionHistory) => [
-        ...questionHistory,
-        nextQuestion,
-      ])
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
+      setQuestionHistory([...questionHistory, nextQuestion])
+      _handleQuestionChange(nextQuestion)
     }
     setCurrentIndex(currentIndex + 1)
   }
@@ -127,6 +126,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   function _handleQuestionExists() {
     const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
     const nextAnswer = formValues.formAnswers[currentQuestion.id]
+    // if the exisitng question is a radio, and they're not the same answer
     if (
       nextAnswer.type === QuestionType.RADIO &&
       currentAnswer.type === QuestionType.RADIO &&
@@ -137,20 +137,12 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
       setQuestionHistory([...questionSlice, nextQuestion])
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
-    } else {
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
     }
+    _handleQuestionChange(nextQuestion)
   }
 
   function _handleBack() {
+    // TODO: in redesign, if we disable the back button on the first question, we can get rid of this check
     if (currentIndex !== 0) {
       const prevQuestion = questionHistory[currentIndex - 1]
       if (currentQuestion.id === currentAnswer.questionId) {
