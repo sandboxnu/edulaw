@@ -1,13 +1,34 @@
 import React from 'react'
+import { QuestionType } from '../models/question'
 
 export type FormValues = { [key: string]: FormAnswer }
 
-export interface FormAnswer {
+export type FormAnswer =
+  | RadioFormAnswer
+  | ContinueQuestionAnswer
+  | TextFormAnswer
+
+interface QuestionAnswer {
   questionId: number
-  question?: string
+}
+
+export interface ContinueQuestionAnswer extends QuestionAnswer {
+  type: QuestionType.CONTINUE
+}
+
+export interface RadioFormAnswer extends QuestionAnswer {
+  type: QuestionType.RADIO
   answerId: number
+}
+export interface TextFormAnswer extends QuestionAnswer {
+  type: QuestionType.TEXT
+  userAnswer: string
+}
+
+export interface FormResult {
+  question: string
   answer?: string
-  userAnswer?: string
+  formAnswer: FormAnswer
 }
 
 // Interface has two parts

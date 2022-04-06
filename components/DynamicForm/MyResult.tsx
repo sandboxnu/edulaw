@@ -3,12 +3,14 @@ import {
   FormAnswer,
   FormContextInterface,
   FormCtx,
+  FormResult,
   FormValues,
 } from '../../utils/FormContext'
 import { answers, AnswersKeys, Question } from '../../models'
 import { QuestionText } from '../FormStyles/QuestionText'
 import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
+import { QuestionType } from '../../models/question'
 
 interface MyResultProps {
   label: string
@@ -22,24 +24,26 @@ export function buildResults(
     [key: string]: FormAnswer
   },
   questions: Question[]
-): FormAnswer[] {
+): FormResult[] {
   const questionKeys = Object.keys(formAnswers)
   const results = questionKeys
     .filter((key) => {
       const idBasedFormAnswer: FormAnswer = formAnswers[key]
-      return questions[idBasedFormAnswer.questionId].type !== 'CONTINUE'
+      return (
+        questions[idBasedFormAnswer.questionId].type !== QuestionType.CONTINUE
+      )
     })
     .map((key) => {
       const idBasedFormAnswer: FormAnswer = formAnswers[key]
-      const contentBasedFormAnswer: FormAnswer = {
-        questionId: idBasedFormAnswer.questionId,
-        question: questions[idBasedFormAnswer.questionId].question,
-        answerId: idBasedFormAnswer.answerId,
+      const contentBasedFormAnswer: FormResult = {
         answer:
-          questions[idBasedFormAnswer.questionId].answers[
-            idBasedFormAnswer.answerId
-          ].content,
-        userAnswer: idBasedFormAnswer.userAnswer ?? undefined,
+          idBasedFormAnswer.type == QuestionType.RADIO
+            ? questions[idBasedFormAnswer.questionId].answers[
+                idBasedFormAnswer.answerId
+              ].content
+            : undefined,
+        question: questions[idBasedFormAnswer.questionId].question,
+        formAnswer: idBasedFormAnswer,
       }
       return contentBasedFormAnswer
     })
@@ -50,11 +54,12 @@ export function buildResults(
 function _updateTextInputs(
   ctx: FormContextInterface,
   questionId: number,
-  event: ChangeEvent<HTMLInputElement>
+  updatedUserInput: string
 ) {
   const formValues: FormValues = ctx.formValues
-  const userInput: string = event.target.value
-  formValues[questionId].userAnswer = userInput
+  const currentQuestion = formValues[questionId]
+  if (currentQuestion.type === QuestionType.TEXT)
+    currentQuestion.userAnswer = updatedUserInput
   if (ctx.updateFormValues) {
     ctx.updateFormValues(formValues)
   }
@@ -70,31 +75,33 @@ export const MyResult: React.FC<MyResultProps> = ({
   ...props
 }): JSX.Element => {
   const ctx = useContext(FormCtx)
-  const results = buildResults(ctx.formValues, props.questions).map((key) => {
-    function _onChange(event: ChangeEvent<HTMLInputElement>) {
-      _updateTextInputs(ctx, key.questionId, event)
+  const results = buildResults(ctx.formValues, props.questions).map(
+    ({ formAnswer, question, answer }) => {
+      function _onChange(event: ChangeEvent<HTMLInputElement>) {
+        _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
+      }
+
+      return (
+        <div key={formAnswer.questionId}>
+          <HorizontalDiv>
+            <QuestionText>{question}</QuestionText>
+            <QuestionText>{answer}</QuestionText>
+          </HorizontalDiv>
+
+          {formAnswer.type == QuestionType.TEXT ? (
+            <StyledTextInput
+              name={formAnswer.userAnswer}
+              className="text-input"
+              defaultValue={formAnswer.userAnswer}
+              onChange={_onChange}
+              width="500px"
+              height="64px"
+            />
+          ) : null}
+        </div>
+      )
     }
-
-    return (
-      <div key={key.questionId}>
-        <HorizontalDiv>
-          <QuestionText>{key.question}</QuestionText>
-          <QuestionText>{key.answer}</QuestionText>
-        </HorizontalDiv>
-
-        {key.userAnswer ? (
-          <StyledTextInput
-            name={key.userAnswer}
-            className="text-input"
-            defaultValue={key.userAnswer}
-            onChange={_onChange}
-            width="500px"
-            height="64px"
-          />
-        ) : null}
-      </div>
-    )
-  })
+  )
 
   return (
     <div>

@@ -1,7 +1,12 @@
 import { Question, Answer } from '../../models'
 import { Form, Formik } from 'formik'
 import React, { useContext, useState } from 'react'
-import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
+import {
+  FormAnswer,
+  FormCtx,
+  FormResult,
+  FormValues,
+} from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
 import NavBar from '../../components/Critical/NavBar'
@@ -76,23 +81,20 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  function getNextQuestion(answer: Answer): Question {
+  function getNextQuestionOld(answer: Answer): Question {
     const id: number = answer.route
     return questions[id]
   }
 
-  function _updateCurrentAnswer(
-    questionId: number,
-    answerId: number,
-    userAnswer?: string
-  ) {
-    const answer = {
-      questionId,
-      answerId,
-      userAnswer,
+  /**
+   * Returns the next question based on whether or not current question is a radio, continue, or text,
+   * taking advantage that continue and text qs only have one route after (or should..)
+   */
+  function getNextQuestion(q: Question, a: FormAnswer): Question {
+    if (a.type === QuestionType.CONTINUE || a.type === QuestionType.TEXT) {
+      return questions[q.answers[0].route]
     }
-
-    setCurrentAnswer(answer)
+    return questions[q.answers[a.answerId].route]
   }
 
   /**
@@ -105,9 +107,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     if (formValues.hasOwnProperty(currentQuestion.id)) {
       _handleQuestionExists()
     } else {
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[currentAnswer.answerId]
-      )
+      const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
         nextQuestion,
@@ -125,19 +125,17 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
    * Modifies question history and routes form depending on whether answer has been changed
    */
   function _handleQuestionExists() {
-    const nextQuestion = getNextQuestion(
-      questions[currentQuestion.id].answers[currentAnswer.answerId]
-    )
+    const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
+    const nextAnswer = formValues[currentQuestion.id]
     if (
-      formValues[currentQuestion.id]['answerId'] !== currentAnswer['answerId']
+      nextAnswer.type === QuestionType.RADIO &&
+      currentAnswer.type === QuestionType.RADIO &&
+      nextAnswer.answerId !== currentAnswer.answerId
     ) {
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
         delete formValues[questionHistory[i].id]
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[currentAnswer.answerId]
-      )
       setQuestionHistory([...questionSlice, nextQuestion])
       formValues[currentQuestion.id] = currentAnswer
       setCurrentQuestion(nextQuestion)
@@ -145,9 +143,6 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
         setCurrentAnswer(formValues[nextQuestion.id])
       }
     } else {
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[currentAnswer.answerId]
-      )
       setCurrentQuestion(nextQuestion)
       if (formValues[nextQuestion.id]) {
         setCurrentAnswer(formValues[nextQuestion.id])
@@ -157,18 +152,17 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
 
   function _handleBack() {
     if (currentIndex !== 0) {
-      const newQuestion = questionHistory[currentIndex - 1]
+      const prevQuestion = questionHistory[currentIndex - 1]
       if (currentQuestion.id === currentAnswer.questionId) {
         formValues[currentQuestion.id] = currentAnswer
-        setCurrentAnswer(formValues[newQuestion.id])
+        setCurrentAnswer(formValues[prevQuestion.id])
       }
-      setCurrentQuestion(newQuestion)
+      setCurrentQuestion(prevQuestion)
       setCurrentIndex(currentIndex - 1)
     }
   }
 
-  function _buildDoc(doc: jsPDF, answers: FormAnswer[]): jsPDF {
-    const results = ''
+  function _buildDoc(doc: jsPDF, answers: FormResult[]): jsPDF {
     const x = 10
     let y = 10
     const y_inc = 8
@@ -180,10 +174,10 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
         doc.setFont('times', 'normal').text('\t' + item.answer + '\n\n', x, y)
         y += y_inc
       }
-      if (item.userAnswer != undefined) {
+      if (item.formAnswer.type === QuestionType.TEXT) {
         doc
           .setFont('times', 'normal')
-          .text('\t' + item.userAnswer + '\n\n', x, y)
+          .text('\t' + item.formAnswer.userAnswer + '\n\n', x, y)
         y += y_inc
       }
     })
@@ -227,8 +221,8 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
               <Form>
                 <ChooseFormType
                   question={currentQuestion}
-                  onChange={_updateCurrentAnswer}
-                  answers={formValues[currentQuestion.id]}
+                  onChange={setCurrentAnswer}
+                  answer={formValues[currentQuestion.id]}
                   questions={questions}
                 />
                 <Button type="button" onClick={() => _handleBack()}>

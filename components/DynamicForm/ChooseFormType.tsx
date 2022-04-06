@@ -9,14 +9,15 @@ import { QuestionType } from '../../models/question'
 
 interface ChooseFormTypeProps {
   question: Question
-  onChange: (questionId: number, answerId: number, userAnswer?: string) => void
-  answers: FormAnswer
+  onChange: (formAnswer: FormAnswer) => void
+  answer?: FormAnswer
   questions: Question[]
 }
 
-export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
-  ...props
-}): JSX.Element => {
+export const ChooseFormType: React.FC<ChooseFormTypeProps> = (
+  props
+): JSX.Element => {
+  const { answer } = props
   const answerChoices: Answer[] = props.question.answers
   switch (props.question.type) {
     case QuestionType.RADIO: {
@@ -26,12 +27,13 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           label={props.question.question}
           options={answerChoices}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(
-              parseInt(event.target.name),
-              parseInt(event.target.value)
-            )
+            props.onChange({
+              questionId: parseInt(event.target.name),
+              type: QuestionType.RADIO,
+              answerId: parseInt(event.target.value),
+            })
           }
-          ans={props.answers}
+          ans={answer?.type === QuestionType.RADIO ? answer : undefined}
           tooltip={props.question.tooltip}
         />
       )
@@ -42,9 +44,13 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           name={props.question.id.toString()}
           label={props.question.question}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(parseInt(event.target.name), 0, event.target.value)
+            props.onChange({
+              questionId: parseInt(event.target.name),
+              type: QuestionType.TEXT,
+              userAnswer: event.target.value,
+            })
           }
-          ans={props.answers}
+          ans={answer?.type === QuestionType.TEXT ? answer : undefined}
           tooltip={props.question.tooltip}
         />
       )
@@ -63,7 +69,12 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
         <MyContinue
           label={props.question.question}
           description={props.question.description}
-          onMount={() => props.onChange(props.question.id, 0)}
+          onMount={() =>
+            props.onChange({
+              questionId: props.question.id,
+              type: QuestionType.CONTINUE,
+            })
+          }
         />
       )
     }

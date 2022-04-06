@@ -1,7 +1,7 @@
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
 import { Answer } from '../../models'
-import { FormAnswer } from '../../utils/FormContext'
+import { RadioFormAnswer } from '../../utils/FormContext'
 import { RadioButton } from '../../components/FormStyles/RadioButton'
 import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
@@ -12,7 +12,7 @@ interface MyRadioProps {
   label: string
   options: Answer[]
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  ans?: FormAnswer
+  ans?: RadioFormAnswer
   tooltip?: { tooltipText: string; tooltipHoveredText: string }
 }
 

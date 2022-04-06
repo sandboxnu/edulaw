@@ -38,13 +38,16 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =
 
     function onChangeInput(): JSX.Element {
       if (props.onChange) {
+        const newOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+          props.onChange!(event)
+        }
         return (
           <InputBox
             width={`${props.width}`}
             height={`${props.height}`}
             defaultValue={props.defaultValue}
             {...field}
-            onChange={props.onChange}
+            onChange={newOnChange}
             type={props.type}
             placeholder={props.placeholder}
           />
