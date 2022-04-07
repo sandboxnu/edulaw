@@ -1,5 +1,6 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { NextApiRequest, NextApiResponse } from 'next'
-import { dbConnect } from '../_dbConnect'
+import { dbConnect } from '../../../server/_dbConnect'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const client = await dbConnect()

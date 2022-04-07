@@ -25,6 +25,6 @@ export const dbConnect = async (): Promise<MongoClient | undefined> => {
     console.log(error)
     return undefined
     // Ensures that the client will close when you finish/error
-    // await client.close()
+    await client.close()
   }
 }

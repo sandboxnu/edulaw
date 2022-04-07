@@ -1,4 +1,4 @@
-import { dbConnect } from './_dbConnect'
+import { dbConnect } from '../../server/_dbConnect'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
