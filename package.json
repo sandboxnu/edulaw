@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "npm run db:start && next dev",
     "stop": "npm run db:stop",
-    "db:start": "docker-compose up -d",
-    "db:stop": "docker-compose down",
+    "db:start": "docker-compose -p edlaw -f docker-compose.yml --env-file .env up -d",
+    "db:stop": "docker-compose  -p edlaw -f docker-compose.yml --env-file .env down",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
