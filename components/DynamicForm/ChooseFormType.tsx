@@ -11,7 +11,7 @@ interface ChooseFormTypeProps {
   question: Question
   onChange: (formAnswer: FormAnswer) => void
   answer?: FormAnswer
-  questions: Question[]
+  questionHistory: Question[]
 }
 
 export const ChooseFormType: React.FC<ChooseFormTypeProps> = (

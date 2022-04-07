@@ -15,38 +15,36 @@ import QuestionLayout from '../FormStyles/QuestionLayout'
 
 interface MyResultProps {
   label: string
-  questions: Question[]
+  questionHistory: Question[]
 }
 
 // translates ID-based results to content-based results
 export function buildResults(
-  formAnswers: {
-    [key: string]: FormAnswer
-  },
-  questions: Question[]
+  formAnswers: FormAnswer[],
+  questionHistory: Question[]
 ): FormResult[] {
-  const questionKeys = Object.keys(formAnswers)
-  const results = questionKeys
-    .filter((key) => {
-      const idBasedFormAnswer: FormAnswer = formAnswers[key]
-      return (
-        questions[idBasedFormAnswer.questionId].type !== QuestionType.CONTINUE
+  // const questionKeys = Object.keys(formAnswers)
+  const results = questionHistory.reduce(
+    (results: FormResult[], curQuestion) => {
+      const curFormAns = formAnswers.find(
+        (ans) => ans.questionId === curQuestion.id
       )
-    })
-    .map((key) => {
-      const idBasedFormAnswer: FormAnswer = formAnswers[key]
+      if (curFormAns === undefined || curFormAns.type === QuestionType.CONTINUE)
+        return results
+
       const contentBasedFormAnswer: FormResult = {
         answer:
-          idBasedFormAnswer.type == QuestionType.RADIO
-            ? questions[idBasedFormAnswer.questionId].answers[
-                idBasedFormAnswer.answerId
-              ].content
+          curFormAns.type == QuestionType.RADIO
+            ? curQuestion.answers[curFormAns.answerId].content
             : undefined,
-        question: questions[idBasedFormAnswer.questionId].question,
-        formAnswer: idBasedFormAnswer,
+        question: curQuestion.question,
+        formAnswer: curFormAns,
       }
-      return contentBasedFormAnswer
-    })
+      results.push(contentBasedFormAnswer)
+      return results
+    },
+    []
+  )
   return results
 }
 
@@ -73,33 +71,34 @@ const HorizontalDiv = styled.div`
 `
 export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   const ctx = useContext(FormCtx)
-  const results = buildResults(ctx.formValues.formAnswers, props.questions).map(
-    ({ formAnswer, question, answer }) => {
-      function _onChange(event: ChangeEvent<HTMLInputElement>) {
-        _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
-      }
-
-      return (
-        <div key={formAnswer.questionId}>
-          <HorizontalDiv>
-            <QuestionText>{question}</QuestionText>
-            <QuestionText>{answer}</QuestionText>
-          </HorizontalDiv>
-
-          {formAnswer.type == QuestionType.TEXT ? (
-            <StyledTextInput
-              name={formAnswer.userAnswer}
-              className="text-input"
-              defaultValue={formAnswer.userAnswer}
-              onChange={_onChange}
-              width="500px"
-              height="64px"
-            />
-          ) : null}
-        </div>
-      )
+  const results = buildResults(
+    ctx.formValues.formAnswers,
+    props.questionHistory
+  ).map(({ formAnswer, question, answer }) => {
+    function _onChange(event: ChangeEvent<HTMLInputElement>) {
+      _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
     }
-  )
+
+    return (
+      <div key={formAnswer.questionId}>
+        <HorizontalDiv>
+          <QuestionText>{question}</QuestionText>
+          <QuestionText>{answer}</QuestionText>
+        </HorizontalDiv>
+
+        {formAnswer.type == QuestionType.TEXT ? (
+          <StyledTextInput
+            name={formAnswer.userAnswer}
+            className="text-input"
+            defaultValue={formAnswer.userAnswer}
+            onChange={_onChange}
+            width="500px"
+            height="64px"
+          />
+        ) : null}
+      </div>
+    )
+  })
 
   return (
     <QuestionLayout

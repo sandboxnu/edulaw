@@ -215,7 +215,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
                   question={currentQuestion}
                   onChange={setCurrentAnswer}
                   answer={formValues.formAnswers[currentQuestion.id]}
-                  questions={questions}
+                  questionHistory={questionHistory}
                 />
                 <Button type="button" onClick={() => _handleBack()}>
                   {'Back'}
