@@ -20,15 +20,13 @@ interface MyResultProps {
 
 // translates ID-based results to content-based results
 export function buildResults(
-  formAnswers: FormAnswer[],
+  formAnswers: { [key: number]: FormAnswer },
   questionHistory: Question[]
 ): FormResult[] {
   // const questionKeys = Object.keys(formAnswers)
   const results = questionHistory.reduce(
     (results: FormResult[], curQuestion) => {
-      const curFormAns = formAnswers.find(
-        (ans) => ans.questionId === curQuestion.id
-      )
+      const curFormAns = formAnswers[curQuestion.id]
       if (curFormAns === undefined || curFormAns.type === QuestionType.CONTINUE)
         return results
 
