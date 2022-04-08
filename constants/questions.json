@@ -43,7 +43,7 @@
         "content": "Yes",
         "route": 5
       }
-    ], 
+    ],
     "tooltip": {
       "tooltipText": "Do younger siblings count?",
       "tooltipHoveredText": "Younger siblings do not count."

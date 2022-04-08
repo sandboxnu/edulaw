@@ -1,0 +1,23 @@
+Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Status,Text Area 1
+1,Document,,,,,,,,,,Animal Form
+2,Page,,,,,,,,,,Pet Lover
+3,Rectangle Container,Flowchart Shapes,2,,,,,,,,Pet Lover Section
+4,Process,Flowchart Shapes,2,3,,,,,,,Do you like dogs?
+5,Process,Flowchart Shapes,2,3,,,,,,,Do you have a pet?
+6,Process,Flowchart Shapes,2,3,,,,,,,What about cats?
+7,Process,Flowchart Shapes,2,3,,,,,,,Why don't you like dogs or cats?
+8,Process,Flowchart Shapes,2,3,,,,,,,You are not a fan of animals.
+9,Process,Flowchart Shapes,2,3,,,,,,,You are an animal lover!
+10,Process,Flowchart Shapes,2,3,,,,,,,Do younger siblings count?
+11,Process,Flowchart Shapes,2,3,,,,,,,"No, younger siblings do not count."
+12,Process,Flowchart Shapes,2,3,,,,,,,You should love animals.
+13,Line,,2,,,4,5,None,Arrow,,Yes
+14,Line,,2,,,4,6,None,Arrow,,No
+15,Line,,2,,,6,5,None,Arrow,,Yes
+16,Line,,2,,,6,12,None,Arrow,,No
+17,Line,,2,,,5,8,None,Arrow,,No
+18,Line,,2,,,7,8,None,Arrow,,TEXT
+19,Line,,2,,,5,9,None,Arrow,,Yes
+20,Line,,2,,,5,10,None,Measure,,TOOLTIP-TEXT
+21,Line,,2,,,5,11,None,Measure,,TOOLTIP-HOVER-TEXT
+22,Line,,2,,,12,7,None,Arrow,,CONTINUE
