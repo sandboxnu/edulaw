@@ -55,14 +55,7 @@ const BackButton = styled(Button)`
   width: 80px;
   color: ${COLORS.EDLAW_BLUE};
 `
-const GreySideBar = styled.div`
-  width: 30%;
-  min-width: 200px;
-  max-width: 300px;
-  background-color: ${COLORS.LIGHT_GREY};
-  height: 100%;
-  border-right: 1px solid ${COLORS.SHADOW_GREY};
-`
+
 // horizontal box
 const HorizontalBox = styled.div`
   display: flex;
@@ -71,6 +64,10 @@ const HorizontalBox = styled.div`
   flex-direction: row;
   height: 100%;
   justify-content: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: start;
+  }
 `
 const TitleText = styled.h1`
   font-size: 26px;
@@ -236,10 +233,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     <Main>
       <NavBar></NavBar>
       <HorizontalBox>
-        <GreySideBar>
-          <SideProgressBar />
-        </GreySideBar>
-        <TitleText>{currentQuestion.section}</TitleText>
+        <SideProgressBar />
         <Formik
           initialValues={formValues}
           onSubmit={(values: FormValues, { setSubmitting }) => {
