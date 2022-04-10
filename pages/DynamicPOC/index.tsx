@@ -1,6 +1,6 @@
 import { Question, Answer } from '../../models'
 import { Form, Formik } from 'formik'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
@@ -11,6 +11,7 @@ import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
+import { FormAnswerDB } from '../api/form/save'
 
 let startingAnswer: FormAnswer
 
@@ -74,6 +75,50 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
+
+  const userID = 0
+
+  // For saving values to the database
+  useEffect(() => {
+    const save = async () => {
+      const result = await fetch('/api/form/save', {
+        method: 'POST',
+        body: JSON.stringify({
+          userID: userID,
+          formValues: formValues,
+          questionHistory: questionHistory,
+          currentIndex: currentIndex,
+        }),
+      })
+      const body = await result.json()
+      if (result.status !== 200) {
+        console.error(body.error)
+      } else {
+        console.log('works!')
+      }
+    }
+    save()
+  }, [formValues, questionHistory, currentIndex])
+
+  //For retrieving values from the database(only runs once)
+  useEffect(() => {
+    const retrieve = async () => {
+      const result = await fetch(`/api/form/retrieve?userID=${userID}`)
+      const body = await result.json()
+      if (result.status !== 200) {
+        console.error(body.error)
+      } else {
+        const typedBody = body as FormAnswerDB
+        console.log(JSON.stringify(body))
+        setQuestionHistory(typedBody.questionHistory)
+        setCurrentIndex(typedBody.currentIndex)
+        if (updateFormValues) {
+          updateFormValues(typedBody.formAnswers)
+        }
+      }
+    }
+    retrieve()
+  }, [])
 
   function getNextQuestion(answer: Answer): Question {
     const id: number = answer.route

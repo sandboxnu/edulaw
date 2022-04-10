@@ -20,7 +20,7 @@ export default async function handler(
     return
   }
 
-  const doc = req.body
+  const doc = JSON.parse(req.body)
   if (typeof doc.userID !== 'number') {
     res.status(400).json({ error: 'UserID is malformed' })
     return
