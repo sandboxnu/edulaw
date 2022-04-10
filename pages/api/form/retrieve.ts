@@ -1,11 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { FormValues } from '../../../utils/FormContext'
 import { FormAnswerDB } from './save'
 import { dbConnect } from '../../../server/_dbConnect'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<FormValues | { error: string }>
+  res: NextApiResponse<FormAnswerDB | { error: string }>
 ) {
   if (req.method !== 'GET') {
     res.status(400).json({ error: 'Expected GET request' })
@@ -32,7 +31,7 @@ export default async function handler(
   })) as FormAnswerDB | null
   console.log(result)
   if (result) {
-    res.status(200).json(result.formAnswers)
+    res.status(200).json(result)
   } else {
     res.status(401).json({ error: 'User does not have saved formAnswer' })
   }
