@@ -1,4 +1,4 @@
-import { Question, questions, QuestionsKeys, forms, Answer } from '../../models'
+import { Question, Answer } from '../../models'
 import { Form, Formik } from 'formik'
 import React, { useContext, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
@@ -10,16 +10,10 @@ import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { COLORS } from '../../constants/colors'
+import { GetStaticProps } from 'next'
+import csvToQuestionArray from '../../constants/csv_parser'
 
-const firstQuestionId: QuestionsKeys =
-  forms.animalForm.toString() as QuestionsKeys
-const startingQuestion: Question = questions[firstQuestionId] as Question
 let startingAnswer: FormAnswer
-
-function getNextQuestion(answer: Answer): Question {
-  const id: number = answer.route
-  return questions[id] as Question
-}
 
 const Main = styled.div`
   display: flex;
@@ -83,13 +77,36 @@ const TitleText = styled.h1`
   margin-bottom: 20px;
 `
 
-const DynamicPOC: React.FC = () => {
+const files = {
+  animalForm: '../../../constants/Animal Form.csv',
+  actualForm: '../../../constants/EdLaw Combined Flowchart.csv',
+}
+
+export const getStaticProps: GetStaticProps = (context) => {
+  const file = files.animalForm
+  const questions = csvToQuestionArray(file)
+
+  return {
+    props: {
+      questions: questions,
+    },
+  }
+}
+
+const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
+  const startingQuestion: Question = questions[0]
+
   const { formValues, updateFormValues } = useContext(FormCtx)
 
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
+
+  function getNextQuestion(answer: Answer): Question {
+    const id: number = answer.route
+    return questions[id]
+  }
 
   function _updateCurrentAnswer(
     questionId: string,
@@ -210,7 +227,7 @@ const DynamicPOC: React.FC = () => {
     }
 
     let doc = new jsPDF()
-    const results = buildResults(values['formAnswers'])
+    const results = buildResults(values['formAnswers'], questions)
     doc = _buildDoc(doc, results)
     doc.save('a4.pdf')
   }
@@ -222,6 +239,7 @@ const DynamicPOC: React.FC = () => {
         <GreySideBar>
           <SideProgressBar />
         </GreySideBar>
+        <TitleText>{currentQuestion.section}</TitleText>
         <Formik
           initialValues={formValues}
           onSubmit={(values: FormValues, { setSubmitting }) => {
@@ -243,6 +261,7 @@ const DynamicPOC: React.FC = () => {
                   question={currentQuestion}
                   onChange={_updateCurrentAnswer}
                   answers={formValues.formAnswers[currentQuestion.id]}
+                  questions={questions}
                 />
               </QuestionDisplayWrapper>
               <BottomButtonBar>

@@ -5,7 +5,7 @@ import {
   FormCtx,
   FormValues,
 } from '../../utils/FormContext'
-import { questions } from '../../models'
+import { answers, AnswersKeys, Question } from '../../models'
 import { QuestionText } from '../FormStyles/QuestionText'
 import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
@@ -13,12 +13,16 @@ import { StyledTextInput } from '../FormStyles/InputBox'
 interface MyResultProps {
   label: string
   description?: string
+  questions: Question[]
 }
 
 // translates ID-based results to content-based results
-export function buildResults(formAnswers: {
-  [key: string]: FormAnswer
-}): FormAnswer[] {
+export function buildResults(
+  formAnswers: {
+    [key: string]: FormAnswer
+  },
+  questions: Question[]
+): FormAnswer[] {
   const questionKeys = Object.keys(formAnswers)
   const results = questionKeys
     .filter((key) => {
@@ -69,7 +73,7 @@ export const MyResult: React.FC<MyResultProps> = ({
 }): JSX.Element => {
   const ctx = useContext(FormCtx)
   const formAnswers = ctx.formValues.formAnswers
-  const results = buildResults(formAnswers).map((key) => {
+  const results = buildResults(formAnswers, props.questions).map((key) => {
     function _onChange(event: ChangeEvent<HTMLInputElement>) {
       _updateTextInputs(ctx, key.questionId, event)
     }
