@@ -1,15 +1,11 @@
-import { questions } from '../constants'
+import { Answer } from './answer'
 
-type Questions = typeof questions
-const typedQuestions = questions as Questions
-
-export type QuestionsKeys = keyof Questions
 export interface Question {
   id: number
   question: string
-  description: string
+  description?: string
   type: string
-  answers: number[]
+  answers: Answer[]
+  tooltip?: { tooltipText: string; tooltipHoveredText: string }
+  section: string
 }
-
-export { typedQuestions as questions }

@@ -1,13 +1,6 @@
-import {
-  Question,
-  questions,
-  QuestionsKeys,
-  answers,
-  AnswersKeys,
-  forms,
-} from '../../models'
+import { Question, Answer } from '../../models'
 import { Form, Formik } from 'formik'
-import React, { ChangeEvent, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
@@ -16,16 +9,10 @@ import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
+import { GetStaticProps } from 'next'
+import csvToQuestionArray from '../../constants/csv_parser'
 
-const firstQuestionId: QuestionsKeys =
-  forms.animalForm.toString() as QuestionsKeys
-const startingQuestion: Question = questions[firstQuestionId] as Question
 let startingAnswer: FormAnswer
-
-function getNextQuestion(answerId: AnswersKeys): Question {
-  const id: QuestionsKeys = answers[answerId].route.toString() as QuestionsKeys
-  return questions[id] as Question
-}
 
 const Main = styled.div`
   display: flex;
@@ -62,7 +49,25 @@ const TitleText = styled.h1`
   font-size: large;
 `
 
-const DynamicPOC: React.FC = () => {
+const files = {
+  animalForm: '../../../constants/Animal Form.csv',
+  actualForm: '../../../constants/EdLaw Combined Flowchart.csv',
+}
+
+export const getStaticProps: GetStaticProps = (context) => {
+  const file = files.animalForm
+  const questions = csvToQuestionArray(file)
+
+  return {
+    props: {
+      questions: questions,
+    },
+  }
+}
+
+const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
+  const startingQuestion: Question = questions[0]
+
   const { formValues, updateFormValues } = useContext(FormCtx)
 
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
@@ -70,77 +75,95 @@ const DynamicPOC: React.FC = () => {
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
 
+  function getNextQuestion(answer: Answer): Question {
+    const id: number = answer.route
+    return questions[id]
+  }
+
   function _updateCurrentAnswer(
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    isUserInput: boolean
+    questionId: string,
+    answerId: string,
+    userAnswer?: string
   ) {
     const answer = {
-      questionId: event.target.name,
-      answerId: isUserInput
-        ? _getInputAnswerId(event.target.name)
-        : event.target.value,
-      userAnswer: isUserInput ? event.target.value : undefined,
+      questionId,
+      answerId,
+      userAnswer,
     }
 
     setCurrentAnswer(answer)
-  }
-
-  function _getInputAnswerId(questionId: string): string {
-    const question: Question = questions[
-      questionId as QuestionsKeys
-    ] as Question
-    return question.answers[0].toString() // TODO: Probably error check this or something
   }
 
   /**
    * handles getting the next question based on current question's answer
    */
   function _handleNext() {
-    if (formValues.formAnswers.hasOwnProperty(currentAnswer.questionId)) {
+    if (!currentAnswer) {
+      return
+    }
+    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       _handleQuestionExists()
     } else {
+      const nextQuestion = getNextQuestion(
+        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+      )
       setQuestionHistory((questionHistory) => [
         ...questionHistory,
-        currentQuestion,
+        nextQuestion,
       ])
-      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setCurrentQuestion(nextQuestion)
+      if (formValues.formAnswers[nextQuestion.id]) {
+        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      }
     }
-    formValues.formAnswers[currentAnswer.questionId] = currentAnswer
-    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
-      setCurrentIndex(currentIndex + 1)
-    }
+    setCurrentIndex(currentIndex + 1)
   }
 
   /**
    * Modifies question history and routes form depending on whether answer has been changed
    */
   function _handleQuestionExists() {
+    const nextQuestion = getNextQuestion(
+      questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+    )
     if (
-      formValues.formAnswers[currentAnswer.questionId]['answerId'] !==
+      formValues.formAnswers[currentQuestion.id]['answerId'] !==
       currentAnswer['answerId']
     ) {
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
         delete formValues.formAnswers[questionHistory[i].id]
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
-      setQuestionHistory([...questionSlice, currentQuestion])
-      setCurrentQuestion(getNextQuestion(currentAnswer.answerId as AnswersKeys))
+      const nextQuestion = getNextQuestion(
+        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+      )
+      setQuestionHistory([...questionSlice, nextQuestion])
+      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setCurrentQuestion(nextQuestion)
+      if (formValues.formAnswers[nextQuestion.id]) {
+        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+      }
     } else {
-      if (formValues.formAnswers[currentQuestion.id]) {
-        setCurrentQuestion(
-          getNextQuestion(
-            formValues.formAnswers[currentQuestion.id].answerId as AnswersKeys
-          )
-        )
+      const nextQuestion = getNextQuestion(
+        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
+      )
+      setCurrentQuestion(nextQuestion)
+      if (formValues.formAnswers[nextQuestion.id]) {
+        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
       }
     }
   }
 
   function _handleBack() {
     if (currentIndex !== 0) {
-      setCurrentIndex(currentIndex - 1)
-      const newQuestion = questionHistory[currentIndex]
+      const newQuestion = questionHistory[currentIndex - 1]
+      if (currentQuestion.id.toString() === currentAnswer.questionId) {
+        formValues.formAnswers[currentQuestion.id] = currentAnswer
+        setCurrentAnswer(formValues.formAnswers[newQuestion.id])
+      }
       setCurrentQuestion(newQuestion)
+      setCurrentIndex(currentIndex - 1)
     }
   }
 
@@ -163,7 +186,6 @@ const DynamicPOC: React.FC = () => {
           .text('\t' + item.userAnswer + '\n\n', x, y)
         y += y_inc
       }
-      console.log('results', results)
     })
 
     return doc
@@ -177,7 +199,7 @@ const DynamicPOC: React.FC = () => {
     }
 
     let doc = new jsPDF()
-    const results = buildResults(values['formAnswers'])
+    const results = buildResults(values['formAnswers'], questions)
     doc = _buildDoc(doc, results)
     doc.save('a4.pdf')
   }
@@ -187,7 +209,7 @@ const DynamicPOC: React.FC = () => {
       <NavBar></NavBar>
       <HorizontalBox>
         <VerticalBox>
-          <TitleText>Pet Lover Section</TitleText>
+          <TitleText>{currentQuestion.section}</TitleText>
           <div>
             <Formik
               initialValues={formValues}
@@ -207,9 +229,9 @@ const DynamicPOC: React.FC = () => {
                   question={currentQuestion}
                   onChange={_updateCurrentAnswer}
                   answers={formValues.formAnswers[currentQuestion.id]}
+                  questions={questions}
                 />
                 <Button type="button" onClick={() => _handleBack()}>
-                  {' '}
                   {'Back'}
                 </Button>
                 <Button primary type="submit">

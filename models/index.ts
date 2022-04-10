@@ -1,5 +1,4 @@
-export { questions } from './question'
-export type { QuestionsKeys, Question } from './question'
+export type { Question } from './question'
 export { answers } from './answer'
 export type { AnswersKeys, Answer } from './answer'
 export { forms } from './form'

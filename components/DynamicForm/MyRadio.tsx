@@ -5,13 +5,15 @@ import { FormAnswer } from '../../utils/FormContext'
 import { RadioButton } from '../../components/FormStyles/RadioButton'
 import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
+import Tooltip from './Tooltip'
 
 interface MyRadioProps {
   name: string
   label: string
   options: Answer[]
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  ans: FormAnswer
+  ans?: FormAnswer
+  tooltip?: { tooltipText: string; tooltipHoveredText: string }
 }
 
 export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
@@ -46,7 +48,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
   const answers = props.options.map(function (option, i) {
     return (
       <div key={option.content}>
-        {initialRadio(option.id)}
+        {initialRadio(i)}
         <label>{option.content}</label>
       </div>
     )
@@ -56,6 +58,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = ({
     <div key={props.name} role="group" aria-labelledby="my-radio-group">
       <QuestionLayout
         questionText={<QuestionText>{props.label}</QuestionText>}
+        tooltip={<Tooltip tooltip={props.tooltip} />}
         input={<>{answers}</>}
       />
 

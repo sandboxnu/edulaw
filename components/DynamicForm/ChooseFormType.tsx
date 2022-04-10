@@ -4,22 +4,19 @@ import { Question, Answer, AnswersKeys, answers } from '../../models'
 import { MyRadio } from './MyRadio'
 import { MyResult } from './MyResult'
 import { FormAnswer } from '../../utils/FormContext'
+import MyContinue from './MyContinue'
 
 interface ChooseFormTypeProps {
   question: Question
-  onChange: (event: ChangeEvent<HTMLInputElement>, isUserInput: boolean) => void
+  onChange: (questionId: string, answerId: string, userAnswer?: string) => void
   answers: FormAnswer
+  questions: Question[]
 }
 
 export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
   ...props
 }): JSX.Element => {
-  const answerChoices: Answer[] = props.question.answers.map(function (
-    answerId: number
-  ) {
-    const typedAnswerId = answerId.toString() as AnswersKeys
-    return answers[typedAnswerId] as Answer
-  })
+  const answerChoices: Answer[] = props.question.answers
 
   switch (props.question.type) {
     case 'RADIO': {
@@ -29,9 +26,10 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           label={props.question.question}
           options={answerChoices}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(event, false)
+            props.onChange(event.target.name, event.target.value)
           }
           ans={props.answers}
+          tooltip={props.question.tooltip}
         />
       )
     }
@@ -41,9 +39,10 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
           name={props.question.id.toString()}
           label={props.question.question}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(event, true)
+            props.onChange(event.target.name, '0', event.target.value)
           }
           ans={props.answers}
+          tooltip={props.question.tooltip}
         />
       )
     }
@@ -52,6 +51,16 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
         <MyResult
           label={props.question.question}
           description={props.question.description}
+          {...props}
+        />
+      )
+    }
+    case 'CONTINUE': {
+      return (
+        <MyContinue
+          label={props.question.question}
+          description={props.question.description}
+          onMount={() => props.onChange(props.question.id.toString(), '0')}
         />
       )
     }
