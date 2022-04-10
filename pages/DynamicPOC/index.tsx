@@ -36,6 +36,9 @@ const BottomButtonBar = styled.div`
   border-top: 1px solid ${COLORS.SHADOW_GREY};
   background-color: ${COLORS.LIGHT_GREY};
 `
+const ButtonContainer = styled.div`
+  margin-right: 80px;
+`
 const FormContentWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -243,12 +246,14 @@ const DynamicPOC: React.FC = () => {
                 />
               </QuestionDisplayWrapper>
               <BottomButtonBar>
-                <BackButton type="button" onClick={() => _handleBack()}>
-                  Back
-                </BackButton>
-                <NextEndButton type="submit">
-                  {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
-                </NextEndButton>
+                <ButtonContainer>
+                  <BackButton type="button" onClick={() => _handleBack()}>
+                    Back
+                  </BackButton>
+                  <NextEndButton type="submit">
+                    {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
+                  </NextEndButton>
+                </ButtonContainer>
               </BottomButtonBar>
             </FormContentWrapper>
           </Form>
