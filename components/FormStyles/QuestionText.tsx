@@ -8,5 +8,5 @@ export const QuestionText = styled.label`
   font-size: 16px;
   line-height: 33px;
 
-  color: ${COLORS.DARK_TEXT};
+  color: black;
 `
