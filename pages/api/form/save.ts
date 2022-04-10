@@ -1,10 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { MongoClient, WithId, Document } from 'mongodb'
+import { WithId, Document } from 'mongodb'
 import { FormValues } from '../../../utils/FormContext'
-
-const client = new MongoClient(
-  'mongodb://mongoadmin:secret@localhost:8080/?authSource=admin'
-)
+import { dbConnect } from '../../../server/_dbConnect'
 
 export interface FormAnswerDB extends WithId<Document> {
   userID: number
@@ -23,6 +20,11 @@ export default async function handler(
   const { userID, formAnswers } = req.body
   if (typeof userID !== 'number') {
     res.status(400).json({ error: 'UserID is malformed' })
+    return
+  }
+  const client = await dbConnect()
+  if (!client) {
+    res.status(500).json({ error: 'Client is not connected' })
     return
   }
   await client.connect()

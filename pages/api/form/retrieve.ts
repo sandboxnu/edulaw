@@ -1,12 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { MongoClient } from 'mongodb'
 import { FormValues } from '../../../utils/FormContext'
 import { FormAnswerDB } from './save'
-import { RestartAlt } from '@mui/icons-material'
-
-const client = new MongoClient(
-  'mongodb://mongoadmin:secret@localhost:8080/?authSource=admin'
-)
+import { dbConnect } from '../../../server/_dbConnect'
 
 export default async function handler(
   req: NextApiRequest,
@@ -23,6 +18,12 @@ export default async function handler(
     return
   }
 
+  const client = await dbConnect()
+
+  if (!client) {
+    res.status(500).json({ error: 'Client is not connected' })
+    return
+  }
   const parsedUserID = parseInt(userID)
   await client.connect()
   const formCollection = client.db('edlaw').collection('form')
