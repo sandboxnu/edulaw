@@ -1,11 +1,12 @@
 import React from 'react'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { Button } from '../FormStyles/Button'
-import { Form, Formik } from 'formik'
+import { ErrorMessage, Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
+// import 'next-auth'
 import {
   BackButton,
   EStyledButton,
@@ -29,6 +30,10 @@ interface FormValues {
   confirmPass: string
 }
 
+// async function createUser() {
+
+// }
+
 // component for signup page - includes form and validation for email and password,
 // and ensures that passwords are the same
 function Signup() {
@@ -48,11 +53,21 @@ function Signup() {
           .required('Required')
           .oneOf([Yup.ref('password'), null], 'Passwords must match'),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2))
-          setSubmitting(false)
-        }, 400)
+      // add user to the database !!!
+      onSubmit={async (values, { setSubmitting }) => {
+        const result = await fetch('/api/auth/signup', {
+          method: 'POST',
+          body: JSON.stringify(values),
+        })
+
+        if (result.status === 200) {
+          console.log('Valid')
+        } else {
+          const errMessage = await result.json()
+          alert(errMessage.error)
+        }
+
+        return result
       }}
     >
       <Form>
