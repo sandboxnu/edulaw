@@ -13,6 +13,8 @@ import {
 import styled from 'styled-components'
 import Link from 'next/link'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
+import { signIn } from 'next-auth/react'
+import { SessionProvider } from 'next-auth/react'
 
 export const RememberSignIn = styled.div`
   display: flex;
@@ -47,11 +49,23 @@ function SignIn() {
         email: Yup.string().email('Invalid email address').required('Required'),
         password: Yup.string().required('Required'),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2))
-          setSubmitting(false)
-        }, 400)
+      // check if user is in database and sign them in
+      onSubmit={async (values, { setSubmitting }) => {
+        // do submission shit here
+        const result = await signIn('Credentials', {
+          redirect: false,
+          username: values.email,
+          password: values.password,
+          callbackUrl: '/DynamicPOC',
+        })
+
+        console.log(values.email)
+        console.log(values.password)
+        console.log(result)
+
+        // if(result?.error) {
+
+        // }
       }}
     >
       <Form>
