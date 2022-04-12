@@ -239,7 +239,6 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
         <GreySideBar>
           <SideProgressBar />
         </GreySideBar>
-        <TitleText>{currentQuestion.section}</TitleText>
         <Formik
           initialValues={formValues}
           onSubmit={(values: FormValues, { setSubmitting }) => {
@@ -256,7 +255,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
           <Form style={{ width: '100%', display: 'flex' }}>
             <FormContentWrapper>
               <QuestionDisplayWrapper>
-                <TitleText>Pet Lover Section</TitleText>
+                <TitleText>{currentQuestion.section}</TitleText>
                 <ChooseFormType
                   question={currentQuestion}
                   onChange={_updateCurrentAnswer}
