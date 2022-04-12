@@ -29,7 +29,6 @@ export default async function handler(
   const result = (await formCollection.findOne({
     userID: parsedUserID,
   })) as FormAnswerDB | null
-  console.log(result)
   if (result) {
     res.status(200).json(result)
   } else {

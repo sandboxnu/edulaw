@@ -1,14 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { WithId, Document } from 'mongodb'
-import { FormValues } from '../../../utils/FormContext'
+import { FormAnswer, FormValues } from '../../../utils/FormContext'
 import { dbConnect } from '../../../server/_dbConnect'
 import { Question } from '../../../models'
 
 export interface FormAnswerDB extends WithId<Document> {
   userID: number
-  formAnswers: FormValues
+  formValues: FormValues
   questionHistory: Question[]
   currentIndex: number
+  currentQuestion: Question
+  currentAnswer: FormAnswer
 }
 
 export default async function handler(
@@ -20,7 +22,7 @@ export default async function handler(
     return
   }
 
-  const doc = JSON.parse(req.body)
+  const doc = JSON.parse(req.body) as Omit<FormAnswerDB, '_id'>
   if (typeof doc.userID !== 'number') {
     res.status(400).json({ error: 'UserID is malformed' })
     return
@@ -35,7 +37,6 @@ export default async function handler(
   const result = await formCollection.replaceOne({ userID: doc.userID }, doc, {
     upsert: true,
   })
-  console.log(result)
   if (result.acknowledged) {
     res.status(200).json({ success: true })
   } else {

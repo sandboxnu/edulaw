@@ -17,7 +17,7 @@ export interface FormAnswer {
 // Interface has two parts
 export interface FormContextInterface {
   formValues: FormValues
-  updateFormValues?: (formValues: FormValues) => void
+  setFormValues?: React.Dispatch<React.SetStateAction<FormValues>>
 }
 
 export const emptyFormValues: FormValues = {
