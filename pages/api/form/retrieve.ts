@@ -12,10 +12,6 @@ export default async function handler(
   }
 
   const { userID } = req.query
-  if (typeof userID !== 'string' || Number.isNaN(Number(userID))) {
-    res.status(400).json({ error: 'UserID is malformed' })
-    return
-  }
 
   const client = await dbConnect()
 
@@ -23,11 +19,10 @@ export default async function handler(
     res.status(500).json({ error: 'Client is not connected' })
     return
   }
-  const parsedUserID = parseInt(userID)
   await client.connect()
   const formCollection = client.db('edlaw').collection('form')
   const result = (await formCollection.findOne({
-    userID: parsedUserID,
+    userID: userID,
   })) as FormAnswerDB | null
   if (result) {
     res.status(200).json(result)

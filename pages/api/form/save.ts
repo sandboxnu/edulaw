@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { WithId, Document } from 'mongodb'
+import { WithId, Document, RegExpOrString } from 'mongodb'
 import { FormAnswer, FormValues } from '../../../utils/FormContext'
 import { dbConnect } from '../../../server/_dbConnect'
 import { Question } from '../../../models'
 
 export interface FormAnswerDB extends WithId<Document> {
-  userID: number
+  userID: string
   formValues: FormValues
   questionHistory: Question[]
   currentIndex: number

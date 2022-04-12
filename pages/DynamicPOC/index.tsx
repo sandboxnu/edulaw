@@ -18,6 +18,7 @@ import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
 import { FormAnswerDB } from '../api/form/save'
 import _ from 'lodash'
+import { useSession } from 'next-auth/react'
 
 const Main = styled.div`
   display: flex;
@@ -81,8 +82,8 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [loaded, setLoaded] = useState(false)
-
-  const userID = 0
+  const { data } = useSession()
+  const userID = data?.user?.id !== undefined ? data.user.id : ''
 
   // For saving values to the database
   useEffect(() => {
