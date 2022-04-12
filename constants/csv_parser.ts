@@ -4,15 +4,18 @@ import path from 'path'
 import { parse } from 'csv-parse/sync'
 import { QuestionType } from '../models/question'
 
-// The type containing columns that we care about in the Flowchart CSV
-type CsvType = {
-  Id: string
-  Name: string
-  'Line Source': string
-  'Line Destination': string
-  'Text Area 1': string
-  'Contained By': string
+// The columns that we care about in the Flowchart CSV
+enum CsvColumns {
+  ID = 'Id',
+  NAME = 'Name',
+  SOURCE_ID = 'Line Source',
+  DESTINATION_ID = 'Line Destination',
+  TEXT = 'Text Area 1',
+  CONTAINER_ID = 'Contained By',
 }
+
+// This type maps from the column to a string (with the actual contents of that column)
+type CsvType = Record<CsvColumns, string>
 
 // Extracts the columns of note from the csv
 const csvToCsvTypeArray = (fileName: string): CsvType[] => {
@@ -25,11 +28,11 @@ const csvToCsvTypeArray = (fileName: string): CsvType[] => {
 const mapAnswers = (answersArray: CsvType[]): Map<number, CsvType[]> => {
   const map = new Map<number, CsvType[]>()
   answersArray.forEach((answer: CsvType) => {
-    const existingAnswers = map.get(parseInt(answer['Line Source']))
+    const existingAnswers = map.get(parseInt(answer[CsvColumns.SOURCE_ID]))
     if (existingAnswers) {
       existingAnswers.push(answer)
     } else {
-      map.set(parseInt(answer['Line Source']), [answer])
+      map.set(parseInt(answer[CsvColumns.SOURCE_ID]), [answer])
     }
   })
   return map
@@ -37,17 +40,14 @@ const mapAnswers = (answersArray: CsvType[]): Map<number, CsvType[]> => {
 
 // Transforms a csv entry into an Answer
 const answerFromCsvType = (answer: CsvType): Answer => {
-  if (
-    answer['Text Area 1'] === 'CONTINUE' ||
-    answer['Text Area 1'] === 'TEXT'
-  ) {
+  if (['CONTINUE', 'TEXT'].includes(answer[CsvColumns.TEXT])) {
     return {
-      route: parseInt(answer['Line Destination']),
+      route: parseInt(answer[CsvColumns.DESTINATION_ID]),
     }
   } else {
     return {
-      content: answer['Text Area 1'],
-      route: parseInt(answer['Line Destination']),
+      content: answer[CsvColumns.TEXT],
+      route: parseInt(answer[CsvColumns.DESTINATION_ID]),
     }
   }
 }
@@ -60,17 +60,18 @@ const generateTooltips = (
   const map = new Map<number, CsvType[]>()
   tooltipsArray.forEach((tooltip: CsvType) => {
     const correspondingProcess = processArray.find(
-      (entry: CsvType) => entry.Id === tooltip['Line Destination']
+      (entry: CsvType) =>
+        entry[CsvColumns.ID] === tooltip[CsvColumns.DESTINATION_ID]
     )
     if (!correspondingProcess) {
       console.error('Could not find tooltip details')
       return
     }
-    const existingProcess = map.get(parseInt(tooltip['Line Source']))
+    const existingProcess = map.get(parseInt(tooltip[CsvColumns.SOURCE_ID]))
     if (existingProcess) {
       existingProcess.push(correspondingProcess)
     } else {
-      map.set(parseInt(tooltip['Line Source']), [correspondingProcess])
+      map.set(parseInt(tooltip[CsvColumns.SOURCE_ID]), [correspondingProcess])
     }
   })
   return map
@@ -94,15 +95,19 @@ const mapTooltips = (
   const tooltipHoverTextMap = new Map<number, string>()
   tooltipArrowsArray.forEach((arrow: CsvType) => {
     const destination: CsvType | undefined = processArray.find(
-      (process: CsvType) => process.Id === arrow['Line Destination']
+      (process: CsvType) =>
+        process[CsvColumns.ID] === arrow[CsvColumns.DESTINATION_ID]
     )
     if (!destination) return // This should not occur (only happens if tooltip arrow doesn't point to an actual box)
-    tooltipProcesses.add(destination.Id)
+    tooltipProcesses.add(destination[CsvColumns.ID])
     const mapToUse =
-      arrow['Text Area 1'] === 'TOOLTIP-TEXT'
+      arrow[CsvColumns.TEXT] === 'TOOLTIP-TEXT'
         ? tooltipTextMap
         : tooltipHoverTextMap
-    mapToUse.set(parseInt(arrow['Line Source']), destination['Text Area 1'])
+    mapToUse.set(
+      parseInt(arrow[CsvColumns.SOURCE_ID]),
+      destination[CsvColumns.TEXT]
+    )
   })
   return {
     tooltipTextMap: tooltipTextMap,
@@ -115,18 +120,22 @@ const csvToQuestionArray = (fileName: string): Question[] => {
   const csv: CsvType[] = csvToCsvTypeArray(fileName)
 
   const sections = csv.filter(
-    (entry: CsvType) => entry.Name === 'Rectangle Container'
+    (entry: CsvType) => entry[CsvColumns.NAME] === 'Rectangle Container'
   )
 
   // processArray contains questions and tooltips
-  const processArray = csv.filter((entry: CsvType) => entry.Name === 'Process')
+  const processArray = csv.filter(
+    (entry: CsvType) => entry[CsvColumns.NAME] === 'Process'
+  )
   const answersArray = csv.filter(
     (entry: CsvType) =>
-      entry.Name === 'Line' && !entry['Text Area 1'].startsWith('TOOLTIP')
+      entry[CsvColumns.NAME] === 'Line' &&
+      !entry[CsvColumns.TEXT].startsWith('TOOLTIP')
   )
   const tooltipArrowsArray = csv.filter(
     (entry: CsvType) =>
-      entry.Name === 'Line' && entry['Text Area 1'].startsWith('TOOLTIP')
+      entry[CsvColumns.NAME] === 'Line' &&
+      entry[CsvColumns.TEXT].startsWith('TOOLTIP')
   )
 
   const answersMap = mapAnswers(answersArray)
@@ -138,7 +147,7 @@ const csvToQuestionArray = (fileName: string): Question[] => {
   )
 
   const questionsArray = processArray.filter(
-    (process: CsvType) => !tooltipProcesses.has(process.Id)
+    (process: CsvType) => !tooltipProcesses.has(process[CsvColumns.ID])
   )
   const idMap = new Map<number, number>()
 
@@ -146,7 +155,7 @@ const csvToQuestionArray = (fileName: string): Question[] => {
   // this also maps the old ids to the new ids, but does not change any IDs
   const wrongIDQuestions = questionsArray.map(
     (question: CsvType, index: number): Question => {
-      const id = parseInt(question.Id)
+      const id = parseInt(question[CsvColumns.ID]) // determine the question type based on the answers
       idMap.set(id, index)
       const answers = answersMap.get(id) || []
       // determine the question type based on the answers
@@ -158,6 +167,7 @@ const csvToQuestionArray = (fileName: string): Question[] => {
           : answers[0]['Text Area 1'] === 'CONTINUE'
           ? QuestionType.CONTINUE
           : QuestionType.TEXT
+
       // only add tooltip if text and hoverText are present (undefined causes bugs with getStaticProps)
       let tooltip:
         | { tooltipText: string; tooltipHoveredText: string }
@@ -171,7 +181,7 @@ const csvToQuestionArray = (fileName: string): Question[] => {
         }
       }
       // eliminate funky newline characters in CSV
-      const regexedQuestion = question['Text Area 1'].replace(
+      const regexedQuestion = question[CsvColumns.TEXT].replace(
         /(\s{2,})|(\r?\n)|(\r)|(\u2028)/g,
         '\n'
       )
@@ -180,8 +190,9 @@ const csvToQuestionArray = (fileName: string): Question[] => {
       // find section or default to PRS Complaint
       const section =
         sections.find(
-          (section: CsvType) => section.Id === question['Contained By']
-        )?.['Text Area 1'] || 'PRS Complaint'
+          (section: CsvType) =>
+            section[CsvColumns.ID] === question[CsvColumns.CONTAINER_ID]
+        )?.[CsvColumns.TEXT] || 'PRS Complaint'
       const typedQuestion: Question = {
         id: id,
         question: regexedQuestion,

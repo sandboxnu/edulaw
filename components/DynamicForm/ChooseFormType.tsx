@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react'
 import { MyTextInput } from './MyInput'
-import { Question, Answer, AnswersKeys, answers } from '../../models'
+import { Question, Answer } from '../../models'
 import { MyRadio } from './MyRadio'
 import { MyResult } from './MyResult'
 import { FormAnswer } from '../../utils/FormContext'
