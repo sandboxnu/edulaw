@@ -10,7 +10,7 @@ type CsvType = {
   Name: string
   'Line Source': string
   'Line Destination': string
-  'Text Area 1': QuestionType | 'TOOLTIP-TEXT'
+  'Text Area 1': string
   'Contained By': string
 }
 
