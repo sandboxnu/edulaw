@@ -1,7 +1,12 @@
 import { Question, Answer } from '../../models'
 import { Form, Formik } from 'formik'
-import React, { useContext, useState } from 'react'
-import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
+import React, { useState, useEffect } from 'react'
+import {
+  emptyFormValues,
+  FormAnswer,
+  FormCtx,
+  FormValues,
+} from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
 import NavBar from '../../components/Critical/NavBar'
@@ -11,8 +16,9 @@ import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
-
-let startingAnswer: FormAnswer
+import { FormAnswerDB } from '../api/form/save'
+import _ from 'lodash'
+import { useSession } from 'next-auth/react'
 
 const Main = styled.div`
   display: flex;
@@ -65,15 +71,64 @@ export const getStaticProps: GetStaticProps = (context) => {
   }
 }
 
+let startingAnswer: FormAnswer
+
 const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const startingQuestion: Question = questions[0]
 
-  const { formValues, updateFormValues } = useContext(FormCtx)
-
+  const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+  const { data } = useSession()
+  const userID = data?.user?.id !== undefined ? data.user.id : ''
+
+  // For saving values to the database
+  useEffect(() => {
+    const save = async () => {
+      const body: Omit<FormAnswerDB, '_id'> = {
+        userID: userID,
+        formValues: formValues,
+        questionHistory: questionHistory,
+        currentIndex: currentIndex,
+        currentQuestion: currentQuestion,
+        currentAnswer: currentAnswer,
+      }
+      const result = await fetch('/api/form/save', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      })
+      const resBody = await result.json()
+      if (result.status !== 200) {
+        console.error(resBody.error)
+      }
+    }
+    if (loaded) {
+      save()
+    }
+  }, [currentIndex])
+
+  //For retrieving values from the database(only runs once)
+  useEffect(() => {
+    const retrieve = async () => {
+      const result = await fetch(`/api/form/retrieve?userID=${userID}`)
+      const body = await result.json()
+      if (result.status !== 200) {
+        console.error(body.error)
+      } else {
+        const typedBody = body as FormAnswerDB
+        setQuestionHistory(typedBody.questionHistory)
+        setFormValues(typedBody.formValues)
+        setCurrentQuestion(typedBody.currentQuestion)
+        setCurrentAnswer(typedBody.currentAnswer)
+        setCurrentIndex(typedBody.currentIndex)
+      }
+      setLoaded(true)
+    }
+    retrieve()
+  }, [])
 
   function getNextQuestion(answer: Answer): Question {
     const id: number = answer.route
@@ -111,7 +166,12 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
         ...questionHistory,
         nextQuestion,
       ])
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setFormValues({
+        formAnswers: {
+          ...formValues.formAnswers,
+          [currentQuestion.id]: currentAnswer,
+        },
+      })
       setCurrentQuestion(nextQuestion)
       if (formValues.formAnswers[nextQuestion.id]) {
         setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
@@ -131,15 +191,27 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
       formValues.formAnswers[currentQuestion.id]['answerId'] !==
       currentAnswer['answerId']
     ) {
+      let newFormValues = formValues
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
-        delete formValues.formAnswers[questionHistory[i].id]
+        newFormValues = {
+          formAnswers: _.omit(
+            newFormValues.formAnswers,
+            questionHistory[i].id.toString()
+          ),
+        }
       }
+      setFormValues(newFormValues)
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
       const nextQuestion = getNextQuestion(
         questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
       )
       setQuestionHistory([...questionSlice, nextQuestion])
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
+      setFormValues({
+        formAnswers: {
+          ...formValues.formAnswers,
+          [currentQuestion.id]: currentAnswer,
+        },
+      })
       setCurrentQuestion(nextQuestion)
       if (formValues.formAnswers[nextQuestion.id]) {
         setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
@@ -159,7 +231,12 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     if (currentIndex !== 0) {
       const newQuestion = questionHistory[currentIndex - 1]
       if (currentQuestion.id.toString() === currentAnswer.questionId) {
-        formValues.formAnswers[currentQuestion.id] = currentAnswer
+        setFormValues({
+          formAnswers: {
+            ...formValues.formAnswers,
+            [currentQuestion.id]: currentAnswer,
+          },
+        })
         setCurrentAnswer(formValues.formAnswers[newQuestion.id])
       }
       setCurrentQuestion(newQuestion)
@@ -194,9 +271,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   function _handleSubmit(values: FormValues) {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
     alert(JSON.stringify(values))
-    if (updateFormValues) {
-      updateFormValues(values)
-    }
+    setFormValues(values)
 
     let doc = new jsPDF()
     const results = buildResults(values['formAnswers'], questions)
@@ -211,34 +286,36 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
         <VerticalBox>
           <TitleText>{currentQuestion.section}</TitleText>
           <div>
-            <Formik
-              initialValues={formValues}
-              onSubmit={(values: FormValues, { setSubmitting }) => {
-                if (updateFormValues) {
-                  updateFormValues(values)
-                }
-                _handleNext()
-                if (currentQuestion.type === 'RESULT') {
-                  _handleSubmit(values)
-                  setSubmitting(false)
-                }
-              }}
-            >
-              <Form>
-                <ChooseFormType
-                  question={currentQuestion}
-                  onChange={_updateCurrentAnswer}
-                  answers={formValues.formAnswers[currentQuestion.id]}
-                  questions={questions}
-                />
-                <Button type="button" onClick={() => _handleBack()}>
-                  {'Back'}
-                </Button>
-                <Button primary type="submit">
-                  {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
-                </Button>
-              </Form>
-            </Formik>{' '}
+            {!loaded ? null : (
+              <FormCtx.Provider value={{ formValues, setFormValues }}>
+                <Formik
+                  initialValues={formValues}
+                  onSubmit={(values: FormValues, { setSubmitting }) => {
+                    setFormValues(values)
+                    _handleNext()
+                    if (currentQuestion.type === 'RESULT') {
+                      _handleSubmit(values)
+                      setSubmitting(false)
+                    }
+                  }}
+                >
+                  <Form>
+                    <ChooseFormType
+                      question={currentQuestion}
+                      onChange={_updateCurrentAnswer}
+                      answers={formValues.formAnswers[currentQuestion.id]}
+                      questions={questions}
+                    />
+                    <Button type="button" onClick={() => _handleBack()}>
+                      {'Back'}
+                    </Button>
+                    <Button primary type="submit">
+                      {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
+                    </Button>
+                  </Form>
+                </Formik>{' '}
+              </FormCtx.Provider>
+            )}
           </div>
         </VerticalBox>
         <GreyBar>

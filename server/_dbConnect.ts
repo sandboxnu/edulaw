@@ -17,7 +17,6 @@ export const dbConnect = async (): Promise<MongoClient | undefined> => {
     await client.connect()
     // Establish and verify connection
     await client.db('admin').command({ ping: 1 })
-    console.log('Connected successfully to server')
     return client
   } catch (error) {
     console.log(error)

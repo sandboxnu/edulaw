@@ -56,9 +56,16 @@ function _updateTextInputs(
 ) {
   const formValues: FormValues = ctx.formValues
   const userInput: string = event.target.value
-  formValues.formAnswers[questionId].userAnswer = userInput
-  if (ctx.updateFormValues) {
-    ctx.updateFormValues(formValues)
+  if (ctx.setFormValues) {
+    ctx.setFormValues({
+      formAnswers: {
+        ...formValues.formAnswers,
+        [questionId]: {
+          ...formValues.formAnswers[questionId],
+          userAnswer: userInput,
+        },
+      },
+    })
   }
 }
 
