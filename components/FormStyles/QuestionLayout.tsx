@@ -1,9 +1,12 @@
 import styled from 'styled-components'
+import { QuestionText } from './QuestionText'
+import Tooltip from '../DynamicForm/Tooltip'
 
 interface QuestionProps {
-  questionText: JSX.Element
+  questionText: string
   input: JSX.Element
-  tooltip?: JSX.Element
+  tooltip?: { tooltipText: string; tooltipHoveredText: string }
+  results?: JSX.Element[]
 }
 
 const QuestionDiv = styled.div`
@@ -23,6 +26,7 @@ const InputDiv = styled.div`
 const QuestionLayout: React.FC<QuestionProps> = ({
   questionText,
   tooltip,
+  results,
   input,
 }) => {
   return (
