@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
+import { COLORS } from '../../constants/colors'
 
 interface InputBoxProps {
   width: string
@@ -10,12 +11,18 @@ interface InputBoxProps {
 export const InputBox = styled.input`
   width: ${(props: InputBoxProps) => props.width};
   height: ${(props: InputBoxProps) => props.height};
-  border: 0.75px solid #595959;
+  border: 1px solid ${COLORS.SHADOW_GREY};
+  background-color: ${COLORS.LIGHT_GREY};
   box-sizing: border-box;
   padding: 10px;
   border-radius: 6px;
-  font-size: 21px;
+  font-size: 16px;
   line-height: 26px;
+  font-family: 'Source Sans Pro';
+  &:focus {
+    border: 1px solid ${COLORS.EDLAW_BLUE};
+    outline: none;
+  }
 `
 
 export const ErrorDiv = styled.div`
@@ -32,42 +39,43 @@ interface InputProps {
   placeholder?: string
 }
 
-export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =
-  ({ ...props }) => {
-    const [field, meta] = useField(props)
+export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
+  props
+) => {
+  const [field, meta] = useField(props)
 
-    function onChangeInput(): JSX.Element {
-      if (props.onChange) {
-        return (
-          <InputBox
-            width={`${props.width}`}
-            height={`${props.height}`}
-            defaultValue={props.defaultValue}
-            {...field}
-            onChange={props.onChange}
-            type={props.type}
-            placeholder={props.placeholder}
-          />
-        )
-      }
+  function onChangeInput(): JSX.Element {
+    if (props.onChange) {
       return (
         <InputBox
           width={`${props.width}`}
           height={`${props.height}`}
           defaultValue={props.defaultValue}
           {...field}
+          onChange={props.onChange}
           type={props.type}
           placeholder={props.placeholder}
         />
       )
     }
-
     return (
-      <div key={props.name}>
-        {onChangeInput()}
-        {meta.touched && meta.error ? (
-          <ErrorDiv className="error">{meta.error}</ErrorDiv>
-        ) : null}
-      </div>
+      <InputBox
+        width={`${props.width}`}
+        height={`${props.height}`}
+        defaultValue={props.defaultValue}
+        {...field}
+        type={props.type}
+        placeholder={props.placeholder}
+      />
     )
   }
+
+  return (
+    <div key={props.name}>
+      {onChangeInput()}
+      {meta.touched && meta.error ? (
+        <ErrorDiv className="error">{meta.error}</ErrorDiv>
+      ) : null}
+    </div>
+  )
+}

@@ -29,8 +29,8 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
             {...field}
             onChange={props.onChange}
             defaultValue={props.ans?.userAnswer ? props.ans.userAnswer : ''}
-            width="500px"
-            height="54px"
+            width="300px"
+            height="42px"
           />
         }
       />

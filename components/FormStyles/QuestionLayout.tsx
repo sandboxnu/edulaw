@@ -10,7 +10,7 @@ const QuestionDiv = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
-  gap: 40px;
+  gap: 20px;
 `
 
 const InputDiv = styled.div`

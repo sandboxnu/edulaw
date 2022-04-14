@@ -13,7 +13,7 @@ export default function Logo({ ...props }) {
       }}
     >
       <Image
-        src="/logo.png"
+        src="/EdLawLogo.png"
         alt="EduLaw logo"
         layout="responsive"
         height={divStyle.height}

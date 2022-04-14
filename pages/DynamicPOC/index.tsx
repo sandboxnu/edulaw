@@ -54,6 +54,7 @@ const BackButton = styled(Button)`
   border: none;
   width: 80px;
   color: ${COLORS.EDLAW_BLUE};
+  background-color: transparent;
 `
 const GreySideBar = styled.div`
   width: 30%;
@@ -75,6 +76,7 @@ const HorizontalBox = styled.div`
 const TitleText = styled.h1`
   font-size: 26px;
   margin-bottom: 20px;
+  font-family: Source Sans Pro;
 `
 
 const files = {

@@ -1,8 +1,9 @@
 import Logo from './Logo'
 import { AppBar, Toolbar, Divider } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
-import { PhoneOutlined } from '@material-ui/icons'
 import { makeStyles, Theme } from '@material-ui/core/styles'
+import { COLORS } from '../../constants/colors'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 
 const useStyles = makeStyles((theme: Theme) => ({
   toolBar: {
@@ -21,24 +22,25 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginRight: '22px',
   },
   appBar: {
-    height: '114px',
+    backgroundColor: COLORS.EDLAW_BLUE,
+    height: '80px',
     boxShadow: '0px 3px 4px rgba(0, 0, 0, 0.1)',
   },
   icon: {
+    color: 'white',
     marginRight: '7px',
     height: 30,
   },
   info: {
     display: 'flex',
-    position: 'absolute',
-    right: 30,
-    height: 33,
-    flex: 2,
+    marginRight: 120,
+    alignItems: 'center',
   },
   typography: {
-    display: 'inline-block',
-    verticalAlign: 'middle',
+    display: 'flex',
     flex: 'none',
+    color: 'white',
+    fontSize: 16,
   },
 }))
 
@@ -49,17 +51,9 @@ function NavBar() {
       <Toolbar classes={{ root: classes.toolBar }}>
         <Logo classes={{ root: classes.logo }} />
         <div className={classes.info}>
-          <PhoneOutlined classes={{ root: classes.icon }} />
-          <Typography variant="body2" classes={{ root: classes.typography }}>
-            (617)-910-5829
-          </Typography>
-          <Divider
-            orientation="vertical"
-            variant="middle"
-            classes={{ root: classes.divider }}
-          />
-          <Typography variant="body2" classes={{ root: classes.typography }}>
-            edlawproject@publiccounsel.net
+          <HelpOutlineIcon classes={{ root: classes.icon }} />
+          <Typography classes={{ root: classes.typography }}>
+            Need help?
           </Typography>
         </div>
       </Toolbar>
