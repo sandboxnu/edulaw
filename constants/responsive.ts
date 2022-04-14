@@ -1,4 +1,4 @@
 export const CUTOFFS = {
-  mobile: 390,
+  mobile: 768,
   tablet: 768,
 }

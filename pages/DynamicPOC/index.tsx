@@ -10,6 +10,7 @@ import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { COLORS } from '../../constants/colors'
+import { CUTOFFS } from '../../constants/responsive'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
 
@@ -64,7 +65,7 @@ const HorizontalBox = styled.div`
   flex-direction: row;
   height: 100%;
   justify-content: center;
-  @media (max-width: 768px) {
+  @media (max-width: ${CUTOFFS.mobile}px) {
     flex-direction: column;
     justify-content: start;
   }

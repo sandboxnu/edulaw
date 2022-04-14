@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   withStyles,
-  ListItem,
+  // ListItem,
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core'
@@ -17,16 +17,27 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import useWindowDimensions from '../../hooks/widthHook'
 const GreySideBox = styled.div`
   width: 30%;
-  min-width: 200px;
+  min-width: 400px;
   max-width: 300px;
   background-color: ${COLORS.LIGHT_GREY};
   height: 100%;
   border-right: 1px solid ${COLORS.SHADOW_GREY};
-  @media (max-width: 320px) {
+  @media (max-width: ${CUTOFFS.mobile}px) {
     width: 100%;
     min-width: auto;
     max-width: 100%;
     height: auto;
+  }
+`
+const ListItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 48px;
+  width: auto;
+  padding: 8px;
+  &:hover {
+    border-radius: 8px;
+    background-color: ${COLORS.EDLAW_BLUE}1A;
   }
 `
 function SideProgressBar() {
@@ -41,9 +52,11 @@ function SideProgressBar() {
   const [expanded, setExpanded] = React.useState(false)
 
   const onChange = (event: React.SyntheticEvent, navExpand: boolean) => {
+    // If on mobile layout
     if (width <= CUTOFFS.mobile) {
-      setExpanded(!navExpand)
+      setExpanded(navExpand)
     } else {
+      // desktop layout
       setExpanded(true)
     }
   }
@@ -54,12 +67,8 @@ function SideProgressBar() {
       color: index === selectedIndex ? 'black' : COLORS.TEXT_GREY,
     }
     return (
-      <ListItem
-        button
-        selected={selectedIndex === index}
-        onClick={() => handleListItemClick(index)}
-      >
-        <ListItemIcon>
+      <ListItem>
+        <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
           {index == 0 ? (
             <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />
           ) : (
@@ -67,6 +76,7 @@ function SideProgressBar() {
           )}
         </ListItemIcon>
         <ListItemText
+          style={{ display: 'flex', alignItems: 'center', fontSize: '16px' }}
           primaryTypographyProps={{ style: textStyling }}
           primary={text}
         />
@@ -82,17 +92,33 @@ function SideProgressBar() {
     'Concerns',
   ]
   return (
-    <Accordion onChange={onChange} expanded={expanded}>
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        {ProgressItem(NAVITEMS[selectedIndex], selectedIndex)}
-      </AccordionSummary>
+    <GreySideBox>
+      <Accordion
+        onChange={onChange}
+        expanded={expanded}
+        style={{ backgroundColor: 'inherit', boxShadow: 'none' }}
+      >
+        <AccordionSummary
+          expandIcon={width <= CUTOFFS.mobile ? <ExpandMoreIcon /> : null}
+          style={{
+            width: '100%',
+            height: '64px',
+            margin: '18px 0px 0px 0px',
+            padding: '16px',
+          }}
+        >
+          {expanded
+            ? ProgressItem(NAVITEMS[0], 0)
+            : ProgressItem(NAVITEMS[selectedIndex], selectedIndex)}
+        </AccordionSummary>
 
-      <AccordionDetails>
-        <GreySideBox>
-          {NAVITEMS.map((text, index) => ProgressItem(text, index))}
-        </GreySideBox>
-      </AccordionDetails>
-    </Accordion>
+        <AccordionDetails style={{ paddingTop: '0px' }}>
+          {NAVITEMS.map((text, index) => ProgressItem(text, index)).slice(
+            expanded ? 1 : 0
+          )}
+        </AccordionDetails>
+      </Accordion>
+    </GreySideBox>
   )
 }
 
