@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Form, Formik, Field } from 'formik'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import * as Yup from 'yup'
@@ -13,8 +13,9 @@ import {
 import styled from 'styled-components'
 import Link from 'next/link'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { SessionProvider } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 export const RememberSignIn = styled.div`
   display: flex;
@@ -36,11 +37,24 @@ interface FormValues {
 
 // component for the signin page - includes form (and styling) for validation
 function SignIn() {
+  const router = useRouter()
+  const { data } = useSession()
   const initialVal: FormValues = {
     email: '',
     password: '',
     checked: [],
   }
+
+  // check if the user is invalid
+  useEffect(() => {
+    if (data !== null && data !== undefined) {
+      if (data.user?.id) {
+        router.push('/DynamicPOC')
+      } else {
+        alert(data.user?.name)
+      }
+    }
+  }, [data])
 
   return (
     <Formik
@@ -50,22 +64,16 @@ function SignIn() {
         password: Yup.string().required('Required'),
       })}
       // check if user is in database and sign them in
-      onSubmit={async (values, { setSubmitting }) => {
+      onSubmit={async (values) => {
         // do submission shit here
-        const result = await signIn('Credentials', {
+        await signIn('credentials', {
           redirect: false,
           username: values.email,
           password: values.password,
-          callbackUrl: '/DynamicPOC',
         })
 
         console.log(values.email)
         console.log(values.password)
-        console.log(result)
-
-        // if(result?.error) {
-
-        // }
       }}
     >
       <Form>
