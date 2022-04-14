@@ -3,60 +3,59 @@ import {
   FormAnswer,
   FormContextInterface,
   FormCtx,
+  FormResult,
   FormValues,
 } from '../../utils/FormContext'
-import { answers, AnswersKeys, Question } from '../../models'
+import { Question } from '../../models'
 import { QuestionText } from '../FormStyles/QuestionText'
 import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
+import { QuestionType } from '../../models/question'
+import QuestionLayout from '../FormStyles/QuestionLayout'
 
 interface MyResultProps {
   label: string
-  description?: string
-  questions: Question[]
+  questionHistory: Question[]
 }
 
 // translates ID-based results to content-based results
 export function buildResults(
-  formAnswers: {
-    [key: string]: FormAnswer
-  },
-  questions: Question[]
-): FormAnswer[] {
-  const questionKeys = Object.keys(formAnswers)
-  const results = questionKeys
-    .filter((key) => {
-      const idBasedFormAnswer: FormAnswer = formAnswers[key]
-      return (
-        questions[parseInt(idBasedFormAnswer.questionId)].type !== 'CONTINUE'
-      )
-    })
-    .map((key) => {
-      const idBasedFormAnswer: FormAnswer = formAnswers[key]
-      const contentBasedFormAnswer: FormAnswer = {
-        questionId: idBasedFormAnswer.questionId,
-        question: questions[parseInt(idBasedFormAnswer.questionId)].question,
-        answerId: idBasedFormAnswer.answerId,
+  formAnswers: { [key: number]: FormAnswer },
+  questionHistory: Question[]
+): FormResult[] {
+  // const questionKeys = Object.keys(formAnswers)
+  const results = questionHistory.reduce(
+    (results: FormResult[], curQuestion) => {
+      const curFormAns = formAnswers[curQuestion.id]
+      if (curFormAns === undefined || curFormAns.type === QuestionType.CONTINUE)
+        return results
+
+      const contentBasedFormAnswer: FormResult = {
         answer:
-          questions[parseInt(idBasedFormAnswer.questionId)].answers[
-            parseInt(idBasedFormAnswer.answerId)
-          ].content,
-        userAnswer: idBasedFormAnswer.userAnswer ?? undefined,
+          curFormAns.type == QuestionType.RADIO
+            ? curQuestion.answers[curFormAns.answerId].content
+            : undefined,
+        question: curQuestion.question,
+        formAnswer: curFormAns,
       }
-      return contentBasedFormAnswer
-    })
+      results.push(contentBasedFormAnswer)
+      return results
+    },
+    []
+  )
   return results
 }
 
 // updates the form values for the given question in the given context with the contents of the given event
 function _updateTextInputs(
   ctx: FormContextInterface,
-  questionId: string,
-  event: ChangeEvent<HTMLInputElement>
+  questionId: number,
+  updatedUserInput: string
 ) {
   const formValues: FormValues = ctx.formValues
-  const userInput: string = event.target.value
-  formValues.formAnswers[questionId].userAnswer = userInput
+  const currentQuestion = formValues.formAnswers[questionId]
+  if (currentQuestion.type === QuestionType.TEXT)
+    currentQuestion.userAnswer = updatedUserInput
   if (ctx.updateFormValues) {
     ctx.updateFormValues(formValues)
   }
@@ -68,28 +67,28 @@ const HorizontalDiv = styled.div`
   margin-bottom: 2em;
   flex-direction: row;
 `
-export const MyResult: React.FC<MyResultProps> = ({
-  ...props
-}): JSX.Element => {
+export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   const ctx = useContext(FormCtx)
-  const formAnswers = ctx.formValues.formAnswers
-  const results = buildResults(formAnswers, props.questions).map((key) => {
+  const results = buildResults(
+    ctx.formValues.formAnswers,
+    props.questionHistory
+  ).map(({ formAnswer, question, answer }) => {
     function _onChange(event: ChangeEvent<HTMLInputElement>) {
-      _updateTextInputs(ctx, key.questionId, event)
+      _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
     }
 
     return (
-      <div key={key.questionId}>
+      <div key={formAnswer.questionId}>
         <HorizontalDiv>
-          <QuestionText>{key.question}</QuestionText>
-          <QuestionText>{key.answer}</QuestionText>
+          <QuestionText>{question}</QuestionText>
+          <QuestionText>{answer}</QuestionText>
         </HorizontalDiv>
 
-        {key.userAnswer ? (
+        {formAnswer.type == QuestionType.TEXT ? (
           <StyledTextInput
-            name={key.userAnswer}
+            name={formAnswer.userAnswer}
             className="text-input"
-            defaultValue={key.userAnswer}
+            defaultValue={formAnswer.userAnswer}
             onChange={_onChange}
             width="500px"
             height="64px"
@@ -100,13 +99,10 @@ export const MyResult: React.FC<MyResultProps> = ({
   })
 
   return (
-    <div>
-      {results}
-      <br />
-      <QuestionText>{props.label}</QuestionText>
-      {props.description ? <p>{props.description}</p> : null}
-      <br />
-      <br />
-    </div>
+    <QuestionLayout
+      results={results}
+      questionText={props.label}
+      input={<div />}
+    />
   )
 }

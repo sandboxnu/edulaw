@@ -7,12 +7,9 @@ import { FormCtx, FormValues, emptyFormValues } from '../utils/FormContext'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
-  const updateFormValues = (updatedValues: FormValues) => {
-    setFormValues(updatedValues)
-  }
 
   return (
-    <FormCtx.Provider value={{ formValues, updateFormValues }}>
+    <FormCtx.Provider value={{ formValues, updateFormValues: setFormValues }}>
       <ThemeProvider theme={getLightTheme()}>
         <Component {...pageProps} />
       </ThemeProvider>

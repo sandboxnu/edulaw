@@ -32,42 +32,43 @@ interface InputProps {
   placeholder?: string
 }
 
-export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> =
-  ({ ...props }) => {
-    const [field, meta] = useField(props)
+export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
+  props
+) => {
+  const [field, meta] = useField(props)
 
-    function onChangeInput(): JSX.Element {
-      if (props.onChange) {
-        return (
-          <InputBox
-            width={`${props.width}`}
-            height={`${props.height}`}
-            defaultValue={props.defaultValue}
-            {...field}
-            onChange={props.onChange}
-            type={props.type}
-            placeholder={props.placeholder}
-          />
-        )
-      }
+  function onChangeInput(): JSX.Element {
+    if (props.onChange) {
       return (
         <InputBox
           width={`${props.width}`}
           height={`${props.height}`}
           defaultValue={props.defaultValue}
           {...field}
+          onChange={props.onChange}
           type={props.type}
           placeholder={props.placeholder}
         />
       )
     }
-
     return (
-      <div key={props.name}>
-        {onChangeInput()}
-        {meta.touched && meta.error ? (
-          <ErrorDiv className="error">{meta.error}</ErrorDiv>
-        ) : null}
-      </div>
+      <InputBox
+        width={`${props.width}`}
+        height={`${props.height}`}
+        defaultValue={props.defaultValue}
+        {...field}
+        type={props.type}
+        placeholder={props.placeholder}
+      />
     )
   }
+
+  return (
+    <div key={props.name}>
+      {onChangeInput()}
+      {meta.touched && meta.error ? (
+        <ErrorDiv className="error">{meta.error}</ErrorDiv>
+      ) : null}
+    </div>
+  )
+}
