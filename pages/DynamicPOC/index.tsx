@@ -83,11 +83,14 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const { data } = useSession()
-  const userID = data?.user?.id !== undefined ? data.user.id : ''
 
   // For saving values to the database
   useEffect(() => {
     const save = async () => {
+      if (!data?.user?.id) {
+        return
+      }
+      const userID = data.user.id
       const body: Omit<FormAnswerDB, '_id'> = {
         userID: userID,
         formValues: formValues,
@@ -113,6 +116,10 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   //For retrieving values from the database(only runs once)
   useEffect(() => {
     const retrieve = async () => {
+      if (!data?.user?.id) {
+        return
+      }
+      const userID = data.user.id
       const result = await fetch(`/api/form/retrieve?userID=${userID}`)
       const body = await result.json()
       if (result.status !== 200) {
@@ -127,8 +134,10 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
       }
       setLoaded(true)
     }
-    retrieve()
-  }, [])
+    if (!loaded) {
+      retrieve()
+    }
+  }, [data])
 
   function getNextQuestion(answer: Answer): Question {
     const id: number = answer.route

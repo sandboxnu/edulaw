@@ -23,10 +23,6 @@ export default async function handler(
   }
 
   const doc = JSON.parse(req.body) as Omit<FormAnswerDB, '_id'>
-  if (typeof doc.userID !== 'number') {
-    res.status(400).json({ error: 'UserID is malformed' })
-    return
-  }
   const client = await dbConnect()
   if (!client) {
     res.status(500).json({ error: 'Client is not connected' })
