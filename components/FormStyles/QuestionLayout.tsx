@@ -31,10 +31,9 @@ const QuestionLayout: React.FC<QuestionProps> = ({
 }) => {
   return (
     <QuestionDiv>
-      <div>
-        {questionText}
-        {tooltip}
-      </div>
+      {results}
+      {<QuestionText>{questionText}</QuestionText>}
+      {<Tooltip tooltip={tooltip} />}
       <InputDiv>{input}</InputDiv>
     </QuestionDiv>
   )

@@ -2,49 +2,20 @@ import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
 import { Answer } from '../../models'
 import { RadioFormAnswer } from '../../utils/FormContext'
-import { RadioButton } from '../../components/FormStyles/RadioButton'
-import { QuestionText } from '../FormStyles/QuestionText'
+import {
+  RadioButton,
+  RadioInputCheckedIcon,
+  RadioInputIcon,
+} from '../../components/FormStyles/RadioButton'
 import QuestionLayout from '../FormStyles/QuestionLayout'
-import Tooltip from './Tooltip'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
-import FormControl from '@mui/material/FormControl'
-import FormLabel from '@mui/material/FormLabel'
 import styled from 'styled-components'
-import { COLORS } from '../../constants/colors'
-import { Typography } from '@material-ui/core'
 
-const RadioInputIcon = styled.span`
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2),
-    inset 0 -1px 0 rgba(16, 22, 26, 0.1);
-  background-color: #f5f8fa;
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0)
-  );
-  margin-right: 8px;
+const StyledRadioText = styled.body`
+  font-size: 14px;
 `
-
-const RadioInputCheckedIcon = styled(RadioInputIcon)`
-  background-color: ${COLORS.EDLAW_BLUE};
-  linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  &:before {
-    display: block;
-    width: 20px;
-    height: 20px;
-    background-image: radial-gradient(
-      rgb(255, 255, 255),
-      rgb(255, 255, 255) 28%,
-      transparent 32%
-    );
-    content: '';
-  }
-`
-
 interface MyRadioProps {
   name: string
   label: string
@@ -53,82 +24,65 @@ interface MyRadioProps {
   ans?: RadioFormAnswer
   tooltip?: { tooltipText: string; tooltipHoveredText: string }
 }
-interface MyRadioAnswersProps {
-  options: Answer[]
-}
 
 export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = (
   props
 ): JSX.Element => {
   const [field, meta] = useField(props)
+  const { ans, name, label, options, onChange, tooltip } = props
   // renders input type radio, determines whether or not it should be checked initially
-  function initialRadio(optionId: number): JSX.Element {
+  function renderButtonRadio(option: Answer, optionId: number): JSX.Element {
     return (
-      <RadioButton
-        type="radio"
-        {...field}
-        value={optionId}
-        onChange={props.onChange}
-        defaultChecked={props.ans && optionId === props.ans.answerId}
-      />
+      <div key={option.content}>
+        <RadioButton
+          type="radio"
+          {...field}
+          value={optionId}
+          onChange={onChange}
+          defaultChecked={ans && optionId === ans.answerId}
+        />
+        <label>{option.content}</label>
+      </div>
     )
   }
-  function longRadio(optionId: number, option: Answer) {
+  function renderLongRadio(option: Answer, optionId: number) {
     return (
       <FormControlLabel
         style={{ marginLeft: 0 }}
         value={optionId}
+        key={option.content}
+        label={<StyledRadioText>{option.content || ''}</StyledRadioText>}
         control={
           <Radio
             icon={<RadioInputIcon />}
             checkedIcon={<RadioInputCheckedIcon />}
             disableRipple
+            {...field}
+            onChange={onChange}
+            value={optionId}
           />
         }
-        label={<Typography>{option.content || ''}</Typography>}
-        defaultChecked={props.ans && optionId === props.ans.answerId}
       />
     )
   }
 
   const renderRadioAnswers = (options: Answer[]) => {
-    if (
-      false &&
-      options.some((option) => option.content && option.content.length < 10)
-    ) {
-      return (
-        <>
-          {options.map(function (option, i) {
-            return (
-              <div key={option.content}>
-                {initialRadio(i)}
-                <label>{option.content}</label>
-              </div>
-            )
-          })}
-        </>
-      )
-    } else {
-      return (
-        <RadioGroup
-          aria-labelledby="demo-controlled-radio-buttons-group"
-          name="controlled-radio-buttons-group"
-          onChange={props.onChange}
-        >
-          {options.map((option, i) => {
-            return longRadio(i, option)
-          })}
-        </RadioGroup>
-      )
-    }
+    return false &&
+      options.some(({ content }) => content && content.length < 10) ? (
+      <>{options.map(renderButtonRadio)}</>
+    ) : (
+      <RadioGroup style={{ gap: 8 }} defaultValue={ans && ans.answerId}>
+        {options.map(renderLongRadio)}
+      </RadioGroup>
+    )
   }
 
   return (
-    <div key={props.name} role="group" aria-labelledby="my-radio-group">
+    <div key={name} role="group" aria-labelledby="my-radio-group">
       <QuestionLayout
-        questionText={props.label}
-        tooltip={props.tooltip}
-        input={renderRadioAnswers(props.options)}
+        questionText={label}
+        tooltip={tooltip}
+        input={renderRadioAnswers(options)}
       />
 
       {meta.touched && meta.error ? (

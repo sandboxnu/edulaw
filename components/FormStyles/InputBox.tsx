@@ -4,13 +4,13 @@ import React, { ChangeEvent } from 'react'
 import { COLORS } from '../../constants/colors'
 
 interface InputBoxProps {
-  width: string
-  height: string
+  width: number
+  height: number
 }
 
 export const InputBox = styled.input`
-  width: ${(props: InputBoxProps) => props.width};
-  height: ${(props: InputBoxProps) => props.height};
+  width: ${(props: InputBoxProps) => props.width}px;
+  height: ${(props: InputBoxProps) => props.height}px;
   border: 1px solid ${COLORS.SHADOW_GREY};
   background-color: ${COLORS.LIGHT_GREY};
   box-sizing: border-box;
@@ -31,8 +31,8 @@ export const ErrorDiv = styled.div`
 
 interface InputProps {
   name: string
-  width: string
-  height: string
+  width: number
+  height: number
   defaultValue?: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   type?: string
@@ -48,8 +48,8 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
     if (props.onChange) {
       return (
         <InputBox
-          width={`${props.width}`}
-          height={`${props.height}`}
+          width={props.width}
+          height={props.height}
           defaultValue={props.defaultValue}
           {...field}
           onChange={props.onChange}
@@ -60,8 +60,8 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
     }
     return (
       <InputBox
-        width={`${props.width}`}
-        height={`${props.height}`}
+        width={props.width}
+        height={props.height}
         defaultValue={props.defaultValue}
         {...field}
         type={props.type}

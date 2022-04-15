@@ -46,8 +46,8 @@ function ForgotPassword() {
           </SubTitle>
           <TextButtonDiv>
             <StyledTextInput
-              width="600px"
-              height="53px"
+              width={600}
+              height={53}
               name="email"
               placeholder="Email"
               type="text"

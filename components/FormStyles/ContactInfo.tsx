@@ -133,58 +133,58 @@ const ContactFormik: React.FC = () => {
             <ContactContent>
               <ContactColumn>
                 <StyledTextInput
-                  width="330px"
-                  height="53px"
+                  width={330}
+                  height={53}
                   name="firstName"
                   placeholder="First Name"
                 />
 
                 <StyledTextInput
-                  width="330px"
-                  height="53px"
+                  width={330}
+                  height={53}
                   name="phoneNumber"
                   placeholder="Phone"
                 />
 
                 <StyledTextInput
-                  width="330px"
-                  height="53px"
+                  width={330}
+                  height={53}
                   name="address"
                   placeholder="Address"
                 />
 
                 <StyledTextInput
-                  width="330px"
-                  height="53px"
+                  width={330}
+                  height={53}
                   name="state"
                   placeholder="State"
                 />
               </ContactColumn>
               <ContactColumn>
                 <StyledTextInput
-                  width="330px"
-                  height="53px"
+                  width={330}
+                  height={53}
                   name="lastName"
                   placeholder="Last name"
                 />
 
                 <StyledTextInput
-                  width="330px"
-                  height="53px"
+                  width={330}
+                  height={53}
                   name="email"
                   placeholder="E-mail"
                 />
 
                 <StyledTextInput
-                  width="330px"
-                  height="53px"
+                  width={330}
+                  height={53}
                   name="city"
                   placeholder="City"
                 />
 
                 <StyledTextInput
-                  width="330px"
-                  height="53px"
+                  width={330}
+                  height={53}
                   name="zip"
                   placeholder="Zip"
                 />
