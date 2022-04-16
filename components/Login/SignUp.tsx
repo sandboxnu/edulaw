@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { Button } from '../FormStyles/Button'
 import { ErrorMessage, Form, Formik } from 'formik'
@@ -6,7 +6,8 @@ import * as Yup from 'yup'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
-// import 'next-auth'
+import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import {
   BackButton,
   EStyledButton,
@@ -30,18 +31,28 @@ interface FormValues {
   confirmPass: string
 }
 
-// async function createUser() {
-
-// }
-
 // component for signup page - includes form and validation for email and password,
 // and ensures that passwords are the same
 function Signup() {
+  const { data } = useSession()
+  const router = useRouter()
   const initialVal: FormValues = {
     email: '',
     password: '',
     confirmPass: '',
   }
+
+  // check if the user is invalid
+  // checks when data is changed
+  useEffect(() => {
+    if (data !== null && data !== undefined) {
+      if (data.user?.id) {
+        router.push('/DynamicPOC')
+      } else {
+        alert(data.user?.name)
+      }
+    }
+  }, [data])
 
   return (
     <Formik
@@ -60,8 +71,18 @@ function Signup() {
           body: JSON.stringify(values),
         })
 
+        // checks if the user can be added and signs them in
         if (result.status === 200) {
           console.log('Valid')
+
+          await signIn('credentials', {
+            redirect: false,
+            username: values.email,
+            password: values.password,
+          })
+
+          console.log(values.email)
+          console.log(values.password)
         } else {
           const errMessage = await result.json()
           alert(errMessage.error)
