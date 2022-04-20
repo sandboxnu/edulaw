@@ -39,7 +39,6 @@ export const QuestionsWithBlockText: React.FC<QuestionTextProps> = ({
     <div>
       {questionText
         .split('"')
-        .filter((text) => text.length != 0)
         .map((text, i) =>
           i % 2 == 0 ? (
             <QuestionText key={text}>{text}</QuestionText>
