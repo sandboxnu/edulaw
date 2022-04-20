@@ -1,10 +1,8 @@
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
-import { FormAnswer, TextFormAnswer } from '../../utils/FormContext'
-import { QuestionText } from '../FormStyles/QuestionText'
+import { TextFormAnswer } from '../../utils/FormContext'
 import QuestionLayout from '../FormStyles/QuestionLayout'
 import { StyledTextInput } from '../FormStyles/InputBox'
-import Tooltip from './Tooltip'
 
 interface InputProps {
   name: string

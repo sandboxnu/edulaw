@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
 
 interface ContinueProps {
@@ -14,7 +13,7 @@ Represents a "Continue" question in the form, which just displays some informati
 const MyContinue: React.FC<ContinueProps> = ({ label, onMount }) => {
   useEffect(() => {
     onMount()
-  }, [])
+  }, [onMount])
 
   return <QuestionLayout questionText={label} input={<div />} />
 }

@@ -7,7 +7,7 @@ import {
   FormValues,
 } from '../../utils/FormContext'
 import { Question } from '../../models'
-import { QuestionText, AnswerText } from '../FormStyles/QuestionText'
+import { QuestionsWithBlockText, AnswerText } from '../FormStyles/QuestionText'
 import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { QuestionType } from '../../models/question'
@@ -78,7 +78,7 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
     return (
       <div key={formAnswer.questionId}>
         <SingleQuestionResponseDiv>
-          <QuestionText>{question}</QuestionText>
+          <QuestionsWithBlockText questionText={question} />
           <AnswerText>{answer}</AnswerText>
         </SingleQuestionResponseDiv>
 
