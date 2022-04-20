@@ -187,7 +187,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     let doc = new jsPDF()
     const results = buildResults(values.formAnswers, questions)
     doc = _buildDoc(doc, results)
-    doc.save('a4.pdf')
+    doc.save('PRS_Complaint.pdf')
   }
 
   return (
