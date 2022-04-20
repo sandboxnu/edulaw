@@ -22,7 +22,6 @@ function home() {
           width: '30%',
           position: 'relative',
           backgroundColor: '#F4F5F7',
-          paddingTop: '50px',
         }}
       />
     </main>

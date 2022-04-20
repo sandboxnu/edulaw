@@ -63,16 +63,16 @@ function SignIn() {
           <SubTitle>Please sign in.</SubTitle>
           <SubContainer>
             <StyledTextInput
-              width="600px"
-              height="53px"
+              width={600}
+              height={53}
               name="email"
               placeholder="Email"
               type="text"
             />
 
             <PasswordInputBox
-              width="600px"
-              height="53px"
+              width={600}
+              height={53}
               placeholder="Password"
               name="password"
             />
