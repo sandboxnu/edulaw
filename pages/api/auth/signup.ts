@@ -9,7 +9,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return null
   }
 
-  console.log(req.body)
   const { email, password } = JSON.parse(req.body)
 
   const users = client.db().collection('user')

@@ -41,8 +41,6 @@ export function login(data: Session | null, router: NextRouter) {
   if (data?.user) {
     if (data.user.id) {
       router.push('/DynamicPOC')
-    } else {
-      alert(data.user.name)
     }
   }
 }
@@ -56,17 +54,6 @@ function SignIn() {
     password: '',
     checked: [],
   }
-
-  // check if the user is invalid
-  useEffect(() => {
-    if (data?.user) {
-      if (data.user.id) {
-        router.push('/DynamicPOC')
-      } else {
-        alert(data.user.name)
-      }
-    }
-  }, [data])
 
   // check if the user is invalid
   // checks when data is changed
