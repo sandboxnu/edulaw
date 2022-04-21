@@ -27,14 +27,18 @@ export function buildResults(
   const results = questionHistory.reduce(
     (results: FormResult[], curQuestion) => {
       const curFormAns = formAnswers[curQuestion.id]
-      if (curFormAns === undefined || curFormAns.type === QuestionType.CONTINUE)
+      if (
+        curFormAns === undefined ||
+        curFormAns.type === QuestionType.CONTINUE ||
+        curFormAns.type === QuestionType.RADIO
+      )
         return results
 
       const contentBasedFormAnswer: FormResult = {
-        answer:
-          curFormAns.type == QuestionType.RADIO
-            ? curQuestion.answers[curFormAns.answerId].content
-            : undefined,
+        answer: undefined,
+        // curFormAns.type == QuestionType.RADIO
+        //   ? curQuestion.answers[curFormAns.answerId].content
+        //   : undefined,
         question: curQuestion.question,
         formAnswer: curFormAns,
       }
