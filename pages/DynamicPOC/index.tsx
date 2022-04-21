@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
+import { COLORS } from '../../constants/colors'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
 import { QuestionType } from '../../models/question'
@@ -26,21 +27,48 @@ const Main = styled.div`
   height: 100vh;
   align-items: stretch;
 `
-
-const VerticalBox = styled.div`
+const BottomButtonBar = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 80px;
+  border-top: 1px solid ${COLORS.SHADOW_GREY};
+  background-color: ${COLORS.LIGHT_GREY};
+`
+const ButtonContainer = styled.div`
+  margin-right: 80px;
+`
+const FormContentWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding-left: 15%;
-  justify-content: center;
+  justify-content: space-between;
 `
-const GreyBar = styled.div`
+const QuestionDisplayWrapper = styled.div`
+  padding-left: 10%;
+  margin-top: 64px;
+`
+
+const NextEndButton = styled(Button)`
+  background: ${COLORS.EDLAW_BLUE};
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`
+const BackButton = styled(Button)`
+  border: none;
+  width: 80px;
+  color: ${COLORS.EDLAW_BLUE};
+  background-color: transparent;
+`
+const GreySideBar = styled.div`
   width: 30%;
-  min-width: 250px;
-  max-width: 400px;
-  background-color: #e5e5e5;
+  min-width: 200px;
+  max-width: 300px;
+  background-color: ${COLORS.LIGHT_GREY};
   height: 100%;
+  border-right: 1px solid ${COLORS.SHADOW_GREY};
 `
 // horizontal box
 const HorizontalBox = styled.div`
@@ -52,7 +80,9 @@ const HorizontalBox = styled.div`
   justify-content: center;
 `
 const TitleText = styled.h1`
-  font-size: large;
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-family: Source Sans Pro;
 `
 
 const files = {
@@ -194,44 +224,48 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     <Main>
       <NavBar />
       <HorizontalBox>
-        <VerticalBox>
-          <TitleText>{currentQuestion.section}</TitleText>
-          <div>
-            <Formik
-              initialValues={formValues}
-              onSubmit={(values: FormValues, { setSubmitting }) => {
-                if (updateFormValues) {
-                  updateFormValues(values)
-                }
-                _handleNext()
-                if (currentQuestion.type === QuestionType.RESULT) {
-                  _handleSubmit(values)
-                  setSubmitting(false)
-                }
-              }}
-            >
-              <Form>
+        <GreySideBar>
+          <SideProgressBar />
+        </GreySideBar>
+        <Formik
+          initialValues={formValues}
+          onSubmit={(values: FormValues, { setSubmitting }) => {
+            if (updateFormValues) {
+              updateFormValues(values)
+            }
+            _handleNext()
+            if (currentQuestion.type === QuestionType.RESULT) {
+              _handleSubmit(values)
+              setSubmitting(false)
+            }
+          }}
+        >
+          <Form style={{ width: '100%', display: 'flex' }}>
+            <FormContentWrapper>
+              <QuestionDisplayWrapper>
+                <TitleText>{currentQuestion.section}</TitleText>
                 <ChooseFormType
                   question={currentQuestion}
                   onChange={setCurrentAnswer}
                   answer={formValues.formAnswers[currentQuestion.id]}
                   questionHistory={questionHistory}
                 />
-                <Button type="button" onClick={() => _handleBack()}>
-                  {'Back'}
-                </Button>
-                <Button primary type="submit">
-                  {currentQuestion.type === QuestionType.RESULT
-                    ? 'End'
-                    : 'Next'}
-                </Button>
-              </Form>
-            </Formik>{' '}
-          </div>
-        </VerticalBox>
-        <GreyBar>
-          <SideProgressBar />
-        </GreyBar>
+              </QuestionDisplayWrapper>
+              <BottomButtonBar>
+                <ButtonContainer>
+                  <BackButton type="button" onClick={() => _handleBack()}>
+                    Back
+                  </BackButton>
+                  <NextEndButton type="submit">
+                    {currentQuestion.type === QuestionType.RESULT
+                      ? 'End'
+                      : 'Next'}
+                  </NextEndButton>
+                </ButtonContainer>
+              </BottomButtonBar>
+            </FormContentWrapper>
+          </Form>
+        </Formik>
       </HorizontalBox>
     </Main>
   )

@@ -14,8 +14,8 @@ export const IconButton = styled.button`
 `
 
 interface PasswordProps {
-  width: string
-  height: string
+  width: number
+  height: number
   placeholder: string
 }
 

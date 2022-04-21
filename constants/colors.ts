@@ -1,0 +1,7 @@
+export const COLORS = {
+  EDLAW_BLUE: '#5064C7',
+  LIGHT_GREY: '#FAFAFB',
+  TEXT_GREY: '#A3A3A3',
+  SHADOW_GREY: '#E5E5E5',
+  TOOLTIP_SHADOW: '#5365c10f',
+}

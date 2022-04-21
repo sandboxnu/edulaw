@@ -5,19 +5,17 @@ interface buttonProps {
 }
 
 export const Button = styled.button`
-  background: white;
-  border-width: 1px;
-  border-color: #777777;
-  border-style: solid;
-  text-align: center;
-  font-size: 24px;
   font-family: 'Source Sans Pro';
+  text-align: center;
+  font-size: 16px;
   display: inline-block;
-  border-radius: 6px;
-  color: black;
-  width: 140px;
-  height: 54px;
+  border-radius: 4px;
+  width: 150px;
+  height: 42px;
   margin: 0;
+  &:hover {
+    cursor: pointer;
+  }
 
   ${(props: buttonProps) =>
     props.primary &&
