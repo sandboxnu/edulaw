@@ -10,8 +10,8 @@ import SubMenuItem from './SubMenuItem'
 import Link from 'next/link'
 
 enum MENU_OPTS {
-  STUDENT_RIGHTS = '/studentrights',
-  ABOUT_PRS = '/aboutprs',
+  INFO = '/info',
+  ABOUT_PRS = '/prs',
 }
 
 function RightsPrsMenu() {
@@ -42,25 +42,18 @@ function RightsPrsMenu() {
         top: '4px',
       }}
     >
-      {MainListItem('Student Rights', MENU_OPTS.STUDENT_RIGHTS)}
-      <Collapse
-        in={pathname === MENU_OPTS.STUDENT_RIGHTS}
-        timeout="auto"
-        unmountOnExit
-      >
+      {MainListItem('General Information', MENU_OPTS.INFO)}
+      <Collapse in={pathname === MENU_OPTS.INFO} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <SubMenuItem
             label={'School Discipline & Education'}
-            link={`${MENU_OPTS.STUDENT_RIGHTS}#school-discipline`}
+            link={`${MENU_OPTS.INFO}#school-discipline`}
           />
           <SubMenuItem
             label={'Special Education'}
-            link={`${MENU_OPTS.STUDENT_RIGHTS}#special-education`}
+            link={`${MENU_OPTS.INFO}#special-education`}
           />
-          <SubMenuItem
-            label={'Bullying'}
-            link={`${MENU_OPTS.STUDENT_RIGHTS}#bullying`}
-          />
+          <SubMenuItem label={'Bullying'} link={`${MENU_OPTS.INFO}#bullying`} />
         </List>
       </Collapse>
       <Divider />
