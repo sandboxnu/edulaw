@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { login } from '../Login/SignIn'
 import {
   BackButton,
   EStyledButton,
@@ -44,15 +45,7 @@ function Signup() {
 
   // check if the user is invalid
   // checks when data is changed
-  useEffect(() => {
-    if (data !== null && data !== undefined) {
-      if (data.user?.id) {
-        router.push('/DynamicPOC')
-      } else {
-        alert(data.user?.name)
-      }
-    }
-  }, [data])
+  useEffect(() => login(data, router), [data])
 
   return (
     <Formik
@@ -73,16 +66,11 @@ function Signup() {
 
         // checks if the user can be added and signs them in
         if (result.status === 200) {
-          console.log('Valid')
-
           await signIn('credentials', {
             redirect: false,
             username: values.email,
             password: values.password,
           })
-
-          console.log(values.email)
-          console.log(values.password)
         } else {
           const errMessage = await result.json()
           alert(errMessage.error)

@@ -15,7 +15,8 @@ import Link from 'next/link'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
 import { signIn, useSession } from 'next-auth/react'
 import { SessionProvider } from 'next-auth/react'
-import { useRouter } from 'next/router'
+import { NextRouter, useRouter } from 'next/router'
+import { Session } from 'next-auth'
 
 export const RememberSignIn = styled.div`
   display: flex;
@@ -35,6 +36,17 @@ interface FormValues {
   checked: Array<string>
 }
 
+// checks if the user is able to log in
+export function login(data: Session | null, router: NextRouter) {
+  if (data?.user) {
+    if (data.user.id) {
+      router.push('/DynamicPOC')
+    } else {
+      alert(data.user.name)
+    }
+  }
+}
+
 // component for the signin page - includes form (and styling) for validation
 function SignIn() {
   const router = useRouter()
@@ -47,14 +59,18 @@ function SignIn() {
 
   // check if the user is invalid
   useEffect(() => {
-    if (data !== null && data !== undefined) {
-      if (data.user?.id) {
+    if (data?.user) {
+      if (data.user.id) {
         router.push('/DynamicPOC')
       } else {
-        alert(data.user?.name)
+        alert(data.user.name)
       }
     }
   }, [data])
+
+  // check if the user is invalid
+  // checks when data is changed
+  useEffect(() => login(data, router), [data])
 
   return (
     <Formik
@@ -71,9 +87,6 @@ function SignIn() {
           username: values.email,
           password: values.password,
         })
-
-        console.log(values.email)
-        console.log(values.password)
       }}
     >
       <Form>

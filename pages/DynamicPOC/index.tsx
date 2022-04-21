@@ -19,6 +19,7 @@ import csvToQuestionArray from '../../constants/csv_parser'
 import { FormAnswerDB } from '../api/form/save'
 import _ from 'lodash'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const Main = styled.div`
   display: flex;
@@ -75,14 +76,18 @@ let startingAnswer: FormAnswer
 
 const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const startingQuestion: Question = questions[0]
-
+  const router = useRouter()
   const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
   const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [loaded, setLoaded] = useState(false)
-  const { data } = useSession()
+  const { data, status } = useSession()
+
+  if (status === 'unauthenticated') {
+    router.push('/signup')
+  }
 
   // For saving values to the database
   useEffect(() => {
