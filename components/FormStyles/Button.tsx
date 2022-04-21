@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import { COLORS } from '../../constants/colors'
 
 interface buttonProps {
   primary?: boolean

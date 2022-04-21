@@ -13,7 +13,7 @@ const NeedHelpContainer = styled.div`
   align-items: center;
 `
 
-const StuledHelpIcon = styled.div`
+const StyledHelpIcon = styled.div`
   color: white;
   margin-right: 8px;
   height: 30px;
@@ -42,9 +42,9 @@ function NavBar() {
         <Logo />
         <MuiTooltip title={tooltipText} placement="bottom-start" arrow>
           <NeedHelpContainer>
-            <StuledHelpIcon>
+            <StyledHelpIcon>
               <HelpOutlineIcon />
-            </StuledHelpIcon>
+            </StyledHelpIcon>
             <Typography style={{ color: 'white', fontSize: 16 }}>
               Need help?
             </Typography>

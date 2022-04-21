@@ -72,7 +72,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = (
     ) : (
       <RadioGroup style={{ gap: 8 }} defaultValue={ans && ans.answerId}>
         {/* Reverse is called here so that y */}
-        {options.reverse().map(renderLongRadio)}
+        {options.slice().reverse().map(renderLongRadio)}
       </RadioGroup>
     )
   }

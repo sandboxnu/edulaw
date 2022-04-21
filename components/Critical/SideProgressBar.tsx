@@ -1,13 +1,7 @@
 import React from 'react'
-import {
-  withStyles,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core'
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { HomeOutlined } from '@material-ui/icons'
 import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
-import styled from 'styled-components'
 import { COLORS } from '../../constants/colors'
 
 function SideProgressBar() {
