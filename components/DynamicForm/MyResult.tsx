@@ -50,7 +50,10 @@ export function buildResults(
 
 // returns anything between the "" of a string
 function _filterQuotes(question: string): string {
-  return question
+  const first = question.indexOf('"')
+  const start = first + 1
+  const second = question.substring(start).indexOf('"')
+  return question.substring(start, start + second)
 }
 
 // updates the form values for the given question in the given context with the contents of the given event
