@@ -16,6 +16,15 @@ import styled from 'styled-components'
 const StyledRadioText = styled.body`
   font-size: 14px;
 `
+
+const StyledFormControlLabel = styled(FormControlLabel)`
+  span {
+    :hover {
+      background-color: transparent;
+    }
+  }
+`
+
 interface MyRadioProps {
   name: string
   label: string
@@ -47,7 +56,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = (
   }
   function renderLongRadio(option: Answer, optionId: number) {
     return (
-      <FormControlLabel
+      <StyledFormControlLabel
         style={{ marginLeft: 0 }}
         value={optionId}
         key={option.content}
