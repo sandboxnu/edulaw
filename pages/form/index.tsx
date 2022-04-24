@@ -8,13 +8,11 @@ import {
   FormValues,
 } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
-import { Button } from '../../components/FormStyles/Button'
 import NavBar from '../../components/Critical/NavBar'
 import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
-import { COLORS } from '../../constants/colors'
 import { CUTOFFS } from '../../constants/responsive'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
@@ -23,27 +21,18 @@ import _ from 'lodash'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
+import {
+  BottomButtonBar,
+  ButtonContainer,
+  BackButton,
+  NextEndButton,
+} from '../../components/FormStyles/BottomBar'
 
 const Main = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
   align-items: stretch;
-`
-const BottomButtonBar = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  height: 80px;
-  border-top: 1px solid ${COLORS.SHADOW_GREY};
-  background-color: ${COLORS.LIGHT_GREY};
-`
-const ButtonContainer = styled.div`
-  margin-right: 80px;
-  @media (max-width: ${CUTOFFS.mobile}px) {
-    margin-right: 25px;
-  }
 `
 const FormContentWrapper = styled.div`
   width: 100%;
@@ -55,21 +44,6 @@ const QuestionDisplayWrapper = styled.div`
   padding-left: 10%;
   margin-top: 64px;
 `
-
-const NextEndButton = styled(Button)`
-  background: ${COLORS.EDLAW_BLUE};
-  color: white;
-  border: none;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-`
-const BackButton = styled(Button)`
-  border: none;
-  width: 80px;
-  color: ${COLORS.EDLAW_BLUE};
-  background-color: transparent;
-`
-
-// horizontal box
 const HorizontalBox = styled.div`
   display: flex;
   align-items: stretch;
