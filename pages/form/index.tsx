@@ -195,7 +195,12 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
    * Handles changing the old question to the given question
    */
   function _handleQuestionChange(nextQuestion: Question) {
-    formValues.formAnswers[currentQuestion.id] = currentAnswer
+    setFormValues({
+      formAnswers: {
+        ...formValues.formAnswers,
+        [currentQuestion.id]: currentAnswer,
+      },
+    })
     setCurrentQuestion(nextQuestion)
     if (formValues.formAnswers[nextQuestion.id]) {
       setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
