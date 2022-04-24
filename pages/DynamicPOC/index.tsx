@@ -83,8 +83,8 @@ const TitleText = styled.h1`
   font-family: Source Sans Pro;
 `
 const FormStyled = styled(Form)`
-  flex: grow;
   width: 100%;
+  flex-grow: 1;
   display: flex;
 `
 

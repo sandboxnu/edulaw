@@ -5,6 +5,7 @@
   "description": "EduLaw is a project that assists parents in reporting violations of their children's educational rights to the appropriate legal entity.",
   "scripts": {
     "dev": "npm run db:start && next dev",
+    "dev2": "npm run && next dev",
     "dev:frontend": "next dev",
     "stop": "npm run db:stop",
     "db:start": "docker-compose -p edlaw -f docker-compose.yml --env-file .env up -d",
