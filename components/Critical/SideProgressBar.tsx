@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   withStyles,
   // ListItem,
@@ -49,7 +49,7 @@ function SideProgressBar() {
     setSelectedIndex(index)
   }
 
-  const [expanded, setExpanded] = React.useState(false)
+  const [expanded, setExpanded] = React.useState(width >= CUTOFFS.mobile)
 
   const onChange = (event: React.SyntheticEvent, navExpand: boolean) => {
     // If on mobile layout
@@ -60,6 +60,12 @@ function SideProgressBar() {
       setExpanded(true)
     }
   }
+
+  useEffect(() => {
+    if (width >= CUTOFFS.mobile) {
+      setExpanded(true)
+    }
+  }, [width])
 
   const ProgressItem = (text: string, index: number) => {
     const textStyling = {
