@@ -15,6 +15,7 @@ import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { COLORS } from '../../constants/colors'
+import { CUTOFFS } from '../../constants/responsive'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
 import { QuestionType } from '../../models/question'
@@ -38,6 +39,9 @@ const BottomButtonBar = styled.div`
 `
 const ButtonContainer = styled.div`
   margin-right: 80px;
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    margin-right: 25px;
+  }
 `
 const FormContentWrapper = styled.div`
   width: 100%;
@@ -62,14 +66,7 @@ const BackButton = styled(Button)`
   color: ${COLORS.EDLAW_BLUE};
   background-color: transparent;
 `
-const GreySideBar = styled.div`
-  width: 30%;
-  min-width: 200px;
-  max-width: 300px;
-  background-color: ${COLORS.LIGHT_GREY};
-  height: 100%;
-  border-right: 1px solid ${COLORS.SHADOW_GREY};
-`
+
 // horizontal box
 const HorizontalBox = styled.div`
   display: flex;
@@ -78,11 +75,20 @@ const HorizontalBox = styled.div`
   flex-direction: row;
   height: 100%;
   justify-content: center;
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    flex-direction: column;
+    justify-content: start;
+  }
 `
 const TitleText = styled.h1`
   font-size: 26px;
   margin-bottom: 20px;
   font-family: Source Sans Pro;
+`
+const FormStyled = styled(Form)`
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
 `
 
 const files = {
@@ -224,9 +230,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     <Main>
       <NavBar />
       <HorizontalBox>
-        <GreySideBar>
-          <SideProgressBar />
-        </GreySideBar>
+        <SideProgressBar />
         <Formik
           initialValues={formValues}
           onSubmit={(values: FormValues, { setSubmitting }) => {
@@ -240,7 +244,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
             }
           }}
         >
-          <Form style={{ width: '100%', display: 'flex' }}>
+          <FormStyled>
             <FormContentWrapper>
               <QuestionDisplayWrapper>
                 <TitleText>{currentQuestion.section}</TitleText>
@@ -264,7 +268,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
                 </ButtonContainer>
               </BottomButtonBar>
             </FormContentWrapper>
-          </Form>
+          </FormStyled>
         </Formik>
       </HorizontalBox>
     </Main>
