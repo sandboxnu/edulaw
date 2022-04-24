@@ -1,4 +1,4 @@
-import { Question, Answer } from '../../models'
+import { Question } from '../../models'
 import { Form, Formik } from 'formik'
 import React, { useContext, useState } from 'react'
 import {
@@ -196,20 +196,25 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     const y_inc = 8
 
     answers.forEach(function (item) {
-      doc.setFont('times', 'bold').text(item.question + '\n', x, y)
-      y += y_inc
+      const splitQuestion = doc.splitTextToSize(item.question, 200)
+      for (let i = 0; i < splitQuestion.length; i++) {
+        doc.setFont('times', 'bold').text(splitQuestion[i], x, y)
+        y += y_inc
+      }
       if (item.answer != null) {
         doc.setFont('times', 'normal').text('\t' + item.answer + '\n\n', x, y)
         y += y_inc
       }
       if (item.formAnswer.type === QuestionType.TEXT) {
-        doc
-          .setFont('times', 'normal')
-          .text('\t' + item.formAnswer.userAnswer + '\n\n', x, y)
+        const splitAnswer = doc.splitTextToSize(item.formAnswer.userAnswer, 200)
+        for (let i = 0; i < splitAnswer.length; i++) {
+          doc.setFont('times', 'normal').text('\t' + splitAnswer[i], x, y)
+          y += y_inc
+        }
+        doc.text('\n', x, y)
         y += y_inc
       }
     })
-
     return doc
   }
 
@@ -223,7 +228,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     let doc = new jsPDF()
     const results = buildResults(values.formAnswers, questions)
     doc = _buildDoc(doc, results)
-    doc.save('a4.pdf')
+    doc.save('PRS_Complaint.pdf')
   }
 
   return (
