@@ -4,7 +4,7 @@ import Tooltip from '../DynamicForm/Tooltip'
 
 interface QuestionProps {
   input: JSX.Element
-  questionText?: string
+  questionText: string
   tooltip?: { tooltipText: string; tooltipHoveredText: string }
   results?: JSX.Element[]
 }
