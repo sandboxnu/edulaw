@@ -106,5 +106,5 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
     )
   })
 
-  return <QuestionLayout results={results} input={<div />} />
+  return <QuestionLayout results={results} questionText="" input={<div />} />
 }
