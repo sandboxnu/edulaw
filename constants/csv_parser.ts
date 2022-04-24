@@ -2,6 +2,7 @@ import { Question, Answer } from '../models'
 import fs from 'fs'
 import path from 'path'
 import { parse } from 'csv-parse/sync'
+import { QuestionType } from '../models/question'
 
 // The columns that we care about in the Flowchart CSV
 enum CsvColumns {
@@ -154,16 +155,19 @@ const csvToQuestionArray = (fileName: string): Question[] => {
   // this also maps the old ids to the new ids, but does not change any IDs
   const wrongIDQuestions = questionsArray.map(
     (question: CsvType, index: number): Question => {
-      const id = parseInt(question[CsvColumns.ID])
+      const id = parseInt(question[CsvColumns.ID]) // determine the question type based on the answers
       idMap.set(id, index)
       const answers = answersMap.get(id) || []
       // determine the question type based on the answers
-      const type =
+      const type: QuestionType =
         answers.length === 0
-          ? 'RESULT'
+          ? QuestionType.RESULT
           : answers.length > 1
-          ? 'RADIO'
-          : answers[0][CsvColumns.TEXT]
+          ? QuestionType.RADIO
+          : answers[0]['Text Area 1'] === 'CONTINUE'
+          ? QuestionType.CONTINUE
+          : QuestionType.TEXT
+
       // only add tooltip if text and hoverText are present (undefined causes bugs with getStaticProps)
       let tooltip:
         | { tooltipText: string; tooltipHoveredText: string }

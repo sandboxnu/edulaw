@@ -29,3 +29,33 @@ export const RadioButton = styled.input`
     color: white;
   }
 `
+
+export const RadioInputIcon = styled.span`
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  box-shadow: inset 0 0 0 1px rgba(16, 22, 26, 0.2),
+    inset 0 -1px 0 rgba(16, 22, 26, 0.1);
+  background-color: #f5f8fa;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0)
+  );
+  margin-right: 8px;
+`
+
+export const RadioInputCheckedIcon = styled(RadioInputIcon)`
+  background-color: ${COLORS.EDLAW_BLUE};
+  linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  &:before {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: radial-gradient(
+      rgb(255, 255, 255),
+      rgb(255, 255, 255) 28%,
+      transparent 32%
+    );
+    content: '';
+  }
+`

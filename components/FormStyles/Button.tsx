@@ -6,15 +6,11 @@ interface buttonProps {
 }
 
 export const Button = styled.button`
-  background: ${COLORS.LIGHT_GREY};
-  border-width: 1px;
-  border-color: ${COLORS.SHADOW_GREY};
-  border-style: solid;
+  font-family: 'Source Sans Pro';
   text-align: center;
   font-size: 16px;
   display: inline-block;
   border-radius: 4px;
-  color: ${COLORS.TEXT_GREY};
   width: 150px;
   height: 42px;
   margin: 0;

@@ -73,7 +73,7 @@ function SideProgressBar() {
       color: index === selectedIndex ? 'black' : COLORS.TEXT_GREY,
     }
     return (
-      <ListItem onClick={() => handleListItemClick(index)}>
+      <ListItem key={text} onClick={() => handleListItemClick(index)}>
         <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
           {index == 0 ? (
             <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />

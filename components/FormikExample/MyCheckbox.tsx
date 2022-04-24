@@ -5,16 +5,15 @@ interface InputProps {
   children: string
 }
 
-export const MyCheckbox: React.FC<InputProps & FieldHookConfig<string>> = ({
-  children,
-  ...props
-}) => {
+export const MyCheckbox: React.FC<InputProps & FieldHookConfig<string>> = (
+  props
+) => {
   const [field, meta] = useField({ ...props, type: 'checkbox' })
   return (
     <div>
       <label className="checkbox-input">
         <input type="checkbox" {...field} />
-        {children}
+        {props.children}
       </label>
 
       {meta.touched && meta.error ? (
