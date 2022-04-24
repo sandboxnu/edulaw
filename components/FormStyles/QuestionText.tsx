@@ -19,16 +19,21 @@ const QuoteBlockBar = styled.div`
   margin-right: 12px;
 `
 
+const BlockQuoteContainer = styled.div`
+  display: flex;
+  padding: 10px, 0px, 10px, 0px;
+`
+
 interface QuestionTextProps {
   questionText: string
 }
 
 const BlockQuote: React.FC<QuestionTextProps> = ({ questionText }) => {
   return (
-    <div style={{ display: 'flex', padding: '10px, 0px, 10px, 0px' }}>
+    <BlockQuoteContainer>
       <QuoteBlockBar />
       <QuestionText>{questionText}</QuestionText>
-    </div>
+    </BlockQuoteContainer>
   )
 }
 

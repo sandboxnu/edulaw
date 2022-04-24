@@ -1,13 +1,8 @@
 import React, { useEffect } from 'react'
-import {
-  withStyles,
-  // ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core'
+import { ListItemIcon, ListItemText } from '@material-ui/core'
+import styled from 'styled-components'
 import { HomeOutlined } from '@material-ui/icons'
 import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
-import styled from 'styled-components'
 import { COLORS } from '../../constants/colors'
 import { CUTOFFS } from '../../constants/responsive'
 import Accordion from '@mui/material/Accordion'
@@ -15,6 +10,7 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import useWindowDimensions from '../../hooks/widthHook'
+
 const GreySideBox = styled.div`
   width: 30%;
   min-width: 400px;
