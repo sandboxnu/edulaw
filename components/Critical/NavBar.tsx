@@ -9,7 +9,7 @@ import Logo from './Logo'
 
 const NeedHelpContainer = styled.div`
   display: flex;
-  margin-right: 120px;
+  margin-right: 25px;
   align-items: center;
 `
 

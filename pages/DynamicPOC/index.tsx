@@ -39,6 +39,9 @@ const BottomButtonBar = styled.div`
 `
 const ButtonContainer = styled.div`
   margin-right: 80px;
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    margin-right: 25px;
+  }
 `
 const FormContentWrapper = styled.div`
   width: 100%;

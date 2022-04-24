@@ -40,6 +40,18 @@ const ListItem = styled.div`
     background-color: ${COLORS.EDLAW_BLUE}1A;
   }
 `
+
+const SummaryItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 48px;
+  width: 85%;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: ${COLORS.EDLAW_BLUE}1A;
+  }
+`
+
 function SideProgressBar() {
   const [selectedIndex, setSelectedIndex] = React.useState(0)
 
@@ -74,27 +86,48 @@ function SideProgressBar() {
       fontSize: '16px',
       color: index === selectedIndex ? 'black' : COLORS.TEXT_GREY,
     }
-    return (
-      <ListItem key={text} onClick={() => handleListItemClick(index)}>
-        <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
-          {index == 0 ? (
-            <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />
-          ) : (
-            <DoNotDisturbOnIcon style={{ color: COLORS.EDLAW_BLUE }} />
-          )}
-        </ListItemIcon>
-        <ListItemText
-          style={{ display: 'flex', alignItems: 'center', fontSize: '16px' }}
-          primaryTypographyProps={{ style: textStyling }}
-          primary={text}
-        />
-      </ListItem>
-    )
+
+    if (selectedIndex == index) {
+      return (
+        <SummaryItem>
+          <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
+            {index == 0 ? (
+              <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />
+            ) : (
+              <DoNotDisturbOnIcon style={{ color: COLORS.EDLAW_BLUE }} />
+            )}
+          </ListItemIcon>
+          <ListItemText
+            style={{ display: 'flex', alignItems: 'center', fontSize: '16px' }}
+            primaryTypographyProps={{ style: textStyling }}
+            primary={text}
+          />
+        </SummaryItem>
+      )
+    } else {
+      return (
+        <ListItem key={text} onClick={() => handleListItemClick(index)}>
+          <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
+            {index == 0 ? (
+              <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />
+            ) : (
+              <DoNotDisturbOnIcon style={{ color: COLORS.EDLAW_BLUE }} />
+            )}
+          </ListItemIcon>
+          <ListItemText
+            style={{ display: 'flex', alignItems: 'center', fontSize: '16px' }}
+            primaryTypographyProps={{ style: textStyling }}
+            primary={text}
+          />
+        </ListItem>
+      )
+    }
   }
 
   const NAVITEMS = [
     'Home',
     'Contact Info',
+    'Additional Info',
     'District and School',
     'Student or Group Details',
     'Concerns',
@@ -111,7 +144,7 @@ function SideProgressBar() {
           style={{
             width: '100%',
             height: '64px',
-            margin: '18px 0px 0px 0px',
+            margin: '5px 0px 0px 0px',
             padding: '16px',
           }}
         >
