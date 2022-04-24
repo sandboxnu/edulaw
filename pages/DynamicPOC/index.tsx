@@ -171,9 +171,10 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
       }
       if (item.formAnswer.type === QuestionType.TEXT) {
         const splitAnswer = doc.splitTextToSize(item.formAnswer.userAnswer, 200)
-        for (let i = 0; i < splitAnswer.length; i++) {
-          doc.setFont('times', 'normal').text('\t' + splitAnswer[i], x, y)
-          y += y_inc
+        splitAnswer.forEach(answer => {
+            doc.setFont('times', 'normal').text('\t' + answer , x, y)
+            y += y_inc
+          }
         }
         doc.text('\n', x, y)
         y += y_inc
