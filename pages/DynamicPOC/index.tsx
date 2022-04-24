@@ -248,7 +248,7 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
             }
           }}
         >
-          <Form style={{ width: '100%', display: 'flex' }}>
+          <Form style={{ width: '100%', display: 'flex', flexGrow: 1 }}>
             <FormContentWrapper>
               <QuestionDisplayWrapper>
                 <TitleText>Pet Lover Section</TitleText>
