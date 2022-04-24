@@ -45,11 +45,13 @@ function SideProgressBar() {
 
   const width = useWindowDimensions().width
 
+  const [expanded, setExpanded] = React.useState(width >= CUTOFFS.mobile)
   const handleListItemClick = (index: number) => {
     setSelectedIndex(index)
+    if (width <= CUTOFFS.mobile) {
+      setExpanded(false)
+    }
   }
-
-  const [expanded, setExpanded] = React.useState(width >= CUTOFFS.mobile)
 
   const onChange = (event: React.SyntheticEvent, navExpand: boolean) => {
     // If on mobile layout
