@@ -36,6 +36,7 @@ const ListItem = styled.div`
   width: auto;
   padding: 8px;
   &:hover {
+    width: 100%;
     border-radius: 8px;
     background-color: ${COLORS.EDLAW_BLUE}1A;
   }
@@ -45,7 +46,7 @@ const SummaryItem = styled.div`
   display: flex;
   flex-direction: row;
   height: 48px;
-  width: 85%;
+  width: 100%;
   padding: 8px;
   border-radius: 8px;
   background-color: ${COLORS.EDLAW_BLUE}1A;
