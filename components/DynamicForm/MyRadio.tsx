@@ -3,9 +3,7 @@ import React, { ChangeEvent } from 'react'
 import { Answer } from '../../models'
 import { RadioFormAnswer } from '../../utils/FormContext'
 import { RadioButton } from '../../components/FormStyles/RadioButton'
-import { QuestionText } from '../FormStyles/QuestionText'
 import QuestionLayout from '../FormStyles/QuestionLayout'
-import Tooltip from './Tooltip'
 
 interface MyRadioProps {
   name: string
