@@ -2,6 +2,7 @@ import NextAuth from 'next-auth'
 import CredentialProvider from 'next-auth/providers/credentials'
 import { dbConnect } from '../../../server/_dbConnect'
 import bcrypt from 'bcryptjs'
+import type { WithId, Document } from 'mongodb'
 
 /* eslint-disable */
 export default NextAuth({
@@ -25,7 +26,7 @@ export default NextAuth({
           username: credentials.username,
         })
         if (existingUser) {
-          signinUser({ user: existingUser, pwd: credentials.password })
+          signinUser(existingUser, credentials.password)
           client?.close()
           return { id: existingUser._id }
         } else {
@@ -37,12 +38,7 @@ export default NextAuth({
   ],
 })
 
-type creds = {
-  user: any
-  pwd: string
-}
-
-const signinUser = async ({ user, pwd }: creds) => {
+const signinUser = async (user: WithId<Document>, pwd: string) => {
   if (!user.hashPass) {
     throw new Error('Please enter password')
   }
