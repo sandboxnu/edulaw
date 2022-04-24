@@ -7,12 +7,16 @@ import {
   FormValues,
 } from '../../utils/FormContext'
 import { Question } from '../../models'
-import { QuestionText } from '../FormStyles/QuestionText'
+import { QuestionsWithBlockText, AnswerText } from '../FormStyles/QuestionText'
 import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { QuestionType } from '../../models/question'
 import QuestionLayout from '../FormStyles/QuestionLayout'
 
+const SingleQuestionResponseDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 interface MyResultProps {
   label: string
   questionHistory: Question[]
@@ -71,12 +75,6 @@ function _updateTextInputs(
   }
 }
 
-const HorizontalDiv = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-bottom: 2em;
-  flex-direction: row;
-`
 export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   const ctx = useContext(FormCtx)
   const results = buildResults(
@@ -89,10 +87,10 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
 
     return (
       <div key={formAnswer.questionId}>
-        <HorizontalDiv>
-          <QuestionText>{question}</QuestionText>
-          <QuestionText>{answer}</QuestionText>
-        </HorizontalDiv>
+        <SingleQuestionResponseDiv>
+          <QuestionsWithBlockText questionText={question} />
+          <AnswerText>{answer}</AnswerText>
+        </SingleQuestionResponseDiv>
 
         {formAnswer.type == QuestionType.TEXT ? (
           <StyledTextInput
@@ -100,8 +98,8 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
             className="text-input"
             defaultValue={formAnswer.userAnswer}
             onChange={_onChange}
-            width="500px"
-            height="64px"
+            width={300}
+            height={42}
           />
         ) : null}
       </div>

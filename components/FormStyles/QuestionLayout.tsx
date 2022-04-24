@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { QuestionText } from './QuestionText'
+import { QuestionsWithBlockText } from './QuestionText'
 import Tooltip from '../DynamicForm/Tooltip'
 
 interface QuestionProps {
@@ -8,12 +8,11 @@ interface QuestionProps {
   tooltip?: { tooltipText: string; tooltipHoveredText: string }
   results?: JSX.Element[]
 }
-
 const QuestionDiv = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
-  gap: 40px;
+  gap: 20px;
 `
 
 const InputDiv = styled.div`
@@ -32,8 +31,8 @@ const QuestionLayout: React.FC<QuestionProps> = ({
   return (
     <QuestionDiv>
       {results}
-      {<QuestionText>{questionText}</QuestionText>}
-      {<Tooltip tooltip={tooltip} />}
+      <QuestionsWithBlockText questionText={questionText} />
+      <Tooltip tooltip={tooltip} />
       <InputDiv>{input}</InputDiv>
     </QuestionDiv>
   )

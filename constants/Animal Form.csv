@@ -5,13 +5,13 @@ Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,So
 4,Process,Flowchart Shapes,2,3,,,,,,,Do you like dogs?
 5,Process,Flowchart Shapes,2,3,,,,,,,Do you have a pet?
 6,Process,Flowchart Shapes,2,3,,,,,,,What about cats?
-7,Process,Flowchart Shapes,2,3,,,,,,,"You identified that you do not like dogs or cats.This language will be used: ""I do not like dogs or cats. You identified that you do not like dogs or cats.This language will be used: (test for super long string for pdf formatting)""Explain below why you do not like dogs or cats"
+7,Process,Flowchart Shapes,2,3,,,,,,,"You identified that you do not like dogs or cats.This language will be used: ""I do not like dogs or cats.""Explain below why you do not like dogs or cats"
 8,Process,Flowchart Shapes,2,3,,,,,,,You are not a fan of animals.
 9,Process,Flowchart Shapes,2,3,,,,,,,You are an animal lover!
 10,Process,Flowchart Shapes,2,3,,,,,,,Do younger siblings count?
 11,Process,Flowchart Shapes,2,3,,,,,,,"No, younger siblings do not count."
 12,Process,Flowchart Shapes,2,3,,,,,,,You should love animals.
-13,Process,Flowchart Shapes,2,3,,,,,,,"You have identified that you don't have a pet. This language will be used: ""I do not have a pet."" Explain below why you do not have a pet. Are you allergic?"
+13,Process,Flowchart Shapes,2,3,,,,,,,"You have identified that you don't have a pet. This language will be used: ""I do not have a pet.""Explain below why you do not have a pet. Are you allergic?"
 14,Process,Flowchart Shapes,2,3,,,,,,,Do you have a pet?
 15,Line,,2,,,4,5,None,Arrow,,Yes
 16,Line,,2,,,4,6,None,Arrow,,No

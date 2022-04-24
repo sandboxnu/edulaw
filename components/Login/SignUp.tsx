@@ -64,8 +64,8 @@ function Signup() {
           <SubTitle>Let us get your account up and running.</SubTitle>
           <div>
             <StyledTextInput
-              width="330px"
-              height="53px"
+              width={330}
+              height={53}
               name="email"
               placeholder="Email"
               type="text"
@@ -74,14 +74,14 @@ function Signup() {
           <SubContainer>
             <PasswordDiv>
               <PasswordInputBox
-                width="330px"
-                height="53px"
+                width={330}
+                height={53}
                 placeholder="Password"
                 name="password"
               />
               <PasswordInputBox
-                width="330px"
-                height="53px"
+                width={330}
+                height={53}
                 placeholder="Confirm Password"
                 name="confirmPass"
               />
