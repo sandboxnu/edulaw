@@ -3,8 +3,8 @@ import { QuestionsWithBlockText } from './QuestionText'
 import Tooltip from '../DynamicForm/Tooltip'
 
 interface QuestionProps {
-  questionText: string
   input: JSX.Element
+  questionText: string
   tooltip?: { tooltipText: string; tooltipHoveredText: string }
   results?: JSX.Element[]
 }

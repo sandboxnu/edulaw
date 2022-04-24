@@ -31,15 +31,17 @@ export function buildResults(
   const results = questionHistory.reduce(
     (results: FormResult[], curQuestion) => {
       const curFormAns = formAnswers[curQuestion.id]
-      if (curFormAns === undefined || curFormAns.type === QuestionType.CONTINUE)
+      // filter out everything but type TEXT
+      if (
+        curFormAns === undefined ||
+        curFormAns.type === QuestionType.CONTINUE ||
+        curFormAns.type === QuestionType.RADIO
+      )
         return results
 
       const contentBasedFormAnswer: FormResult = {
-        answer:
-          curFormAns.type == QuestionType.RADIO
-            ? curQuestion.answers[curFormAns.answerId].content
-            : undefined,
-        question: curQuestion.question,
+        answer: undefined,
+        question: _filterQuotes(curQuestion.question),
         formAnswer: curFormAns,
       }
       results.push(contentBasedFormAnswer)
@@ -48,6 +50,14 @@ export function buildResults(
     []
   )
   return results
+}
+
+// returns anything between the "" of a string
+function _filterQuotes(question: string): string {
+  const first = question.indexOf('"')
+  const start = first + 1
+  const second = question.substring(start).indexOf('"')
+  return question.substring(start, start + second)
 }
 
 // updates the form values for the given question in the given context with the contents of the given event
@@ -96,11 +106,5 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
     )
   })
 
-  return (
-    <QuestionLayout
-      results={results}
-      questionText={props.label}
-      input={<div />}
-    />
-  )
+  return <QuestionLayout results={results} questionText="" input={<div />} />
 }
