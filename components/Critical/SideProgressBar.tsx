@@ -86,7 +86,7 @@ function SideProgressBar() {
 
     if (selectedIndex == index) {
       return (
-        <SummaryItem>
+        <SummaryItem key={text}>
           <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
             {index == 0 ? (
               <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />
