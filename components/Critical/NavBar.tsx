@@ -1,67 +1,55 @@
-import Logo from './Logo'
-import { AppBar, Toolbar, Divider } from '@material-ui/core'
+import { AppBar, Toolbar } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
-import { PhoneOutlined } from '@material-ui/icons'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import { COLORS } from '../../constants/colors'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import styled from 'styled-components'
 
-const useStyles = makeStyles((theme: Theme) => ({
-  toolBar: {
-    padding: '0px',
-    justifyContent: 'space-between',
-  },
-  logo: {
-    flex: 'none',
-  },
-  divider: {
-    backgroundColor: theme.palette.primary.dark,
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    flex: 'none',
-    marginLeft: '22px',
-    marginRight: '22px',
-  },
-  appBar: {
-    height: '114px',
-    boxShadow: '0px 3px 4px rgba(0, 0, 0, 0.1)',
-  },
-  icon: {
-    marginRight: '7px',
-    height: 30,
-  },
-  info: {
-    display: 'flex',
-    position: 'absolute',
-    right: 30,
-    height: 33,
-    flex: 2,
-  },
-  typography: {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    flex: 'none',
-  },
-}))
+import MuiTooltip from '@mui/material/Tooltip'
+import Logo from './Logo'
 
+const NeedHelpContainer = styled.div`
+  display: flex;
+  margin-right: 120px;
+  align-items: center;
+`
+
+const StyledHelpIcon = styled.div`
+  color: white;
+  margin-right: 8px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+`
 function NavBar() {
-  const classes = useStyles()
+  const tooltipText = (
+    <p>
+      If you feel like the questions in this guide aren&apos;t addressing your
+      concerns, call the EdLaw Project Intake line at{' '}
+      <strong>617.910.5829</strong>, or email us at{' '}
+      <strong>edlawproject@publiccouncil.net</strong>
+    </p>
+  )
   return (
-    <AppBar position="static" classes={{ root: classes.appBar }}>
-      <Toolbar classes={{ root: classes.toolBar }}>
-        <Logo classes={{ root: classes.logo }} />
-        <div className={classes.info}>
-          <PhoneOutlined classes={{ root: classes.icon }} />
-          <Typography variant="body2" classes={{ root: classes.typography }}>
-            (617)-910-5829
-          </Typography>
-          <Divider
-            orientation="vertical"
-            variant="middle"
-            classes={{ root: classes.divider }}
-          />
-          <Typography variant="body2" classes={{ root: classes.typography }}>
-            edlawproject@publiccounsel.net
-          </Typography>
-        </div>
+    <AppBar
+      position="static"
+      style={{
+        backgroundColor: COLORS.EDLAW_BLUE,
+        height: '80px',
+        boxShadow: '0px 3px 4px rgba(0, 0, 0, 0.1)',
+      }}
+    >
+      <Toolbar style={{ padding: '0px', justifyContent: 'space-between' }}>
+        <Logo />
+        <MuiTooltip title={tooltipText} placement="bottom-start" arrow>
+          <NeedHelpContainer>
+            <StyledHelpIcon>
+              <HelpOutlineIcon />
+            </StyledHelpIcon>
+            <Typography style={{ color: 'white', fontSize: 16 }}>
+              Need help?
+            </Typography>
+          </NeedHelpContainer>
+        </MuiTooltip>
       </Toolbar>
     </AppBar>
   )

@@ -6,14 +6,13 @@ interface InputProps {
   values: string[]
 }
 
-export const MySelect: React.FC<InputProps & FieldHookConfig<string>> = ({
-  label,
-  ...props
-}) => {
+export const MySelect: React.FC<InputProps & FieldHookConfig<string>> = (
+  props
+) => {
   const [field, meta] = useField(props)
   return (
     <div>
-      <label htmlFor={props.id || props.name}>{label}</label>
+      <label htmlFor={props.id || props.name}>{props.label}</label>
       <select {...field}>
         <option value="default">Select an option</option>
         {props.values.map((op) => {

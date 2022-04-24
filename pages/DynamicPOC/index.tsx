@@ -1,7 +1,12 @@
 import { Question, Answer } from '../../models'
 import { Form, Formik } from 'formik'
 import React, { useContext, useState } from 'react'
-import { FormAnswer, FormCtx, FormValues } from '../../utils/FormContext'
+import {
+  FormAnswer,
+  FormCtx,
+  FormResult,
+  FormValues,
+} from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
 import { Button } from '../../components/FormStyles/Button'
 import NavBar from '../../components/Critical/NavBar'
@@ -9,8 +14,10 @@ import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
+import { COLORS } from '../../constants/colors'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
+import { QuestionType } from '../../models/question'
 
 let startingAnswer: FormAnswer
 
@@ -20,21 +27,48 @@ const Main = styled.div`
   height: 100vh;
   align-items: stretch;
 `
-
-const VerticalBox = styled.div`
+const BottomButtonBar = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 80px;
+  border-top: 1px solid ${COLORS.SHADOW_GREY};
+  background-color: ${COLORS.LIGHT_GREY};
+`
+const ButtonContainer = styled.div`
+  margin-right: 80px;
+`
+const FormContentWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  padding-left: 15%;
-  justify-content: center;
+  justify-content: space-between;
 `
-const GreyBar = styled.div`
+const QuestionDisplayWrapper = styled.div`
+  padding-left: 10%;
+  margin-top: 64px;
+`
+
+const NextEndButton = styled(Button)`
+  background: ${COLORS.EDLAW_BLUE};
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`
+const BackButton = styled(Button)`
+  border: none;
+  width: 80px;
+  color: ${COLORS.EDLAW_BLUE};
+  background-color: transparent;
+`
+const GreySideBar = styled.div`
   width: 30%;
-  min-width: 250px;
-  max-width: 400px;
-  background-color: #e5e5e5;
+  min-width: 200px;
+  max-width: 300px;
+  background-color: ${COLORS.LIGHT_GREY};
   height: 100%;
+  border-right: 1px solid ${COLORS.SHADOW_GREY};
 `
 // horizontal box
 const HorizontalBox = styled.div`
@@ -46,7 +80,9 @@ const HorizontalBox = styled.div`
   justify-content: center;
 `
 const TitleText = styled.h1`
-  font-size: large;
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-family: Source Sans Pro;
 `
 
 const files = {
@@ -75,47 +111,41 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  function getNextQuestion(answer: Answer): Question {
-    const id: number = answer.route
-    return questions[id]
+  /**
+   * Returns the next question based on whether or not current question is a radio, continue, or text,
+   * taking advantage that continue and text qs only have one route after (or should..)
+   */
+  function getNextQuestion(q: Question, a: FormAnswer): Question {
+    return questions[
+      q.answers[a.type === QuestionType.RADIO ? a.answerId : 0].route
+    ]
   }
 
-  function _updateCurrentAnswer(
-    questionId: string,
-    answerId: string,
-    userAnswer?: string
-  ) {
-    const answer = {
-      questionId,
-      answerId,
-      userAnswer,
+  /**
+   * Handles changing the old question to the given question
+   */
+  function _handleQuestionChange(nextQuestion: Question) {
+    formValues.formAnswers[currentQuestion.id] = currentAnswer
+    setCurrentQuestion(nextQuestion)
+    if (formValues.formAnswers[nextQuestion.id]) {
+      setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
     }
-
-    setCurrentAnswer(answer)
   }
 
   /**
    * handles getting the next question based on current question's answer
    */
   function _handleNext() {
-    if (!currentAnswer) {
+    // if the question is not answered, don't let the user continue
+    if (!currentAnswer || currentAnswer.questionId !== currentQuestion.id) {
       return
     }
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       _handleQuestionExists()
     } else {
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
-      )
-      setQuestionHistory((questionHistory) => [
-        ...questionHistory,
-        nextQuestion,
-      ])
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
+      const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
+      setQuestionHistory([...questionHistory, nextQuestion])
+      _handleQuestionChange(nextQuestion)
     }
     setCurrentIndex(currentIndex + 1)
   }
@@ -124,51 +154,37 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
    * Modifies question history and routes form depending on whether answer has been changed
    */
   function _handleQuestionExists() {
-    const nextQuestion = getNextQuestion(
-      questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
-    )
+    const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
+    const nextAnswer = formValues.formAnswers[currentQuestion.id]
+    // if the exisitng question is a radio, and they're not the same answer
     if (
-      formValues.formAnswers[currentQuestion.id]['answerId'] !==
-      currentAnswer['answerId']
+      nextAnswer.type === QuestionType.RADIO &&
+      currentAnswer.type === QuestionType.RADIO &&
+      nextAnswer.answerId !== currentAnswer.answerId
     ) {
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
         delete formValues.formAnswers[questionHistory[i].id]
       }
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
-      )
       setQuestionHistory([...questionSlice, nextQuestion])
-      formValues.formAnswers[currentQuestion.id] = currentAnswer
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
-    } else {
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id].answers[parseInt(currentAnswer.answerId)]
-      )
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
     }
+    _handleQuestionChange(nextQuestion)
   }
 
   function _handleBack() {
+    // TODO: in redesign, if we disable the back button on the first question, we can get rid of this check
     if (currentIndex !== 0) {
-      const newQuestion = questionHistory[currentIndex - 1]
-      if (currentQuestion.id.toString() === currentAnswer.questionId) {
+      const prevQuestion = questionHistory[currentIndex - 1]
+      if (currentQuestion.id === currentAnswer.questionId) {
         formValues.formAnswers[currentQuestion.id] = currentAnswer
-        setCurrentAnswer(formValues.formAnswers[newQuestion.id])
+        setCurrentAnswer(formValues.formAnswers[prevQuestion.id])
       }
-      setCurrentQuestion(newQuestion)
+      setCurrentQuestion(prevQuestion)
       setCurrentIndex(currentIndex - 1)
     }
   }
 
-  function _buildDoc(doc: jsPDF, answers: FormAnswer[]): jsPDF {
-    const results = ''
+  function _buildDoc(doc: jsPDF, answers: FormResult[]): jsPDF {
     const x = 10
     let y = 10
     const y_inc = 8
@@ -180,10 +196,10 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
         doc.setFont('times', 'normal').text('\t' + item.answer + '\n\n', x, y)
         y += y_inc
       }
-      if (item.userAnswer != undefined) {
+      if (item.formAnswer.type === QuestionType.TEXT) {
         doc
           .setFont('times', 'normal')
-          .text('\t' + item.userAnswer + '\n\n', x, y)
+          .text('\t' + item.formAnswer.userAnswer + '\n\n', x, y)
         y += y_inc
       }
     })
@@ -199,51 +215,57 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     }
 
     let doc = new jsPDF()
-    const results = buildResults(values['formAnswers'], questions)
+    const results = buildResults(values.formAnswers, questions)
     doc = _buildDoc(doc, results)
     doc.save('a4.pdf')
   }
 
   return (
     <Main>
-      <NavBar></NavBar>
+      <NavBar />
       <HorizontalBox>
-        <VerticalBox>
-          <TitleText>{currentQuestion.section}</TitleText>
-          <div>
-            <Formik
-              initialValues={formValues}
-              onSubmit={(values: FormValues, { setSubmitting }) => {
-                if (updateFormValues) {
-                  updateFormValues(values)
-                }
-                _handleNext()
-                if (currentQuestion.type === 'RESULT') {
-                  _handleSubmit(values)
-                  setSubmitting(false)
-                }
-              }}
-            >
-              <Form>
+        <GreySideBar>
+          <SideProgressBar />
+        </GreySideBar>
+        <Formik
+          initialValues={formValues}
+          onSubmit={(values: FormValues, { setSubmitting }) => {
+            if (updateFormValues) {
+              updateFormValues(values)
+            }
+            _handleNext()
+            if (currentQuestion.type === QuestionType.RESULT) {
+              _handleSubmit(values)
+              setSubmitting(false)
+            }
+          }}
+        >
+          <Form style={{ width: '100%', display: 'flex' }}>
+            <FormContentWrapper>
+              <QuestionDisplayWrapper>
+                <TitleText>{currentQuestion.section}</TitleText>
                 <ChooseFormType
                   question={currentQuestion}
-                  onChange={_updateCurrentAnswer}
-                  answers={formValues.formAnswers[currentQuestion.id]}
-                  questions={questions}
+                  onChange={setCurrentAnswer}
+                  answer={formValues.formAnswers[currentQuestion.id]}
+                  questionHistory={questionHistory}
                 />
-                <Button type="button" onClick={() => _handleBack()}>
-                  {'Back'}
-                </Button>
-                <Button primary type="submit">
-                  {currentQuestion.type === 'RESULT' ? 'End' : 'Next'}
-                </Button>
-              </Form>
-            </Formik>{' '}
-          </div>
-        </VerticalBox>
-        <GreyBar>
-          <SideProgressBar />
-        </GreyBar>
+              </QuestionDisplayWrapper>
+              <BottomButtonBar>
+                <ButtonContainer>
+                  <BackButton type="button" onClick={() => _handleBack()}>
+                    Back
+                  </BackButton>
+                  <NextEndButton type="submit">
+                    {currentQuestion.type === QuestionType.RESULT
+                      ? 'End'
+                      : 'Next'}
+                  </NextEndButton>
+                </ButtonContainer>
+              </BottomButtonBar>
+            </FormContentWrapper>
+          </Form>
+        </Formik>
       </HorizontalBox>
     </Main>
   )
