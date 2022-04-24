@@ -213,24 +213,9 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       _handleQuestionExists()
     } else {
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id],
-        currentAnswer
-      )
-      setQuestionHistory((questionHistory) => [
-        ...questionHistory,
-        nextQuestion,
-      ])
-      setFormValues({
-        formAnswers: {
-          ...formValues.formAnswers,
-          [currentQuestion.id]: currentAnswer,
-        },
-      })
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
+      const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
+      setQuestionHistory([...questionHistory, nextQuestion])
+      _handleQuestionChange(nextQuestion)
     }
     setCurrentIndex(currentIndex + 1)
   }
@@ -259,25 +244,6 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
       setFormValues(newFormValues)
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
       setQuestionHistory([...questionSlice, nextQuestion])
-      setFormValues({
-        formAnswers: {
-          ...formValues.formAnswers,
-          [currentQuestion.id]: currentAnswer,
-        },
-      })
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
-    } else {
-      const nextQuestion = getNextQuestion(
-        questions[currentQuestion.id],
-        currentAnswer
-      )
-      setCurrentQuestion(nextQuestion)
-      if (formValues.formAnswers[nextQuestion.id]) {
-        setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
-      }
     }
     _handleQuestionChange(nextQuestion)
   }
