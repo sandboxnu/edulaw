@@ -13,7 +13,6 @@ import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
-import { CUTOFFS } from '../../constants/responsive'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
 import { QuestionType } from '../../models/question'
@@ -22,7 +21,8 @@ import {
   ButtonContainer,
   BackButton,
   NextEndButton,
-} from '../../components/FormStyles/BottomBar'
+  HorizontalBox,
+} from '../../components/FormStyles/ExtraStyles'
 
 let startingAnswer: FormAnswer
 
@@ -41,18 +41,6 @@ const FormContentWrapper = styled.div`
 const QuestionDisplayWrapper = styled.div`
   padding-left: 10%;
   margin-top: 64px;
-`
-const HorizontalBox = styled.div`
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  flex-direction: row;
-  height: 100%;
-  justify-content: center;
-  @media (max-width: ${CUTOFFS.mobile}px) {
-    flex-direction: column;
-    justify-content: start;
-  }
 `
 const TitleText = styled.h1`
   font-size: 26px;

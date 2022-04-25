@@ -3,6 +3,19 @@ import { COLORS } from '../../constants/colors'
 import { CUTOFFS } from '../../constants/responsive'
 import { Button } from './Button'
 
+export const HorizontalBox = styled.div`
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    flex-direction: column;
+    justify-content: start;
+  }
+`
+
 export const BottomButtonBar = styled.div`
   width: 100%;
   display: flex;

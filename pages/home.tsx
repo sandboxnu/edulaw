@@ -1,11 +1,10 @@
-import styles from '../styles/Home.module.css'
 import NavBar from '../components/Critical/NavBar'
-import SplitPage from '../components/Critical/SplitPage'
 import MainPage from '../components/MainPage'
 import SideProgressBar from '../components/Critical/SideProgressBar'
 import React from 'react'
 import styled from 'styled-components'
 import { CUTOFFS } from '../constants/responsive'
+import { HorizontalBox } from '../components/FormStyles/ExtraStyles'
 
 const Main = styled.div`
   display: flex;
@@ -14,26 +13,13 @@ const Main = styled.div`
   align-items: stretch;
 `
 
-const HorizontalBox = styled.div`
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  flex-direction: row;
-  height: 100%;
-  justify-content: center;
-  @media (max-width: ${CUTOFFS.mobile}px) {
-    flex-direction: column;
-    justify-content: start;
-  }
-`
-
 const SideProgressDiv = styled.div`
   min-height: 100vh;
-  position: relative;
+  min-width: 25%;
   @media (max-width: ${CUTOFFS.mobile}px) {
     flex-direction: column;
     justify-content: start;
-    height: 30%;
+    min-height: 30%;
   }
 `
 
