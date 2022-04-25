@@ -20,7 +20,6 @@ function home() {
         }}
         leftStyle={{
           width: '25%',
-          height: '100%',
           minHeight: '100vh',
           position: 'relative',
           backgroundColor: '#F4F5F7',

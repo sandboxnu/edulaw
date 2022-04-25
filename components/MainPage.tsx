@@ -30,9 +30,15 @@ function MainPage() {
   )(Button)
 
   return (
-    <div className="mainpage">
+    <div>
       <div
-        style={{ width: '70%', left: '10%', top: '10%', position: 'absolute' }}
+        style={{
+          width: '70%',
+          left: '10%',
+          paddingTop: '10%',
+          paddingBottom: '10%',
+          position: 'relative',
+        }}
       >
         {' '}
         {/* in order to place start text in correct place*/}
@@ -44,7 +50,6 @@ function MainPage() {
           about students’ educational rights. More information about PRS and
           what happens when you file a complaint is available{' '}
           <Link href="/prs" passHref>
-            {' '}
             here.
           </Link>
         </p>
