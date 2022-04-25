@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Collapse from '@mui/material/Collapse'
 import Divider from '@mui/material/Divider'
 import ExpandMore from '@mui/icons-material/ExpandMore'
+import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import SubMenuItem from './SubMenuItem'
 import Link from 'next/link'
 
@@ -22,7 +23,7 @@ function RightsPrsMenu() {
     return (
       <Link href={link} passHref>
         <ListItemButton sx={{ width: '100%' }}>
-          <ExpandMore />
+          {pathname === link ? <ExpandLessIcon /> : <ExpandMore />}
           <ListItemText
             primary={label}
             sx={{ fontSize: '22px', fontWeight: 400, pl: 1 }}
