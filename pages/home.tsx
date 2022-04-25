@@ -10,16 +10,18 @@ function home() {
     <main className={styles.main}>
       <NavBar />
       <SplitPage
-        left={<MainPage />}
-        right={<SideProgressBar />}
-        leftStyle={{
-          width: '70%',
-          height: '100%',
-          position: 'relative',
-          boxShadow: '0px 3px 4px rgba(0, 0, 0, 0.1)',
-        }}
+        right={<MainPage />}
+        left={<SideProgressBar />}
         rightStyle={{
-          width: '30%',
+          width: '75%',
+          height: '100%',
+          minHeight: '100vh',
+          position: 'relative',
+        }}
+        leftStyle={{
+          width: '25%',
+          height: '100%',
+          minHeight: '100vh',
           position: 'relative',
           backgroundColor: '#F4F5F7',
         }}

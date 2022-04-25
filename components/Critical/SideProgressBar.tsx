@@ -12,9 +12,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import useWindowDimensions from '../../hooks/widthHook'
 
 const GreySideBox = styled.div`
-  width: 30%;
-  min-width: 400px;
-  max-width: 300px;
+  width: 100%;
   background-color: ${COLORS.LIGHT_GREY};
   height: 100%;
   border-right: 1px solid ${COLORS.SHADOW_GREY};
