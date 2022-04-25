@@ -22,19 +22,11 @@ function LandingSplitPage(props: LandingProps) {
           position: 'relative',
           backgroundColor: '#F4F5F7',
         }}
-        center={props.center}
-        centerStyle={{
-          width: 'calc(75% - 300px)',
+        right={props.center}
+        rightStyle={{
+          width: '75%',
           height: '100%',
           position: 'relative',
-        }}
-        right={<StartComplaint />}
-        rightStyle={{
-          width: '255px',
-          height: '100%',
-          position: 'sticky',
-          top: '50px',
-          marginTop: '50px',
         }}
       />
     </main>

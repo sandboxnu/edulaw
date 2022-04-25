@@ -1,20 +1,13 @@
 import React from 'react'
 import Divider from '@mui/material/Divider'
+import { MainDiv } from './LandingStyles'
 
 function LandingContent() {
   return (
     <div className="main">
-      <div
-        style={{
-          width: '90%',
-          marginLeft: '20px',
-          marginTop: '30px',
-          marginBottom: '30px',
-        }}
-      >
+      <MainDiv>
         {/* put this in a stylesheet eventually :D and put the content into a const / cleanup*/}
         <h1>Filing a Complaint with the State Department of Education</h1>
-        <p>Last updated January 2021</p>
         <Divider />
         <br />
         <p>
@@ -41,7 +34,7 @@ function LandingContent() {
           to students in Massachusetts.
         </p>
         <br /> <br />
-      </div>
+      </MainDiv>
     </div>
   )
 }

@@ -22,11 +22,11 @@ function RightsPrsMenu() {
     return (
       <Link href={link} passHref>
         <ListItemButton sx={{ width: '100%' }}>
+          <ExpandMore />
           <ListItemText
             primary={label}
             sx={{ fontSize: '22px', fontWeight: 400, pl: 1 }}
           />
-          <ExpandMore />
         </ListItemButton>
       </Link>
     )
@@ -39,7 +39,7 @@ function RightsPrsMenu() {
         background: '#F4F5F7',
         padding: '4px',
         position: 'sticky',
-        top: '4px',
+        top: '15px',
       }}
     >
       {MainListItem('General Information', MENU_OPTS.INFO)}
