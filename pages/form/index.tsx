@@ -141,6 +141,7 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
         currentQuestion: currentQuestion,
         currentAnswer: currentAnswer,
       }
+      console.log(body)
       const result = await fetch('/api/form/save', {
         method: 'POST',
         body: JSON.stringify(body),
@@ -237,7 +238,7 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
       currentAnswer.type === QuestionType.RADIO &&
       nextAnswer.answerId !== currentAnswer.answerId
     ) {
-      let newFormValues = formValues
+      let newFormValues = { ...formValues }
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
         newFormValues = {
           formAnswers: _.omit(
@@ -247,7 +248,7 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
         }
       }
       setFormValues(newFormValues)
-      const questionSlice = questionHistory.slice(0, currentIndex + 1)
+      const questionSlice = questionHistory.slice(0, currentIndex)
       setQuestionHistory([...questionSlice, nextQuestion])
     }
     _handleQuestionChange(nextQuestion)
@@ -264,8 +265,8 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
             [currentQuestion.id]: currentAnswer,
           },
         })
-        setCurrentAnswer(formValues.formAnswers[prevQuestion.id])
       }
+      setCurrentAnswer(formValues.formAnswers[prevQuestion.id])
       setCurrentQuestion(prevQuestion)
       setCurrentIndex(currentIndex - 1)
     }
