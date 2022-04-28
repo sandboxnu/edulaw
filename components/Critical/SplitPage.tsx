@@ -1,14 +1,17 @@
-import { makeStyles } from '@material-ui/styles'
 import React, { FC } from 'react'
+import styled from 'styled-components'
+import { CUTOFFS } from '../../constants/responsive'
 
-const useStyles = makeStyles(() => ({
-  splitPage: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'stretch',
-  },
-}))
+const SplitPageResponsive = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  alignitems: stretch;
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    flex-direction: column;
+    justify-content: start;
+  }
+`
 
 interface SplitPageProps {
   left: JSX.Element
@@ -27,13 +30,12 @@ const SplitPage: FC<SplitPageProps> = ({
   centerStyle = { width: '0%', height: '100%', position: 'relative' },
   rightStyle = { width: '30%', height: '100%', position: 'relative' },
 }): JSX.Element => {
-  const classes = useStyles()
   return (
-    <div className={classes.splitPage}>
+    <SplitPageResponsive>
       <div style={leftStyle}>{left}</div>
       <div style={centerStyle}>{center}</div>
       <div style={rightStyle}>{right}</div>
-    </div>
+    </SplitPageResponsive>
   )
 }
 

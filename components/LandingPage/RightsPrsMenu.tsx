@@ -9,6 +9,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import SubMenuItem from './SubMenuItem'
 import Link from 'next/link'
+import { COLORS } from '../../constants/colors'
 
 enum MENU_OPTS {
   INFO = '/info',
@@ -37,7 +38,7 @@ function RightsPrsMenu() {
     <List
       sx={{
         width: '100%',
-        background: '#F4F5F7',
+        background: COLORS.LIGHT_GREY,
         padding: '4px',
         position: 'sticky',
         top: '15px',

@@ -3,7 +3,8 @@ import styles from '../../styles/Home.module.css'
 import NavBar from '../Critical/NavBar'
 import SplitPage from '../Critical/SplitPage'
 import RightsPrsMenu from '../LandingPage/RightsPrsMenu'
-import StartComplaint from '../LandingPage/StartComplaint'
+import BottomBar from './BottomButtonBar'
+import { COLORS } from '../../constants/colors'
 
 interface LandingProps {
   center: JSX.Element
@@ -17,10 +18,10 @@ function LandingSplitPage(props: LandingProps) {
       <SplitPage
         left={<RightsPrsMenu />}
         leftStyle={{
-          width: '25%',
-          minHeight: '100vh',
+          minWidth: '25%',
+          minHeight: 'calc(100vh - 160px)',
           position: 'relative',
-          backgroundColor: '#F4F5F7',
+          backgroundColor: COLORS.LIGHT_GREY,
         }}
         right={props.center}
         rightStyle={{
@@ -29,6 +30,7 @@ function LandingSplitPage(props: LandingProps) {
           position: 'relative',
         }}
       />
+      <BottomBar />
     </main>
   )
 }

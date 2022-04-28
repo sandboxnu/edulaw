@@ -3,6 +3,23 @@ import { COLORS } from '../../constants/colors'
 import { CUTOFFS } from '../../constants/responsive'
 import { Button } from './Button'
 
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: stretch;
+`
+
+export const SidebarDiv = styled.div`
+  min-height: 100vh;
+  min-width: 25%;
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    flex-direction: column;
+    justify-content: start;
+    min-height: 30%;
+  }
+`
+
 export const HorizontalBox = styled.div`
   display: flex;
   align-items: stretch;

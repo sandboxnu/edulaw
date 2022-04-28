@@ -29,7 +29,7 @@ function LandingContent() {
         </p>
         <br />
         <p>
-          When you are ready, you can select &quot;Continue&quot; on the right
+          When you are ready, you can select &quot;Continue&quot; at the bottom
           to start your complaint. Please note that this resource only applies
           to students in Massachusetts.
         </p>
