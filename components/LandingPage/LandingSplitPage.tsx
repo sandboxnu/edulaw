@@ -37,7 +37,10 @@ function LandingSplitPage(props: LandingProps) {
           <SidebarLandingDiv>
             <RightsPrsMenu />
           </SidebarLandingDiv>
-          {props.center}
+          <div style={{ minHeight: '75vh' }}>
+            {/* force the bottom bar to be at bottom when switching to mobile view */}
+            {props.center}
+          </div>
         </HorizontalBox>
       </SplitPageResponsive>
       <BottomBar />
