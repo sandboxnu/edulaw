@@ -2,7 +2,7 @@ import ForgotPassword from '../components/Login/ForgotPassword'
 import LoginContainer from '../components/Login/LoginContainer'
 import React from 'react'
 import SplitPage from '../components/Critical/SplitPage'
-import styles from '../../styles/Home.module.css'
+import styles from '../styles/Home.module.css'
 import NavBar from '../components/Critical/NavBar'
 
 // currently unreachable due to redesign
