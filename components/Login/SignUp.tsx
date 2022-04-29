@@ -1,19 +1,10 @@
 import React from 'react'
 import { StyledTextInput } from '../FormStyles/InputBox'
-import { Button } from '../FormStyles/Button'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import styled from 'styled-components'
-import Link from 'next/link'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
-import {
-  BackButton,
-  EStyledButton,
-  Container,
-  SubContainer,
-  Title,
-  SubTitle,
-} from './LoginStyling'
+import { EStyledButton, Container, SubContainer } from './LoginStyling'
 
 export const PasswordDiv = styled.div`
   display: flex;
@@ -57,39 +48,28 @@ function Signup() {
     >
       <Form>
         <Container>
-          <Link href="/home" passHref>
-            <BackButton type="button"> &lt; Back </BackButton>
-          </Link>
-          <Title>Welcome</Title>
-          <SubTitle>Let us get your account up and running.</SubTitle>
-          <div>
-            <StyledTextInput
-              width={330}
-              height={53}
-              name="email"
-              placeholder="Email"
-              type="text"
-            />
-          </div>
+          <StyledTextInput
+            width={356}
+            height={42}
+            name="email"
+            placeholder="Email"
+            type="text"
+          />
           <SubContainer>
-            <PasswordDiv>
-              <PasswordInputBox
-                width={330}
-                height={53}
-                placeholder="Password"
-                name="password"
-              />
-              <PasswordInputBox
-                width={330}
-                height={53}
-                placeholder="Confirm Password"
-                name="confirmPass"
-              />
-            </PasswordDiv>
-            <EStyledButton type="submit" primary={true}>
-              Sign Up
-            </EStyledButton>
+            <PasswordInputBox
+              width={356}
+              height={42}
+              placeholder="Password"
+              name="password"
+            />
+            <PasswordInputBox
+              width={356}
+              height={42}
+              placeholder="Confirm Password"
+              name="confirmPass"
+            />
           </SubContainer>
+          <EStyledButton type="submit">Sign Up</EStyledButton>
         </Container>
       </Form>
     </Formik>

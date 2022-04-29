@@ -27,12 +27,15 @@ export const SubContainer = styled.div`
   flex-flow: column;
   align-items: flex-end;
   justify-content: space-evenly;
-  gap: 20px;
+  gap: 8px;
+  margin-top: 10px;
 `
 
 export const EStyledButton = styled(Button)`
-  margin-top: 20px;
-  align-self: flex-end;
+  margin-top: 15px;
+  width: 356px;
+  background-color: #5064c7;
+  color: #ffffff;
   :hover {
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
       0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -47,7 +50,7 @@ export const BackButton = styled.button`
   font-weight: 600;
   font-size: 28px;
   color: #5064c7;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 
   :hover {
     text-shadow: 2px 2px 4px gray;
