@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Formik, Field } from 'formik'
+import { Form, Formik } from 'formik'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import * as Yup from 'yup'
 import {
@@ -20,6 +20,7 @@ export const TextButtonDiv = styled.div`
 `
 
 // component form for the forgot password page
+// currently not in use
 function ForgotPassword() {
   return (
     <Formik

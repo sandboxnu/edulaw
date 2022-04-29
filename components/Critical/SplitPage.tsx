@@ -2,6 +2,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { CUTOFFS } from '../../constants/responsive'
 
+// this component has become very much NOT critical due to restyling oops
+
 const SplitPageResponsive = styled.div`
   width: 100%;
   height: 100%;

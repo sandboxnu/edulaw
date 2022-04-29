@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Button } from '../FormStyles/Button'
+import { CUTOFFS } from '../../constants/responsive'
 
 // shared styling for sign-in and sign-up pages
 export const Container = styled.div`
@@ -41,6 +42,9 @@ export const EStyledButton = styled(Button)`
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
       0 17px 50px 0 rgba(0, 0, 0, 0.19);
   }
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    width: 271px;
+  }
 `
 
 export const BackButton = styled.button`
@@ -55,5 +59,8 @@ export const BackButton = styled.button`
 
   :hover {
     text-shadow: 2px 2px 4px gray;
+  }
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    font-size: 24px;
   }
 `

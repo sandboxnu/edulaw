@@ -5,10 +5,11 @@ import styled from 'styled-components'
 
 const LoginPageDiv = styled.div`
   width: 100%;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   padding-top: 50px;
+  padding-bottom: 50px;
   background-color: ${COLORS.LIGHT_GREY};
 `
 

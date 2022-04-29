@@ -2,17 +2,8 @@ import React from 'react'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import styled from 'styled-components'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
 import { EStyledButton, Container, SubContainer } from './LoginStyling'
-
-export const PasswordDiv = styled.div`
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
-`
 
 interface FormValues {
   email: string
@@ -54,6 +45,7 @@ function Signup() {
             name="email"
             placeholder="Email"
             type="text"
+            cutoffWidth={271}
           />
           <SubContainer>
             <PasswordInputBox
@@ -61,12 +53,14 @@ function Signup() {
               height={42}
               placeholder="Password"
               name="password"
+              cutoffWidth={271}
             />
             <PasswordInputBox
               width={356}
               height={42}
               placeholder="Confirm Password"
               name="confirmPass"
+              cutoffWidth={271}
             />
           </SubContainer>
           <EStyledButton type="submit">Sign Up</EStyledButton>

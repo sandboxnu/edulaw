@@ -14,7 +14,7 @@ function LandingContent() {
           The Problem Resolution System (PRS) is the Massachusetts Department of
           Elementary and Secondary Education&apos;s (DESE) system for addressing
           complaints about students&apos; education rights and the legal
-          requirements for education.{' '}
+          requirements for education.
           <em>
             If you think a school or district has violated a student&apos;s
             rights

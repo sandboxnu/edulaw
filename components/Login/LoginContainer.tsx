@@ -5,6 +5,7 @@ import HatImage from './HatImage'
 import Divider from '@mui/material/Divider'
 import { BackButton } from './LoginStyling'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { CUTOFFS } from '../../constants/responsive'
 
 export const Container = styled.div`
   display: flex;
@@ -22,6 +23,9 @@ export const SignInUpContainer = styled.div`
   align-items: center;
   box-shadow: 0px 0px 15px rgba(160, 160, 160, 0.1);
   border-radius: 4px;
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    width: 300px;
+  }
 `
 
 export const TextDiv = styled.div`
@@ -46,6 +50,14 @@ export const SideBoxButton = styled.button`
   border: 1px solid #777777;
   box-sizing: border-box;
   border-radius: 6px;
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    width: 271px;
+  }
+  :hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+  }
 `
 
 export const AboveButtonText = styled.p`
@@ -89,7 +101,7 @@ function LoginContainer(props: LoginSignupProps) {
         </TextDiv>
         {props.form}
         <TextDiv>
-          <Divider sx={{ width: '356px' }} />
+          <Divider sx={{ width: '98%' }} />
           <AboveButtonText>{props.bottomPhrase}</AboveButtonText>
           <Link href={props.buttonLink} passHref>
             <SideBoxButton>
