@@ -91,9 +91,11 @@ interface LoginSignupProps {
 function LoginContainer(props: LoginSignupProps) {
   return (
     <Container>
-      <BackButton>
-        <ArrowBackIcon /> Back to home
-      </BackButton>
+      <Link href="/home" passHref>
+        <BackButton>
+          <ArrowBackIcon /> Back to home
+        </BackButton>
+      </Link>
       <SignInUpContainer>
         <TextDiv>
           <HatImage />
