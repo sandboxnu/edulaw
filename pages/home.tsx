@@ -3,7 +3,6 @@ import NavBar from '../components/Critical/NavBar'
 import SplitPage from '../components/Critical/SplitPage'
 import MainPage from '../components/MainPage'
 import SideProgressBar from '../components/Critical/SideProgressBar'
-import React from 'react'
 
 function home() {
   return (

@@ -54,7 +54,7 @@ const HorizontalBox = styled.div`
     justify-content: start;
   }
 `
-const TitleText = styled.h1`
+export const TitleText = styled.h1`
   font-size: 26px;
   margin-bottom: 20px;
   font-family: Source Sans Pro;
