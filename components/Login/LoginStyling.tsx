@@ -29,6 +29,7 @@ export const SubContainer = styled.div`
   justify-content: space-evenly;
   gap: 8px;
   margin-top: 10px;
+  margin-bottom: 15px;
 `
 
 export const EStyledButton = styled(Button)`
