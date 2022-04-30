@@ -205,6 +205,8 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
     setCurrentQuestion(nextQuestion)
     if (formValues.formAnswers[nextQuestion.id]) {
       setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+    } else {
+      setCurrentAnswer(formValues.formAnswers[-1])
     }
   }
 
@@ -258,7 +260,10 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
     // TODO: in redesign, if we disable the back button on the first question, we can get rid of this check
     if (currentIndex !== 0) {
       const prevQuestion = questionHistory[currentIndex - 1]
-      if (currentQuestion.id === currentAnswer.questionId) {
+      if (
+        currentQuestion.type !== QuestionType.RESULT &&
+        currentQuestion.id === currentAnswer.questionId
+      ) {
         setFormValues({
           formAnswers: {
             ...formValues.formAnswers,
