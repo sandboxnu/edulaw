@@ -38,6 +38,7 @@
     "@mui/styles": "^5.0.1",
     "@types/csv-parse": "^1.2.2",
     "@types/material-ui": "^0.21.9",
+    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "csv-parse": "^5.0.4",
     "formik": "^2.2.9",
@@ -54,6 +55,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
+    "@types/bcryptjs": "^2.4.2",
     "@types/jest": "^27.4.1",
     "@types/react": "17.0.24",
     "@types/styled-components": "^5.1.17",
