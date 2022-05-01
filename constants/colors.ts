@@ -1,5 +1,6 @@
 export const COLORS = {
   EDLAW_BLUE: '#5064C7',
+  EDLAW_GREEN: '#75BA39',
   LIGHT_GREY: '#FAFAFB',
   TEXT_GREY: '#A3A3A3',
   SHADOW_GREY: '#E5E5E5',

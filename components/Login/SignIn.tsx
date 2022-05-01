@@ -1,35 +1,13 @@
 import React from 'react'
-import { Form, Formik, Field } from 'formik'
+import { Form, Formik } from 'formik'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import * as Yup from 'yup'
-import {
-  BackButton,
-  EStyledButton,
-  Container,
-  SubContainer,
-  Title,
-  SubTitle,
-} from './LoginStyling'
-import styled from 'styled-components'
-import Link from 'next/link'
+import { EStyledButton, Container, SubContainer } from './LoginStyling'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
-
-export const RememberSignIn = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 25px;
-  width: 100%;
-`
-
-export const RememberDiv = styled.div`
-  margin-top: 2%;
-`
 
 interface FormValues {
   email: string
   password: string
-  checked: Array<string>
 }
 
 // component for the signin page - includes form (and styling) for validation
@@ -37,7 +15,6 @@ function SignIn() {
   const initialVal: FormValues = {
     email: '',
     password: '',
-    checked: [],
   }
 
   return (
@@ -56,43 +33,27 @@ function SignIn() {
     >
       <Form>
         <Container>
-          <Link href="/home" passHref>
-            <BackButton type="button">&lt; Back</BackButton>
-          </Link>
-          <Title>Welcome back!</Title>
-          <SubTitle>Please sign in.</SubTitle>
           <SubContainer>
             <StyledTextInput
-              width={600}
-              height={53}
+              width={356}
+              height={42}
               name="email"
               placeholder="Email"
               type="text"
+              cutoffWidth={271}
             />
 
             <PasswordInputBox
-              width={600}
-              height={53}
+              width={356}
+              height={42}
               placeholder="Password"
               name="password"
+              cutoffWidth={271}
             />
           </SubContainer>
-          <Link href="/forgotpassword" passHref>
-            <p>
-              Forgot <strong>Password?</strong>
-            </p>
-          </Link>
-          <RememberSignIn>
-            <RememberDiv>
-              <label>
-                <Field type="checkbox" name="checked" value="Remember" />
-                Remember me
-              </label>
-            </RememberDiv>
-            <EStyledButton type="submit" primary={true}>
-              Sign In
-            </EStyledButton>
-          </RememberSignIn>
+          <EStyledButton type="submit" primary={true}>
+            Sign In
+          </EStyledButton>
         </Container>
       </Form>
     </Formik>

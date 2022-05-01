@@ -2,10 +2,12 @@ import styled from 'styled-components'
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
 import { COLORS } from '../../constants/colors'
+import { CUTOFFS } from '../../constants/responsive'
 
 interface InputBoxProps {
   width: number
   height: number
+  cutoffWidth?: number
 }
 
 export const InputBox = styled.input`
@@ -23,6 +25,9 @@ export const InputBox = styled.input`
     border: 1px solid ${COLORS.EDLAW_BLUE};
     outline: none;
   }
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    width: ${(props: InputBoxProps) => props.cutoffWidth}px;
+  }
 `
 
 export const ErrorDiv = styled.div`
@@ -37,6 +42,7 @@ interface InputProps {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   type?: string
   placeholder?: string
+  cutoffWidth?: number
 }
 
 export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
@@ -55,6 +61,7 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
           onChange={props.onChange}
           type={props.type}
           placeholder={props.placeholder}
+          cutoffWidth={props.cutoffWidth}
         />
       )
     }
@@ -66,6 +73,7 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
         {...field}
         type={props.type}
         placeholder={props.placeholder}
+        cutoffWidth={props.cutoffWidth}
       />
     )
   }

@@ -1,19 +1,12 @@
 import React from 'react'
 import Divider from '@mui/material/Divider'
+import { DiscUl, MainDiv } from './LandingStyles'
 
 function LandingStudentRights() {
   return (
     <div>
-      <div
-        style={{
-          width: '90%',
-          marginLeft: '20px',
-          marginTop: '30px',
-          marginBottom: '30px',
-        }}
-      >
+      <MainDiv>
         <h1>Student Rights Guide</h1>
-        <p>Last updated January 2021</p>
         <Divider />
         <br />
         <p>
@@ -31,7 +24,7 @@ function LandingStudentRights() {
           tool.
         </p>
         <br />
-        <p> - </p>
+        <br />
         <br />
         <h2 id="school-discipline">School Discipline & Education</h2>
         <br />
@@ -54,7 +47,7 @@ function LandingStudentRights() {
         <br />
         <p>A student is suspended if: </p>
         <br />
-        <ul style={{ marginLeft: '20px' }}>
+        <DiscUl>
           <li>They are not allowed to come to school</li>
           <li>They are sent home early</li>
           <li>
@@ -62,7 +55,7 @@ function LandingStudentRights() {
             in their regular classroom for more than half of the school day. For
             example, if they have to sit in the principla&apos;s office.
           </li>
-        </ul>
+        </DiscUl>
         <br />
         <p>
           <em>
@@ -122,7 +115,8 @@ function LandingStudentRights() {
           email. Call the EdLaw Project intake line if you’re not sure why the
           student is being disciplined.
         </p>
-        <br /> <p> - </p> <br />
+        <br />
+        <br /> <br />
         <h2 id="special-education">Special Education</h2>
         <br />
         <p>
@@ -163,14 +157,15 @@ function LandingStudentRights() {
           about whether your situation can be addressed through a PRS complaint,
           or if other steps might make more sense.
         </p>
-        <br /> <p> - </p> <br />
+        <br />
+        <br /> <br />
         <h2 id="bullying">Bullying</h2>
         <br />
         <p>
           A student is being bullied when another student’s (or group of
           students’) actions hurt them. Bullying can be when: <br /> <br />
         </p>
-        <ul style={{ marginLeft: '20px' }}>
+        <DiscUl>
           <li>
             A student harms another student, or makes the student think that
             they’re going to harm them. The harm can be physical or emotional.
@@ -187,7 +182,7 @@ function LandingStudentRights() {
             A student interferes with another student’s right to learn at school{' '}
           </li>
           <li>A student disrupts the school’s operations</li>
-        </ul>
+        </DiscUl>
         <br />
         <p>
           Students have the right to have their schools prevent and respond to
@@ -196,7 +191,7 @@ function LandingStudentRights() {
           the school to have a Bullying Prevention Plan in place.
         </p>
         <br />
-      </div>
+      </MainDiv>
     </div>
   )
 }

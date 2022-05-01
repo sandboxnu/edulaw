@@ -1,9 +1,27 @@
 import React from 'react'
 import styles from '../../styles/Home.module.css'
 import NavBar from '../Critical/NavBar'
-import SplitPage from '../Critical/SplitPage'
 import RightsPrsMenu from '../LandingPage/RightsPrsMenu'
-import StartComplaint from '../LandingPage/StartComplaint'
+import BottomBar from './BottomButtonBar'
+import { COLORS } from '../../constants/colors'
+import { SidebarDiv, HorizontalBox } from '../FormStyles/ExtraStyles'
+import styled from 'styled-components'
+import { CUTOFFS } from '../../constants/responsive'
+
+const SplitPageResponsive = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  alignitems: stretch;
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    flex-direction: column;
+    justify-content: start;
+  }
+`
+
+const SidebarLandingDiv = styled(SidebarDiv)`
+  background-color: ${COLORS.LIGHT_GREY};
+`
 
 interface LandingProps {
   center: JSX.Element
@@ -14,29 +32,18 @@ function LandingSplitPage(props: LandingProps) {
   return (
     <main className={styles.main}>
       <NavBar />
-      <SplitPage
-        left={<RightsPrsMenu />}
-        leftStyle={{
-          width: '25%',
-          minHeight: '100vh',
-          position: 'relative',
-          backgroundColor: '#F4F5F7',
-        }}
-        center={props.center}
-        centerStyle={{
-          width: 'calc(75% - 300px)',
-          height: '100%',
-          position: 'relative',
-        }}
-        right={<StartComplaint />}
-        rightStyle={{
-          width: '255px',
-          height: '100%',
-          position: 'sticky',
-          top: '50px',
-          marginTop: '50px',
-        }}
-      />
+      <SplitPageResponsive>
+        <HorizontalBox>
+          <SidebarLandingDiv>
+            <RightsPrsMenu />
+          </SidebarLandingDiv>
+          <div style={{ minHeight: '75vh' }}>
+            {/* force the bottom bar to be at bottom when switching to mobile view */}
+            {props.center}
+          </div>
+        </HorizontalBox>
+      </SplitPageResponsive>
+      <BottomBar />
     </main>
   )
 }

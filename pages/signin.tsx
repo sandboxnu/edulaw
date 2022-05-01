@@ -1,18 +1,18 @@
 import SignIn from '../components/Login/SignIn'
-import SideBox from '../components/Login/SideBox'
+import LoginContainer from '../components/Login/LoginContainer'
 import React from 'react'
-import LoginSplitPage from '../components/Login/LoginSplitPage'
+import LoginAbstraction from '../components/Login/LoginAbstraction'
 
 function signin() {
   return (
-    <LoginSplitPage
-      left={<SignIn />}
-      right={
-        <SideBox
-          headerPhrase="Don't have an account?"
-          description="Don't worry; it's easy to get started!"
-          buttonPhrase="Create an account"
+    <LoginAbstraction
+      main={
+        <LoginContainer
+          headerPhrase="Welcome Back!"
+          bottomPhrase="Don't have an account?"
+          buttonPhrase="Sign Up"
           buttonLink="/signup"
+          form={<SignIn />}
         />
       }
     />
