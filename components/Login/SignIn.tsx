@@ -21,6 +21,7 @@ export function login(data: Session | null, router: NextRouter) {
       router.push('/form')
     } else {
       alert(data.user.name)
+      data.user = undefined
     }
   }
 }
