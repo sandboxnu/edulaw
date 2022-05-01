@@ -4,9 +4,15 @@ import { withStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import Link from 'next/link'
 import styled from 'styled-components'
+import { COLORS } from '../constants/colors'
 
 const GradientDiv = styled.div`
-  background: linear-gradient(to right, #75ba39 0.7%, white 0.7%, white 100%);
+  background: linear-gradient(
+    to right,
+    ${COLORS.EDLAW_GREEN} 0.7%,
+    white 0.7%,
+    white 100%
+  );
   padding: 15px;
   border-radius: 6px;
 `
