@@ -19,6 +19,8 @@ export function login(data: Session | null, router: NextRouter) {
   if (data?.user) {
     if (data.user.id) {
       router.push('/form')
+    } else {
+      alert(data.user.name)
     }
   }
 }
