@@ -182,7 +182,6 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
 
   function _handleSubmit(values: FormValues) {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
-    alert(JSON.stringify(values))
     if (updateFormValues) {
       updateFormValues(values)
     }
