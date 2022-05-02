@@ -11,7 +11,7 @@
     "db:start": "docker-compose -p edlaw -f docker-compose.yml --env-file .env up -d",
     "db:stop": "docker-compose  -p edlaw -f docker-compose.yml --env-file .env down",
     "build": "next build",
-    "start": "next start",
+    "start": "npm run db:start && next start",
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",

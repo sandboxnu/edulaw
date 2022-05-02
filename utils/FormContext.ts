@@ -3,7 +3,7 @@ import { QuestionType } from '../models/question'
 
 export interface FormValues {
   formAnswers: {
-    [key: string]: FormAnswer
+    [key: number]: FormAnswer
   }
 }
 

@@ -12,6 +12,8 @@ Represents a "Continue" question in the form, which just displays some informati
 */
 const MyContinue: React.FC<ContinueProps> = ({ label, onMount }) => {
   useEffect(() => {
+    console.log('mounted')
+    console.log(label)
     onMount()
   }, [])
 

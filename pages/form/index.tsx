@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import {
   emptyFormValues,
   FormAnswer,
+  FormCtx,
   FormResult,
   FormValues,
 } from '../../utils/FormContext'
@@ -275,7 +276,7 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
     setFormValues(values)
 
     let doc = new jsPDF()
-    const results = buildResults(values.formAnswers, questions)
+    const results = buildResults(values, questions)
     doc = _buildDoc(doc, results)
     doc.save('PRS_Complaint.pdf')
   }
@@ -286,45 +287,47 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
       <HorizontalBox>
         <SideProgressBar />
         {!loaded ? null : (
-          <Formik
-            initialValues={formValues}
-            onSubmit={(values: FormValues, { setSubmitting }) => {
-              if (setFormValues) {
-                setFormValues(values)
-              }
-              _handleNext()
-              if (currentQuestion.type === QuestionType.RESULT) {
-                _handleSubmit(values)
-                setSubmitting(false)
-              }
-            }}
-          >
-            <FormStyled>
-              <FormContentWrapper>
-                <QuestionDisplayWrapper>
-                  <TitleText>{currentQuestion.section}</TitleText>
-                  <ChooseFormType
-                    question={currentQuestion}
-                    onChange={setCurrentAnswer}
-                    answer={formValues.formAnswers[currentQuestion.id]}
-                    questionHistory={questionHistory}
-                  />
-                </QuestionDisplayWrapper>
-                <BottomButtonBar>
-                  <ButtonContainer>
-                    <BackButton type="button" onClick={() => _handleBack()}>
-                      Back
-                    </BackButton>
-                    <NextEndButton type="submit">
-                      {currentQuestion.type === QuestionType.RESULT
-                        ? 'End'
-                        : 'Next'}
-                    </NextEndButton>
-                  </ButtonContainer>
-                </BottomButtonBar>
-              </FormContentWrapper>
-            </FormStyled>
-          </Formik>
+          <FormCtx.Provider value={{ formValues, setFormValues }}>
+            <Formik
+              initialValues={formValues}
+              onSubmit={(values: FormValues, { setSubmitting }) => {
+                if (setFormValues) {
+                  setFormValues(values)
+                }
+                _handleNext()
+                if (currentQuestion.type === QuestionType.RESULT) {
+                  _handleSubmit(values)
+                  setSubmitting(false)
+                }
+              }}
+            >
+              <FormStyled>
+                <FormContentWrapper>
+                  <QuestionDisplayWrapper>
+                    <TitleText>{currentQuestion.section}</TitleText>
+                    <ChooseFormType
+                      question={currentQuestion}
+                      onChange={setCurrentAnswer}
+                      answer={formValues.formAnswers[currentQuestion.id]}
+                      questionHistory={questionHistory}
+                    />
+                  </QuestionDisplayWrapper>
+                  <BottomButtonBar>
+                    <ButtonContainer>
+                      <BackButton type="button" onClick={() => _handleBack()}>
+                        Back
+                      </BackButton>
+                      <NextEndButton type="submit">
+                        {currentQuestion.type === QuestionType.RESULT
+                          ? 'End'
+                          : 'Next'}
+                      </NextEndButton>
+                    </ButtonContainer>
+                  </BottomButtonBar>
+                </FormContentWrapper>
+              </FormStyled>
+            </Formik>
+          </FormCtx.Provider>
         )}
       </HorizontalBox>
     </Main>
