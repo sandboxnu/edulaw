@@ -94,6 +94,13 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
     router.push('/signup')
   }
 
+  useEffect(
+    () => console.log(questionHistory.map((question) => question.id)),
+    [questionHistory]
+  )
+  useEffect(() => console.log(formValues.formAnswers), [formValues])
+  useEffect(() => console.log(currentQuestion), [currentQuestion])
+
   // For saving values to the database
   useEffect(() => {
     const save = async () => {
@@ -162,13 +169,26 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
   /**
    * Handles changing the old question to the given question
    */
-  function _handleQuestionChange(nextQuestion: Question) {
-    setFormValues({
-      formAnswers: {
-        ...formValues.formAnswers,
-        [currentQuestion.id]: currentAnswer,
-      },
-    })
+  function _handleQuestionChange(
+    nextQuestion: Question,
+    newFormValues?: FormValues
+  ) {
+    if (newFormValues) {
+      setFormValues({
+        formAnswers: {
+          ...newFormValues.formAnswers,
+          [currentQuestion.id]: currentAnswer,
+        },
+      })
+    } else {
+      setFormValues({
+        formAnswers: {
+          ...formValues.formAnswers,
+          [currentQuestion.id]: currentAnswer,
+        },
+      })
+    }
+
     setCurrentQuestion(nextQuestion)
     if (formValues.formAnswers[nextQuestion.id]) {
       setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
@@ -226,27 +246,24 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
    */
   function _handleQuestionExists() {
     const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
-    const nextAnswer = formValues.formAnswers[currentQuestion.id]
+    const oldAnswer = formValues.formAnswers[currentQuestion.id]
+    let newFormValues = { ...formValues }
     // if the exisitng question is a radio, and they're not the same answer
     if (
-      nextAnswer.type === QuestionType.RADIO &&
+      oldAnswer.type === QuestionType.RADIO &&
       currentAnswer.type === QuestionType.RADIO &&
-      nextAnswer.answerId !== currentAnswer.answerId
+      oldAnswer.answerId !== currentAnswer.answerId
     ) {
-      let newFormValues = { ...formValues }
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
         newFormValues = {
-          formAnswers: _.omit(
-            newFormValues.formAnswers,
-            questionHistory[i].id.toString()
-          ),
+          formAnswers: _.omit(newFormValues.formAnswers, questionHistory[i].id),
         }
       }
       setFormValues(newFormValues)
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
       setQuestionHistory([...questionSlice, nextQuestion])
     }
-    _handleQuestionChange(nextQuestion)
+    _handleQuestionChange(nextQuestion, newFormValues)
   }
 
   function _handleBack() {
@@ -298,12 +315,12 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
     return doc
   }
 
-  function _handleSubmit(values: FormValues) {
+  function _handleSubmit() {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
-    setFormValues(values)
+    // setFormValues(values)
 
     let doc = new jsPDF()
-    const results = buildResults(values, questions)
+    const results = buildResults(formValues, questions)
     doc = _buildDoc(doc, results)
     doc.save('PRS_Complaint.pdf')
   }
@@ -355,10 +372,11 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
                   setFormValues(values)
                 }
                 */
-                _handleNext()
                 if (currentQuestion.type === QuestionType.RESULT) {
-                  _handleSubmit(values)
+                  _handleSubmit()
                   setSubmitting(false)
+                } else {
+                  _handleNext()
                 }
               }}
             >
