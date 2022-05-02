@@ -94,13 +94,6 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
     router.push('/signup')
   }
 
-  useEffect(
-    () => console.log(questionHistory.map((question) => question.id)),
-    [questionHistory]
-  )
-  useEffect(() => console.log(formValues.formAnswers), [formValues])
-  useEffect(() => console.log(currentQuestion), [currentQuestion])
-
   // For saving values to the database
   useEffect(() => {
     const save = async () => {
@@ -317,7 +310,6 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
 
   function _handleSubmit() {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
-    // setFormValues(values)
 
     let doc = new jsPDF()
     const results = buildResults(formValues, questions)
