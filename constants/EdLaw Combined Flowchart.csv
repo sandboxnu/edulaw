@@ -282,7 +282,7 @@ Did you consent to the extended evaluation? ",
 166,Process,Flowchart Shapes,2,8,,,,,,,"The extended evaluation can’t take longer than 8 school weeks from when it starts.
 Did the school complete the evaluation in 8 school weeks or less? ",
 167,Process,Flowchart Shapes,2,,,,,,,,Has the student already been suspended or expelled for this incident?,
-168,Process,Flowchart Shapes,2,,,,,,,, What is the student being suspended or expelled for?,
+168,Process,Flowchart Shapes,2,,,,,,,,What is the student being suspended or expelled for?,
 169,Process,Flowchart Shapes,2,,,,,,,,Has the school said they might suspend or expel the student?,
 170,Process,Flowchart Shapes,2,16,,,,,,,"You said that the school is accusing the student of bringing a weapon to school. This means that the discipline is covered by a Massachusetts law called 71 MGL §37H.  You can read the full law at the following link: https://malegislature.gov/laws/generallaws/parti/titlexii/chapter71/section37h  In Massachusetts, a student can be suspended or expelled for bringing a weapon to school. But, the law says that only certain things count as weapons and only certain places count as school. Sometimes, schools say that the student brought a weapon to school, even when what the student had doesn’t count as a weapon, or the place the student was doesn’t count as school.
                                                                                                      To start, we are going to ask some questions about what the school says the student did. This will help us to find out if the school can punish the student for bringing a weapon to school. These questions will only be about what the school says happened, later we will have questions about the student’s side of the story.",
@@ -999,7 +999,7 @@ Did the person tell the principal about the bullying?",
 860,Line,,2,,,191,225,None,Arrow,,No,
 861,Line,,2,,,190,193,None,Arrow,,Yes,
 862,Line,,2,,,191,192,None,Arrow,,Yes,
-863,Line,,2,,,193,194,None,Arrow,,TEXT,
+863,Line,,2,,,193,194,None,Arrow,,CONTINUE,
 864,Line,,2,,,194,195,None,Arrow,,Yes,
 865,Line,,2,,,194,196,None,Arrow,,No,
 866,Line,,2,,,196,195,None,Arrow,,TEXT,

@@ -59,18 +59,22 @@ const files = {
 }
 
 export const getStaticProps: GetStaticProps = (context) => {
-  const file = files.animalForm
-  const questions = csvToQuestionArray(file)
+  const file = files.actualForm
+  const { questions, startingQuestion } = csvToQuestionArray(file)
 
   return {
     props: {
       questions: questions,
+      startingQuestionIndex: startingQuestion,
     },
   }
 }
 
-const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
-  const startingQuestion: Question = questions[0]
+const DynamicPOC: React.FC<{
+  questions: Question[]
+  startingQuestionIndex: number
+}> = ({ questions, startingQuestionIndex }) => {
+  const startingQuestion: Question = questions[startingQuestionIndex]
 
   const { formValues, updateFormValues } = useContext(FormCtx)
 

@@ -4,7 +4,7 @@ import csvParser from './csv_parser'
 import expected from './questions.json'
 
 test('Ensure that the animal flowchart is accurately parsed', async () => {
-  const actual = csvParser('./Animal Form.csv')
+  const actual = csvParser('./Animal Form.csv').questions
   expect(actual).toStrictEqual(expected)
 })
 
@@ -84,11 +84,11 @@ expect.extend({
 })
 
 test('Ensure animal flowchart is well-formed', async () => {
-  const actual = csvParser('./Animal Form.csv')
+  const actual = csvParser('./Animal Form.csv').questions
   expect(actual).toBeWellFormed()
 })
 
 test('Ensure actual flowchart is well-formed', async () => {
-  const actual = csvParser('./EdLaw Combined Flowchart.csv')
+  const actual = csvParser('./EdLaw Combined Flowchart.csv').questions
   expect(actual).toBeWellFormed()
 })
