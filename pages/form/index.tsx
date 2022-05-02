@@ -313,8 +313,10 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
 
     let doc = new jsPDF()
     const results = buildResults(formValues, questions)
-    doc = _buildDoc(doc, results)
-    doc.save('PRS_Complaint.pdf')
+    if (results.length > 0) {
+      doc = _buildDoc(doc, results)
+      doc.save('PRS_Complaint.pdf')
+    }
   }
 
   return (
