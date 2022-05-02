@@ -16,11 +16,11 @@ type WellFormedResponse = {
 expect.extend({
   toBeWellFormed: (questions: Question[]) => {
     const response = questions.reduce(
-      (soFar, question) => {
+      (soFar, question, idx) => {
         if (!soFar.pass) return soFar
         if (question.question === '')
           return {
-            message: `Question ${question.id} has no content`,
+            message: `Questions checked: ${idx}/${questions.length}\nQuestion ${question.id} has no content`,
             pass: false,
           }
         const outOfBounds = question.answers.find(
@@ -28,11 +28,13 @@ expect.extend({
         )
         if (outOfBounds) {
           return {
-            message: `Question ${
+            message: `Questions checked: ${idx}/${questions.length}\nQuestion ${
               question.id
-            } has an answer that points out of bounds.\nQuestion: ${
-              question.question
-            }\nAnswer: ${JSON.stringify(outOfBounds)}`,
+            } has an answer that points out of bounds.\nSection: ${
+              question.section
+            }\nQuestion: ${question.question}\nAnswer: ${JSON.stringify(
+              outOfBounds
+            )}`,
             pass: false,
           }
         }
@@ -61,9 +63,11 @@ expect.extend({
           return soFar
         } else {
           return {
-            message: `Question ${question.id} has malformed answers for type ${
-              question.type
-            }.\nQuestion: ${question.question}\nAnswers: ${JSON.stringify(
+            message: `Questions checked: ${idx}/${questions.length}\nQuestion ${
+              question.id
+            } has malformed answers for type ${question.type}.\nSection: ${
+              question.section
+            }\nQuestion: ${question.question}\nAnswers: ${JSON.stringify(
               question.answers
             )}`,
             pass: false,
