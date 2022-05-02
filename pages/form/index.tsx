@@ -324,46 +324,9 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
         <SideProgressBar />
         {!loaded ? null : (
           <FormCtx.Provider value={{ formValues, setFormValues }}>
-            <button
-              onClick={() => {
-                setFormValues({ formAnswers: {} })
-                setCurrentQuestion(startingQuestion)
-                switch (startingQuestion.type) {
-                  case QuestionType.CONTINUE:
-                    setCurrentAnswer({
-                      questionId: startingQuestion.id,
-                      type: QuestionType.CONTINUE,
-                    })
-                    break
-                  case QuestionType.RADIO:
-                    setCurrentAnswer({
-                      questionId: startingQuestion.id,
-                      type: QuestionType.RADIO,
-                      answerId: -1,
-                    })
-                    break
-                  case QuestionType.TEXT:
-                    setCurrentAnswer({
-                      questionId: startingQuestion.id,
-                      type: QuestionType.TEXT,
-                      userAnswer: '',
-                    })
-                    break
-                }
-                setQuestionHistory([startingQuestion])
-                setCurrentIndex(0)
-              }}
-            >
-              nuke it all
-            </button>
             <Formik
               initialValues={formValues}
               onSubmit={(values: FormValues, { setSubmitting }) => {
-                /*
-                if (setFormValues) {
-                  setFormValues(values)
-                }
-                */
                 if (currentQuestion.type === QuestionType.RESULT) {
                   _handleSubmit()
                   setSubmitting(false)
