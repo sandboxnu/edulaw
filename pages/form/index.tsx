@@ -90,10 +90,6 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const [loaded, setLoaded] = useState(false)
   const { data, status } = useSession()
 
-  useEffect(() => {
-    console.log(currentAnswer)
-  }, [currentAnswer])
-
   if (status === 'unauthenticated') {
     router.push('/signup')
   }
@@ -113,7 +109,6 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
         currentQuestion: currentQuestion,
         currentAnswer: currentAnswer,
       }
-      console.log(body)
       const result = await fetch('/api/form/save', {
         method: 'POST',
         body: JSON.stringify(body),
@@ -217,7 +212,6 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
       return
     }
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
-      console.log('question exists')
       _handleQuestionExists()
     } else {
       const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
