@@ -300,7 +300,6 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
 
   function _handleSubmit(values: FormValues) {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
-    alert(JSON.stringify(values))
     setFormValues(values)
 
     let doc = new jsPDF()
