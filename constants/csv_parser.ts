@@ -151,6 +151,10 @@ const csvToQuestionArray = (fileName: string): Question[] => {
   )
   const idMap = new Map<number, number>()
 
+  questionsArray.sort((question1, question2) =>
+    question1['Text Area 1'].localeCompare(question2['Text Area 1'])
+  )
+
   // this converts each question and answer into their accurate types, but has the inaccurate IDs
   // this also maps the old ids to the new ids, but does not change any IDs
   const wrongIDQuestions = questionsArray.map(
