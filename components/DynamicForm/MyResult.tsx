@@ -3,102 +3,108 @@ import {
   FormAnswer,
   FormContextInterface,
   FormCtx,
+  FormResult,
   FormValues,
 } from '../../utils/FormContext'
-import { answers, AnswersKeys, questions, QuestionsKeys } from '../../models'
-import { QuestionText } from '../FormStyles/QuestionText'
+import { Question } from '../../models'
+import { QuestionsWithBlockText, AnswerText } from '../FormStyles/QuestionText'
 import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
+import { QuestionType } from '../../models/question'
+import QuestionLayout from '../FormStyles/QuestionLayout'
 
+const SingleQuestionResponseDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 interface MyResultProps {
   label: string
-  description?: string
+  questionHistory: Question[]
 }
 
 // translates ID-based results to content-based results
-export function buildResults(formAnswers: {
-  [key: string]: FormAnswer
-}): FormAnswer[] {
-  const questionKeys = Object.keys(formAnswers)
-  const results = questionKeys.map((key) => {
-    const idBasedFormAnswer: FormAnswer = formAnswers[key]
-    const contentBasedFormAnswer: FormAnswer = {
-      questionId: idBasedFormAnswer.questionId,
-      question: questions[parseInt(idBasedFormAnswer.questionId)].question,
-      answerId: idBasedFormAnswer.answerId,
-      answer:
-        questions[parseInt(idBasedFormAnswer.questionId)].answers[
-          parseInt(idBasedFormAnswer.answerId)
-        ].content,
-      userAnswer: idBasedFormAnswer.userAnswer ?? undefined,
-    }
-    return contentBasedFormAnswer
-  })
+export function buildResults(
+  formAnswers: { [key: number]: FormAnswer },
+  questionHistory: Question[]
+): FormResult[] {
+  // const questionKeys = Object.keys(formAnswers)
+  const results = questionHistory.reduce(
+    (results: FormResult[], curQuestion) => {
+      const curFormAns = formAnswers[curQuestion.id]
+      // filter out everything but type TEXT
+      if (
+        curFormAns === undefined ||
+        curFormAns.type === QuestionType.CONTINUE ||
+        curFormAns.type === QuestionType.RADIO
+      )
+        return results
 
+      const contentBasedFormAnswer: FormResult = {
+        answer: undefined,
+        question: _filterQuotes(curQuestion.question),
+        formAnswer: curFormAns,
+      }
+      results.push(contentBasedFormAnswer)
+      return results
+    },
+    []
+  )
   return results
+}
+
+// returns anything between the "" of a string
+function _filterQuotes(question: string): string {
+  const first = question.indexOf('"')
+  const start = first + 1
+  const second = question.substring(start).indexOf('"')
+  return question.substring(start, start + second)
 }
 
 // updates the form values for the given question in the given context with the contents of the given event
 function _updateTextInputs(
   ctx: FormContextInterface,
-  questionId: string,
-  event: ChangeEvent<HTMLInputElement>
+  questionId: number,
+  updatedUserInput: string
 ) {
   const formValues: FormValues = ctx.formValues
-  const userInput: string = event.target.value
-  formValues.formAnswers[questionId].userAnswer = userInput
+  const currentQuestion = formValues.formAnswers[questionId]
+  if (currentQuestion.type === QuestionType.TEXT)
+    currentQuestion.userAnswer = updatedUserInput
   if (ctx.updateFormValues) {
     ctx.updateFormValues(formValues)
   }
 }
 
-const HorizontalDiv = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-bottom: 2em;
-  flex-direction: row;
-`
-export const MyResult: React.FC<MyResultProps> = ({
-  ...props
-}): JSX.Element => {
+export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   const ctx = useContext(FormCtx)
-  const formAnswers = ctx.formValues.formAnswers
-  const results = buildResults(formAnswers).map((key) => {
+  const results = buildResults(
+    ctx.formValues.formAnswers,
+    props.questionHistory
+  ).map(({ formAnswer, question, answer }) => {
     function _onChange(event: ChangeEvent<HTMLInputElement>) {
-      _updateTextInputs(ctx, key.questionId, event)
+      _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
     }
 
     return (
-      <div key={key.questionId}>
-        <HorizontalDiv>
-          <QuestionText>{key.question}</QuestionText>
-          <QuestionText>{key.answer}</QuestionText>
-        </HorizontalDiv>
+      <div key={formAnswer.questionId}>
+        <SingleQuestionResponseDiv>
+          <QuestionsWithBlockText questionText={question} />
+          <AnswerText>{answer}</AnswerText>
+        </SingleQuestionResponseDiv>
 
-        {/*<p>{key.question}</p>*/}
-        {/*<p>{key.answer}</p>*/}
-        {key.userAnswer ? (
+        {formAnswer.type == QuestionType.TEXT ? (
           <StyledTextInput
-            name={key.userAnswer}
+            name={formAnswer.userAnswer}
             className="text-input"
-            defaultValue={key.userAnswer}
+            defaultValue={formAnswer.userAnswer}
             onChange={_onChange}
-            width="500px"
-            height="64px"
+            width={300}
+            height={42}
           />
         ) : null}
       </div>
     )
   })
 
-  return (
-    <div>
-      {results}
-      <br />
-      <QuestionText>{props.label}</QuestionText>
-      {props.description ? <p>{props.description}</p> : null}
-      <br />
-      <br />
-    </div>
-  )
+  return <QuestionLayout results={results} questionText="" input={<div />} />
 }

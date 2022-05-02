@@ -1,52 +1,73 @@
 import React, { ChangeEvent } from 'react'
 import { MyTextInput } from './MyInput'
-import { Question, Answer, AnswersKeys, answers } from '../../models'
+import { Question, Answer } from '../../models'
 import { MyRadio } from './MyRadio'
 import { MyResult } from './MyResult'
 import { FormAnswer } from '../../utils/FormContext'
+import MyContinue from './MyContinue'
+import { QuestionType } from '../../models/question'
 
 interface ChooseFormTypeProps {
   question: Question
-  onChange: (event: ChangeEvent<HTMLInputElement>, isUserInput: boolean) => void
-  answers: FormAnswer
+  onChange: (formAnswer: FormAnswer) => void
+  answer?: FormAnswer
+  questionHistory: Question[]
 }
 
-export const ChooseFormType: React.FC<ChooseFormTypeProps> = ({
-  ...props
-}): JSX.Element => {
+export const ChooseFormType: React.FC<ChooseFormTypeProps> = (
+  props
+): JSX.Element => {
+  const { answer } = props
   const answerChoices: Answer[] = props.question.answers
-
   switch (props.question.type) {
-    case 'RADIO': {
+    case QuestionType.RADIO: {
       return (
         <MyRadio
           name={props.question.id.toString()}
           label={props.question.question}
           options={answerChoices}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(event, false)
+            props.onChange({
+              questionId: parseInt(event.target.name),
+              type: QuestionType.RADIO,
+              answerId: parseInt(event.target.value),
+            })
           }
-          ans={props.answers}
+          ans={answer?.type === QuestionType.RADIO ? answer : undefined}
+          tooltip={props.question.tooltip}
         />
       )
     }
-    case 'TEXT': {
+    case QuestionType.TEXT: {
       return (
         <MyTextInput
           name={props.question.id.toString()}
           label={props.question.question}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            props.onChange(event, true)
+            props.onChange({
+              questionId: parseInt(event.target.name),
+              type: QuestionType.TEXT,
+              userAnswer: event.target.value,
+            })
           }
-          ans={props.answers}
+          ans={answer?.type === QuestionType.TEXT ? answer : undefined}
+          tooltip={props.question.tooltip}
         />
       )
     }
-    case 'RESULT': {
+    case QuestionType.RESULT: {
+      return <MyResult label={props.question.question} {...props} />
+    }
+    case QuestionType.CONTINUE: {
       return (
-        <MyResult
+        <MyContinue
           label={props.question.question}
-          description={props.question.description}
+          onMount={() =>
+            props.onChange({
+              questionId: props.question.id,
+              type: QuestionType.CONTINUE,
+            })
+          }
         />
       )
     }

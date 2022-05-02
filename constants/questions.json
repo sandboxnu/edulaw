@@ -26,7 +26,7 @@
       },
       {
         "content": "No",
-        "route": 3
+        "route": 6
       }
     ]
   },
@@ -43,7 +43,11 @@
         "content": "Yes",
         "route": 5
       }
-    ]
+    ],
+    "tooltip": {
+      "tooltipText": "Do younger siblings count?",
+      "tooltipHoveredText": "Younger siblings do not count."
+    }
   },
   {
     "id": 3,
@@ -67,5 +71,15 @@
     "question": "You are an animal lover",
     "type": "RESULT",
     "answers": []
+  },
+  {
+    "id": 6,
+    "question": "You should love animals.",
+    "type": "CONTINUE",
+    "answers": [
+      {
+        "route": 3
+      }
+    ]
   }
 ]

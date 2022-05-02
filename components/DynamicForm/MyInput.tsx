@@ -1,8 +1,6 @@
 import { FieldHookConfig, useField } from 'formik'
 import React, { ChangeEvent } from 'react'
-import { answers } from '../../constants'
-import { FormAnswer } from '../../utils/FormContext'
-import { QuestionText } from '../FormStyles/QuestionText'
+import { TextFormAnswer } from '../../utils/FormContext'
 import QuestionLayout from '../FormStyles/QuestionLayout'
 import { StyledTextInput } from '../FormStyles/InputBox'
 
@@ -10,30 +8,27 @@ interface InputProps {
   name: string
   label: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  ans: FormAnswer
+  ans?: TextFormAnswer
+  tooltip?: { tooltipText: string; tooltipHoveredText: string }
 }
 
-export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = ({
-  ...props
-}) => {
+export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
+  props
+) => {
   const [field, meta] = useField(props)
   return (
     <div key={props.name}>
       <QuestionLayout
-        questionText={
-          <QuestionText>
-            {' '}
-            {/*htmlFor={`${props.id}-${props.name}`}*/} {props.label}
-          </QuestionText>
-        }
+        questionText={props.label}
+        tooltip={props.tooltip}
         input={
           <StyledTextInput
             type="text"
             {...field}
             onChange={props.onChange}
-            defaultValue={props.ans?.userAnswer ? props.ans.userAnswer : ''}
-            width="500px"
-            height="54px"
+            defaultValue={props.ans?.userAnswer || ''}
+            width={300}
+            height={42}
           />
         }
       />

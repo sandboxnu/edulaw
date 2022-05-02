@@ -1,16 +1,18 @@
 import { Answer } from './answer'
-import { questions } from '../constants'
 
-type Questions = Array<Question>
-const typedQuestions = questions as Questions
+export enum QuestionType {
+  RESULT = 'RESULT',
+  CONTINUE = 'CONTINUE',
+  RADIO = 'RADIO',
+  TEXT = 'TEXT',
+}
 
-export type QuestionsKeys = keyof Questions
 export interface Question {
   id: number
   question: string
   description?: string
-  type: string
+  type: QuestionType
   answers: Answer[]
+  tooltip?: { tooltipText: string; tooltipHoveredText: string }
+  section: string
 }
-
-export { typedQuestions as questions }
