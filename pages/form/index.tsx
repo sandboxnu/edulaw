@@ -29,6 +29,7 @@ import {
   NextEndButton,
   HorizontalBox,
 } from '../../components/FormStyles/ExtraStyles'
+import { handleBreakpoints } from '@mui/system'
 
 const Main = styled.div`
   display: flex;
@@ -80,12 +81,18 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const startingQuestion: Question = questions[0]
   const router = useRouter()
   const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
-  const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
+  const [currentQuestion, setCurrentQuestion] = useState({
+    ...startingQuestion,
+  })
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const { data, status } = useSession()
+
+  useEffect(() => {
+    console.log(currentAnswer)
+  }, [currentAnswer])
 
   if (status === 'unauthenticated') {
     router.push('/signup')
@@ -171,7 +178,28 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
     if (formValues.formAnswers[nextQuestion.id]) {
       setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
     } else {
-      setCurrentAnswer(formValues.formAnswers[-1])
+      switch (nextQuestion.type) {
+        case QuestionType.CONTINUE:
+          setCurrentAnswer({
+            questionId: nextQuestion.id,
+            type: QuestionType.CONTINUE,
+          })
+          break
+        case QuestionType.RADIO:
+          setCurrentAnswer({
+            questionId: nextQuestion.id,
+            type: QuestionType.RADIO,
+            answerId: -1,
+          })
+          break
+        case QuestionType.TEXT:
+          setCurrentAnswer({
+            questionId: nextQuestion.id,
+            type: QuestionType.TEXT,
+            userAnswer: '',
+          })
+          break
+      }
     }
   }
 
@@ -180,10 +208,16 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
    */
   function _handleNext() {
     // if the question is not answered, don't let the user continue
-    if (!currentAnswer || currentAnswer.questionId !== currentQuestion.id) {
+    if (
+      !currentAnswer ||
+      currentAnswer.questionId !== currentQuestion.id ||
+      (currentAnswer.type === QuestionType.RADIO &&
+        currentAnswer.answerId === -1)
+    ) {
       return
     }
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
+      console.log('question exists')
       _handleQuestionExists()
     } else {
       const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
@@ -215,7 +249,7 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
         }
       }
       setFormValues(newFormValues)
-      const questionSlice = questionHistory.slice(0, currentIndex)
+      const questionSlice = questionHistory.slice(0, currentIndex + 1)
       setQuestionHistory([...questionSlice, nextQuestion])
     }
     _handleQuestionChange(nextQuestion)
@@ -227,7 +261,7 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
       const prevQuestion = questionHistory[currentIndex - 1]
       if (
         currentQuestion.type !== QuestionType.RESULT &&
-        currentQuestion.id === currentAnswer.questionId
+        currentQuestion.id === currentAnswer?.questionId
       ) {
         setFormValues({
           formAnswers: {
@@ -288,12 +322,46 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
         <SideProgressBar />
         {!loaded ? null : (
           <FormCtx.Provider value={{ formValues, setFormValues }}>
+            <button
+              onClick={() => {
+                setFormValues({ formAnswers: {} })
+                setCurrentQuestion(startingQuestion)
+                switch (startingQuestion.type) {
+                  case QuestionType.CONTINUE:
+                    setCurrentAnswer({
+                      questionId: startingQuestion.id,
+                      type: QuestionType.CONTINUE,
+                    })
+                    break
+                  case QuestionType.RADIO:
+                    setCurrentAnswer({
+                      questionId: startingQuestion.id,
+                      type: QuestionType.RADIO,
+                      answerId: -1,
+                    })
+                    break
+                  case QuestionType.TEXT:
+                    setCurrentAnswer({
+                      questionId: startingQuestion.id,
+                      type: QuestionType.TEXT,
+                      userAnswer: '',
+                    })
+                    break
+                }
+                setQuestionHistory([startingQuestion])
+                setCurrentIndex(0)
+              }}
+            >
+              nuke it all
+            </button>
             <Formik
               initialValues={formValues}
               onSubmit={(values: FormValues, { setSubmitting }) => {
+                /*
                 if (setFormValues) {
                   setFormValues(values)
                 }
+                */
                 _handleNext()
                 if (currentQuestion.type === QuestionType.RESULT) {
                   _handleSubmit(values)

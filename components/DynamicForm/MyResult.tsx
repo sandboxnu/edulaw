@@ -49,6 +49,7 @@ export function buildResults(
     },
     []
   )
+  console.log(results)
   return results
 }
 
