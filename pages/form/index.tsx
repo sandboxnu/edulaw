@@ -221,8 +221,8 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
       _handleQuestionExists()
     } else {
       const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
-      setQuestionHistory([...questionHistory, nextQuestion])
       _handleQuestionChange(nextQuestion)
+      setQuestionHistory([...questionHistory, nextQuestion])
     }
     setCurrentIndex(currentIndex + 1)
   }
@@ -270,8 +270,8 @@ const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
           },
         })
       }
-      setCurrentAnswer(formValues.formAnswers[prevQuestion.id])
       setCurrentQuestion(prevQuestion)
+      setCurrentAnswer(formValues.formAnswers[prevQuestion.id])
       setCurrentIndex(currentIndex - 1)
     }
   }
