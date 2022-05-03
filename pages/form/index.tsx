@@ -1,5 +1,4 @@
 import { Question } from '../../models'
-import { Form, Formik } from 'formik'
 import React, { useContext, useState } from 'react'
 import {
   FormAnswer,
@@ -8,63 +7,21 @@ import {
   FormValues,
 } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
-import NavBar from '../../components/Critical/NavBar'
 import styled from 'styled-components'
-import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
-import { CUTOFFS } from '../../constants/responsive'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
 import { QuestionType } from '../../models/question'
-import {
-  BottomButtonBar,
-  ButtonContainer,
-  BackButton,
-  NextEndButton,
-} from '../../components/FormStyles/BottomBar'
+import { FormTemplate } from './FormTemplate'
 
 let startingAnswer: FormAnswer
 
-const Main = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  align-items: stretch;
-`
-const FormContentWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
-const QuestionDisplayWrapper = styled.div`
-  padding-left: 10%;
-  margin-top: 64px;
-`
-const HorizontalBox = styled.div`
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  flex-direction: row;
-  height: 100%;
-  justify-content: center;
-  @media (max-width: ${CUTOFFS.mobile}px) {
-    flex-direction: column;
-    justify-content: start;
-  }
-`
 export const TitleText = styled.h1`
   font-size: 26px;
   margin-bottom: 20px;
   font-family: Source Sans Pro;
 `
-const FormStyled = styled(Form)`
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-`
-
 const files = {
   animalForm: '../../../constants/Animal Form.csv',
   actualForm: '../../../constants/EdLaw Combined Flowchart.csv',
@@ -205,52 +162,39 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     doc.save('PRS_Complaint.pdf')
   }
 
+  const onSubmit = (
+    values: FormValues,
+    { setSubmitting }: { setSubmitting: (submit: boolean) => void }
+  ) => {
+    if (updateFormValues) {
+      updateFormValues(values)
+    }
+    _handleNext()
+    if (currentQuestion.type === QuestionType.RESULT) {
+      _handleSubmit(values)
+      setSubmitting(false)
+    }
+  }
+
   return (
-    <Main>
-      <NavBar />
-      <HorizontalBox>
-        <SideProgressBar />
-        <Formik
-          initialValues={formValues}
-          onSubmit={(values: FormValues, { setSubmitting }) => {
-            if (updateFormValues) {
-              updateFormValues(values)
-            }
-            _handleNext()
-            if (currentQuestion.type === QuestionType.RESULT) {
-              _handleSubmit(values)
-              setSubmitting(false)
-            }
-          }}
-        >
-          <FormStyled>
-            <FormContentWrapper>
-              <QuestionDisplayWrapper>
-                <TitleText>{currentQuestion.section}</TitleText>
-                <ChooseFormType
-                  question={currentQuestion}
-                  onChange={setCurrentAnswer}
-                  answer={formValues.formAnswers[currentQuestion.id]}
-                  questionHistory={questionHistory}
-                />
-              </QuestionDisplayWrapper>
-              <BottomButtonBar>
-                <ButtonContainer>
-                  <BackButton type="button" onClick={() => _handleBack()}>
-                    Back
-                  </BackButton>
-                  <NextEndButton type="submit">
-                    {currentQuestion.type === QuestionType.RESULT
-                      ? 'End'
-                      : 'Next'}
-                  </NextEndButton>
-                </ButtonContainer>
-              </BottomButtonBar>
-            </FormContentWrapper>
-          </FormStyled>
-        </Formik>
-      </HorizontalBox>
-    </Main>
+    <FormTemplate
+      onBack={_handleBack}
+      onSubmit={onSubmit}
+      nextButtonText={
+        currentQuestion.type === QuestionType.RESULT ? 'End' : 'Next'
+      }
+      initialValues={formValues}
+    >
+      <>
+        <TitleText>{currentQuestion.section}</TitleText>
+        <ChooseFormType
+          question={currentQuestion}
+          onChange={setCurrentAnswer}
+          answer={formValues.formAnswers[currentQuestion.id]}
+          questionHistory={questionHistory}
+        />
+      </>
+    </FormTemplate>
   )
 }
 
