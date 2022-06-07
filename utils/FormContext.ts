@@ -3,7 +3,7 @@ import { QuestionType } from '../models/question'
 
 export interface FormValues {
   formAnswers: {
-    [key: string]: FormAnswer
+    [key: number]: FormAnswer
   }
 }
 
@@ -38,7 +38,7 @@ export interface FormResult {
 // Interface has two parts
 export interface FormContextInterface {
   formValues: FormValues
-  updateFormValues?: (formValues: FormValues) => void
+  setFormValues?: React.Dispatch<React.SetStateAction<FormValues>>
 }
 
 export const emptyFormValues: FormValues = { formAnswers: {} }

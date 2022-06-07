@@ -12,6 +12,7 @@ export default NextAuth({
   providers: [
     CredentialProvider({
       name: 'Credentials',
+      id: 'credentials',
       credentials: {
         username: { label: 'Email', type: 'text', placeholder: '@example.com' },
         password: { label: 'Password', type: 'password' },
@@ -20,7 +21,8 @@ export default NextAuth({
         if (!credentials) throw new Error('no credentials provided')
         const client = await dbConnect()
         if (!client) {
-          return null
+          console.log('no client')
+          return { name: 'Internal Server Error' }
         }
         const existingUser = await client.db().collection('user').findOne({
           username: credentials.username,
@@ -31,11 +33,28 @@ export default NextAuth({
           return { id: existingUser._id }
         } else {
           client?.close()
-          throw new Error('User does not exist')
+          return { name: 'Invalid Credentials' }
         }
       },
     }),
   ],
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (session.user) {
+        session.user.id = token.uid
+      }
+      return session
+    },
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.uid = user.id
+      }
+      return token
+    },
+  },
+  pages: {
+    signIn: '/signin',
+  },
 })
 
 const signinUser = async (user: WithId<Document>, pwd: string) => {

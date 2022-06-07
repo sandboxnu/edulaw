@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext } from 'react'
+import React, { ChangeEvent, useContext } from 'react'
 import {
   FormAnswer,
   FormContextInterface,
@@ -12,6 +12,7 @@ import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { QuestionType } from '../../models/question'
 import QuestionLayout from '../FormStyles/QuestionLayout'
+import { FieldHookConfig, useField } from 'formik'
 
 const SingleQuestionResponseDiv = styled.div`
   display: flex;
@@ -24,13 +25,13 @@ interface MyResultProps {
 
 // translates ID-based results to content-based results
 export function buildResults(
-  formAnswers: { [key: number]: FormAnswer },
+  formValues: FormValues,
   questionHistory: Question[]
 ): FormResult[] {
   // const questionKeys = Object.keys(formAnswers)
   const results = questionHistory.reduce(
     (results: FormResult[], curQuestion) => {
-      const curFormAns = formAnswers[curQuestion.id]
+      const curFormAns = formValues.formAnswers[curQuestion.id]
       // filter out everything but type TEXT
       if (
         curFormAns === undefined ||
@@ -67,44 +68,58 @@ function _updateTextInputs(
   updatedUserInput: string
 ) {
   const formValues: FormValues = ctx.formValues
-  const currentQuestion = formValues.formAnswers[questionId]
-  if (currentQuestion.type === QuestionType.TEXT)
-    currentQuestion.userAnswer = updatedUserInput
-  if (ctx.updateFormValues) {
-    ctx.updateFormValues(formValues)
+  if (
+    ctx.setFormValues &&
+    formValues.formAnswers[questionId].type === QuestionType.TEXT
+  ) {
+    ctx.setFormValues({
+      formAnswers: {
+        ...formValues.formAnswers,
+        [questionId]: {
+          questionId: questionId,
+          type: QuestionType.TEXT,
+          userAnswer: updatedUserInput,
+        },
+      },
+    })
   }
 }
 
 export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   const ctx = useContext(FormCtx)
-  const results = buildResults(
-    ctx.formValues.formAnswers,
-    props.questionHistory
-  ).map(({ formAnswer, question, answer }) => {
-    function _onChange(event: ChangeEvent<HTMLInputElement>) {
-      _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
+  const results = buildResults(ctx.formValues, props.questionHistory).map(
+    ({ formAnswer, question, answer }) => {
+      function _onChange(event: ChangeEvent<HTMLInputElement>) {
+        _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
+      }
+
+      return (
+        <div key={formAnswer.questionId}>
+          <SingleQuestionResponseDiv>
+            <QuestionsWithBlockText questionText={question} />
+            <AnswerText>{answer}</AnswerText>
+          </SingleQuestionResponseDiv>
+
+          {formAnswer.type == QuestionType.TEXT ? (
+            <StyledTextInput
+              name={formAnswer.userAnswer}
+              className="text-input"
+              defaultValue={formAnswer.userAnswer}
+              onChange={_onChange}
+              width={300}
+              height={42}
+            />
+          ) : null}
+        </div>
+      )
     }
+  )
 
-    return (
-      <div key={formAnswer.questionId}>
-        <SingleQuestionResponseDiv>
-          <QuestionsWithBlockText questionText={question} />
-          <AnswerText>{answer}</AnswerText>
-        </SingleQuestionResponseDiv>
-
-        {formAnswer.type == QuestionType.TEXT ? (
-          <StyledTextInput
-            name={formAnswer.userAnswer}
-            className="text-input"
-            defaultValue={formAnswer.userAnswer}
-            onChange={_onChange}
-            width={300}
-            height={42}
-          />
-        ) : null}
-      </div>
-    )
-  })
-
-  return <QuestionLayout results={results} questionText="" input={<div />} />
+  return (
+    <QuestionLayout
+      results={results}
+      questionText={results.length === 0 ? 'No violations identified' : ''}
+      input={<div />}
+    />
+  )
 }

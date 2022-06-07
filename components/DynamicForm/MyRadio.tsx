@@ -1,5 +1,5 @@
 import { FieldHookConfig, useField } from 'formik'
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, useEffect } from 'react'
 import { Answer } from '../../models'
 import { RadioFormAnswer } from '../../utils/FormContext'
 import {
@@ -13,7 +13,8 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import styled from 'styled-components'
 
-const StyledRadioText = styled.body`
+const StyledRadioText = styled.span`
+  display: flex;
   font-size: 14px;
 `
 
@@ -79,9 +80,13 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = (
     return options.every(({ content }) => content && content.length < 10) ? (
       <>{options.map(renderButtonRadio)}</>
     ) : (
-      <RadioGroup style={{ gap: 8 }} defaultValue={ans && ans.answerId}>
+      <RadioGroup
+        style={{ gap: 8 }}
+        defaultValue={ans && ans.answerId}
+        onChange={onChange}
+      >
         {/* Reverse is called here so that y */}
-        {options.slice().reverse().map(renderLongRadio)}
+        {options.map(renderLongRadio).reverse()}
       </RadioGroup>
     )
   }
