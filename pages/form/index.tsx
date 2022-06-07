@@ -1,13 +1,15 @@
 import { Question } from '../../models'
 import { Form, Formik } from 'formik'
-import React, { useContext, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
+  emptyFormValues,
   FormAnswer,
   FormCtx,
   FormResult,
   FormValues,
 } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
+import { Button } from '../../components/FormStyles/Button'
 import NavBar from '../../components/Critical/NavBar'
 import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
@@ -15,6 +17,10 @@ import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
+import { FormAnswerDB } from '../api/form/save'
+import _ from 'lodash'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
 import {
   BottomButtonBar,
@@ -23,8 +29,7 @@ import {
   NextEndButton,
   HorizontalBox,
 } from '../../components/FormStyles/ExtraStyles'
-
-let startingAnswer: FormAnswer
+import { handleBreakpoints } from '@mui/system'
 
 const Main = styled.div`
   display: flex;
@@ -32,6 +37,7 @@ const Main = styled.div`
   height: 100vh;
   align-items: stretch;
 `
+
 const FormContentWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -69,15 +75,79 @@ export const getStaticProps: GetStaticProps = (context) => {
   }
 }
 
-const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
+let startingAnswer: FormAnswer
+
+const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
   const startingQuestion: Question = questions[0]
-
-  const { formValues, updateFormValues } = useContext(FormCtx)
-
-  const [currentQuestion, setCurrentQuestion] = useState(startingQuestion)
+  const router = useRouter()
+  const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
+  const [currentQuestion, setCurrentQuestion] = useState({
+    ...startingQuestion,
+  })
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [questionHistory, setQuestionHistory] = useState([startingQuestion])
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+  const { data, status } = useSession()
+
+  if (status === 'unauthenticated') {
+    router.push('/signup')
+  }
+
+  // For saving values to the database
+  useEffect(() => {
+    const save = async () => {
+      if (!data?.user?.id) {
+        return
+      }
+      const userID = data.user.id
+      const body: Omit<FormAnswerDB, '_id'> = {
+        userID: userID,
+        formValues: formValues,
+        questionHistory: questionHistory,
+        currentIndex: currentIndex,
+        currentQuestion: currentQuestion,
+        currentAnswer: currentAnswer,
+      }
+      const result = await fetch('/api/form/save', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      })
+      const resBody = await result.json()
+      if (result.status !== 200) {
+        console.error(resBody.error)
+      }
+    }
+    if (loaded) {
+      save()
+    }
+  }, [currentIndex])
+
+  //For retrieving values from the database(only runs once)
+  useEffect(() => {
+    const retrieve = async () => {
+      if (!data?.user?.id) {
+        return
+      }
+      const userID = data.user.id
+      const result = await fetch(`/api/form/retrieve?userID=${userID}`)
+      const body = await result.json()
+      if (result.status !== 200) {
+        console.error(body.error)
+      } else {
+        const typedBody = body as FormAnswerDB
+        setQuestionHistory(typedBody.questionHistory)
+        setFormValues(typedBody.formValues)
+        setCurrentQuestion(typedBody.currentQuestion)
+        setCurrentAnswer(typedBody.currentAnswer)
+        setCurrentIndex(typedBody.currentIndex)
+      }
+      setLoaded(true)
+    }
+    if (!loaded) {
+      retrieve()
+    }
+  }, [data])
 
   /**
    * Returns the next question based on whether or not current question is a radio, continue, or text,
@@ -92,11 +162,52 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
   /**
    * Handles changing the old question to the given question
    */
-  function _handleQuestionChange(nextQuestion: Question) {
-    formValues.formAnswers[currentQuestion.id] = currentAnswer
+  function _handleQuestionChange(
+    nextQuestion: Question,
+    newFormValues?: FormValues
+  ) {
+    if (newFormValues) {
+      setFormValues({
+        formAnswers: {
+          ...newFormValues.formAnswers,
+          [currentQuestion.id]: currentAnswer,
+        },
+      })
+    } else {
+      setFormValues({
+        formAnswers: {
+          ...formValues.formAnswers,
+          [currentQuestion.id]: currentAnswer,
+        },
+      })
+    }
+
     setCurrentQuestion(nextQuestion)
     if (formValues.formAnswers[nextQuestion.id]) {
       setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+    } else {
+      switch (nextQuestion.type) {
+        case QuestionType.CONTINUE:
+          setCurrentAnswer({
+            questionId: nextQuestion.id,
+            type: QuestionType.CONTINUE,
+          })
+          break
+        case QuestionType.RADIO:
+          setCurrentAnswer({
+            questionId: nextQuestion.id,
+            type: QuestionType.RADIO,
+            answerId: -1,
+          })
+          break
+        case QuestionType.TEXT:
+          setCurrentAnswer({
+            questionId: nextQuestion.id,
+            type: QuestionType.TEXT,
+            userAnswer: '',
+          })
+          break
+      }
     }
   }
 
@@ -105,15 +216,20 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
    */
   function _handleNext() {
     // if the question is not answered, don't let the user continue
-    if (!currentAnswer || currentAnswer.questionId !== currentQuestion.id) {
+    if (
+      !currentAnswer ||
+      currentAnswer.questionId !== currentQuestion.id ||
+      (currentAnswer.type === QuestionType.RADIO &&
+        currentAnswer.answerId === -1)
+    ) {
       return
     }
     if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
       _handleQuestionExists()
     } else {
       const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
-      setQuestionHistory([...questionHistory, nextQuestion])
       _handleQuestionChange(nextQuestion)
+      setQuestionHistory([...questionHistory, nextQuestion])
     }
     setCurrentIndex(currentIndex + 1)
   }
@@ -123,31 +239,43 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
    */
   function _handleQuestionExists() {
     const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
-    const nextAnswer = formValues.formAnswers[currentQuestion.id]
+    const oldAnswer = formValues.formAnswers[currentQuestion.id]
+    let newFormValues = { ...formValues }
     // if the exisitng question is a radio, and they're not the same answer
     if (
-      nextAnswer.type === QuestionType.RADIO &&
+      oldAnswer.type === QuestionType.RADIO &&
       currentAnswer.type === QuestionType.RADIO &&
-      nextAnswer.answerId !== currentAnswer.answerId
+      oldAnswer.answerId !== currentAnswer.answerId
     ) {
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
-        delete formValues.formAnswers[questionHistory[i].id]
+        newFormValues = {
+          formAnswers: _.omit(newFormValues.formAnswers, questionHistory[i].id),
+        }
       }
+      setFormValues(newFormValues)
       const questionSlice = questionHistory.slice(0, currentIndex + 1)
       setQuestionHistory([...questionSlice, nextQuestion])
     }
-    _handleQuestionChange(nextQuestion)
+    _handleQuestionChange(nextQuestion, newFormValues)
   }
 
   function _handleBack() {
     // TODO: in redesign, if we disable the back button on the first question, we can get rid of this check
     if (currentIndex !== 0) {
       const prevQuestion = questionHistory[currentIndex - 1]
-      if (currentQuestion.id === currentAnswer.questionId) {
-        formValues.formAnswers[currentQuestion.id] = currentAnswer
-        setCurrentAnswer(formValues.formAnswers[prevQuestion.id])
+      if (
+        currentQuestion.type !== QuestionType.RESULT &&
+        currentQuestion.id === currentAnswer?.questionId
+      ) {
+        setFormValues({
+          formAnswers: {
+            ...formValues.formAnswers,
+            [currentQuestion.id]: currentAnswer,
+          },
+        })
       }
       setCurrentQuestion(prevQuestion)
+      setCurrentAnswer(formValues.formAnswers[prevQuestion.id])
       setCurrentIndex(currentIndex - 1)
     }
   }
@@ -180,16 +308,15 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
     return doc
   }
 
-  function _handleSubmit(values: FormValues) {
+  function _handleSubmit() {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
-    if (updateFormValues) {
-      updateFormValues(values)
-    }
 
     let doc = new jsPDF()
-    const results = buildResults(values.formAnswers, questions)
-    doc = _buildDoc(doc, results)
-    doc.save('PRS_Complaint.pdf')
+    const results = buildResults(formValues, questions)
+    if (results.length > 0) {
+      doc = _buildDoc(doc, results)
+      doc.save('PRS_Complaint.pdf')
+    }
   }
 
   return (
@@ -197,48 +324,50 @@ const DynamicPOC: React.FC<{ questions: Question[] }> = ({ questions }) => {
       <NavBar />
       <HorizontalBox>
         <SideProgressBar />
-        <Formik
-          initialValues={formValues}
-          onSubmit={(values: FormValues, { setSubmitting }) => {
-            if (updateFormValues) {
-              updateFormValues(values)
-            }
-            _handleNext()
-            if (currentQuestion.type === QuestionType.RESULT) {
-              _handleSubmit(values)
-              setSubmitting(false)
-            }
-          }}
-        >
-          <FormStyled>
-            <FormContentWrapper>
-              <QuestionDisplayWrapper>
-                <TitleText>{currentQuestion.section}</TitleText>
-                <ChooseFormType
-                  question={currentQuestion}
-                  onChange={setCurrentAnswer}
-                  answer={formValues.formAnswers[currentQuestion.id]}
-                  questionHistory={questionHistory}
-                />
-              </QuestionDisplayWrapper>
-              <BottomButtonBar>
-                <ButtonContainer>
-                  <BackButton type="button" onClick={() => _handleBack()}>
-                    Back
-                  </BackButton>
-                  <NextEndButton type="submit">
-                    {currentQuestion.type === QuestionType.RESULT
-                      ? 'End'
-                      : 'Next'}
-                  </NextEndButton>
-                </ButtonContainer>
-              </BottomButtonBar>
-            </FormContentWrapper>
-          </FormStyled>
-        </Formik>
+        {!loaded ? null : (
+          <FormCtx.Provider value={{ formValues, setFormValues }}>
+            <Formik
+              initialValues={formValues}
+              onSubmit={(values: FormValues, { setSubmitting }) => {
+                if (currentQuestion.type === QuestionType.RESULT) {
+                  _handleSubmit()
+                  setSubmitting(false)
+                } else {
+                  _handleNext()
+                }
+              }}
+            >
+              <FormStyled>
+                <FormContentWrapper>
+                  <QuestionDisplayWrapper>
+                    <TitleText>{currentQuestion.section}</TitleText>
+                    <ChooseFormType
+                      question={currentQuestion}
+                      onChange={setCurrentAnswer}
+                      answer={formValues.formAnswers[currentQuestion.id]}
+                      questionHistory={questionHistory}
+                    />
+                  </QuestionDisplayWrapper>
+                  <BottomButtonBar>
+                    <ButtonContainer>
+                      <BackButton type="button" onClick={() => _handleBack()}>
+                        Back
+                      </BackButton>
+                      <NextEndButton type="submit">
+                        {currentQuestion.type === QuestionType.RESULT
+                          ? 'End'
+                          : 'Next'}
+                      </NextEndButton>
+                    </ButtonContainer>
+                  </BottomButtonBar>
+                </FormContentWrapper>
+              </FormStyled>
+            </Formik>
+          </FormCtx.Provider>
+        )}
       </HorizontalBox>
     </Main>
   )
 }
 
-export default DynamicPOC
+export default DynamicForm

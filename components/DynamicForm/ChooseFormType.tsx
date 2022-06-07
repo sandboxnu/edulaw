@@ -3,13 +3,13 @@ import { MyTextInput } from './MyInput'
 import { Question, Answer } from '../../models'
 import { MyRadio } from './MyRadio'
 import { MyResult } from './MyResult'
-import { FormAnswer } from '../../utils/FormContext'
+import { FormAnswer, FormValues } from '../../utils/FormContext'
 import MyContinue from './MyContinue'
 import { QuestionType } from '../../models/question'
 
 interface ChooseFormTypeProps {
   question: Question
-  onChange: (formAnswer: FormAnswer) => void
+  onChange: React.Dispatch<React.SetStateAction<FormAnswer>>
   answer?: FormAnswer
   questionHistory: Question[]
 }
