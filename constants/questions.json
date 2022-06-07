@@ -1,85 +1,125 @@
 [
   {
-    "id": 0,
-    "question": "Do you like dogs?",
-    "description": "This is an optional description of the dog question",
-    "type": "RADIO",
-    "answers": [
+    "answers":[
       {
-        "content": "No",
-        "route": 1
+        "content":"No",
+        "route":6
       },
       {
-        "content": "Yes",
-        "route": 2
-      }
-    ]
-  },
-  {
-    "id": 1,
-    "question": "What about cats?",
-    "type": "RADIO",
-    "answers": [
-      {
-        "content": "Yes",
-        "route": 2
-      },
-      {
-        "content": "No",
-        "route": 6
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "question": "Do you have a pet?",
-    "type": "RADIO",
-    "answers": [
-      {
-        "content": "No",
-        "route": 4
-      },
-      {
-        "content": "Yes",
-        "route": 5
+        "content":"Yes",
+        "route":4
       }
     ],
-    "tooltip": {
-      "tooltipText": "Do younger siblings count?",
-      "tooltipHoveredText": "Younger siblings do not count."
-    }
+    "id":0,
+    "question":"Do you have a pet?",
+    "section":"Pet Lover Section",
+    "tooltip":{
+      "tooltipHoveredText":"No, younger siblings do not count.",
+      "tooltipText":"Do younger siblings count?"
+    },
+    "type":"RADIO"
   },
   {
-    "id": 3,
-    "question": "Why don't you like dogs or cats?",
-    "description": "Tell us about your feelings or whatever",
-    "type": "TEXT",
-    "answers": [
+    "answers":[
       {
-        "route": 4
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "question": "You are not a fan of animals",
-    "type": "RESULT",
-    "answers": []
-  },
-  {
-    "id": 5,
-    "question": "You are an animal lover",
-    "type": "RESULT",
-    "answers": []
-  },
-  {
-    "id": 6,
-    "question": "You should love animals.",
-    "type": "CONTINUE",
-    "answers": [
+        "content":"No",
+        "route":6
+      },
       {
-        "route": 3
+        "content":"Yes",
+        "route":5
       }
-    ]
+    ],
+    "id":1,
+    "question":"Do you have a pet?",
+    "section":"Pet Lover Section",
+    "tooltip":{
+      "tooltipHoveredText":"No, younger siblings do not count.",
+      "tooltipText":"Do younger siblings count?"
+    },
+    "type":"RADIO"
+  },
+  {
+    "answers":[
+      {
+        "content":"No",
+        "route":3
+      },
+      {
+        "content":"Yes",
+        "route":0
+      }
+    ],
+    "id":2,
+    "question":"Do you like dogs?",
+    "section":"Pet Lover Section",
+    "type":"RADIO"
+  },
+  {
+    "answers":[
+      {
+        "content":"I do not like cats.",
+        "route":8
+      },
+      {
+        "content":"I like cats!",
+        "route":0
+      }
+    ],
+    "id":3,
+    "question":"What about cats?",
+    "section":"Pet Lover Section",
+    "type":"RADIO"
+  },
+  {
+    "answers":[
+      
+    ],
+    "id":4,
+    "question":"You are an animal lover!",
+    "section":"Pet Lover Section",
+    "type":"RESULT"
+  },
+  {
+    "answers":[
+      
+    ],
+    "id":5,
+    "question":"You are not a fan of animals.",
+    "section":"Pet Lover Section",
+    "type":"RESULT"
+  },
+  {
+    "answers":[
+      {
+        "route":5
+      }
+    ],
+    "id":6,
+    "question":"You have identified that you don't have a pet. This language will be used: \"I do not have a pet.\"Explain below why you do not have a pet. Are you allergic?",
+    "section":"Pet Lover Section",
+    "type":"TEXT"
+  },
+  {
+    "answers":[
+      {
+        "route":1
+      }
+    ],
+    "id":7,
+    "question":"You identified that you do not like dogs or cats.This language will be used: \"I do not like dogs or cats.\"Explain below why you do not like dogs or cats",
+    "section":"Pet Lover Section",
+    "type":"TEXT"
+  },
+  {
+    "answers":[
+      {
+        "route":7
+      }
+    ],
+    "id":8,
+    "question":"You should love animals.",
+    "section":"Pet Lover Section",
+    "type":"CONTINUE"
   }
 ]

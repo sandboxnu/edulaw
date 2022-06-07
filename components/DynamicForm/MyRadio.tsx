@@ -77,7 +77,7 @@ export const MyRadio: React.FC<MyRadioProps & FieldHookConfig<string>> = (
   }
 
   const renderRadioAnswers = (options: Answer[]) => {
-    return options.some(({ content }) => content && content.length < 10) ? (
+    return options.every(({ content }) => content && content.length < 10) ? (
       <>{options.map(renderButtonRadio)}</>
     ) : (
       <RadioGroup

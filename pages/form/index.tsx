@@ -9,7 +9,6 @@ import {
   FormValues,
 } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
-import { Button } from '../../components/FormStyles/Button'
 import NavBar from '../../components/Critical/NavBar'
 import styled from 'styled-components'
 import SideProgressBar from '../../components/Critical/SideProgressBar'
@@ -29,7 +28,6 @@ import {
   NextEndButton,
   HorizontalBox,
 } from '../../components/FormStyles/ExtraStyles'
-import { handleBreakpoints } from '@mui/system'
 
 const Main = styled.div`
   display: flex;
@@ -65,20 +63,24 @@ const files = {
 }
 
 export const getStaticProps: GetStaticProps = (context) => {
-  const file = files.animalForm
-  const questions = csvToQuestionArray(file)
+  const file = files.actualForm
+  const { questions, startingQuestion } = csvToQuestionArray(file)
 
   return {
     props: {
       questions: questions,
+      startingQuestionIndex: startingQuestion,
     },
   }
 }
 
 let startingAnswer: FormAnswer
 
-const DynamicForm: React.FC<{ questions: Question[] }> = ({ questions }) => {
-  const startingQuestion: Question = questions[0]
+const DynamicForm: React.FC<{
+  questions: Question[]
+  startingQuestionIndex: number
+}> = ({ questions, startingQuestionIndex }) => {
+  const startingQuestion: Question = questions[startingQuestionIndex]
   const router = useRouter()
   const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
   const [currentQuestion, setCurrentQuestion] = useState({
