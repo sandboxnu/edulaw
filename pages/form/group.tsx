@@ -19,6 +19,7 @@ const Group: React.FC = () => {
   ])
   const router = useRouter()
   const { data, status } = useSession()
+  const [loaded, setLoaded] = useState<boolean>(false)
 
   if (status === 'unauthenticated') {
     router.push('/signup')
@@ -46,6 +47,27 @@ const Group: React.FC = () => {
     save()
   }, [checkedArr])
 
+  useEffect(() => {
+    const retrieve = async () => {
+      if (!data?.user?.id) {
+        return
+      }
+      const userID = data.user.id
+      const result = await fetch(`/api/form/group/retrieve?userID=${userID}`)
+      const body = await result.json()
+      if (result.status !== 200) {
+        console.error(body.error)
+      } else {
+        const typedBody = body as GroupDB
+        setCheckedArr(typedBody.specialCircumstances)
+      }
+      setLoaded(true)
+    }
+    if (!loaded) {
+      retrieve()
+    }
+  }, [data])
+
   const handleOnChange = (position: number) => {
     const updatedCheckedArr = [
       ...checkedArr.slice(0, position),
@@ -55,7 +77,9 @@ const Group: React.FC = () => {
     setCheckedArr(updatedCheckedArr)
     console.log(checkedArr)
   }
-  return (
+  return !loaded ? (
+    <p>loading...</p>
+  ) : (
     <div>
       <select>
         <option value="Student">Student</option>
