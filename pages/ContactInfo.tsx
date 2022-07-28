@@ -1,14 +1,8 @@
-import { Form, Formik } from 'formik'
 import { TitleText } from './form'
 import styled from 'styled-components'
 import { QuestionText } from '../components/FormStyles/QuestionText'
 import { StyledTextInput } from '../components/FormStyles/InputBox'
 import { FormTemplate } from './form/FormTemplate'
-
-const ContactPageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 
 const InputRow = styled.div`
   display: flex;
@@ -23,10 +17,23 @@ const FormContainer = styled.div`
   gap: 32px;
 `
 
-const FormWrapper = styled.div`
-  margin-top: 30px;
-`
 function contactInfo() {
+  const allInputFields: [string, string][][] = [
+    [
+      ['First Name', 'firstName'],
+      ['Last Name', 'lastName'],
+    ],
+    [
+      ['Phone', 'phone'],
+      ['Email', 'email'],
+    ],
+    [
+      ['Address', 'address'],
+      ['City', 'city'],
+      ['State', 'state'],
+      ['Zipcode', 'zip'],
+    ],
+  ]
   return (
     <FormTemplate
       initialValues={{
@@ -51,60 +58,19 @@ function contactInfo() {
         below.
       </QuestionText>
       <FormContainer>
-        <InputRow>
-          <StyledTextInput
-            width={330}
-            height={42}
-            placeholder="First Name"
-            name="firstName"
-          />
-          <StyledTextInput
-            width={330}
-            height={42}
-            placeholder="Last Name"
-            name="lastName"
-          />
-        </InputRow>
-        <InputRow>
-          <StyledTextInput
-            width={330}
-            height={42}
-            placeholder="Phone"
-            name="phone"
-          />
-          <StyledTextInput
-            width={330}
-            height={42}
-            placeholder="Email"
-            name="email"
-          />
-        </InputRow>
-        <InputRow>
-          <StyledTextInput
-            width={330}
-            height={42}
-            placeholder="State"
-            name="state"
-          />
-          <StyledTextInput
-            width={330}
-            height={42}
-            placeholder="City"
-            name="city"
-          />
-          <StyledTextInput
-            width={330}
-            height={42}
-            placeholder="Address"
-            name="address"
-          />
-          <StyledTextInput
-            width={330}
-            height={42}
-            placeholder="Zip Code"
-            name="zip"
-          />
-        </InputRow>
+        {allInputFields.map((inputRow) => (
+          <InputRow key={inputRow.toString()}>
+            {inputRow.map((singleInput) => (
+              <StyledTextInput
+                key={singleInput[0]}
+                width={330}
+                height={42}
+                placeholder={singleInput[0]}
+                name={singleInput[1]}
+              />
+            ))}
+          </InputRow>
+        ))}
       </FormContainer>
     </FormTemplate>
   )
