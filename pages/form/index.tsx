@@ -28,6 +28,7 @@ import {
   NextEndButton,
   HorizontalBox,
 } from '../../components/FormStyles/ExtraStyles'
+import { LoadingSpinner } from '../../components/LoadingSpinner'
 
 const Main = styled.div`
   display: flex;
@@ -144,7 +145,7 @@ const DynamicForm: React.FC<{
         setCurrentAnswer(typedBody.currentAnswer)
         setCurrentIndex(typedBody.currentIndex)
       }
-      setLoaded(true)
+      // setLoaded(true)
     }
     if (!loaded) {
       retrieve()
@@ -326,21 +327,24 @@ const DynamicForm: React.FC<{
       <NavBar />
       <HorizontalBox>
         <SideProgressBar />
-        {!loaded ? null : (
-          <FormCtx.Provider value={{ formValues, setFormValues }}>
-            <Formik
-              initialValues={formValues}
-              onSubmit={(values: FormValues, { setSubmitting }) => {
-                if (currentQuestion.type === QuestionType.RESULT) {
-                  _handleSubmit()
-                  setSubmitting(false)
-                } else {
-                  _handleNext()
-                }
-              }}
-            >
-              <FormStyled>
-                <FormContentWrapper>
+
+        <FormCtx.Provider value={{ formValues, setFormValues }}>
+          <Formik
+            initialValues={formValues}
+            onSubmit={(values: FormValues, { setSubmitting }) => {
+              if (currentQuestion.type === QuestionType.RESULT) {
+                _handleSubmit()
+                setSubmitting(false)
+              } else {
+                _handleNext()
+              }
+            }}
+          >
+            <FormStyled>
+              <FormContentWrapper>
+                {!loaded ? (
+                  <LoadingSpinner />
+                ) : (
                   <QuestionDisplayWrapper>
                     <TitleText>{currentQuestion.section}</TitleText>
                     <ChooseFormType
@@ -350,23 +354,23 @@ const DynamicForm: React.FC<{
                       questionHistory={questionHistory}
                     />
                   </QuestionDisplayWrapper>
-                  <BottomButtonBar>
-                    <ButtonContainer>
-                      <BackButton type="button" onClick={() => _handleBack()}>
-                        Back
-                      </BackButton>
-                      <NextEndButton type="submit">
-                        {currentQuestion.type === QuestionType.RESULT
-                          ? 'End'
-                          : 'Next'}
-                      </NextEndButton>
-                    </ButtonContainer>
-                  </BottomButtonBar>
-                </FormContentWrapper>
-              </FormStyled>
-            </Formik>
-          </FormCtx.Provider>
-        )}
+                )}
+                <BottomButtonBar>
+                  <ButtonContainer>
+                    <BackButton type="button" onClick={() => _handleBack()}>
+                      Back
+                    </BackButton>
+                    <NextEndButton type="submit" disabled={loaded}>
+                      {currentQuestion.type === QuestionType.RESULT
+                        ? 'End'
+                        : 'Next'}
+                    </NextEndButton>
+                  </ButtonContainer>
+                </BottomButtonBar>
+              </FormContentWrapper>
+            </FormStyled>
+          </Formik>
+        </FormCtx.Provider>
       </HorizontalBox>
     </Main>
   )
