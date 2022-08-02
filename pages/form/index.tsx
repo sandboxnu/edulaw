@@ -288,7 +288,7 @@ const DynamicForm: React.FC<{
     const y_inc = 8
 
     answers.forEach(function (item) {
-      const splitQuestion = doc.splitTextToSize(item.question, 200)
+      const splitQuestion = doc.splitTextToSize(item.question, 180)
       for (let i = 0; i < splitQuestion.length; i++) {
         doc.setFont('times', 'bold').text(splitQuestion[i], x, y)
         y += y_inc
@@ -298,7 +298,7 @@ const DynamicForm: React.FC<{
         y += y_inc
       }
       if (item.formAnswer.type === QuestionType.TEXT) {
-        const splitAnswer = doc.splitTextToSize(item.formAnswer.userAnswer, 200)
+        const splitAnswer = doc.splitTextToSize(item.formAnswer.userAnswer, 190)
         for (let i = 0; i < splitAnswer.length; i++) {
           doc.setFont('times', 'normal').text('\t' + splitAnswer[i], x, y)
           y += y_inc
