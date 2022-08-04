@@ -1,14 +1,12 @@
-import SideProgressBar from '../../components/Critical/SideProgressBar'
-import NavBar from '../../components/Critical/NavBar'
+import SideProgressBar from './SideProgressBar'
+import NavBar from './NavBar'
 import { CUTOFFS } from '../../constants/responsive'
 import styled from 'styled-components'
 
-import { BottomBar } from '../../components/Critical/BottomBar'
+import { BottomBar } from './BottomBar'
 
 import { Form, Formik } from 'formik'
 import { FormValues } from '../../utils/FormContext'
-import { Question } from '../../models'
-import { NextEndButton } from '../../components/FormStyles/BottomBar'
 
 const FullPageContainer = styled.div`
   display: flex;

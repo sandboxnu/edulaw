@@ -13,7 +13,7 @@ import { jsPDF } from 'jspdf'
 import { GetStaticProps } from 'next'
 import csvToQuestionArray from '../../constants/csv_parser'
 import { QuestionType } from '../../models/question'
-import { FormTemplate } from './FormTemplate'
+import { FormTemplate } from '../../components/Critical/FormTemplate'
 
 let startingAnswer: FormAnswer
 

@@ -2,7 +2,7 @@ import { TitleText } from './form'
 import styled from 'styled-components'
 import { QuestionText } from '../components/FormStyles/QuestionText'
 import { StyledTextInput } from '../components/FormStyles/InputBox'
-import { FormTemplate } from './form/FormTemplate'
+import { FormTemplate } from '../components/Critical/FormTemplate'
 
 const InputRow = styled.div`
   display: flex;
