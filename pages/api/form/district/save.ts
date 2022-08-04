@@ -4,8 +4,8 @@ import { dbConnect } from '../../../../server/_dbConnect'
 
 export interface DistrictDB extends WithId<Document> {
   userID: string
-  district: number
-  school: number
+  district: string
+  school: string
 }
 
 export default async function handler(

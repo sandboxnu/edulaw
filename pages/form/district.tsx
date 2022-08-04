@@ -5,8 +5,8 @@ import { districts, schools } from '../../constants'
 import { DistrictDB } from '../api/form/district/save'
 
 const District: React.FC = () => {
-  const [district, setDistrict] = useState<number | undefined>(undefined)
-  const [school, setSchool] = useState<number | undefined>(undefined)
+  const [district, setDistrict] = useState<string | undefined>(undefined)
+  const [school, setSchool] = useState<string | undefined>(undefined)
   const router = useRouter()
   const { data, status } = useSession()
   const [loaded, setLoaded] = useState<boolean>(false)
@@ -71,7 +71,7 @@ const District: React.FC = () => {
         name="District"
         value={district}
         onChange={(event) => {
-          setDistrict(parseInt(event.target.value))
+          setDistrict(districts[parseInt(event.target.value)])
           setSchool(undefined)
         }}
       >
@@ -86,10 +86,18 @@ const District: React.FC = () => {
       <select
         name="School"
         value={school}
-        onChange={(event) => setSchool(parseInt(event.target.value))}
+        onChange={(event) =>
+          setSchool(
+            district === undefined
+              ? undefined
+              : schools[districts.indexOf(district)][
+                  parseInt(event.target.value)
+                ]
+          )
+        }
       >
         {district !== undefined &&
-          schools[district].map((school, index) => {
+          schools[districts.indexOf(district)].map((school, index) => {
             return (
               <option key={school} value={index}>
                 {school}
