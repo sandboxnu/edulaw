@@ -12,7 +12,6 @@ import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { QuestionType } from '../../models/question'
 import QuestionLayout from '../FormStyles/QuestionLayout'
-import { FieldHookConfig, useField } from 'formik'
 
 const SingleQuestionResponseDiv = styled.div`
   display: flex;
