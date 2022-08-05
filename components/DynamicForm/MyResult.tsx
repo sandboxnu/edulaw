@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useContext } from 'react'
 import {
-  FormAnswer,
   FormContextInterface,
   FormCtx,
   FormResult,
