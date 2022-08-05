@@ -52,31 +52,6 @@ const answerFromCsvType = (answer: CsvType): Answer => {
   }
 }
 
-// converts tooltip entries into a map from question id to the entries corresponding to the tooltips
-const generateTooltips = (
-  processArray: CsvType[],
-  tooltipsArray: CsvType[]
-): Map<number, CsvType[]> => {
-  const map = new Map<number, CsvType[]>()
-  tooltipsArray.forEach((tooltip: CsvType) => {
-    const correspondingProcess = processArray.find(
-      (entry: CsvType) =>
-        entry[CsvColumns.ID] === tooltip[CsvColumns.DESTINATION_ID]
-    )
-    if (!correspondingProcess) {
-      console.error('Could not find tooltip details')
-      return
-    }
-    const existingProcess = map.get(parseInt(tooltip[CsvColumns.SOURCE_ID]))
-    if (existingProcess) {
-      existingProcess.push(correspondingProcess)
-    } else {
-      map.set(parseInt(tooltip[CsvColumns.SOURCE_ID]), [correspondingProcess])
-    }
-  })
-  return map
-}
-
 // converts tooltip array into a more readable form where:
 // processArray contains both question and tooltip boxes
 // tooltipArrowsArray contains any arrows involved in a tooltip
@@ -116,7 +91,7 @@ const mapTooltips = (
 }
 
 // Reads from the provided file into an array of type Question, including parsing answers and tooltips
-const csvToQuestionArray = (fileName: string): Question[] => {
+const csvToQuestionArray = (fileName: string) => {
   const csv: CsvType[] = csvToCsvTypeArray(fileName)
 
   const sections = csv.filter(
@@ -151,6 +126,12 @@ const csvToQuestionArray = (fileName: string): Question[] => {
   )
   const idMap = new Map<number, number>()
 
+  const startingQuestionID = parseInt(questionsArray[0].Id)
+
+  questionsArray.sort((question1, question2) =>
+    question1['Text Area 1'].localeCompare(question2['Text Area 1'])
+  )
+
   // this converts each question and answer into their accurate types, but has the inaccurate IDs
   // this also maps the old ids to the new ids, but does not change any IDs
   const wrongIDQuestions = questionsArray.map(
@@ -181,10 +162,9 @@ const csvToQuestionArray = (fileName: string): Question[] => {
         }
       }
       // eliminate funky newline characters in CSV
-      const regexedQuestion = question[CsvColumns.TEXT].replace(
-        /(\s{2,})|(\r?\n)|(\r)|(\u2028)/g,
-        '\n'
-      )
+      const regexedQuestion = question[CsvColumns.TEXT]
+        .replace(/(\s{2,})|(\r?\n)|(\r)|(\u2028)/g, '\n')
+        .trim()
       // convert answers from csv to answer
       const typedAnswers = answers.map(answerFromCsvType)
       // find section or default to PRS Complaint
@@ -232,7 +212,12 @@ const csvToQuestionArray = (fileName: string): Question[] => {
     }
   )
 
-  return rightIDQuestions
+  const startingQuestion = idMap.get(startingQuestionID) ?? 0
+
+  return {
+    questions: rightIDQuestions,
+    startingQuestion: startingQuestion,
+  }
 }
 
 export default csvToQuestionArray

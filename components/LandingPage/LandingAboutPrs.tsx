@@ -1,19 +1,12 @@
 import React from 'react'
 import Divider from '@mui/material/Divider'
+import { DiscUl, MainDiv } from './LandingStyles'
 
 function LandingAboutPrs() {
   return (
     <div>
-      <div
-        style={{
-          width: '90%',
-          marginLeft: '20px',
-          marginTop: '30px',
-          marginBottom: '30px',
-        }}
-      >
+      <MainDiv>
         <h1>About PRS</h1>
-        <p>Last updated January 2021</p>
         <Divider />
         <br />
         <h4>
@@ -25,6 +18,8 @@ function LandingAboutPrs() {
           Education’s (DESE) dispute resolution system to respond to complaints
           that a school isn’t following the law.
         </p>
+        <br />
+        <br />
         <br />
         <h3 id="how-to-file">
           <em>How do I file a complaint?</em>
@@ -55,6 +50,8 @@ function LandingAboutPrs() {
           describe your concerns.
         </p>
         <br />
+        <br />
+        <br />
         <h3 id="when-to-file">
           <em>When can I file a complaint?</em>
         </h3>
@@ -69,7 +66,7 @@ function LandingAboutPrs() {
           These are some requirements for the complaint:
         </p>
         <br />
-        <ul style={{ marginLeft: '20px' }}>
+        <DiscUl>
           <li>
             The complaint has to be about something that happened during the
             last year. PRS does not handle complaints about rights violations
@@ -80,12 +77,14 @@ function LandingAboutPrs() {
             address complaints about private schools, unless the student goes to
             the private school as their special education placement.
           </li>
-        </ul>
+        </DiscUl>
         <br />
         <p>
           Explore our Student Rights Guides to learn more about the types of
           concerns included in our walkthrough tool.
         </p>
+        <br />
+        <br />
         <br />
         <h3 id="who-can-file">
           <em>Who can file a complaint?</em>
@@ -102,6 +101,8 @@ function LandingAboutPrs() {
           your name and contact information to submit the complaint.
         </p>
         <br />
+        <br />
+        <br />
         <h3 id="what-happens">
           <em>What happens when I file a complaint?</em>
         </h3>
@@ -113,7 +114,7 @@ function LandingAboutPrs() {
           Then, PRS will make a decision and can order the school district to do
           something to address your concern.
         </p>
-      </div>
+      </MainDiv>
     </div>
   )
 }

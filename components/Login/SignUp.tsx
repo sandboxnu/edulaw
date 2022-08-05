@@ -1,19 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyledTextInput } from '../FormStyles/InputBox'
-import { Button } from '../FormStyles/Button'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import styled from 'styled-components'
-import Link from 'next/link'
 import { PasswordInputBox } from '../FormStyles/PasswordInputBox'
-import {
-  BackButton,
-  EStyledButton,
-  Container,
-  SubContainer,
-  Title,
-  SubTitle,
-} from './LoginStyling'
+import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
+import { login } from '../Login/SignIn'
+import { EStyledButton, Container, SubContainer } from './LoginStyling'
+import styled from 'styled-components'
 
 export const PasswordDiv = styled.div`
   display: flex;
@@ -32,11 +26,17 @@ interface FormValues {
 // component for signup page - includes form and validation for email and password,
 // and ensures that passwords are the same
 function Signup() {
+  const { data } = useSession()
+  const router = useRouter()
   const initialVal: FormValues = {
     email: '',
     password: '',
     confirmPass: '',
   }
+
+  // check if the user is invalid
+  // checks when data is changed
+  useEffect(() => login(data, router), [data])
 
   return (
     <Formik
@@ -48,48 +48,55 @@ function Signup() {
           .required('Required')
           .oneOf([Yup.ref('password'), null], 'Passwords must match'),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2))
-          setSubmitting(false)
-        }, 400)
+      // add user to the database !!!
+      onSubmit={async (values, { setSubmitting }) => {
+        const result = await fetch('/api/auth/signup', {
+          method: 'POST',
+          body: JSON.stringify(values),
+        })
+
+        // checks if the user can be added and signs them in
+        if (result.status === 200) {
+          await signIn('credentials', {
+            redirect: false,
+            username: values.email,
+            password: values.password,
+          })
+        } else {
+          const errMessage = await result.json()
+          alert(errMessage.error)
+        }
+
+        return result
       }}
     >
       <Form>
         <Container>
-          <Link href="/home" passHref>
-            <BackButton type="button"> &lt; Back </BackButton>
-          </Link>
-          <Title>Welcome</Title>
-          <SubTitle>Let us get your account up and running.</SubTitle>
-          <div>
-            <StyledTextInput
-              width={330}
-              height={53}
-              name="email"
-              placeholder="Email"
-              type="text"
-            />
-          </div>
+          <StyledTextInput
+            width={356}
+            height={42}
+            name="email"
+            placeholder="Email"
+            type="text"
+            cutoffWidth={271}
+          />
           <SubContainer>
-            <PasswordDiv>
-              <PasswordInputBox
-                width={330}
-                height={53}
-                placeholder="Password"
-                name="password"
-              />
-              <PasswordInputBox
-                width={330}
-                height={53}
-                placeholder="Confirm Password"
-                name="confirmPass"
-              />
-            </PasswordDiv>
-            <EStyledButton type="submit" primary={true}>
-              Sign Up
-            </EStyledButton>
+            <PasswordInputBox
+              width={356}
+              height={42}
+              placeholder="Password"
+              name="password"
+              cutoffWidth={271}
+            />
+            <PasswordInputBox
+              width={356}
+              height={42}
+              placeholder="Confirm Password"
+              name="confirmPass"
+              cutoffWidth={271}
+            />
           </SubContainer>
+          <EStyledButton type="submit">Sign Up</EStyledButton>
         </Container>
       </Form>
     </Formik>

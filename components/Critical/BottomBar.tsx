@@ -3,7 +3,7 @@ import {
   ButtonContainer,
   BackButton,
   NextEndButton,
-} from '../../components/FormStyles/BottomBar'
+} from '../FormStyles/ExtraStyles'
 
 interface BottomBarProps {
   onBack?: () => void

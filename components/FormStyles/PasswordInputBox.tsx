@@ -17,6 +17,7 @@ interface PasswordProps {
   width: number
   height: number
   placeholder: string
+  cutoffWidth?: number
 }
 
 export const PasswordInputBox: React.FC<
@@ -38,6 +39,7 @@ export const PasswordInputBox: React.FC<
           placeholder={props.placeholder}
           {...field}
           type={visibility ? 'text' : 'password'}
+          cutoffWidth={props.cutoffWidth}
         />
         <IconButton onClick={toggleVisiblity} type="button">
           {visibility ? <VisibilityIcon /> : <VisibilityOffIcon />}

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { COLORS } from '../../constants/colors'
 
 export const QuestionText = styled.label`
   font-family: Source Sans Pro;
@@ -14,7 +15,7 @@ export const AnswerText = styled.label`
 
 const QuoteBlockBar = styled.div`
   width: 5px;
-  background: #75ba39;
+  background: ${COLORS.EDLAW_GREEN};
   border-radius: 5px;
   margin-right: 12px;
 `

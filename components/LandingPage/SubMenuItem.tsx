@@ -14,8 +14,14 @@ const SubMenuItem: React.FC<MenuItemProps> = ({ label, link }) => {
     <Link href={link} passHref>
       <ListItemButton sx={{ width: '100%' }}>
         <ListItemText
-          primary={<Typography variant="h6">{label}</Typography>}
-          sx={{ pl: 4 }}
+          primary={
+            <Typography variant="h6">
+              <ul style={{ listStyleType: 'disc' }}>
+                <li>{label}</li>
+              </ul>
+            </Typography>
+          }
+          sx={{ pl: 7 }}
         />
       </ListItemButton>
     </Link>
