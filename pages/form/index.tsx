@@ -145,7 +145,7 @@ const DynamicForm: React.FC<{
         setCurrentAnswer(typedBody.currentAnswer)
         setCurrentIndex(typedBody.currentIndex)
       }
-      // setLoaded(true)
+      setLoaded(true)
     }
     if (!loaded) {
       retrieve()
