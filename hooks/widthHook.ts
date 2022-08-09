@@ -9,6 +9,7 @@ export default function useWindowDimensions() {
     setWindowDimensions(getWindowDimensions())
   }
   useEffect(() => {
+    handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
