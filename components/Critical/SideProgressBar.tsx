@@ -50,10 +50,9 @@ const SummaryItem = styled.div`
 
 function SideProgressBar() {
   const [selectedIndex, setSelectedIndex] = React.useState(0)
-
   const width = useWindowDimensions().width
-
   const [expanded, setExpanded] = React.useState(width >= CUTOFFS.mobile)
+
   const handleListItemClick = (index: number) => {
     setSelectedIndex(index)
     if (width <= CUTOFFS.mobile) {
