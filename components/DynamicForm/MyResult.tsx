@@ -102,7 +102,7 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
 
           {formAnswer.type == QuestionType.TEXT ? (
             <StyledTextInput
-              name={formAnswer.userAnswer}
+              name={formAnswer.questionId.toString()}
               className="text-input"
               defaultValue={formAnswer.userAnswer}
               onChange={_onChange}
