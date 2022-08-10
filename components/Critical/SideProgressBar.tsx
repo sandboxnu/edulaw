@@ -13,7 +13,7 @@ import useWindowDimensions from '../../hooks/widthHook'
 
 const GreySideBox = styled.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 300px;
   background-color: ${COLORS.LIGHT_GREY};
   height: 100%;
   border-right: 1px solid ${COLORS.SHADOW_GREY};

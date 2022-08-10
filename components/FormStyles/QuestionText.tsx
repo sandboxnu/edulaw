@@ -6,11 +6,22 @@ export const QuestionText = styled.label`
   font-size: 16px;
   line-height: 33px;
 `
+export const InfoText = styled.p`
+  font-family: Source Sans Pro;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 12px;
+`
 export const AnswerText = styled.label`
   font-family: Source Sans Pro;
   font-size: 16px;
   line-height: 33px;
   font-weight: 600;
+`
+export const TitleText = styled.h1`
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-family: Source Sans Pro;
 `
 
 const QuoteBlockBar = styled.div`

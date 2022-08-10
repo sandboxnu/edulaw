@@ -1,18 +1,19 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
+import { InfoText, TitleText } from '../../components/FormStyles/QuestionText'
 import { ConcernDB } from '../api/form/concern/save'
 
 const Concern: React.FC = () => {
   const [concern, setConcern] = useState<string | undefined>(undefined)
   const router = useRouter()
   const { data, status } = useSession()
-  const [loaded, setLoaded] = useState<boolean>(false)
+  const [loaded, setLoaded] = useState<boolean>(true)
 
   // reroutes to signup if not logged in
-  if (status === 'unauthenticated') {
-    router.push('/signup')
-  }
+  // if (status === 'unauthenticated') {
+  //   router.push('/signup')
+  // }
 
   // saves values to database
   useEffect(() => {
@@ -63,6 +64,13 @@ const Concern: React.FC = () => {
     <p>loading...</p>
   ) : (
     <div>
+      <TitleText>Introducing your concern</TitleText>
+      <InfoText>
+        Before we start the questions, please briefly describe your concerns in
+        the box below. The text that you write will be the first paragraph of
+        your complaint. It will set the stage for the more specific information
+        that we get through the questions.{' '}
+      </InfoText>
       <input
         name="Concern"
         value={concern}

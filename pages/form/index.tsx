@@ -21,12 +21,8 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
+import { TitleText } from '../../components/FormStyles/QuestionText'
 
-export const TitleText = styled.h1`
-  font-size: 26px;
-  margin-bottom: 20px;
-  font-family: Source Sans Pro;
-`
 const files = {
   animalForm: '../../../constants/Animal Form.csv',
   actualForm: '../../../constants/EdLaw Combined Flowchart.csv',

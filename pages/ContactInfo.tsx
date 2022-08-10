@@ -1,6 +1,9 @@
-import { TitleText } from './form'
 import styled from 'styled-components'
-import { QuestionText } from '../components/FormStyles/QuestionText'
+import {
+  InfoText,
+  QuestionText,
+  TitleText,
+} from '../components/FormStyles/QuestionText'
 import { StyledTextInput } from '../components/FormStyles/InputBox'
 import { FormTemplate } from '../components/Critical/FormTemplate'
 
@@ -53,10 +56,10 @@ function contactInfo() {
       nextButtonText={'Next'}
     >
       <TitleText>Contact Info</TitleText>
-      <QuestionText>
+      <InfoText>
         The PRS officer will only contact you using the information you provide
         below.
-      </QuestionText>
+      </InfoText>
       <FormContainer>
         {allInputFields.map((inputRow) => (
           <InputRow key={inputRow.toString()}>
