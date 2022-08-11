@@ -284,49 +284,33 @@ const DynamicForm: React.FC<{
 
   function _buildDoc(doc: jsPDF, answers: FormResult[]): jsPDF {
     const x = 10
-    let y = 10
+    let y = 30
     const y_inc = 8
     const y_height = 270 // this is the height in mm of a normal sheet of paper
-    let y_tracker = y // to keep determine whether we need a new sheet of paper
-    // test - might not need y_tracker
 
     answers.forEach(function (item) {
       const splitQuestion = doc.splitTextToSize(item.question, 180)
       for (let i = 0; i < splitQuestion.length; i++) {
-        if (y_tracker > y_height) {
+        if (y > y_height) {
           doc.addPage()
-          y = 10
-          y_tracker = y
+          y = 30
         }
         doc.setFont('times', 'bold').text(splitQuestion[i], x, y)
         y += y_inc
-        y_tracker += y_inc
       }
-      // if (item.answer != null) {
-      //   if(y_tracker > y_height) {
-      //     doc.addPage()
-      //     y = 10;
-      //     y_tracker = y;
-      //   }
-      //   doc.setFont('times', 'normal').text('\t' + item.answer + '\n\n', x, y)
-      //   y += y_inc
-      //   y_tracker = y_tracker + y_inc + 20
-      // }
+
       if (item.formAnswer.type === QuestionType.TEXT) {
         const splitAnswer = doc.splitTextToSize(item.formAnswer.userAnswer, 180)
         for (let i = 0; i < splitAnswer.length; i++) {
-          if (y_tracker > y_height) {
+          if (y > y_height) {
             doc.addPage()
-            y = 10
-            y_tracker = y
+            y = 30
           }
           doc.setFont('times', 'normal').text('\t' + splitAnswer[i], x, y)
           y += y_inc
-          y_tracker += y_inc
         }
         doc.text('\n', x, y)
         y += y_inc
-        y_tracker = y_inc + 10
       }
     })
     return doc
