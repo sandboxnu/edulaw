@@ -284,7 +284,7 @@ const DynamicForm: React.FC<{
 
   function _buildDoc(doc: jsPDF, answers: FormResult[]): jsPDF {
     const x = 10
-    let y = 30
+    let y = 25
     const y_inc = 8
     const y_height = 270 // this is the height in mm of a normal sheet of paper
 
@@ -293,7 +293,7 @@ const DynamicForm: React.FC<{
       for (let i = 0; i < splitQuestion.length; i++) {
         if (y > y_height) {
           doc.addPage()
-          y = 30
+          y = 25
         }
         doc.setFont('times', 'bold').text(splitQuestion[i], x, y)
         y += y_inc
@@ -304,7 +304,7 @@ const DynamicForm: React.FC<{
         for (let i = 0; i < splitAnswer.length; i++) {
           if (y > y_height) {
             doc.addPage()
-            y = 30
+            y = 25
           }
           doc.setFont('times', 'normal').text('\t' + splitAnswer[i], x, y)
           y += y_inc
