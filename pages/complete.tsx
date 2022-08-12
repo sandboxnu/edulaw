@@ -4,8 +4,8 @@ import SideProgressBar from '../components/Critical/SideProgressBar'
 import { useRouter } from 'next/router'
 import { NextEndButton } from '../components/FormStyles/ExtraStyles'
 import { jsPDF } from 'jspdf'
-import { QuestionType } from '../../edulaw/models/question'
-import { FormResult } from '../../edulaw/utils/FormContext'
+import { QuestionType } from '../models/question'
+import { FormResult } from '../utils/FormContext'
 
 const Main = styled.div`
   display: flex;
