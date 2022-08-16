@@ -314,12 +314,15 @@ const DynamicForm: React.FC<{
   function _handleSubmit() {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
 
-    let doc = new jsPDF()
     const results = buildResults(formValues, questions)
-    if (results.length > 0) {
-      doc = _buildDoc(doc, results)
-      doc.save('PRS_Complaint.pdf')
-    }
+    const stringDoc = results.length > 0 ? JSON.stringify(results) : ''
+    router.push(
+      {
+        pathname: '/complete',
+        query: { data: stringDoc },
+      },
+      '/complete  '
+    )
   }
 
   return (
