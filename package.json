@@ -42,7 +42,7 @@
     "bcryptjs": "^2.4.3",
     "csv-parse": "^5.0.4",
     "formik": "^2.2.9",
-    "jspdf": "^2.4.0",
+    "jspdf": "^2.5.1",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.8",
     "next": "^12.1.1",
