@@ -1,16 +1,12 @@
 import { Question } from '../../models'
-
-import { Form, Formik } from 'formik'
 import React, { useState, useEffect } from 'react'
 import {
   emptyFormValues,
   FormAnswer,
-  FormCtx,
   FormResult,
   FormValues,
 } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
-import styled from 'styled-components'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { GetStaticProps } from 'next'
@@ -22,6 +18,10 @@ import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { TitleText } from '../../components/FormStyles/QuestionText'
+import { AdditionalInfoDb } from '../api/form/additionalInfo/save'
+import { ConcernDB } from '../api/form/concern/save'
+import { DistrictDB } from '../api/form/district/save'
+import { GroupDB } from '../api/form/group/save'
 
 const files = {
   animalForm: '../../../constants/Animal Form.csv',
@@ -248,14 +248,107 @@ const DynamicForm: React.FC<{
     }
   }
 
+  // this will become really complicated - gonna make a new component maybe?
+  // also, note to self - keeping track of y is annoying af - try and figure
+  // this shit out :/  >> might be worth doing in one function due to this
+  // turn these consts to functions??
+
+  // need contact info endpoint
+
+  // turn these into functions you bitchass
+  // also tbh condense ^ :))
+
+  const textDistrictSchool = async (doc: jsPDF, y: number) => {
+    const userID = data!.user!.id
+    const result = await fetch(`/api/form/additional/retrieve?userID=${userID}`)
+    const body = await result.json()
+
+    if (result.status !== 200) {
+      console.error(body.error)
+    } else {
+      const typedBody = body as DistrictDB
+      doc
+        .setFont('times', 'normal')
+        .text('District: ' + typedBody.district, 10, y)
+      doc
+        .setFont('times', 'normal')
+        .text('School: ' + typedBody.school, 10, y + 8)
+    }
+  }
+
+  const textAdditionalInfo = async (doc: jsPDF, y: number) => {
+    const userID = data!.user!.id
+    const result = await fetch(`/api/form/additional/retrieve?userID=${userID}`)
+    const body = await result.json()
+
+    if (result.status !== 200) {
+      console.error(body.error)
+    } else {
+      const { bsea, deseAccommodations, language, relationship } =
+        body as AdditionalInfoDb
+
+      doc
+        .setFont('times', 'normal')
+        .text('Primary language: ' + language, 10, y)
+      doc
+        .setFont('times', 'normal')
+        .text('Relationship to student: ' + relationship, 10, y + 8)
+      // need to check for multi lines + y height
+      doc
+        .setFont('times', 'normal')
+        .text('DeseAccomodations: ' + deseAccommodations, 10, y + 16)
+      doc.setFont('times', 'normal').text('BSEA Addressed? ' + bsea, 10, y + 24)
+    }
+  }
+
+  const textIntroducingConcerns = async (doc: jsPDF, y: number) => {
+    const userID = data!.user!.id
+    const result = await fetch(`/api/form/concern/retrieve?userID=${userID}`)
+    const body = await result.json()
+    if (result.status !== 200) {
+      console.error(body.error)
+    } else {
+      const typedBody = body as ConcernDB
+      // need to check for multi lines + y height
+      doc
+        .setFont('times', 'normal')
+        .text('Statement of concerns: ' + typedBody.concern, 10, y)
+    }
+  }
+
+  const textGroupDetails = async (doc: jsPDF, y: number) => {
+    const userID = data!.user!.id
+    const result = await fetch(`/api/form/group/retrieve?userID=${userID}`)
+    const body = await result.json()
+
+    if (result.status !== 200) {
+      console.error(body.error)
+    } else {
+      const typedBody = body as GroupDB
+      doc
+        .setFont('times', 'normal')
+        .text('Special Circumstances: ' + typedBody.specialCircumstances, 10, y)
+    }
+  }
+
   function _buildDoc(doc: jsPDF, answers: FormResult[]): jsPDF {
     const x = 10
     let y = 25
     const y_inc = 8
     const y_height = 270 // this is the height in mm of a normal sheet of paper
 
+    textDistrictSchool(doc, y)
+    doc.addPage() // yes this is dumb and very likely incorrect i will fix it yes
+    textAdditionalInfo(doc, y)
+    doc.addPage()
+    textIntroducingConcerns(doc, y)
+    doc.addPage()
+    textGroupDetails(doc, y)
+    doc.addPage()
+
     answers.forEach(function (item) {
       const splitQuestion = doc.splitTextToSize(item.question, 180)
+      // abstract this ugly shit
       for (let i = 0; i < splitQuestion.length; i++) {
         if (y > y_height) {
           doc.addPage()
