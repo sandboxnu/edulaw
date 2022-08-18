@@ -248,6 +248,8 @@ const DynamicForm: React.FC<{
     }
   }
 
+  // TODO YES I WILLLLLLLL FIX THIS :))))
+
   // this will become really complicated - gonna make a new component maybe?
   // also, note to self - keeping track of y is annoying af - try and figure
   // this shit out :/  >> might be worth doing in one function due to this
