@@ -18,6 +18,16 @@ const Concern: React.FC = () => {
   const { data, status } = useSession()
   const [loaded, setLoaded] = useState<boolean>(true)
 
+  const tooltipText = `This is the part where you're introducing the PRS officer to your concerns by telling them generally what happened.  
+
+You don't have to be too specific here, because you'll add more information as we go through the questions.  At the end of the walkthrough, you can review the whole statement of concerns and add anything that's missing.  
+
+The information is specific to your situation and concerns, but here are a few examples of what you might write based on hypothetical situations:
+
+“The student was suspended from school but the school never told us exactly why.  Now she has been out of school for two weeks and hasn't been able to make up any work.  I'm concerned that she's falling behind, and the school won't help us figure out how she can make up her work.”  
+
+“I asked the school to do a special education evaluation for the student in September and they still haven't done it.  His grades have dropped and the school isn't giving him the support he needs.”`
+
   // reroutes to signup if not logged in
   if (status === 'unauthenticated') {
     router.push('/signup')
@@ -100,7 +110,7 @@ const Concern: React.FC = () => {
           <Tooltip
             tooltip={{
               tooltipText: 'What kind of information should I include?',
-              tooltipHoveredText: 'bye',
+              tooltipHoveredText: tooltipText,
             }}
           />
         </TooltipContainer>

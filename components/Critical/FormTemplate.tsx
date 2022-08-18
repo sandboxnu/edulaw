@@ -41,6 +41,7 @@ const FormStyled = styled(Form)`
 
 const QuestionDisplayWrapper = styled.div`
   padding-left: 10%;
+  padding-right: 10%;
   margin-top: 64px;
 `
 
