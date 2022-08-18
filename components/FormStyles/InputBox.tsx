@@ -49,38 +49,21 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
   props
 ) => {
   const [field, meta] = useField(props)
-
-  function onChangeInput(): JSX.Element {
-    if (props.onChange) {
-      return (
-        <InputBox
-          width={props.width}
-          height={props.height}
-          defaultValue={props.defaultValue}
-          {...field}
-          onChange={props.onChange}
-          type={props.type}
-          placeholder={props.placeholder}
-          cutoffWidth={props.cutoffWidth}
-        />
-      )
-    }
-    return (
+  function doNothing() {
+    // do nothing.
+  }
+  return (
+    <div key={props.name}>
       <InputBox
         width={props.width}
         height={props.height}
         defaultValue={props.defaultValue}
         {...field}
+        onChange={props.onChange ? props.onChange : doNothing}
         type={props.type}
         placeholder={props.placeholder}
         cutoffWidth={props.cutoffWidth}
       />
-    )
-  }
-
-  return (
-    <div key={props.name}>
-      {onChangeInput()}
       {meta.touched && meta.error ? (
         <ErrorDiv className="error">{meta.error}</ErrorDiv>
       ) : null}

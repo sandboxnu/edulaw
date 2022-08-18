@@ -1,8 +1,16 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { FormTemplate } from '../../components/Critical/FormTemplate'
+import Tooltip from '../../components/DynamicForm/Tooltip'
 import { InfoText, TitleText } from '../../components/FormStyles/QuestionText'
+import { TextArea } from '../../components/FormStyles/TextArea'
 import { ConcernDB } from '../api/form/concern/save'
+
+const TooltipContainer = styled.div`
+  margin-bottom: 8px;
+`
 
 const Concern: React.FC = () => {
   const [concern, setConcern] = useState<string | undefined>(undefined)
@@ -11,9 +19,9 @@ const Concern: React.FC = () => {
   const [loaded, setLoaded] = useState<boolean>(true)
 
   // reroutes to signup if not logged in
-  // if (status === 'unauthenticated') {
-  //   router.push('/signup')
-  // }
+  if (status === 'unauthenticated') {
+    router.push('/signup')
+  }
 
   // saves values to database
   useEffect(() => {
@@ -36,7 +44,7 @@ const Concern: React.FC = () => {
       }
     }
     save()
-  }, [concern])
+  }, [concern, data?.user?.id])
 
   // loads values in from database, only loads once
   useEffect(() => {
@@ -58,27 +66,56 @@ const Concern: React.FC = () => {
     if (!loaded) {
       retrieve()
     }
-  }, [data])
+  }, [data, loaded])
 
   return !loaded ? (
     <p>loading...</p>
   ) : (
-    <div>
-      <TitleText>Introducing your concern</TitleText>
-      <InfoText>
-        Before we start the questions, please briefly describe your concerns in
-        the box below. The text that you write will be the first paragraph of
-        your complaint. It will set the stage for the more specific information
-        that we get through the questions.{' '}
-      </InfoText>
-      <input
-        name="Concern"
-        value={concern}
-        onChange={(event) => {
-          setConcern(event.target.value)
-        }}
-      />
-    </div>
+    <FormTemplate
+      initialValues={{
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        state: '',
+        city: '',
+        address: '',
+        zip: '',
+      }}
+      onSubmit={(values, actions) => {
+        alert(JSON.stringify(values, null, 2))
+        actions.setSubmitting(false)
+      }}
+      nextButtonText={'Next'}
+    >
+      <div>
+        <TitleText>Introducing your concern</TitleText>
+        <InfoText>
+          Before we start the questions, please briefly describe your concerns
+          in the box below. The text that you write will be the first paragraph
+          of your complaint. It will set the stage for the more specific
+          information that we get through the questions.{' '}
+        </InfoText>
+        <TooltipContainer>
+          <Tooltip
+            tooltip={{
+              tooltipText: 'What kind of information should I include?',
+              tooltipHoveredText: 'bye',
+            }}
+          />
+        </TooltipContainer>
+        <TextArea
+          name="Concern"
+          width={650}
+          height={200}
+          value={concern}
+          placeholder="Describe here"
+          onChange={(event) => {
+            setConcern(event.target.value)
+          }}
+        />
+      </div>
+    </FormTemplate>
   )
 }
 
