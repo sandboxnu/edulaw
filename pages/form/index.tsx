@@ -331,6 +331,7 @@ const DynamicForm: React.FC<{
       doc.text('Special Circumstances: ', 10, y)
       y += y_inc
       for (let k = 0; k < groupsBody.specialCircumstances.length; k++) {
+        y = checkNewPage(y, doc)
         if (groupsBody.specialCircumstances[k]) {
           doc.text(studentSpecialCircumstances[k], 10, y)
           y += y_inc
