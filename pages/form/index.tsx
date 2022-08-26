@@ -249,12 +249,31 @@ const DynamicForm: React.FC<{
     }
   }
 
+  // determines whether the given doc needs a new page added to it
+  // y denotes where the cursor is placed on the doc in terms of height / the 'y' axis
+  // since jsPDF is a little bitch (but better than others)
   const checkNewPage = (y: number, doc: jsPDF) => {
     if (y > 270) {
       doc.addPage()
       return 25
     }
     return y
+  }
+
+  // writes on given jsPDF and returns new height (y)
+  const writeDocAbstraction = (
+    x: number,
+    y: number,
+    text: string,
+    doc: jsPDF,
+    fontStyle?: string
+  ) => {
+    if (fontStyle) {
+      doc.setFont('times', fontStyle).text(text, x, y)
+    } else {
+      doc.text(text, x, y)
+    }
+    return y + 8
   }
 
   /**
@@ -264,7 +283,6 @@ const DynamicForm: React.FC<{
    */
   async function initialInformation(doc: jsPDF) {
     let y = 35
-    const y_inc = 8
     const userID = data!.user!.id
     // gonna be real this also looks ugly afffff but it all looked ugly aff
     const districtSchool = await (
@@ -290,51 +308,60 @@ const DynamicForm: React.FC<{
       console.error("Failed to obtain information needed for student's details")
     } else {
       const districtBody = districtSchool as DistrictDB
-      doc
-        .setFont('times', 'normal')
-        .text('District: ' + districtBody.district, 10, y)
-      y += y_inc
-      doc.text('School: ' + districtBody.school, 10, y)
-      y += y_inc
+      y = writeDocAbstraction(
+        10,
+        y,
+        'District: ' + districtBody.district,
+        doc,
+        'normal'
+      )
+      y = writeDocAbstraction(10, y, 'School: ' + districtBody.school, doc)
 
       const additionalBody = additionalInfo as AdditionalInfoDb
-      doc.text('Primary language: ' + additionalBody.language, 10, y)
-      y += y_inc
-      doc.text('Relationship to student: ' + additionalBody.relationship, 10, y)
-      y += y_inc
-      doc.text('DESE Accomodations: ', 10, y)
+      y = writeDocAbstraction(
+        10,
+        y,
+        'Primary language: ' + additionalBody.language,
+        doc
+      )
+      y = writeDocAbstraction(
+        10,
+        y,
+        'Relationship to student: ' + additionalBody.relationship,
+        doc
+      )
+      y = writeDocAbstraction(10, y, 'DESE Accomodations: ', doc)
       const deseSplit = doc.splitTextToSize(
         additionalBody.deseAccommodations,
         180
       )
       for (let i = 0; i < deseSplit.length; i++) {
         y = checkNewPage(y, doc)
-        doc.text('\t' + deseSplit[i], 10, y)
-        y += y_inc
+        y = writeDocAbstraction(10, y, '\t' + deseSplit[i], doc)
       }
-      doc.text('BSEA Addressed? ' + additionalBody.bsea, 10, y)
-      y += y_inc
+      y = writeDocAbstraction(
+        10,
+        y,
+        'BSEA Addressed? ' + additionalBody.bsea,
+        doc
+      )
 
       const concernBody = concerns as ConcernDB
       y = checkNewPage(y, doc)
-      doc.text('Statement of concerns: ', 10, y)
-      y += y_inc
+      y = writeDocAbstraction(10, y, 'Statement of concerns: ', doc, 'bold')
       const concernsSplit = doc.splitTextToSize(concernBody.concern, 180)
       for (let j = 0; j < concernsSplit.length; j++) {
         y = checkNewPage(y, doc)
-        doc.text('\t' + concernsSplit[j], 10, y)
-        y += y_inc
+        y = writeDocAbstraction(10, y, '\t' + concernsSplit[j], doc, 'normal')
       }
 
       const groupsBody = groups as GroupDB
       y = checkNewPage(y, doc)
-      doc.text('Special Circumstances: ', 10, y)
-      y += y_inc
+      y = writeDocAbstraction(10, y, 'Special Circumstances: ', doc)
       for (let k = 0; k < groupsBody.specialCircumstances.length; k++) {
         y = checkNewPage(y, doc)
         if (groupsBody.specialCircumstances[k]) {
-          doc.text(studentSpecialCircumstances[k], 10, y)
-          y += y_inc
+          y = writeDocAbstraction(10, y, studentSpecialCircumstances[k], doc)
         }
       }
     }
@@ -368,19 +395,16 @@ const DynamicForm: React.FC<{
       const splitQuestion = doc.splitTextToSize(item.question, 180)
       for (let i = 0; i < splitQuestion.length; i++) {
         y = checkNewPage(y, doc)
-        doc.setFont('times', 'bold').text(splitQuestion[i], x, y)
-        y += y_inc
+        y = writeDocAbstraction(x, y, splitQuestion[i], doc, 'bold')
       }
 
       if (item.formAnswer.type === QuestionType.TEXT) {
         const splitAnswer = doc.splitTextToSize(item.formAnswer.userAnswer, 180)
         for (let i = 0; i < splitAnswer.length; i++) {
           y = checkNewPage(y, doc)
-          doc.setFont('times', 'normal').text('\t' + splitAnswer[i], x, y)
-          y += y_inc
+          y = writeDocAbstraction(x, y, '\t' + splitAnswer[i], doc, 'normal')
         }
-        doc.text('\n', x, y)
-        y += y_inc
+        y = writeDocAbstraction(x, y, '\n', doc)
       }
     })
     return doc
