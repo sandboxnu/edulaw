@@ -2,7 +2,13 @@ import NavBar from '../components/Critical/NavBar'
 import styled from 'styled-components'
 import SideProgressBar from '../components/Critical/SideProgressBar'
 import { useRouter } from 'next/router'
-import { NextEndButton } from '../components/FormStyles/ExtraStyles'
+import {
+  NextEndButton,
+  BottomButtonBar,
+  BackButton,
+  ButtonContainer,
+} from '../components/FormStyles/ExtraStyles'
+import { BlockQuote } from '../components/FormStyles/QuestionText'
 import { jsPDF } from 'jspdf'
 import { QuestionType } from '../models/question'
 import { FormResult } from '../utils/FormContext'
@@ -13,6 +19,11 @@ const Main = styled.div`
   height: 100vh;
   align-items: stretch;
 `
+
+const LowerRight = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 const LowerStuff = styled.div`
   display: flex;
   flex-direction: row;
@@ -21,11 +32,18 @@ const LowerStuff = styled.div`
 const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
+  height: 80vh;
 `
 
 const SideBarStyled = styled(SideProgressBar)`
   display: flex
   flex-grow: 1
+`
+
+const StyledBottomButtonBar = styled(BottomButtonBar)`
+  display: flex
+  align-self: flex-end
+
 `
 
 function Final() {
@@ -77,42 +95,54 @@ function Final() {
       <NavBar />
       <LowerStuff>
         <SideBarStyled />
-        <InfoSection
-          style={{
-            width: '80%',
-            right: '20%',
-            padding: '10%',
-            paddingTop: '5%',
-            paddingBottom: '5%',
-          }}
-        >
-          <h1>What happens next?</h1>
-          <br />
-          <br />
-          <p>
-            When you click “download complaint” below, a PDF version of your
-            complaint will download to your computer. To send it to DESE, you
-            can send an email to compliance@doe.mass.edu with the attachment and
-            the subject line ‘PRS Complaint’.
-          </p>
-          <br />
-          <br />
-          <p>
-            Once you send them the complaint, someone from PRS should reach out
-            to you within 3-5 days. You are always welcome to contact the EdLaw
-            Project intake line with questions about the process, but the
-            complaint goes directly to PRS. PRS will communicate with you
-            directly and will not tell the EdLaw Project that they get your
-            complaint, or any updates about the result.
-          </p>
-          <br />
-          <br />
-          <p>
-            DESE has a website with more information about the complaint
-            process. You can view that information here.
-          </p>
-          <NextEndButton onClick={() => _handleSubmit()}></NextEndButton>
-        </InfoSection>
+        <LowerRight>
+          <InfoSection
+            style={{
+              width: '80%',
+              right: '20%',
+              padding: '10%',
+              paddingTop: '5%',
+              paddingBottom: '5%',
+            }}
+          >
+            <h1>What happens next?</h1>
+            <br />
+            <br />
+            <p>
+              When you click “download complaint” below, a PDF version of your
+              complaint will download to your computer. To send it to DESE, you
+              can send an email to compliance@doe.mass.edu with the attachment
+              and the subject line ‘PRS Complaint’
+            </p>
+            <br />
+            <br />
+            <BlockQuote questionText="Please note: You do not need to include anything in the body of the email."></BlockQuote>
+            <br />
+            <p>
+              Once you send them the complaint, someone from PRS should reach
+              out to you within 3-5 days. You are always welcome to contact the
+              EdLaw Project intake line with questions about the process, but
+              the complaint goes directly to PRS. PRS will communicate with you
+              directly and will not tell the EdLaw Project that they get your
+              complaint, or any updates about the result.
+            </p>
+            <br />
+            <br />
+            <p>
+              DESE has a website with more information about the complaint
+              process. You can view that information{' '}
+              <a href=" https://www.doe.mass.edu/prs/">here.</a>
+            </p>
+          </InfoSection>
+          <StyledBottomButtonBar>
+            <ButtonContainer>
+              <BackButton>Back</BackButton>
+              <NextEndButton onClick={() => _handleSubmit()}>
+                Download Complaint
+              </NextEndButton>
+            </ButtonContainer>
+          </StyledBottomButtonBar>
+        </LowerRight>
       </LowerStuff>
     </Main>
   )
