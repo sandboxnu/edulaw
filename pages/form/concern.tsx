@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import Tooltip from '../../components/DynamicForm/Tooltip'
+import Modal from '../../components/FormStyles/Modal'
 import { InfoText, TitleText } from '../../components/FormStyles/QuestionText'
 import { TextArea } from '../../components/FormStyles/TextArea'
 import { ConcernDB } from '../api/form/concern/save'
@@ -77,7 +78,6 @@ The information is specific to your situation and concerns, but here are a few e
       retrieve()
     }
   }, [data, loaded])
-
   return !loaded ? (
     <p>loading...</p>
   ) : (
@@ -125,6 +125,7 @@ The information is specific to your situation and concerns, but here are a few e
           }}
         />
       </div>
+      <Modal />
     </FormTemplate>
   )
 }
