@@ -22,6 +22,7 @@ import { AdditionalInfoDb } from '../api/form/additionalInfo/save'
 import { ConcernDB } from '../api/form/concern/save'
 import { DistrictDB } from '../api/form/district/save'
 import { GroupDB } from '../api/form/group/save'
+import { studentSpecialCircumstances } from '../../constants/additionalConstants'
 
 const files = {
   animalForm: '../../../constants/Animal Form.csv',
@@ -248,88 +249,121 @@ const DynamicForm: React.FC<{
     }
   }
 
-  // TODO YES I WILLLLLLLL FIX THIS :))))
-
-  // this will become really complicated - gonna make a new component maybe?
-  // also, note to self - keeping track of y is annoying af - try and figure
-  // this shit out :/  >> might be worth doing in one function due to this
-  // turn these consts to functions??
-
-  // need contact info endpoint
-
-  // turn these into functions you bitchass
-  // also tbh condense ^ :))
-
-  const textDistrictSchool = async (doc: jsPDF, y: number) => {
-    const userID = data!.user!.id
-    const result = await fetch(`/api/form/additional/retrieve?userID=${userID}`)
-    const body = await result.json()
-
-    if (result.status !== 200) {
-      console.error(body.error)
-    } else {
-      const typedBody = body as DistrictDB
-      doc
-        .setFont('times', 'normal')
-        .text('District: ' + typedBody.district, 10, y)
-      doc
-        .setFont('times', 'normal')
-        .text('School: ' + typedBody.school, 10, y + 8)
+  // determines whether the given doc needs a new page added to it
+  // y denotes where the cursor is placed on the doc in terms of height / the 'y' axis
+  // since jsPDF is a little bitch (but better than others)
+  const checkNewPage = (y: number, doc: jsPDF) => {
+    if (y > 270) {
+      doc.addPage()
+      return 25
     }
+    return y
   }
 
-  const textAdditionalInfo = async (doc: jsPDF, y: number) => {
-    const userID = data!.user!.id
-    const result = await fetch(`/api/form/additional/retrieve?userID=${userID}`)
-    const body = await result.json()
-
-    if (result.status !== 200) {
-      console.error(body.error)
+  // writes on given jsPDF and returns new height (y)
+  const writeDocAbstraction = (
+    x: number,
+    y: number,
+    text: string,
+    doc: jsPDF,
+    fontStyle?: string
+  ) => {
+    if (fontStyle) {
+      doc.setFont('times', fontStyle).text(text, x, y)
     } else {
-      const { bsea, deseAccommodations, language, relationship } =
-        body as AdditionalInfoDb
-
-      doc
-        .setFont('times', 'normal')
-        .text('Primary language: ' + language, 10, y)
-      doc
-        .setFont('times', 'normal')
-        .text('Relationship to student: ' + relationship, 10, y + 8)
-      // need to check for multi lines + y height
-      doc
-        .setFont('times', 'normal')
-        .text('DeseAccomodations: ' + deseAccommodations, 10, y + 16)
-      doc.setFont('times', 'normal').text('BSEA Addressed? ' + bsea, 10, y + 24)
+      doc.text(text, x, y)
     }
+    return y + 8
   }
 
-  const textIntroducingConcerns = async (doc: jsPDF, y: number) => {
+  /**
+   * helper method to fetch and write all of the pre-form questions onto the given doc
+   * TODO needs contact info endpoint, try to clean up as well
+   * @param doc the jsPDF doc to write on
+   */
+  async function initialInformation(doc: jsPDF) {
+    let y = 35
     const userID = data!.user!.id
-    const result = await fetch(`/api/form/concern/retrieve?userID=${userID}`)
-    const body = await result.json()
-    if (result.status !== 200) {
-      console.error(body.error)
-    } else {
-      const typedBody = body as ConcernDB
-      // need to check for multi lines + y height
-      doc
-        .setFont('times', 'normal')
-        .text('Statement of concerns: ' + typedBody.concern, 10, y)
-    }
-  }
+    // gonna be real this also looks ugly afffff but it all looked ugly aff
+    const districtSchool = await (
+      await fetch(`/api/form/additional/retrieve?userID=${userID}`)
+    ).json()
+    const additionalInfo = await (
+      await fetch(`/api/form/additional/retrieve?userID=${userID}`)
+    ).json()
+    const concerns = await (
+      await fetch(`/api/form/concern/retrieve?userID=${userID}`)
+    ).json()
+    const groups = await (
+      await fetch(`/api/form/group/retrieve?userID=${userID}`)
+    ).json()
 
-  const textGroupDetails = async (doc: jsPDF, y: number) => {
-    const userID = data!.user!.id
-    const result = await fetch(`/api/form/group/retrieve?userID=${userID}`)
-    const body = await result.json()
-
-    if (result.status !== 200) {
-      console.error(body.error)
+    if (
+      districtSchool.status !== 200 ||
+      additionalInfo.status !== 200 ||
+      concerns.status !== 200 ||
+      groups.status !== 200
+    ) {
+      // note: this leads to a less helpful error message, as we cannot tell which call failed
+      console.error("Failed to obtain information needed for student's details")
     } else {
-      const typedBody = body as GroupDB
-      doc
-        .setFont('times', 'normal')
-        .text('Special Circumstances: ' + typedBody.specialCircumstances, 10, y)
+      const districtBody = districtSchool as DistrictDB
+      y = writeDocAbstraction(
+        10,
+        y,
+        'District: ' + districtBody.district,
+        doc,
+        'normal'
+      )
+      y = writeDocAbstraction(10, y, 'School: ' + districtBody.school, doc)
+
+      const additionalBody = additionalInfo as AdditionalInfoDb
+      y = writeDocAbstraction(
+        10,
+        y,
+        'Primary language: ' + additionalBody.language,
+        doc
+      )
+      y = writeDocAbstraction(
+        10,
+        y,
+        'Relationship to student: ' + additionalBody.relationship,
+        doc
+      )
+      y = writeDocAbstraction(10, y, 'DESE Accomodations: ', doc)
+      const deseSplit = doc.splitTextToSize(
+        additionalBody.deseAccommodations,
+        180
+      )
+      for (let i = 0; i < deseSplit.length; i++) {
+        y = checkNewPage(y, doc)
+        y = writeDocAbstraction(10, y, '\t' + deseSplit[i], doc)
+      }
+      y = writeDocAbstraction(
+        10,
+        y,
+        'BSEA Addressed? ' + additionalBody.bsea,
+        doc
+      )
+
+      const concernBody = concerns as ConcernDB
+      y = checkNewPage(y, doc)
+      y = writeDocAbstraction(10, y, 'Statement of concerns: ', doc, 'bold')
+      const concernsSplit = doc.splitTextToSize(concernBody.concern, 180)
+      for (let j = 0; j < concernsSplit.length; j++) {
+        y = checkNewPage(y, doc)
+        y = writeDocAbstraction(10, y, '\t' + concernsSplit[j], doc, 'normal')
+      }
+
+      const groupsBody = groups as GroupDB
+      y = checkNewPage(y, doc)
+      y = writeDocAbstraction(10, y, 'Special Circumstances: ', doc)
+      for (let k = 0; k < groupsBody.specialCircumstances.length; k++) {
+        y = checkNewPage(y, doc)
+        if (groupsBody.specialCircumstances[k]) {
+          y = writeDocAbstraction(10, y, studentSpecialCircumstances[k], doc)
+        }
+      }
     }
   }
 
@@ -339,39 +373,38 @@ const DynamicForm: React.FC<{
     const y_inc = 8
     const y_height = 270 // this is the height in mm of a normal sheet of paper
 
-    textDistrictSchool(doc, y)
-    doc.addPage() // yes this is dumb and very likely incorrect i will fix it yes
-    textAdditionalInfo(doc, y)
+    doc
+      .setFont('times', 'bold')
+      .text(
+        'Student Complaint and Details',
+        doc.internal.pageSize.width / 2,
+        25,
+        { align: 'center' }
+      )
+    initialInformation(doc)
     doc.addPage()
-    textIntroducingConcerns(doc, y)
-    doc.addPage()
-    textGroupDetails(doc, y)
-    doc.addPage()
+
+    doc
+      .setFont('times', 'bold')
+      .text('Begin Complaints', doc.internal.pageSize.width / 2, 25, {
+        align: 'center',
+      })
+    y += y_inc
 
     answers.forEach(function (item) {
       const splitQuestion = doc.splitTextToSize(item.question, 180)
-      // abstract this ugly shit
       for (let i = 0; i < splitQuestion.length; i++) {
-        if (y > y_height) {
-          doc.addPage()
-          y = 25
-        }
-        doc.setFont('times', 'bold').text(splitQuestion[i], x, y)
-        y += y_inc
+        y = checkNewPage(y, doc)
+        y = writeDocAbstraction(x, y, splitQuestion[i], doc, 'bold')
       }
 
       if (item.formAnswer.type === QuestionType.TEXT) {
         const splitAnswer = doc.splitTextToSize(item.formAnswer.userAnswer, 180)
         for (let i = 0; i < splitAnswer.length; i++) {
-          if (y > y_height) {
-            doc.addPage()
-            y = 25
-          }
-          doc.setFont('times', 'normal').text('\t' + splitAnswer[i], x, y)
-          y += y_inc
+          y = checkNewPage(y, doc)
+          y = writeDocAbstraction(x, y, '\t' + splitAnswer[i], doc, 'normal')
         }
-        doc.text('\n', x, y)
-        y += y_inc
+        y = writeDocAbstraction(x, y, '\n', doc)
       }
     })
     return doc

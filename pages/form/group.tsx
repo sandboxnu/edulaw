@@ -2,13 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { GroupDB } from '../api/form/group/save'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-
-const checkQuestions = [
-  'The student has an IEP (individualized education plan)',
-  'The student has a 504 plan',
-  'The student is home schooled ',
-  'The student is being educated through a Home Hospital Program',
-]
+import { studentSpecialCircumstances } from '../../constants/additionalConstants'
 
 const Group: React.FC = () => {
   const [checkedArr, setCheckedArr] = useState<Array<boolean>>([
@@ -86,7 +80,7 @@ const Group: React.FC = () => {
         <option value="Group">Group</option>
       </select>
 
-      {checkQuestions.map((option, index) => {
+      {studentSpecialCircumstances.map((option, index) => {
         return (
           <label key={index}>
             <input
