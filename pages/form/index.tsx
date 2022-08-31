@@ -76,6 +76,8 @@ export const getStaticProps: GetStaticProps = (context) => {
 }
 
 let startingAnswer: FormAnswer
+let questionHistory: Question[] = []
+let currentIndex = 0
 
 const DynamicForm: React.FC<{
   questions: Question[]
@@ -88,8 +90,6 @@ const DynamicForm: React.FC<{
     ...startingQuestion,
   })
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
-  const [questionHistory, setQuestionHistory] = useState([startingQuestion])
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const { data, status } = useSession()
 
@@ -139,11 +139,11 @@ const DynamicForm: React.FC<{
         console.error(body.error)
       } else {
         const typedBody = body as FormAnswerDB
-        setQuestionHistory(typedBody.questionHistory)
+        questionHistory = typedBody.questionHistory
+        currentIndex = typedBody.currentIndex
         setFormValues(typedBody.formValues)
         setCurrentQuestion(typedBody.currentQuestion)
         setCurrentAnswer(typedBody.currentAnswer)
-        setCurrentIndex(typedBody.currentIndex)
       }
       setLoaded(true)
     }
@@ -151,6 +151,10 @@ const DynamicForm: React.FC<{
       retrieve()
     }
   }, [data])
+
+  useEffect(() => {
+    questionHistory.push(startingQuestion)
+  }, [])
 
   /**
    * Returns the next question based on whether or not current question is a radio, continue, or text,
@@ -167,12 +171,14 @@ const DynamicForm: React.FC<{
    */
   function _handleQuestionChange(
     nextQuestion: Question,
-    newFormValues?: FormValues
+    newFormAnswers?: {
+      [x: number]: FormAnswer
+    }
   ) {
-    if (newFormValues) {
+    if (newFormAnswers) {
       setFormValues({
         formAnswers: {
-          ...newFormValues.formAnswers,
+          ...newFormAnswers,
           [currentQuestion.id]: currentAnswer,
         },
       })
@@ -184,6 +190,7 @@ const DynamicForm: React.FC<{
         },
       })
     }
+    currentIndex = currentIndex + 1
 
     setCurrentQuestion(nextQuestion)
     if (formValues.formAnswers[nextQuestion.id]) {
@@ -231,10 +238,9 @@ const DynamicForm: React.FC<{
       _handleQuestionExists()
     } else {
       const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
+      questionHistory.push(nextQuestion)
       _handleQuestionChange(nextQuestion)
-      setQuestionHistory([...questionHistory, nextQuestion])
     }
-    setCurrentIndex(currentIndex + 1)
   }
 
   /**
@@ -243,7 +249,7 @@ const DynamicForm: React.FC<{
   function _handleQuestionExists() {
     const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
     const oldAnswer = formValues.formAnswers[currentQuestion.id]
-    let newFormValues = { ...formValues }
+    let newFormAnswers = { ...formValues.formAnswers }
     // if the exisitng question is a radio, and they're not the same answer
     if (
       oldAnswer.type === QuestionType.RADIO &&
@@ -251,15 +257,13 @@ const DynamicForm: React.FC<{
       oldAnswer.answerId !== currentAnswer.answerId
     ) {
       for (let i = currentIndex + 1; i < questionHistory.length; i++) {
-        newFormValues = {
-          formAnswers: _.omit(newFormValues.formAnswers, questionHistory[i].id),
-        }
+        newFormAnswers = _.omit(newFormAnswers, questionHistory[i].id)
       }
-      setFormValues(newFormValues)
-      const questionSlice = questionHistory.slice(0, currentIndex + 1)
-      setQuestionHistory([...questionSlice, nextQuestion])
+      setFormValues({ formAnswers: newFormAnswers })
+      questionHistory = questionHistory.slice(0, currentIndex + 1)
+      questionHistory.push(nextQuestion)
     }
-    _handleQuestionChange(nextQuestion, newFormValues)
+    _handleQuestionChange(nextQuestion, newFormAnswers)
   }
 
   function _handleBack() {
@@ -279,7 +283,7 @@ const DynamicForm: React.FC<{
       }
       setCurrentQuestion(prevQuestion)
       setCurrentAnswer(formValues.formAnswers[prevQuestion.id])
-      setCurrentIndex(currentIndex - 1)
+      currentIndex = currentIndex - 1
     }
   }
 
