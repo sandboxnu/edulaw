@@ -360,7 +360,7 @@ const DynamicForm: React.FC<{
                     <BackButton type="button" onClick={() => _handleBack()}>
                       Back
                     </BackButton>
-                    <NextEndButton type="submit" disabled={loaded}>
+                    <NextEndButton type="submit" disabled={!loaded}>
                       {currentQuestion.type === QuestionType.RESULT
                         ? 'End'
                         : 'Next'}
