@@ -371,7 +371,6 @@ const DynamicForm: React.FC<{
     const x = 10
     let y = 25
     const y_inc = 8
-    const y_height = 270 // this is the height in mm of a normal sheet of paper
 
     doc
       .setFont('times', 'bold')
