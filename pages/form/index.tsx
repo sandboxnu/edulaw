@@ -97,30 +97,32 @@ const DynamicForm: React.FC<{
     router.push('/signup')
   }
 
+  const save = _.debounce(async () => {
+    console.log('saving')
+    if (!data?.user?.id) {
+      return
+    }
+    const userID = data.user.id
+    const body: Omit<FormAnswerDB, '_id'> = {
+      userID: userID,
+      formValues: formValues,
+      questionHistory: questionHistory,
+      currentIndex: currentIndex,
+      currentQuestion: currentQuestion,
+      currentAnswer: currentAnswer,
+    }
+    const result = await fetch('/api/form/save', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+    const resBody = await result.json()
+    if (result.status !== 200) {
+      console.error(resBody.error)
+    }
+  }, 30000)
+
   // For saving values to the database
   useEffect(() => {
-    const save = async () => {
-      if (!data?.user?.id) {
-        return
-      }
-      const userID = data.user.id
-      const body: Omit<FormAnswerDB, '_id'> = {
-        userID: userID,
-        formValues: formValues,
-        questionHistory: questionHistory,
-        currentIndex: currentIndex,
-        currentQuestion: currentQuestion,
-        currentAnswer: currentAnswer,
-      }
-      const result = await fetch('/api/form/save', {
-        method: 'POST',
-        body: JSON.stringify(body),
-      })
-      const resBody = await result.json()
-      if (result.status !== 200) {
-        console.error(resBody.error)
-      }
-    }
     if (loaded) {
       save()
     }
