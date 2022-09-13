@@ -66,7 +66,11 @@ const District: React.FC = () => {
   return !loaded ? (
     <p>loading...</p>
   ) : (
-    <div>
+    <form
+      onSubmit={() => {
+        router.push('/form/group')
+      }}
+    >
       <select
         name="District"
         value={district}
@@ -105,7 +109,7 @@ const District: React.FC = () => {
             )
           })}
       </select>
-    </div>
+    </form>
   )
 }
 

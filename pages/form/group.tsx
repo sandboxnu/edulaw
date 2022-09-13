@@ -74,7 +74,7 @@ const Group: React.FC = () => {
   return !loaded ? (
     <p>loading...</p>
   ) : (
-    <div>
+    <form onSubmit={() => router.push('/form/concern')}>
       <select>
         <option value="Student">Student</option>
         <option value="Group">Group</option>
@@ -93,7 +93,7 @@ const Group: React.FC = () => {
           </label>
         )
       })}
-    </div>
+    </form>
   )
 }
 

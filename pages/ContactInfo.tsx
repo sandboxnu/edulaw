@@ -6,6 +6,7 @@ import {
 } from '../components/FormStyles/QuestionText'
 import { StyledTextInput } from '../components/FormStyles/InputBox'
 import { FormTemplate } from '../components/Critical/FormTemplate'
+import { useRouter } from 'next/router'
 
 const InputRow = styled.div`
   display: flex;
@@ -20,7 +21,8 @@ const FormContainer = styled.div`
   gap: 32px;
 `
 
-function contactInfo() {
+function ContactInfo() {
+  const router = useRouter()
   const allInputFields: [string, string][][] = [
     [
       ['First Name', 'firstName'],
@@ -52,6 +54,7 @@ function contactInfo() {
       onSubmit={(values, actions) => {
         alert(JSON.stringify(values, null, 2))
         actions.setSubmitting(false)
+        router.push('/form/additionalinfo')
       }}
       nextButtonText={'Next'}
     >
@@ -78,4 +81,4 @@ function contactInfo() {
     </FormTemplate>
   )
 }
-export default contactInfo
+export default ContactInfo

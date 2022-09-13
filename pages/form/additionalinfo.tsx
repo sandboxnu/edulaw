@@ -86,7 +86,7 @@ const District: React.FC = () => {
   return !loaded ? (
     <p>loading...</p>
   ) : (
-    <form>
+    <form onSubmit={() => router.push('/form/district')}>
       <select
         name="Language"
         value={language}
