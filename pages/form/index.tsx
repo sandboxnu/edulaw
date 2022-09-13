@@ -126,7 +126,7 @@ const DynamicForm: React.FC<{
     if (loaded) {
       save()
     }
-  }, [currentIndex])
+  }, [currentQuestion])
 
   //For retrieving values from the database(only runs once)
   useEffect(() => {
@@ -171,32 +171,19 @@ const DynamicForm: React.FC<{
   /**
    * Handles changing the old question to the given question
    */
-  function _handleQuestionChange(
-    nextQuestion: Question,
-    newFormAnswers?: {
-      [x: number]: FormAnswer
+  function _handleQuestionChange(nextQuestion: Question) {
+    const newFormValues: FormValues = {
+      formAnswers: {
+        ...formValues.formAnswers,
+        [currentQuestion.id]: currentAnswer,
+      },
     }
-  ) {
-    if (newFormAnswers) {
-      setFormValues({
-        formAnswers: {
-          ...newFormAnswers,
-          [currentQuestion.id]: currentAnswer,
-        },
-      })
-    } else {
-      setFormValues({
-        formAnswers: {
-          ...formValues.formAnswers,
-          [currentQuestion.id]: currentAnswer,
-        },
-      })
-    }
+    setFormValues(newFormValues)
     currentIndex = currentIndex + 1
 
     setCurrentQuestion(nextQuestion)
-    if (formValues.formAnswers[nextQuestion.id]) {
-      setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+    if (nextQuestion.id in newFormValues.formAnswers) {
+      setCurrentAnswer(newFormValues.formAnswers[nextQuestion.id])
     } else {
       switch (nextQuestion.type) {
         case QuestionType.CONTINUE:
@@ -236,7 +223,7 @@ const DynamicForm: React.FC<{
     ) {
       return
     }
-    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
+    if (currentQuestion.id in formValues.formAnswers) {
       _handleQuestionExists()
     } else {
       const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
@@ -251,22 +238,19 @@ const DynamicForm: React.FC<{
   function _handleQuestionExists() {
     const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
     const oldAnswer = formValues.formAnswers[currentQuestion.id]
-    let newFormAnswers = { ...formValues.formAnswers }
     // if the exisitng question is a radio, and they're not the same answer
     if (
       oldAnswer.type === QuestionType.RADIO &&
       currentAnswer.type === QuestionType.RADIO &&
       oldAnswer.answerId !== currentAnswer.answerId
     ) {
-      for (let i = currentIndex + 1; i < questionHistory.length; i++) {
-        newFormAnswers = _.omit(newFormAnswers, questionHistory[i].id)
-      }
-      setFormValues({ formAnswers: newFormAnswers })
       questionHistory = questionHistory.slice(0, currentIndex + 1)
       questionHistory.push(nextQuestion)
     }
-    _handleQuestionChange(nextQuestion, newFormAnswers)
+    _handleQuestionChange(nextQuestion)
   }
+
+  console.log(questionHistory)
 
   function _handleBack() {
     // TODO: in redesign, if we disable the back button on the first question, we can get rid of this check
