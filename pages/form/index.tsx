@@ -229,7 +229,7 @@ const DynamicForm: React.FC<{
 
   function _handleBack() {
     if (questionHistory.length === 1) return
-    questionHistory = questionHistory.splice(-1)
+    questionHistory.splice(-1)
     _handleQuestionChange()
   }
 
