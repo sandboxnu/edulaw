@@ -11,7 +11,6 @@ interface ChooseFormTypeProps {
   question: Question
   onChange: React.Dispatch<React.SetStateAction<FormAnswer>>
   answer?: FormAnswer
-  questionHistory: Question[]
 }
 
 export const ChooseFormType: React.FC<ChooseFormTypeProps> = (

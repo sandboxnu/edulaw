@@ -1,6 +1,6 @@
 import { Question } from '../../models'
 import { Form, Formik } from 'formik'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import {
   emptyFormValues,
   FormAnswer,
@@ -97,29 +97,31 @@ const DynamicForm: React.FC<{
     router.push('/signup')
   }
 
-  const save = _.debounce(async () => {
-    console.log('saving')
-    if (!data?.user?.id) {
-      return
-    }
-    const userID = data.user.id
-    const body: Omit<FormAnswerDB, '_id'> = {
-      userID: userID,
-      formValues: formValues,
-      questionHistory: questionHistory,
-      currentIndex: currentIndex,
-      currentQuestion: currentQuestion,
-      currentAnswer: currentAnswer,
-    }
-    const result = await fetch('/api/form/save', {
-      method: 'POST',
-      body: JSON.stringify(body),
-    })
-    const resBody = await result.json()
-    if (result.status !== 200) {
-      console.error(resBody.error)
-    }
-  }, 30000)
+  const save = useMemo(() => {
+    return _.debounce(async () => {
+      console.log('saving')
+      if (!data?.user?.id) {
+        return
+      }
+      const userID = data.user.id
+      const body: Omit<FormAnswerDB, '_id'> = {
+        userID: userID,
+        formValues: formValues,
+        questionHistory: questionHistory,
+        currentIndex: currentIndex,
+        currentQuestion: currentQuestion,
+        currentAnswer: currentAnswer,
+      }
+      const result = await fetch('/api/form/save', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      })
+      const resBody = await result.json()
+      if (result.status !== 200) {
+        console.error(resBody.error)
+      }
+    }, 30000)
+  }, [])
 
   // For saving values to the database
   useEffect(() => {
@@ -250,7 +252,7 @@ const DynamicForm: React.FC<{
     _handleQuestionChange(nextQuestion)
   }
 
-  console.log(questionHistory)
+  console.log(questionHistory.map((q) => q.question))
 
   function _handleBack() {
     // TODO: in redesign, if we disable the back button on the first question, we can get rid of this check
@@ -341,7 +343,6 @@ const DynamicForm: React.FC<{
                       question={currentQuestion}
                       onChange={setCurrentAnswer}
                       answer={formValues.formAnswers[currentQuestion.id]}
-                      questionHistory={questionHistory}
                     />
                   </QuestionDisplayWrapper>
                 )}
