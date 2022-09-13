@@ -118,7 +118,7 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   return (
     <QuestionLayout
       results={results}
-      questionText={results.length === 0 ? 'No violations identified' : ''}
+      questionText={results.length === 0 ? props.label : ''}
       input={<div />}
     />
   )
