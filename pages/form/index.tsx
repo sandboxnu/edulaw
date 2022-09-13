@@ -343,6 +343,7 @@ const DynamicForm: React.FC<{
                       question={currentQuestion}
                       onChange={setCurrentAnswer}
                       answer={formValues.formAnswers[currentQuestion.id]}
+                      questionHistory={questionHistory}
                     />
                   </QuestionDisplayWrapper>
                 )}
