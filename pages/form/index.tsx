@@ -1,5 +1,5 @@
 import { Question } from '../../models'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import {
   emptyFormValues,
   FormAnswer,
@@ -42,6 +42,7 @@ export const getStaticProps: GetStaticProps = (context) => {
 }
 
 let startingAnswer: FormAnswer
+let questionHistory: Question[] = []
 
 const DynamicForm: React.FC<{
   questions: Question[]
@@ -54,8 +55,6 @@ const DynamicForm: React.FC<{
     ...startingQuestion,
   })
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
-  const [questionHistory, setQuestionHistory] = useState([startingQuestion])
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const { data, status } = useSession()
 
@@ -63,9 +62,9 @@ const DynamicForm: React.FC<{
     router.push('/signup')
   }
 
-  // For saving values to the database
-  useEffect(() => {
-    const save = async () => {
+  const save = useMemo(() => {
+    return _.debounce(async () => {
+      console.log('saving')
       if (!data?.user?.id) {
         return
       }
@@ -74,7 +73,6 @@ const DynamicForm: React.FC<{
         userID: userID,
         formValues: formValues,
         questionHistory: questionHistory,
-        currentIndex: currentIndex,
         currentQuestion: currentQuestion,
         currentAnswer: currentAnswer,
       }
@@ -86,11 +84,15 @@ const DynamicForm: React.FC<{
       if (result.status !== 200) {
         console.error(resBody.error)
       }
-    }
+    }, 30000)
+  }, [])
+
+  // For saving values to the database
+  useEffect(() => {
     if (loaded) {
       save()
     }
-  }, [currentIndex])
+  }, [currentQuestion])
 
   //For retrieving values from the database(only runs once)
   useEffect(() => {
@@ -105,11 +107,10 @@ const DynamicForm: React.FC<{
         console.error(body.error)
       } else {
         const typedBody = body as FormAnswerDB
-        setQuestionHistory(typedBody.questionHistory)
+        questionHistory = typedBody.questionHistory
         setFormValues(typedBody.formValues)
         setCurrentQuestion(typedBody.currentQuestion)
         setCurrentAnswer(typedBody.currentAnswer)
-        setCurrentIndex(typedBody.currentIndex)
       }
       setLoaded(true)
     }
@@ -117,6 +118,10 @@ const DynamicForm: React.FC<{
       retrieve()
     }
   }, [data])
+
+  useEffect(() => {
+    questionHistory.push(startingQuestion)
+  }, [])
 
   /**
    * Returns the next question based on whether or not current question is a radio, continue, or text,
@@ -131,47 +136,37 @@ const DynamicForm: React.FC<{
   /**
    * Handles changing the old question to the given question
    */
-  function _handleQuestionChange(
-    nextQuestion: Question,
-    newFormValues?: FormValues
-  ) {
-    if (newFormValues) {
-      setFormValues({
-        formAnswers: {
-          ...newFormValues.formAnswers,
-          [currentQuestion.id]: currentAnswer,
-        },
-      })
-    } else {
-      setFormValues({
-        formAnswers: {
-          ...formValues.formAnswers,
-          [currentQuestion.id]: currentAnswer,
-        },
-      })
+  function _handleQuestionChange() {
+    const newFormValues: FormValues = {
+      formAnswers: {
+        ...formValues.formAnswers,
+        [currentQuestion.id]: currentAnswer,
+      },
     }
+    setFormValues(newFormValues)
 
-    setCurrentQuestion(nextQuestion)
-    if (formValues.formAnswers[nextQuestion.id]) {
-      setCurrentAnswer(formValues.formAnswers[nextQuestion.id])
+    const newQuestion = questionHistory[questionHistory.length - 1]
+    setCurrentQuestion(newQuestion)
+    if (newQuestion.id in newFormValues.formAnswers) {
+      setCurrentAnswer(newFormValues.formAnswers[newQuestion.id])
     } else {
-      switch (nextQuestion.type) {
+      switch (newQuestion.type) {
         case QuestionType.CONTINUE:
           setCurrentAnswer({
-            questionId: nextQuestion.id,
+            questionId: newQuestion.id,
             type: QuestionType.CONTINUE,
           })
           break
         case QuestionType.RADIO:
           setCurrentAnswer({
-            questionId: nextQuestion.id,
+            questionId: newQuestion.id,
             type: QuestionType.RADIO,
             answerId: -1,
           })
           break
         case QuestionType.TEXT:
           setCurrentAnswer({
-            questionId: nextQuestion.id,
+            questionId: newQuestion.id,
             type: QuestionType.TEXT,
             userAnswer: '',
           })
@@ -193,60 +188,15 @@ const DynamicForm: React.FC<{
     ) {
       return
     }
-    if (formValues.formAnswers.hasOwnProperty(currentQuestion.id)) {
-      _handleQuestionExists()
-    } else {
-      const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
-      _handleQuestionChange(nextQuestion)
-      setQuestionHistory([...questionHistory, nextQuestion])
-    }
-    setCurrentIndex(currentIndex + 1)
-  }
-
-  /**
-   * Modifies question history and routes form depending on whether answer has been changed
-   */
-  function _handleQuestionExists() {
     const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
-    const oldAnswer = formValues.formAnswers[currentQuestion.id]
-    let newFormValues = { ...formValues }
-    // if the exisitng question is a radio, and they're not the same answer
-    if (
-      oldAnswer.type === QuestionType.RADIO &&
-      currentAnswer.type === QuestionType.RADIO &&
-      oldAnswer.answerId !== currentAnswer.answerId
-    ) {
-      for (let i = currentIndex + 1; i < questionHistory.length; i++) {
-        newFormValues = {
-          formAnswers: _.omit(newFormValues.formAnswers, questionHistory[i].id),
-        }
-      }
-      setFormValues(newFormValues)
-      const questionSlice = questionHistory.slice(0, currentIndex + 1)
-      setQuestionHistory([...questionSlice, nextQuestion])
-    }
-    _handleQuestionChange(nextQuestion, newFormValues)
+    questionHistory.push(nextQuestion)
+    _handleQuestionChange()
   }
 
   function _handleBack() {
-    // TODO: in redesign, if we disable the back button on the first question, we can get rid of this check
-    if (currentIndex !== 0) {
-      const prevQuestion = questionHistory[currentIndex - 1]
-      if (
-        currentQuestion.type !== QuestionType.RESULT &&
-        currentQuestion.id === currentAnswer?.questionId
-      ) {
-        setFormValues({
-          formAnswers: {
-            ...formValues.formAnswers,
-            [currentQuestion.id]: currentAnswer,
-          },
-        })
-      }
-      setCurrentQuestion(prevQuestion)
-      setCurrentAnswer(formValues.formAnswers[prevQuestion.id])
-      setCurrentIndex(currentIndex - 1)
-    }
+    if (questionHistory.length === 1) return
+    questionHistory.splice(-1)
+    _handleQuestionChange()
   }
 
   // determines whether the given doc needs a new page added to it
@@ -413,7 +363,7 @@ const DynamicForm: React.FC<{
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
 
     let doc = new jsPDF()
-    const results = buildResults(formValues, questions)
+    const results = buildResults(formValues, questionHistory)
     if (results.length > 0) {
       doc = _buildDoc(doc, results)
       doc.save('PRS_Complaint.pdf')
