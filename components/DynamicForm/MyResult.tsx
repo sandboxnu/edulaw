@@ -28,7 +28,6 @@ export function buildResults(
   formValues: FormValues,
   questionHistory: Question[]
 ): FormResult[] {
-  // const questionKeys = Object.keys(formAnswers)
   const results = questionHistory.reduce(
     (results: FormResult[], curQuestion) => {
       const curFormAns = formValues.formAnswers[curQuestion.id]

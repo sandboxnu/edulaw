@@ -265,7 +265,7 @@ const DynamicForm: React.FC<{
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
 
     let doc = new jsPDF()
-    const results = buildResults(formValues, questions)
+    const results = buildResults(formValues, questionHistory)
     if (results.length > 0) {
       doc = _buildDoc(doc, results)
       doc.save('PRS_Complaint.pdf')
