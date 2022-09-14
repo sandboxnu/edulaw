@@ -28,7 +28,6 @@ export function buildResults(
   formValues: FormValues,
   questionHistory: Question[]
 ): FormResult[] {
-  // const questionKeys = Object.keys(formAnswers)
   const results = questionHistory.reduce(
     (results: FormResult[], curQuestion) => {
       const curFormAns = formValues.formAnswers[curQuestion.id]
@@ -118,7 +117,7 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   return (
     <QuestionLayout
       results={results}
-      questionText={results.length === 0 ? 'No violations identified' : ''}
+      questionText={results.length === 0 ? props.label : ''}
       input={<div />}
     />
   )
