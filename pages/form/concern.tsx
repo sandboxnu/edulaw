@@ -93,7 +93,7 @@ The information is specific to your situation and concerns, but here are a few e
         zip: '',
       }}
       onSubmit={(values, actions) => {
-        alert(JSON.stringify(values, null, 2))
+        router.push('/form')
         actions.setSubmitting(false)
       }}
       nextButtonText={'Next'}

@@ -52,14 +52,14 @@ interface FormTemplateProps {
   ) => void
   initialValues: any
   onBack?: () => void
-  nextButtonText: string
+  nextButtonText?: string
 }
 
 export const FormTemplate: React.FC<FormTemplateProps> = ({
   onBack,
   onSubmit,
   initialValues,
-  nextButtonText,
+  nextButtonText = 'Next',
   children,
 }) => {
   return (

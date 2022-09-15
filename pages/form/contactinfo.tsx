@@ -3,9 +3,9 @@ import {
   InfoText,
   QuestionText,
   TitleText,
-} from '../components/FormStyles/QuestionText'
-import { StyledTextInput } from '../components/FormStyles/InputBox'
-import { FormTemplate } from '../components/Critical/FormTemplate'
+} from '../../components/FormStyles/QuestionText'
+import { StyledTextInput } from '../../components/FormStyles/InputBox'
+import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { useRouter } from 'next/router'
 
 const InputRow = styled.div`
@@ -52,11 +52,9 @@ function ContactInfo() {
         zip: '',
       }}
       onSubmit={(values, actions) => {
-        alert(JSON.stringify(values, null, 2))
-        actions.setSubmitting(false)
         router.push('/form/additionalinfo')
+        actions.setSubmitting(false)
       }}
-      nextButtonText={'Next'}
     >
       <TitleText>Contact Info</TitleText>
       <InfoText>

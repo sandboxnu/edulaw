@@ -2,6 +2,7 @@ import { CheckBoxOutlineBlankOutlined } from '@mui/icons-material'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
+import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { AdditionalInfoDb } from '../api/form/additionalInfo/save'
 
 // TODO: Get accurate stuff for this
@@ -21,9 +22,9 @@ const District: React.FC = () => {
 
   // reroutes to signup if not logged in
 
-  // if (status === 'unauthenticated') {
-  //   router.push('/signup')
-  // }
+  if (status === 'unauthenticated') {
+    router.push('/signup')
+  }
 
   // saves values to database
   useEffect(() => {
@@ -49,11 +50,7 @@ const District: React.FC = () => {
       }
     }
     save()
-  }, [
-    language,
-    relationship,
-    // TODO: again, update with all the corresponding state variables
-  ])
+  }, [bsea, deseAccommodations, language, relationship])
 
   // loads values in from database, only loads once
   useEffect(() => {
@@ -83,10 +80,19 @@ const District: React.FC = () => {
     }
   }, [data])
 
-  return !loaded ? (
-    <p>loading...</p>
-  ) : (
-    <form onSubmit={() => router.push('/form/district')}>
+  return (
+    <FormTemplate
+      initialValues={{
+        language: undefined,
+        relationship: undefined,
+        deseAccomodations: '',
+        bsea: false,
+      }}
+      onSubmit={(values, actions) => {
+        router.push('/form/district')
+        actions.setSubmitting(false)
+      }}
+    >
       <select
         name="Language"
         value={language}
@@ -129,7 +135,7 @@ const District: React.FC = () => {
           onChange={({ target }) => setBsea(target.checked)}
         />
       </label>
-    </form>
+    </FormTemplate>
   )
 }
 export default District

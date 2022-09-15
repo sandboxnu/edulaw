@@ -1,6 +1,7 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
+import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { districts, schools } from '../../constants'
 import { DistrictDB } from '../api/form/district/save'
 
@@ -63,12 +64,15 @@ const District: React.FC = () => {
     }
   }, [data])
 
-  return !loaded ? (
-    <p>loading...</p>
-  ) : (
-    <form
-      onSubmit={() => {
+  return (
+    <FormTemplate
+      initialValues={{
+        district: undefined,
+        school: undefined,
+      }}
+      onSubmit={(values, actions) => {
         router.push('/form/group')
+        actions.setSubmitting(false)
       }}
     >
       <select
@@ -109,7 +113,7 @@ const District: React.FC = () => {
             )
           })}
       </select>
-    </form>
+    </FormTemplate>
   )
 }
 

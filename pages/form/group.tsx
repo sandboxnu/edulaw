@@ -3,6 +3,7 @@ import { GroupDB } from '../api/form/group/save'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { studentSpecialCircumstances } from '../../constants/additionalConstants'
+import { FormTemplate } from '../../components/Critical/FormTemplate'
 
 const Group: React.FC = () => {
   const [checkedArr, setCheckedArr] = useState<Array<boolean>>([
@@ -71,10 +72,16 @@ const Group: React.FC = () => {
     setCheckedArr(updatedCheckedArr)
     console.log(checkedArr)
   }
-  return !loaded ? (
-    <p>loading...</p>
-  ) : (
-    <form onSubmit={() => router.push('/form/concern')}>
+  return (
+    <FormTemplate
+      initialValues={{
+        checkedArr: [false, false, false, false],
+      }}
+      onSubmit={(values, actions) => {
+        router.push('/form/concern')
+        actions.setSubmitting(false)
+      }}
+    >
       <select>
         <option value="Student">Student</option>
         <option value="Group">Group</option>
@@ -93,7 +100,7 @@ const Group: React.FC = () => {
           </label>
         )
       })}
-    </form>
+    </FormTemplate>
   )
 }
 
