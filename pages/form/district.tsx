@@ -1,4 +1,4 @@
-import { MenuItem } from 'material-ui'
+import { MenuItem } from '@material-ui/core'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
