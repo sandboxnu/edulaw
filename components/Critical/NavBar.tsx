@@ -29,10 +29,12 @@ const SignOutButton = styled.button`
   font-size: 16px;
   display: inline-block;
   border-radius: 4px;
+  border-style: solid;
+  border-color: ${COLORS.TEXT_DARKGREY}
   width: 100px;
   height: 42px;
   cursor: pointer;
-  margin: 8px;
+  margin-left: 20px;
   color: white;
   background-color: ${COLORS.EDLAW_GREEN};
 `
