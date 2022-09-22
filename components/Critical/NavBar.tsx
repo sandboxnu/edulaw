@@ -30,7 +30,7 @@ const SignOutButton = styled.button`
   display: inline-block;
   border-radius: 4px;
   border-style: solid;
-  border-color: ${COLORS.TEXT_DARKGREY}
+  border-color: ${COLORS.TEXT_DARKGREY};
   width: 100px;
   height: 42px;
   cursor: pointer;
