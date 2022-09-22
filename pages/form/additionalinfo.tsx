@@ -1,18 +1,29 @@
 //import { CheckBoxOutlineBlankOutlined } from '@mui/icons-material'
+import { MenuItem, Select } from '@material-ui/core'
 import RadioGroup from '@mui/material/RadioGroup'
+import { DropDownMenu } from 'material-ui'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { MyRadio } from '../../components/DynamicForm/MyRadio'
 import Tooltip from '../../components/DynamicForm/Tooltip'
 import { TitleText, InfoText } from '../../components/FormStyles/QuestionText'
 import { RadioButton } from '../../components/FormStyles/RadioButton'
 import { TextArea } from '../../components/FormStyles/TextArea'
+import { COLORS } from '../../constants/colors'
 import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
 import { FormContainer } from './contactinfo'
 
-// TODO: Get accurate stuff for this
+export const StyledSelect = styled(Select)`
+  & {
+    border-color: ${COLORS.SHADOW_GREY};
+    background-color: ${COLORS.LIGHT_GREY};
+    color: ${COLORS.TEXT_GREY};
+  }
+`
+
 const relationships = [
   'Student',
   'Parent or Legal Guardian',
@@ -128,22 +139,19 @@ If you tell the school you prefer a language other than English, you have the ri
               "Anyone can file a PRS complaint, including a parent, social worker, attorney, counselor, or other third party. If you are not the student's parent or guardian, you need to get the parent or education decision maker’s permission to file a complaint related to a specific child.",
           }}
         />
-        <select
-          name="Relationship"
+        <StyledSelect
           value={relationship}
-          onChange={({ target }) => setRelationship(target.value)}
+          label="Select Relationship"
+          onChange={(evt) => setRelationship(evt.target.value as string)}
         >
-          <option value="none" selected disabled hidden>
-            Select relationship
-          </option>
-          {relationships.map((relationship, index) => {
+          {relationships.map((relationship) => {
             return (
-              <option key={relationship} value={relationship}>
+              <MenuItem key={relationship} value={relationship}>
                 {relationship}
-              </option>
+              </MenuItem>
             )
           })}
-        </select>
+        </StyledSelect>
         <InfoText>
           If you require accommodations for communicating with DESE, describe
           them in the box below.

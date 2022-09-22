@@ -4,8 +4,12 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { studentSpecialCircumstances } from '../../constants/additionalConstants'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
+import { StyledSelect } from './additionalinfo'
+import { Checkbox, MenuItem } from '@material-ui/core'
+import { InfoText } from '../../components/FormStyles/QuestionText'
 
 const Group: React.FC = () => {
+  const [studentOrGroup, setStudentOrGroup] = useState<string | undefined>()
   const [checkedArr, setCheckedArr] = useState<Array<boolean>>([
     false,
     false,
@@ -82,22 +86,31 @@ const Group: React.FC = () => {
       onBack={() => router.push('/form/district')}
       currentPage="Student or Group Details"
     >
-      <select>
-        <option value="Student">Student</option>
-        <option value="Group">Group</option>
-      </select>
+      <InfoText>
+        Are you filing this complaint on behalf of one student or a group of
+        students?
+      </InfoText>
+      <StyledSelect
+        label=""
+        value={studentOrGroup}
+        onChange={(event) => {
+          setStudentOrGroup(event.target.value as string)
+        }}
+      >
+        <MenuItem value="Student">Student</MenuItem>
+        <MenuItem value="Group">Group</MenuItem>
+      </StyledSelect>
 
+      <InfoText>Do any of the following apply to the student?</InfoText>
       {studentSpecialCircumstances.map((option, index) => {
         return (
-          <label key={index}>
-            <input
-              type="checkbox"
-              value={option}
+          <div key={option}>
+            <Checkbox
               checked={checkedArr[index]}
               onChange={() => handleOnChange(index)}
             />
-            {option}
-          </label>
+            <label>{option}</label>
+          </div>
         )
       })}
     </FormTemplate>

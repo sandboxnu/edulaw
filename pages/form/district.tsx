@@ -1,9 +1,12 @@
+import { MenuItem } from 'material-ui'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
+import { InfoText } from '../../components/FormStyles/QuestionText'
 import { districts, schools } from '../../constants'
 import { DistrictDB } from '../api/form/district/save'
+import { StyledSelect } from './additionalinfo'
 
 const District: React.FC = () => {
   const [district, setDistrict] = useState<string | undefined>(undefined)
@@ -74,36 +77,38 @@ const District: React.FC = () => {
       onBack={() => router.push('/form/additionalinfo')}
       currentPage="District and School"
     >
-      <select
-        name="District"
+      <InfoText>Please fill in the student&rsquo;s school district:</InfoText>
+      <StyledSelect
+        label="Select District"
         value={district}
         onChange={(event) => {
-          setDistrict(event.target.value)
+          setDistrict(event.target.value as string)
           setSchool(undefined)
         }}
       >
         {districts.map((district) => {
           return (
-            <option key={district} value={district}>
+            <MenuItem key={district} value={district}>
               {district}
-            </option>
+            </MenuItem>
           )
         })}
-      </select>
-      <select
-        name="School"
+      </StyledSelect>
+      <InfoText>Please fill in the school that the student attends:</InfoText>
+      <StyledSelect
+        label="Select School"
         value={school}
-        onChange={(event) => setSchool(event.target.value)}
+        onChange={(event) => setSchool(event.target.value as string)}
       >
         {district !== undefined &&
           schools[districts.indexOf(district)].map((school) => {
             return (
-              <option key={school} value={school}>
+              <MenuItem key={school} value={school}>
                 {school}
-              </option>
+              </MenuItem>
             )
           })}
-      </select>
+      </StyledSelect>
     </FormTemplate>
   )
 }
