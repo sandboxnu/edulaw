@@ -42,6 +42,14 @@ export const StyledTextField = styled(TextField)`
       outline: none;
     }
   }
+
+  & > div > div {
+    display: none !important;
+  }
+
+  &::after {
+    display: none !important;
+  }
 `
 
 const relationships = [
