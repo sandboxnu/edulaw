@@ -1,5 +1,5 @@
 //import { CheckBoxOutlineBlankOutlined } from '@mui/icons-material'
-import { MenuItem, Select } from '@material-ui/core'
+import { MenuItem, Select, TextField } from '@material-ui/core'
 import Autocomplete from '@mui/material/Autocomplete'
 import RadioGroup from '@mui/material/RadioGroup'
 import { DropDownMenu } from 'material-ui'
@@ -142,9 +142,8 @@ If you tell the school you prefer a language other than English, you have the ri
           inputValue={relationship}
           options={relationships}
           onInputChange={(evt, newValue) => setRelationship(newValue)}
-          renderInput={(params) => (
-            <TextArea width={330} height={42} {...params} />
-          )}
+          sx={{ width: 330, height: 42 }}
+          renderInput={(params) => <TextField {...params} />}
         />
         <InfoText>
           If you require accommodations for communicating with DESE, describe

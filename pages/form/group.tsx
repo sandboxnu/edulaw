@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { studentSpecialCircumstances } from '../../constants/additionalConstants'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { StyledAutocomplete } from './additionalinfo'
-import { Checkbox, MenuItem } from '@material-ui/core'
+import { Checkbox, MenuItem, TextField } from '@material-ui/core'
 import { InfoText } from '../../components/FormStyles/QuestionText'
 import { TextArea } from '../../components/FormStyles/TextArea'
 
@@ -96,9 +96,8 @@ const Group: React.FC = () => {
           setStudentOrGroup(newValue as string)
         }}
         options={['One Student', 'Group of Students']}
-        renderInput={(params) => (
-          <TextArea width={330} height={42} {...params} />
-        )}
+        sx={{ width: 330, height: 42 }}
+        renderInput={(params) => <TextField {...params} />}
       />
 
       <InfoText>Do any of the following apply to the student?</InfoText>

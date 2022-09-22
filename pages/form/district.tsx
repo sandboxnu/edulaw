@@ -1,4 +1,4 @@
-import { MenuItem } from '@material-ui/core'
+import { MenuItem, TextField } from '@material-ui/core'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
@@ -81,12 +81,13 @@ const District: React.FC = () => {
         value={district}
         options={districts}
         onChange={(evt, newValue) => {
+          console.log(evt)
+          console.log(newValue)
           setDistrict(newValue as string)
           setSchool(undefined)
         }}
-        renderInput={(params) => (
-          <TextArea width={330} height={42} {...params} />
-        )}
+        sx={{ width: 330, height: 42 }}
+        renderInput={(params) => <TextField {...params} />}
       />
       <InfoText>Please fill in the school that the student attends:</InfoText>
       <StyledAutocomplete
@@ -97,9 +98,8 @@ const District: React.FC = () => {
         onChange={(evt, newValue) => {
           setSchool(newValue as string)
         }}
-        renderInput={(params) => (
-          <TextArea width={330} height={42} {...params} />
-        )}
+        sx={{ width: 330, height: 42 }}
+        renderInput={(params) => <TextField {...params} />}
       />
     </FormTemplate>
   )
