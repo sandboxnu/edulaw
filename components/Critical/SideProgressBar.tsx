@@ -3,6 +3,7 @@ import { ListItemIcon, ListItemText } from '@material-ui/core'
 import styled from 'styled-components'
 import { HomeOutlined } from '@material-ui/icons'
 import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import { COLORS } from '../../constants/colors'
 import { CUTOFFS } from '../../constants/responsive'
 import Accordion from '@mui/material/Accordion'
@@ -88,11 +89,11 @@ function SideProgressBar({ currentPage }: { currentPage?: string }) {
       color: index === selectedIndex ? 'black' : COLORS.TEXT_GREY,
     }
 
-    if (selectedIndex == index) {
+    if (selectedIndex === index) {
       return (
         <SummaryItem key={text} onClick={() => router.push(link)}>
           <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
-            {index == 0 ? (
+            {index === 0 ? (
               <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />
             ) : (
               <DoNotDisturbOnIcon style={{ color: COLORS.EDLAW_BLUE }} />
@@ -109,10 +110,12 @@ function SideProgressBar({ currentPage }: { currentPage?: string }) {
       return (
         <ListItem key={text} onClick={() => router.push(link)}>
           <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
-            {index == 0 ? (
+            {index === 0 ? (
               <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />
+            ) : index < selectedIndex ? (
+              <CheckCircleIcon style={{ color: COLORS.EDLAW_BLUE }} />
             ) : (
-              <DoNotDisturbOnIcon style={{ color: COLORS.EDLAW_BLUE }} />
+              <DoNotDisturbOnIcon style={{ color: COLORS.TEXT_GREY }} />
             )}
           </ListItemIcon>
           <ListItemText
