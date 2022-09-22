@@ -2,12 +2,11 @@ import SideProgressBar from './SideProgressBar'
 import NavBar from './NavBar'
 import { CUTOFFS } from '../../constants/responsive'
 import styled from 'styled-components'
-
 import { BottomBar } from './BottomBar'
-
 import { Form, Formik } from 'formik'
 import { FormValues } from '../../utils/FormContext'
 import { LoadingSpinner } from '../LoadingSpinner'
+import { ReactNode } from 'react'
 
 const FullPageContainer = styled.div`
   display: flex;
@@ -64,17 +63,17 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
   initialValues,
   nextButtonText = 'Next',
   children,
-  currentPage,
+  currentPage = 'Guided Questions',
   loaded,
 }) => {
   return (
     <FullPageContainer>
       <NavBar />
       <HorizontalBox>
-        {((children) => {
+        {((formElements: ReactNode) => {
           return initialValues ? (
             <Formik initialValues={initialValues} onSubmit={onSubmit}>
-              {children}
+              {formElements}
             </Formik>
           ) : (
             <form
@@ -82,7 +81,7 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
                 onSubmit({ formAnswers: {} }, { setSubmitting: console.log })
               }
             >
-              {children}
+              {formElements}
             </form>
           )
         })(
