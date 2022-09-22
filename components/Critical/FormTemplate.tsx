@@ -7,6 +7,7 @@ import { BottomBar } from './BottomBar'
 
 import { Form, Formik } from 'formik'
 import { FormValues } from '../../utils/FormContext'
+import { LoadingSpinner } from '../LoadingSpinner'
 
 const FullPageContainer = styled.div`
   display: flex;
@@ -54,6 +55,7 @@ interface FormTemplateProps {
   onBack?: () => void
   nextButtonText?: string
   currentPage?: string
+  loaded: boolean
 }
 
 export const FormTemplate: React.FC<FormTemplateProps> = ({
@@ -63,8 +65,11 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
   nextButtonText = 'Next',
   children,
   currentPage,
+  loaded,
 }) => {
-  return (
+  return !loaded ? (
+    <LoadingSpinner />
+  ) : (
     <FullPageContainer>
       <NavBar />
       <HorizontalBox>

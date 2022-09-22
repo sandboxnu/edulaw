@@ -78,10 +78,9 @@ The information is specific to your situation and concerns, but here are a few e
       retrieve()
     }
   }, [data, loaded])
-  return !loaded ? (
-    <p>loading...</p>
-  ) : (
+  return (
     <FormTemplate
+      loaded={loaded}
       initialValues={{
         firstName: '',
         lastName: '',

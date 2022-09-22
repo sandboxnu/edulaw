@@ -74,6 +74,7 @@ const Group: React.FC = () => {
   }
   return (
     <FormTemplate
+      loaded={loaded}
       initialValues={{
         checkedArr: [false, false, false, false],
       }}

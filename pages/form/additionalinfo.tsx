@@ -82,6 +82,7 @@ const District: React.FC = () => {
 
   return (
     <FormTemplate
+      loaded={loaded}
       initialValues={{
         language: undefined,
         relationship: undefined,

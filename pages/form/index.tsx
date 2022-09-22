@@ -384,6 +384,7 @@ const DynamicForm: React.FC<{
 
   return (
     <FormTemplate
+      loaded={loaded}
       onBack={_handleBack}
       onSubmit={onSubmit}
       nextButtonText={

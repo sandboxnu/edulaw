@@ -66,9 +66,10 @@ const District: React.FC = () => {
 
   return (
     <FormTemplate
+      loaded={loaded}
       initialValues={{
-        district: undefined,
-        school: undefined,
+        district: district,
+        school: school,
       }}
       onSubmit={(values, actions) => {
         router.push('/form/group')

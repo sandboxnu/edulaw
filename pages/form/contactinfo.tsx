@@ -7,6 +7,7 @@ import {
 import { StyledTextInput } from '../../components/FormStyles/InputBox'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 const InputRow = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const FormContainer = styled.div`
 `
 
 function ContactInfo() {
+  const [loaded, setLoaded] = useState(false)
   const router = useRouter()
   const allInputFields: [string, string][][] = [
     [
@@ -41,6 +43,7 @@ function ContactInfo() {
   ]
   return (
     <FormTemplate
+      loaded={loaded}
       initialValues={{
         firstName: '',
         lastName: '',
