@@ -22,6 +22,21 @@ const StyledHelpIcon = styled.div`
   display: flex;
   align-items: center;
 `
+
+const SignOutButton = styled.button`
+  font-family: 'Source Sans Pro';
+  text-align: center;
+  font-size: 16px;
+  display: inline-block;
+  border-radius: 4px;
+  width: 100px;
+  height: 42px;
+  cursor: pointer;
+  margin: 8px;
+  color: white;
+  background-color: ${COLORS.EDLAW_GREEN};
+`
+
 function NavBar() {
   const router = useRouter()
   const tooltipText = (
@@ -51,14 +66,14 @@ function NavBar() {
             <Typography style={{ color: 'white', fontSize: 16 }}>
               Need help?
             </Typography>
-            <button
+            <SignOutButton
               onClick={async () => {
                 await signOut()
                 router.push('/signin')
               }}
             >
               Sign out
-            </button>
+            </SignOutButton>
           </NeedHelpContainer>
         </MuiTooltip>
       </Toolbar>
