@@ -308,21 +308,26 @@ const DynamicForm: React.FC<{
     )
 
     y = checkNewPage(y, doc)
+    y = writeDocAbstraction(
+      10,
+      y,
+      'Filing on behalf of: ' + groups.studentOrGroup,
+      doc
+    )
+    y = writeDocAbstraction(10, y, 'Special Circumstances: ', doc)
+    for (let k = 0; k < groups.specialCircumstances.length; k++) {
+      y = checkNewPage(y, doc)
+      if (groups.specialCircumstances[k]) {
+        y = writeDocAbstraction(10, y, studentSpecialCircumstances[k], doc)
+      }
+    }
+
+    y = checkNewPage(y, doc)
     y = writeDocAbstraction(10, y, 'Statement of concerns: ', doc, 'bold')
     const concernsSplit = doc.splitTextToSize(concerns.concern, 180)
     for (let j = 0; j < concernsSplit.length; j++) {
       y = checkNewPage(y, doc)
       y = writeDocAbstraction(10, y, '\t' + concernsSplit[j], doc, 'normal')
-    }
-
-    const groupsBody = groups as GroupDB
-    y = checkNewPage(y, doc)
-    y = writeDocAbstraction(10, y, 'Special Circumstances: ', doc)
-    for (let k = 0; k < groupsBody.specialCircumstances.length; k++) {
-      y = checkNewPage(y, doc)
-      if (groupsBody.specialCircumstances[k]) {
-        y = writeDocAbstraction(10, y, studentSpecialCircumstances[k], doc)
-      }
     }
   }
 

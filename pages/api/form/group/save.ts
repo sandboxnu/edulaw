@@ -4,6 +4,7 @@ import { dbConnect } from '../../../../server/_dbConnect'
 
 export interface GroupDB extends WithId<Document> {
   userID: string
+  studentOrGroup: string
   specialCircumstances: Array<boolean>
 }
 

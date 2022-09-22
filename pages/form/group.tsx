@@ -32,6 +32,7 @@ const Group: React.FC = () => {
     const userID = data.user.id
     const body: Omit<GroupDB, '_id'> = {
       userID: userID,
+      studentOrGroup: studentOrGroup,
       specialCircumstances: checkedArr,
     }
     const result = await fetch('/api/form/group/save', {
@@ -56,6 +57,7 @@ const Group: React.FC = () => {
         console.error(body.error)
       } else {
         const typedBody = body as GroupDB
+        setStudentOrGroup(typedBody.studentOrGroup)
         setCheckedArr(typedBody.specialCircumstances)
       }
       setLoaded(true)
@@ -72,7 +74,6 @@ const Group: React.FC = () => {
       ...checkedArr.slice(position + 1),
     ]
     setCheckedArr(updatedCheckedArr)
-    console.log(checkedArr)
   }
   return (
     <FormTemplate
@@ -94,7 +95,7 @@ const Group: React.FC = () => {
         onChange={(event, newValue) => {
           setStudentOrGroup(newValue as string)
         }}
-        options={['Student', 'Group']}
+        options={['One Student', 'Group of Students']}
         renderInput={(params) => (
           <TextArea width={330} height={42} {...params} />
         )}
