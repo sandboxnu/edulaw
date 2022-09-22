@@ -93,12 +93,6 @@ const AdditionalInfo: React.FC = () => {
   return (
     <FormTemplate
       loaded={loaded}
-      initialValues={{
-        language: '',
-        relationship: undefined,
-        deseAccomodations: '',
-        bsea: false,
-      }}
       onSubmit={(values, actions) => {
         router.push('/form/district')
         actions.setSubmitting(false)

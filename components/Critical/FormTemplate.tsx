@@ -51,7 +51,7 @@ interface FormTemplateProps {
     values: FormValues,
     { setSubmitting }: { setSubmitting: (submit: boolean) => void }
   ) => void
-  initialValues: any
+  initialValues?: any
   onBack?: () => void
   nextButtonText?: string
   currentPage?: string
@@ -71,7 +71,21 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
     <FullPageContainer>
       <NavBar />
       <HorizontalBox>
-        <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        {((children) => {
+          return initialValues ? (
+            <Formik initialValues={initialValues} onSubmit={onSubmit}>
+              {children}
+            </Formik>
+          ) : (
+            <form
+              onSubmit={() =>
+                onSubmit({ formAnswers: {} }, { setSubmitting: console.log })
+              }
+            >
+              {children}
+            </form>
+          )
+        })(
           <FormStyled>
             <SideProgressBar currentPage={currentPage} />
             <FormContentWrapper>
@@ -81,7 +95,7 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
               <BottomBar onBack={onBack} nextButtonText={nextButtonText} />
             </FormContentWrapper>
           </FormStyled>
-        </Formik>
+        )}
       </HorizontalBox>
     </FullPageContainer>
   )

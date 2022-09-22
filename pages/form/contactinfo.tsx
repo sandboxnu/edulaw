@@ -138,16 +138,6 @@ function ContactInfo() {
   return (
     <FormTemplate
       loaded={loaded}
-      initialValues={{
-        firstName: '',
-        lastName: '',
-        phone: '',
-        email: '',
-        state: '',
-        city: '',
-        address: '',
-        zip: '',
-      }}
       onSubmit={(values, actions) => {
         router.push('/form/additionalinfo')
         actions.setSubmitting(false)

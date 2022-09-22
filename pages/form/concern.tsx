@@ -81,16 +81,6 @@ The information is specific to your situation and concerns, but here are a few e
   return (
     <FormTemplate
       loaded={loaded}
-      initialValues={{
-        firstName: '',
-        lastName: '',
-        phone: '',
-        email: '',
-        state: '',
-        city: '',
-        address: '',
-        zip: '',
-      }}
       onSubmit={(values, actions) => {
         router.push('/form')
         actions.setSubmitting(false)

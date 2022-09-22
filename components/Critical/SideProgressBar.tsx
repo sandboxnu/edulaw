@@ -56,7 +56,7 @@ const NAVITEMS = [
   ['Additional Info', '/form/additionalinfo'],
   ['District and School', '/form/district'],
   ['Student or Group Details', '/form/group'],
-  ['Concerns', '/form/concerns'],
+  ['Concerns', '/form/concern'],
   ['Guided Questions', '/form'],
 ]
 
