@@ -1,5 +1,5 @@
 //import { CheckBoxOutlineBlankOutlined } from '@mui/icons-material'
-import { MenuItem, Select, TextField } from '@material-ui/core'
+import { MenuItem, Select, TextField, TextFieldProps } from '@material-ui/core'
 import Autocomplete from '@mui/material/Autocomplete'
 import RadioGroup from '@mui/material/RadioGroup'
 import { DropDownMenu } from 'material-ui'
@@ -25,7 +25,23 @@ export const StyledAutocomplete = styled(Autocomplete)`
   }
 `
 
-export const StyledTextField = styled(TextField)``
+export const StyledTextField = styled(TextField)`
+  & {
+    border: 1px solid ${COLORS.SHADOW_GREY};
+    background-color: ${COLORS.LIGHT_GREY};
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 26px;
+    font-family: 'Source Sans Pro';
+    resize: none;
+    &:focus {
+      border: 1px solid ${COLORS.EDLAW_BLUE};
+      outline: none;
+    }
+  }
+`
 
 const relationships = [
   'Student',
