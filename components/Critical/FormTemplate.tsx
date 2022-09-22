@@ -6,7 +6,7 @@ import { BottomBar } from './BottomBar'
 import { Form, Formik } from 'formik'
 import { FormValues } from '../../utils/FormContext'
 import { LoadingSpinner } from '../LoadingSpinner'
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 const FullPageContainer = styled.div`
   display: flex;
@@ -34,6 +34,12 @@ const FormContentWrapper = styled.div`
   justify-content: space-between;
 `
 const FormStyled = styled(Form)`
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+`
+
+const OtherFormStyled = styled.form`
   width: 100%;
   flex-grow: 1;
   display: flex;
@@ -70,26 +76,23 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
     <FullPageContainer>
       <NavBar />
       <HorizontalBox>
-        {((formElements: ReactNode) => {
+        {((formElements: React.ReactFragment) => {
           return initialValues ? (
             <Formik initialValues={initialValues} onSubmit={onSubmit}>
-              {formElements}
+              <FormStyled>{formElements}</FormStyled>
             </Formik>
           ) : (
-            formElements
+            <OtherFormStyled
+              onSubmit={(evt: React.SyntheticEvent) => {
+                onSubmit({ formAnswers: {} }, { setSubmitting: console.log })
+                evt.preventDefault()
+              }}
+            >
+              {formElements}
+            </OtherFormStyled>
           )
         })(
-          <FormStyled
-            onSubmit={
-              initialValues === undefined
-                ? (evt) =>
-                    onSubmit(
-                      { formAnswers: {} },
-                      { setSubmitting: console.log }
-                    )
-                : undefined
-            }
-          >
+          <React.Fragment>
             <SideProgressBar currentPage={currentPage} />
             <FormContentWrapper>
               <QuestionDisplayWrapper>
@@ -97,7 +100,7 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
               </QuestionDisplayWrapper>
               <BottomBar onBack={onBack} nextButtonText={nextButtonText} />
             </FormContentWrapper>
-          </FormStyled>
+          </React.Fragment>
         )}
       </HorizontalBox>
     </FullPageContainer>
