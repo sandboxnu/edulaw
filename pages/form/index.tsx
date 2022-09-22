@@ -23,6 +23,7 @@ import { ConcernDB } from '../api/form/concern/save'
 import { DistrictDB } from '../api/form/district/save'
 import { GroupDB } from '../api/form/group/save'
 import { studentSpecialCircumstances } from '../../constants/additionalConstants'
+import { ContactInfoDb } from '../api/form/contactinfo/save'
 
 const files = {
   animalForm: '../../../constants/Animal Form.csv',
@@ -235,21 +236,25 @@ const DynamicForm: React.FC<{
     let y = 35
     const userID = data!.user!.id
     // gonna be real this also looks ugly afffff but it all looked ugly aff
-    const districtSchool = await (
-      await fetch(`/api/form/additional/retrieve?userID=${userID}`)
-    ).json()
-    const additionalInfo = await (
-      await fetch(`/api/form/additional/retrieve?userID=${userID}`)
-    ).json()
-    const concerns = await (
+    const districtSchool = (await (
+      await fetch(`/api/form/district/retrieve?userID=${userID}`)
+    ).json()) as DistrictDB
+    const contactInfo = (await (
+      await fetch(`/api/form/contactinfo/retrieve?userID=${userID}`)
+    ).json()) as ContactInfoDb
+    const additionalInfo = (await (
+      await fetch(`/api/form/additionalinfo/retrieve?userID=${userID}`)
+    ).json()) as AdditionalInfoDb
+    const concerns = (await (
       await fetch(`/api/form/concern/retrieve?userID=${userID}`)
-    ).json()
-    const groups = await (
+    ).json()) as ConcernDB
+    const groups = (await (
       await fetch(`/api/form/group/retrieve?userID=${userID}`)
-    ).json()
+    ).json()) as GroupDB
 
     if (
       districtSchool.status !== 200 ||
+      contactInfo.status !== 200 ||
       additionalInfo.status !== 200 ||
       concerns.status !== 200 ||
       groups.status !== 200
@@ -257,32 +262,30 @@ const DynamicForm: React.FC<{
       // note: this leads to a less helpful error message, as we cannot tell which call failed
       console.error("Failed to obtain information needed for student's details")
     } else {
-      const districtBody = districtSchool as DistrictDB
       y = writeDocAbstraction(
         10,
         y,
-        'District: ' + districtBody.district,
+        'District: ' + districtSchool.district,
         doc,
         'normal'
       )
-      y = writeDocAbstraction(10, y, 'School: ' + districtBody.school, doc)
+      y = writeDocAbstraction(10, y, 'School: ' + districtSchool.school, doc)
 
-      const additionalBody = additionalInfo as AdditionalInfoDb
       y = writeDocAbstraction(
         10,
         y,
-        'Primary language: ' + additionalBody.language,
+        'Primary language: ' + additionalInfo.language,
         doc
       )
       y = writeDocAbstraction(
         10,
         y,
-        'Relationship to student: ' + additionalBody.relationship,
+        'Relationship to student: ' + additionalInfo.relationship,
         doc
       )
       y = writeDocAbstraction(10, y, 'DESE Accomodations: ', doc)
       const deseSplit = doc.splitTextToSize(
-        additionalBody.deseAccommodations,
+        additionalInfo.deseAccommodations,
         180
       )
       for (let i = 0; i < deseSplit.length; i++) {
@@ -292,14 +295,13 @@ const DynamicForm: React.FC<{
       y = writeDocAbstraction(
         10,
         y,
-        'BSEA Addressed? ' + additionalBody.bsea,
+        'BSEA Addressed? ' + additionalInfo.bsea,
         doc
       )
 
-      const concernBody = concerns as ConcernDB
       y = checkNewPage(y, doc)
       y = writeDocAbstraction(10, y, 'Statement of concerns: ', doc, 'bold')
-      const concernsSplit = doc.splitTextToSize(concernBody.concern, 180)
+      const concernsSplit = doc.splitTextToSize(concerns.concern, 180)
       for (let j = 0; j < concernsSplit.length; j++) {
         y = checkNewPage(y, doc)
         y = writeDocAbstraction(10, y, '\t' + concernsSplit[j], doc, 'normal')
