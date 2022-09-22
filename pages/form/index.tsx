@@ -86,7 +86,7 @@ const DynamicForm: React.FC<{
       if (result.status !== 200) {
         console.error(resBody.error)
       }
-    }, 30000)
+    }, 5000)
   }, [])
 
   // For saving values to the database
@@ -255,84 +255,73 @@ const DynamicForm: React.FC<{
       await fetch(`/api/form/group/retrieve?userID=${userID}`)
     ).json()) as GroupDB
 
-    if (
-      districtSchool.status !== 200 ||
-      contactInfo.status !== 200 ||
-      additionalInfo.status !== 200 ||
-      concerns.status !== 200 ||
-      groups.status !== 200
-    ) {
-      // note: this leads to a less helpful error message, as we cannot tell which call failed
-      console.error("Failed to obtain information needed for student's details")
-    } else {
-      y = writeDocAbstraction(
-        10,
-        y,
-        'First Name: ' + contactInfo.firstName,
-        doc,
-        'normal'
-      )
-      y = writeDocAbstraction(10, y, 'Last Name: ' + contactInfo.lastName, doc)
-      y = writeDocAbstraction(10, y, 'Email: ' + contactInfo.email, doc)
-      y = writeDocAbstraction(10, y, 'Phone: ' + contactInfo.phoneNum, doc)
-      y = writeDocAbstraction(10, y, 'Address: ' + contactInfo.address, doc)
-      y = writeDocAbstraction(10, y, 'City: ' + contactInfo.city, doc)
-      y = writeDocAbstraction(10, y, 'State: ' + contactInfo.state, doc)
-      y = writeDocAbstraction(10, y, 'Zip Code: ' + contactInfo.zip, doc)
+    y = writeDocAbstraction(
+      10,
+      y,
+      'First Name: ' + contactInfo.firstName,
+      doc,
+      'normal'
+    )
+    y = writeDocAbstraction(10, y, 'Last Name: ' + contactInfo.lastName, doc)
+    y = writeDocAbstraction(10, y, 'Email: ' + contactInfo.email, doc)
+    y = writeDocAbstraction(10, y, 'Phone: ' + contactInfo.phoneNum, doc)
+    y = writeDocAbstraction(10, y, 'Address: ' + contactInfo.address, doc)
+    y = writeDocAbstraction(10, y, 'City: ' + contactInfo.city, doc)
+    y = writeDocAbstraction(10, y, 'State: ' + contactInfo.state, doc)
+    y = writeDocAbstraction(10, y, 'Zip Code: ' + contactInfo.zip, doc)
 
-      y = writeDocAbstraction(
-        10,
-        y,
-        'District: ' + districtSchool.district,
-        doc,
-        'normal'
-      )
-      y = writeDocAbstraction(10, y, 'School: ' + districtSchool.school, doc)
+    y = writeDocAbstraction(
+      10,
+      y,
+      'District: ' + districtSchool.district,
+      doc,
+      'normal'
+    )
+    y = writeDocAbstraction(10, y, 'School: ' + districtSchool.school, doc)
 
-      y = writeDocAbstraction(
-        10,
-        y,
-        'Primary language: ' + additionalInfo.language,
-        doc
-      )
-      y = writeDocAbstraction(
-        10,
-        y,
-        'Relationship to student: ' + additionalInfo.relationship,
-        doc
-      )
-      y = writeDocAbstraction(10, y, 'DESE Accomodations: ', doc)
-      const deseSplit = doc.splitTextToSize(
-        additionalInfo.deseAccommodations,
-        180
-      )
-      for (let i = 0; i < deseSplit.length; i++) {
-        y = checkNewPage(y, doc)
-        y = writeDocAbstraction(10, y, '\t' + deseSplit[i], doc)
-      }
-      y = writeDocAbstraction(
-        10,
-        y,
-        'BSEA Addressed? ' + additionalInfo.bsea,
-        doc
-      )
-
+    y = writeDocAbstraction(
+      10,
+      y,
+      'Primary language: ' + additionalInfo.language,
+      doc
+    )
+    y = writeDocAbstraction(
+      10,
+      y,
+      'Relationship to student: ' + additionalInfo.relationship,
+      doc
+    )
+    y = writeDocAbstraction(10, y, 'DESE Accomodations: ', doc)
+    const deseSplit = doc.splitTextToSize(
+      additionalInfo.deseAccommodations,
+      180
+    )
+    for (let i = 0; i < deseSplit.length; i++) {
       y = checkNewPage(y, doc)
-      y = writeDocAbstraction(10, y, 'Statement of concerns: ', doc, 'bold')
-      const concernsSplit = doc.splitTextToSize(concerns.concern, 180)
-      for (let j = 0; j < concernsSplit.length; j++) {
-        y = checkNewPage(y, doc)
-        y = writeDocAbstraction(10, y, '\t' + concernsSplit[j], doc, 'normal')
-      }
+      y = writeDocAbstraction(10, y, '\t' + deseSplit[i], doc)
+    }
+    y = writeDocAbstraction(
+      10,
+      y,
+      'BSEA Addressed? ' + additionalInfo.bsea,
+      doc
+    )
 
-      const groupsBody = groups as GroupDB
+    y = checkNewPage(y, doc)
+    y = writeDocAbstraction(10, y, 'Statement of concerns: ', doc, 'bold')
+    const concernsSplit = doc.splitTextToSize(concerns.concern, 180)
+    for (let j = 0; j < concernsSplit.length; j++) {
       y = checkNewPage(y, doc)
-      y = writeDocAbstraction(10, y, 'Special Circumstances: ', doc)
-      for (let k = 0; k < groupsBody.specialCircumstances.length; k++) {
-        y = checkNewPage(y, doc)
-        if (groupsBody.specialCircumstances[k]) {
-          y = writeDocAbstraction(10, y, studentSpecialCircumstances[k], doc)
-        }
+      y = writeDocAbstraction(10, y, '\t' + concernsSplit[j], doc, 'normal')
+    }
+
+    const groupsBody = groups as GroupDB
+    y = checkNewPage(y, doc)
+    y = writeDocAbstraction(10, y, 'Special Circumstances: ', doc)
+    for (let k = 0; k < groupsBody.specialCircumstances.length; k++) {
+      y = checkNewPage(y, doc)
+      if (groupsBody.specialCircumstances[k]) {
+        y = writeDocAbstraction(10, y, studentSpecialCircumstances[k], doc)
       }
     }
   }
