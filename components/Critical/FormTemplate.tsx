@@ -76,17 +76,20 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
               {formElements}
             </Formik>
           ) : (
-            <form
-              onSubmit={(evt) => {
-                onSubmit({ formAnswers: {} }, { setSubmitting: console.log })
-                evt.preventDefault()
-              }}
-            >
-              {formElements}
-            </form>
+            formElements
           )
         })(
-          <FormStyled>
+          <FormStyled
+            onSubmit={
+              initialValues === undefined
+                ? (evt) =>
+                    onSubmit(
+                      { formAnswers: {} },
+                      { setSubmitting: console.log }
+                    )
+                : undefined
+            }
+          >
             <SideProgressBar currentPage={currentPage} />
             <FormContentWrapper>
               <QuestionDisplayWrapper>
