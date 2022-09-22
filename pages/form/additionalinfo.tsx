@@ -102,7 +102,7 @@ const AdditionalInfo: React.FC = () => {
       onBack={() => router.push('/form/contactinfo')}
       currentPage="Additional Info"
     >
-      <TitleText>Contact Info</TitleText>
+      <TitleText>Additional Info</TitleText>
       <FormContainer>
         <InfoText>What is your primary language?</InfoText>
         <Tooltip

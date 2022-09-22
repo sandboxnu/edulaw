@@ -14,7 +14,7 @@ function home() {
       <NavBar />
       <HorizontalBox>
         <SidebarDiv>
-          <SideProgressBar />
+          <SideProgressBar currentPage="home" />
         </SidebarDiv>
         <MainPage />
       </HorizontalBox>

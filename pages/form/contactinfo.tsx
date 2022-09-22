@@ -11,6 +11,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { ContactInfoDb } from '../api/form/contactinfo/save'
 import { useSession } from 'next-auth/react'
 import { ConcernDB } from '../api/form/concern/save'
+import { TextArea } from '../../components/FormStyles/TextArea'
 
 const InputRow = styled.div`
   display: flex;
@@ -154,16 +155,14 @@ function ContactInfo() {
         {allInputFields.map((inputRow) => (
           <InputRow key={inputRow.toString()}>
             {inputRow.map((singleInput) => (
-              <StyledTextInput
+              <TextArea
                 key={singleInput[0]}
                 width={330}
                 height={42}
                 placeholder={singleInput[0]}
                 name={singleInput[1]}
                 value={singleInput[2]}
-                onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-                  singleInput[3](evt.target.value)
-                }
+                onChange={(evt) => singleInput[3](evt.target.value)}
               />
             ))}
           </InputRow>
