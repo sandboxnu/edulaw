@@ -51,7 +51,7 @@ interface FormTemplateProps {
     values: FormValues,
     { setSubmitting }: { setSubmitting: (submit: boolean) => void }
   ) => void
-  initialValues?: any
+  initialValues?: FormValues
   onBack?: () => void
   nextButtonText?: string
   currentPage?: string
