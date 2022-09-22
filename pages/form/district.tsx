@@ -21,33 +21,30 @@ const District: React.FC = () => {
   }
 
   // saves values to database
-  useEffect(() => {
-    const save = async () => {
-      if (!data?.user?.id) {
-        return
-      }
-      const userID = data.user.id
-      const body: Omit<DistrictDB, '_id'> = {
-        userID: userID,
-        district: district,
-        school: school,
-      }
-      const result = await fetch('/api/form/district/save', {
-        method: 'POST',
-        body: JSON.stringify(body),
-      })
-      const resBody = await result.json()
-      if (result.status !== 200) {
-        console.error(resBody.error)
-      }
+  const save = async () => {
+    if (!data?.user?.id) {
+      return
     }
-    save()
-  }, [district, school])
+    const userID = data.user.id
+    const body: Omit<DistrictDB, '_id'> = {
+      userID: userID,
+      district: district,
+      school: school,
+    }
+    const result = await fetch('/api/form/district/save', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+    const resBody = await result.json()
+    if (result.status !== 200) {
+      console.error(resBody.error)
+    }
+  }
 
   // loads values in from database, only loads once
   useEffect(() => {
     const retrieve = async () => {
-      if (!data?.user?.id) {
+      if (!data?.user?.id || loaded) {
         return
       }
       const userID = data.user.id
@@ -70,7 +67,8 @@ const District: React.FC = () => {
   return (
     <FormTemplate
       loaded={loaded}
-      onSubmit={(values, actions) => {
+      onSubmit={async (values, actions) => {
+        await save()
         router.push('/form/group')
         actions.setSubmitting(false)
       }}

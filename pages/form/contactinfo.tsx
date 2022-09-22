@@ -48,39 +48,36 @@ function ContactInfo() {
   }
 
   // saves values to database
-  useEffect(() => {
-    const save = async () => {
-      if (!data?.user?.id) {
-        return
-      }
-      const userID = data.user.id
-      const body: Omit<ConcernDB, '_id'> = {
-        userID,
-        firstName,
-        lastName,
-        phoneNum,
-        email,
-        address,
-        city,
-        state,
-        zip,
-      }
-      const result = await fetch('/api/form/contactinfo/save', {
-        method: 'POST',
-        body: JSON.stringify(body),
-      })
-      const resBody = await result.json()
-      if (result.status !== 200) {
-        console.error(resBody.error)
-      }
+  const save = async () => {
+    if (!data?.user?.id) {
+      return
     }
-    save()
-  }, [firstName, lastName, phoneNum, email, address, city, state, zip])
+    const userID = data.user.id
+    const body: Omit<ConcernDB, '_id'> = {
+      userID,
+      firstName,
+      lastName,
+      phoneNum,
+      email,
+      address,
+      city,
+      state,
+      zip,
+    }
+    const result = await fetch('/api/form/contactinfo/save', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+    const resBody = await result.json()
+    if (result.status !== 200) {
+      console.error(resBody.error)
+    }
+  }
 
   // loads values in from database, only loads once
   useEffect(() => {
     const retrieve = async () => {
-      if (!data?.user?.id) {
+      if (!data?.user?.id || loaded) {
         return
       }
       const userID = data.user.id
@@ -141,7 +138,8 @@ function ContactInfo() {
   return (
     <FormTemplate
       loaded={loaded}
-      onSubmit={(values, actions) => {
+      onSubmit={async (values, actions) => {
+        await save()
         router.push('/form/additionalinfo')
         actions.setSubmitting(false)
       }}

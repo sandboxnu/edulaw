@@ -24,31 +24,28 @@ const Group: React.FC = () => {
     router.push('/signup')
   }
 
-  useEffect(() => {
-    const save = async () => {
-      if (!data?.user?.id) {
-        return
-      }
-      const userID = data.user.id
-      const body: Omit<GroupDB, '_id'> = {
-        userID: userID,
-        specialCircumstances: checkedArr,
-      }
-      const result = await fetch('/api/form/group/save', {
-        method: 'POST',
-        body: JSON.stringify(body),
-      })
-      const resBody = await result.json()
-      if (result.status !== 200) {
-        console.error(resBody.error)
-      }
+  const save = async () => {
+    if (!data?.user?.id) {
+      return
     }
-    save()
-  }, [checkedArr])
+    const userID = data.user.id
+    const body: Omit<GroupDB, '_id'> = {
+      userID: userID,
+      specialCircumstances: checkedArr,
+    }
+    const result = await fetch('/api/form/group/save', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+    const resBody = await result.json()
+    if (result.status !== 200) {
+      console.error(resBody.error)
+    }
+  }
 
   useEffect(() => {
     const retrieve = async () => {
-      if (!data?.user?.id) {
+      if (!data?.user?.id || loaded) {
         return
       }
       const userID = data.user.id
@@ -79,7 +76,8 @@ const Group: React.FC = () => {
   return (
     <FormTemplate
       loaded={loaded}
-      onSubmit={(values, actions) => {
+      onSubmit={async (values, actions) => {
+        await save()
         router.push('/form/concern')
         actions.setSubmitting(false)
       }}

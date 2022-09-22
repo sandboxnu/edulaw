@@ -35,32 +35,29 @@ The information is specific to your situation and concerns, but here are a few e
   }
 
   // saves values to database
-  useEffect(() => {
-    const save = async () => {
-      if (!data?.user?.id) {
-        return
-      }
-      const userID = data.user.id
-      const body: Omit<ConcernDB, '_id'> = {
-        userID: userID,
-        concern: concern,
-      }
-      const result = await fetch('/api/form/concern/save', {
-        method: 'POST',
-        body: JSON.stringify(body),
-      })
-      const resBody = await result.json()
-      if (result.status !== 200) {
-        console.error(resBody.error)
-      }
+  const save = async () => {
+    if (!data?.user?.id) {
+      return
     }
-    save()
-  }, [concern, data?.user?.id])
+    const userID = data.user.id
+    const body: Omit<ConcernDB, '_id'> = {
+      userID: userID,
+      concern: concern,
+    }
+    const result = await fetch('/api/form/concern/save', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+    const resBody = await result.json()
+    if (result.status !== 200) {
+      console.error(resBody.error)
+    }
+  }
 
   // loads values in from database, only loads once
   useEffect(() => {
     const retrieve = async () => {
-      if (!data?.user?.id) {
+      if (!data?.user?.id || loaded) {
         return
       }
       const userID = data.user.id
@@ -77,11 +74,12 @@ The information is specific to your situation and concerns, but here are a few e
     if (!loaded) {
       retrieve()
     }
-  }, [data, loaded])
+  }, [data])
   return (
     <FormTemplate
       loaded={loaded}
-      onSubmit={(values, actions) => {
+      onSubmit={async (values, actions) => {
+        await save()
         router.push('/form')
         actions.setSubmitting(false)
       }}
