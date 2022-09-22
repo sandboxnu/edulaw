@@ -19,7 +19,7 @@ const InputRow = styled.div`
   max-width: 800px;
   flex-flow: row wrap;
 `
-const FormContainer = styled.div`
+export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;

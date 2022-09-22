@@ -1,9 +1,14 @@
-import { CheckBoxOutlineBlankOutlined } from '@mui/icons-material'
+//import { CheckBoxOutlineBlankOutlined } from '@mui/icons-material'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
+import { MyRadio } from '../../components/DynamicForm/MyRadio'
+import Tooltip from '../../components/DynamicForm/Tooltip'
+import { StyledTextInput } from '../../components/FormStyles/InputBox'
+import { TitleText, InfoText } from '../../components/FormStyles/QuestionText'
 import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
+import { FormContainer } from './contactinfo'
 
 // TODO: Get accurate stuff for this
 const relationships = [
@@ -14,7 +19,7 @@ const relationships = [
   'Other',
 ]
 
-const District: React.FC = () => {
+const AdditionalInfo: React.FC = () => {
   const [language, setLanguage] = useState<string>('')
   const [relationship, setRelationship] = useState<string | undefined>(
     undefined
@@ -101,42 +106,106 @@ const District: React.FC = () => {
       onBack={() => router.push('/form/contactinfo')}
       currentPage="Additional Info"
     >
-      <input
-        name="language"
-        value={language}
-        onChange={({ target }) => setLanguage(target.value)}
-      />
-      <select
-        name="Relationship"
-        value={relationship}
-        onChange={({ target }) => setRelationship(target.value)}
-      >
-        <option value="none" selected disabled hidden>
-          Select relationship
-        </option>
-        {relationships.map((relationship, index) => {
-          return (
-            <option key={relationship} value={relationship}>
-              {relationship}
-            </option>
-          )
-        })}
-      </select>
-      <input
-        name="deseAccommodation"
-        value={deseAccommodations}
-        onChange={({ target }) => setDeseAccommodations(target.value)}
-      />
-      <label>
-        BSEA???
-        <input
-          name="bsea"
-          type="checkbox"
-          checked={bsea}
-          onChange={({ target }) => setBsea(target.checked)}
+      <TitleText>Contact Info</TitleText>
+      <FormContainer>
+        <InfoText>What is your primary language?</InfoText>
+        <Tooltip
+          tooltip={{
+            tooltipText: 'What if I speak more than one language?',
+            tooltipHoveredText: `Select the language that you have identified as your preferred language for communicating with the school.
+If you tell the school you prefer a language other than English, you have the right to receive information from the school in that language.  The tool will include questions about whether the school communicated in the right language during the walkthrough if you identify another language here.`,
+          }}
         />
-      </label>
+        <StyledTextInput
+          width={330}
+          height={42}
+          name={'language'}
+          placeholder={'Type language'}
+          value={language}
+          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+            setLanguage(evt.target.value)
+          }
+        />
+        <InfoText>What is your relationship to the student?</InfoText>
+        <Tooltip
+          tooltip={{
+            tooltipText: 'More information',
+            tooltipHoveredText:
+              "Anyone can file a PRS complaint, including a parent, social worker, attorney, counselor, or other third party. If you are not the student's parent or guardian, you need to get the parent or education decision maker’s permission to file a complaint related to a specific child.",
+          }}
+        />
+        <select
+          name="Relationship"
+          value={relationship}
+          onChange={({ target }) => setRelationship(target.value)}
+        >
+          <option value="none" selected disabled hidden>
+            Select relationship
+          </option>
+          {relationships.map((relationship, index) => {
+            return (
+              <option key={relationship} value={relationship}>
+                {relationship}
+              </option>
+            )
+          })}
+        </select>
+        <InfoText>
+          If you require accommodations for communicating with DESE, describe
+          them in the box below.
+        </InfoText>
+        <Tooltip
+          tooltip={{
+            tooltipText:
+              'If you require accommodations for communicating with DESE, describe them in the box below.',
+            tooltipHoveredText: `Include anything you want DESE to know about communicating with you.  Some examples are: 
+
+    If you want DESE to communicate with you in a language 
+    other than English
+ 
+    If you prefer to speak over the phone rather than by email
+
+    If there are certain hours during the day that you are not 
+    available to answer the phone`,
+          }}
+        />
+        <StyledTextInput
+          width={600}
+          height={150}
+          name={'deseAccommodation'}
+          placeholder={'Describe accomodations here'}
+          value={deseAccommodations}
+          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+            setDeseAccommodations(evt.target.value)
+          }
+        />
+        <InfoText>
+          Are any of these concerns currently being addressed by Mediation or a
+          Hearing in the Bureau of Special Education Appeals (BSEA)?
+        </InfoText>
+        <Tooltip
+          tooltip={{
+            tooltipText: 'How does this affect my PRS complaint?',
+            tooltipHoveredText: `You can still file the complaint now, but PRS might delay their decision.  
+
+If your concerns are being addressed by a mediation, PRS will ask if you want them to wait to make a decision until the mediation is over.  If you and the school both agree to wait, PRS will make a decision about any concerns that aren't resolved after the mediation.  If you do not agree to wait, PRS will make a decision according to the usual timeline (within 60 days of filing).  Once PRS makes a decision, the decision can't be changed by the mediation.
+
+If your concerns are being addressed by a BSEA hearing, PRS will wait to make a decision on the parts of your complaint that are going to be addressed during the hearing.  Once your case is over with the BSEA, PRS will make a decision on any concerns that weren't addressed during the hearing.  PRS and the BSEA will share information about your case, so that PRS can make a decision when the BSEA case is over.  The information will include your case number in each agency, your name, the student's name, your address, the school and the school district.`,
+          }}
+        />
+        <MyRadio
+          name="bsea"
+          label=""
+          options={[
+            { content: 'Yes', route: 0 },
+            { content: 'No', route: 0 },
+          ]}
+          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+            setBsea(evt.target.value === 'Yes')
+          }
+        />
+      </FormContainer>
     </FormTemplate>
   )
 }
-export default District
+export default AdditionalInfo
