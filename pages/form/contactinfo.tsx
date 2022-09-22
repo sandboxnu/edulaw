@@ -19,11 +19,12 @@ const InputRow = styled.div`
   column-gap: 20px;
   max-width: 800px;
   flex-flow: row wrap;
+  margin: 10px 0;
 `
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 8px;
 `
 
 function ContactInfo() {

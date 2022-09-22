@@ -193,16 +193,13 @@ If your concerns are being addressed by a mediation, PRS will ask if you want th
 If your concerns are being addressed by a BSEA hearing, PRS will wait to make a decision on the parts of your complaint that are going to be addressed during the hearing.  Once your case is over with the BSEA, PRS will make a decision on any concerns that weren't addressed during the hearing.  PRS and the BSEA will share information about your case, so that PRS can make a decision when the BSEA case is over.  The information will include your case number in each agency, your name, the student's name, your address, the school and the school district.`,
           }}
         />
-        <RadioButton
-          type="radio"
-          value={'Yes'}
-          onChange={() => setBsea(true)}
-        />
-        <RadioButton
-          type="radio"
-          value={'No'}
-          onChange={() => setBsea(false)}
-        />
+        <RadioGroup
+          value={bsea ? 'Yes' : 'No'}
+          onChange={(evt) => setBsea(evt.target.value === 'Yes')}
+        >
+          <RadioButton type="radio" value={'Yes'} />
+          <RadioButton type="radio" value={'No'} />
+        </RadioGroup>
       </FormContainer>
     </FormTemplate>
   )

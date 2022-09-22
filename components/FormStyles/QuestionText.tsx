@@ -10,7 +10,7 @@ export const InfoText = styled.p`
   font-family: Source Sans Pro;
   font-size: 16px;
   line-height: 20px;
-  margin-bottom: 12px;
+  margin: 0px;
 `
 export const AnswerText = styled.label`
   font-family: Source Sans Pro;
