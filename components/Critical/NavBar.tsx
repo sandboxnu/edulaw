@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 import MuiTooltip from '@mui/material/Tooltip'
 import Logo from './Logo'
+import { signOut } from 'next-auth/react'
 
 const NeedHelpContainer = styled.div`
   display: flex;
@@ -48,6 +49,7 @@ function NavBar() {
             <Typography style={{ color: 'white', fontSize: 16 }}>
               Need help?
             </Typography>
+            <button onClick={() => signOut()}>Sign out</button>
           </NeedHelpContainer>
         </MuiTooltip>
       </Toolbar>
