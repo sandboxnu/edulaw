@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
-import { AdditionalInfoDb } from '../api/form/additionalInfo/save'
+import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
 
 // TODO: Get accurate stuff for this
 const languages = ['English', 'Spanish']
@@ -40,7 +40,7 @@ const District: React.FC = () => {
         language,
         relationship,
       }
-      const result = await fetch('/api/form/additional/save', {
+      const result = await fetch('/api/form/additionalinfo/save', {
         method: 'POST',
         body: JSON.stringify(body),
       })
@@ -60,7 +60,7 @@ const District: React.FC = () => {
       }
       const userID = data.user.id
       const result = await fetch(
-        `/api/form/additional/retrieve?userID=${userID}`
+        `/api/form/additionalinfo/retrieve?userID=${userID}`
       )
       const body = await result.json()
       if (result.status !== 200) {

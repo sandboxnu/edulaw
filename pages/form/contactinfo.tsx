@@ -8,7 +8,7 @@ import { StyledTextInput } from '../../components/FormStyles/InputBox'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { useRouter } from 'next/router'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { ContactInfoDb } from '../api/form/contactInfo/save'
+import { ContactInfoDb } from '../api/form/contactinfo/save'
 import { useSession } from 'next-auth/react'
 import { ConcernDB } from '../api/form/concern/save'
 
@@ -62,7 +62,7 @@ function ContactInfo() {
         state,
         zip,
       }
-      const result = await fetch('/api/form/additional/save', {
+      const result = await fetch('/api/form/contactinfo/save', {
         method: 'POST',
         body: JSON.stringify(body),
       })
@@ -82,7 +82,7 @@ function ContactInfo() {
       }
       const userID = data.user.id
       const result = await fetch(
-        `/api/form/additional/retrieve?userID=${userID}`
+        `/api/form/contactinfo/retrieve?userID=${userID}`
       )
       const body = await result.json()
       if (result.status !== 200) {
