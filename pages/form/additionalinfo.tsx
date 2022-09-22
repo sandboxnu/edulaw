@@ -5,8 +5,8 @@ import React, { useState, useEffect } from 'react'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { MyRadio } from '../../components/DynamicForm/MyRadio'
 import Tooltip from '../../components/DynamicForm/Tooltip'
-import { StyledTextInput } from '../../components/FormStyles/InputBox'
 import { TitleText, InfoText } from '../../components/FormStyles/QuestionText'
+import { TextArea } from '../../components/FormStyles/TextArea'
 import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
 import { FormContainer } from './contactinfo'
 
@@ -110,15 +110,13 @@ const AdditionalInfo: React.FC = () => {
 If you tell the school you prefer a language other than English, you have the right to receive information from the school in that language.  The tool will include questions about whether the school communicated in the right language during the walkthrough if you identify another language here.`,
           }}
         />
-        <StyledTextInput
+        <TextArea
           width={330}
           height={42}
           name={'language'}
           placeholder={'Type language'}
           value={language}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            setLanguage(evt.target.value)
-          }
+          onChange={(event) => setLanguage(event.target.value)}
         />
         <InfoText>What is your relationship to the student?</InfoText>
         <Tooltip
@@ -163,15 +161,13 @@ If you tell the school you prefer a language other than English, you have the ri
     available to answer the phone`,
           }}
         />
-        <StyledTextInput
+        <TextArea
           width={600}
           height={150}
           name={'deseAccommodation'}
           placeholder={'Describe accomodations here'}
           value={deseAccommodations}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            setDeseAccommodations(evt.target.value)
-          }
+          onChange={(evt) => setDeseAccommodations(evt.target.value)}
         />
         <InfoText>
           Are any of these concerns currently being addressed by Mediation or a
