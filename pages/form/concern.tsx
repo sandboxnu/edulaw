@@ -97,7 +97,7 @@ The information is specific to your situation and concerns, but here are a few e
         actions.setSubmitting(false)
       }}
       onBack={() => router.push('/form/group')}
-      currentPage="Concern"
+      currentPage="Concerns"
     >
       <div>
         <TitleText>Introducing your concern</TitleText>
