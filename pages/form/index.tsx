@@ -195,7 +195,9 @@ const DynamicForm: React.FC<{
   }
 
   function _handleBack() {
-    if (questionHistory.length === 1) return
+    if (questionHistory.length === 1) {
+      router.push('/form/concern')
+    }
     questionHistory.splice(-1)
     _handleQuestionChange()
   }

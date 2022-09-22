@@ -57,9 +57,14 @@ const NAVITEMS = [
   ['District and School', '/form/district'],
   ['Student or Group Details', '/form/group'],
   ['Concerns', '/form/concerns'],
+  ['Guided Questions', '/form'],
 ]
 
-function SideProgressBar({ currentPage }: { currentPage?: string }) {
+function SideProgressBar({
+  currentPage = 'Guided Questions',
+}: {
+  currentPage?: string
+}) {
   const [selectedIndex, setSelectedIndex] = React.useState(
     currentPage ? NAVITEMS.findIndex((item) => item[0] == currentPage) : 0
   )
