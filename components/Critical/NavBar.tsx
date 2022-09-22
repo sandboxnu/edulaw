@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import MuiTooltip from '@mui/material/Tooltip'
 import Logo from './Logo'
 import { signOut } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const NeedHelpContainer = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const StyledHelpIcon = styled.div`
   align-items: center;
 `
 function NavBar() {
+  const router = useRouter()
   const tooltipText = (
     <p>
       If you feel like the questions in this guide aren&apos;t addressing your
@@ -49,7 +51,14 @@ function NavBar() {
             <Typography style={{ color: 'white', fontSize: 16 }}>
               Need help?
             </Typography>
-            <button onClick={() => signOut()}>Sign out</button>
+            <button
+              onClick={async () => {
+                await signOut()
+                router.push('/signin')
+              }}
+            >
+              Sign out
+            </button>
           </NeedHelpContainer>
         </MuiTooltip>
       </Toolbar>
