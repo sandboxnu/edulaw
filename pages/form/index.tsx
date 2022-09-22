@@ -265,6 +265,21 @@ const DynamicForm: React.FC<{
       y = writeDocAbstraction(
         10,
         y,
+        'First Name: ' + contactInfo.firstName,
+        doc,
+        'normal'
+      )
+      y = writeDocAbstraction(10, y, 'Last Name: ' + contactInfo.lastName, doc)
+      y = writeDocAbstraction(10, y, 'Email: ' + contactInfo.email, doc)
+      y = writeDocAbstraction(10, y, 'Phone: ' + contactInfo.phoneNum, doc)
+      y = writeDocAbstraction(10, y, 'Address: ' + contactInfo.address, doc)
+      y = writeDocAbstraction(10, y, 'City: ' + contactInfo.city, doc)
+      y = writeDocAbstraction(10, y, 'State: ' + contactInfo.state, doc)
+      y = writeDocAbstraction(10, y, 'Zip Code: ' + contactInfo.zip, doc)
+
+      y = writeDocAbstraction(
+        10,
+        y,
         'District: ' + districtSchool.district,
         doc,
         'normal'
@@ -319,7 +334,7 @@ const DynamicForm: React.FC<{
     }
   }
 
-  function _buildDoc(doc: jsPDF, answers: FormResult[]): jsPDF {
+  async function _buildDoc(doc: jsPDF, answers: FormResult[]): Promise<jsPDF> {
     const x = 10
     let y = 25
     const y_inc = 8
@@ -332,7 +347,7 @@ const DynamicForm: React.FC<{
         25,
         { align: 'center' }
       )
-    initialInformation(doc)
+    await initialInformation(doc)
     doc.addPage()
 
     doc
@@ -361,14 +376,20 @@ const DynamicForm: React.FC<{
     return doc
   }
 
-  function _handleSubmit() {
+  async function _handleSubmit() {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
 
-    let doc = new jsPDF()
+    const doc = new jsPDF()
     const results = buildResults(formValues, questionHistory)
     if (results.length > 0) {
-      doc = _buildDoc(doc, results)
-      doc.save('PRS_Complaint.pdf')
+      _buildDoc(doc, results)
+        .then((doc) => {
+          doc.save('PRS_Complaint.pdf')
+          router.push('/complete')
+        })
+        .catch((err) => {
+          alert('An error occurred while generating the PDF. Please try again.')
+        })
     }
   }
 
