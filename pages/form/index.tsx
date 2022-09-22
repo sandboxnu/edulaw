@@ -256,28 +256,22 @@ const DynamicForm: React.FC<{
       await fetch(`/api/form/group/retrieve?userID=${userID}`)
     ).json()) as GroupDB
 
-    writeDocAbstraction(
-      10,
-      y,
-      'First Name: ' + contactInfo.firstName,
-      doc,
-      'normal'
-    )
     y = writeDocAbstraction(
       10,
       y,
-      'Last Name: ' + contactInfo.lastName,
+      'First Name: ' +
+        contactInfo.firstName +
+        '\t\tLast Name: ' +
+        contactInfo.lastName,
       doc,
-      'normal',
-      'right'
+      'normal'
     )
     writeDocAbstraction(10, y, 'Email: ' + contactInfo.email, doc)
     y = writeDocAbstraction(
       10,
       y,
-      'Phone: ' + contactInfo.phoneNum,
-      doc,
-      'right'
+      'Email: ' + contactInfo.email + '\t\tPhone: ' + contactInfo.phoneNum,
+      doc
     )
     y = writeDocAbstraction(10, y, 'Address: ' + contactInfo.address, doc)
     y = writeDocAbstraction(
@@ -285,9 +279,9 @@ const DynamicForm: React.FC<{
       y,
       'City: ' +
         contactInfo.city +
-        '\tState: ' +
+        '\t\tState: ' +
         contactInfo.state +
-        '\tZip Code: ' +
+        '\t\tZip Code: ' +
         contactInfo.zip,
       doc
     )
@@ -297,7 +291,7 @@ const DynamicForm: React.FC<{
       y,
       'District: ' +
         districtSchool.district +
-        '\tSchool:' +
+        '\t\tSchool: ' +
         districtSchool.school,
       doc,
       'normal'
