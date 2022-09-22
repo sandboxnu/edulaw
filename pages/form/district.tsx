@@ -82,13 +82,13 @@ const District: React.FC = () => {
         name="District"
         value={district}
         onChange={(event) => {
-          setDistrict(districts[parseInt(event.target.value)])
+          setDistrict(event.target.value)
           setSchool(undefined)
         }}
       >
-        {districts.map((district, index) => {
+        {districts.map((district) => {
           return (
-            <option key={district} value={index}>
+            <option key={district} value={district}>
               {district}
             </option>
           )
@@ -97,20 +97,12 @@ const District: React.FC = () => {
       <select
         name="School"
         value={school}
-        onChange={(event) =>
-          setSchool(
-            district === undefined
-              ? undefined
-              : schools[districts.indexOf(district)][
-                  parseInt(event.target.value)
-                ]
-          )
-        }
+        onChange={(event) => setSchool(event.target.value)}
       >
         {district !== undefined &&
-          schools[districts.indexOf(district)].map((school, index) => {
+          schools[districts.indexOf(district)].map((school) => {
             return (
-              <option key={school} value={index}>
+              <option key={school} value={school}>
                 {school}
               </option>
             )

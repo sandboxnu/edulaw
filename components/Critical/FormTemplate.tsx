@@ -67,9 +67,7 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
   currentPage,
   loaded,
 }) => {
-  return !loaded ? (
-    <LoadingSpinner />
-  ) : (
+  return (
     <FullPageContainer>
       <NavBar />
       <HorizontalBox>
@@ -77,7 +75,9 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
           <FormStyled>
             <SideProgressBar currentPage={currentPage} />
             <FormContentWrapper>
-              <QuestionDisplayWrapper>{children}</QuestionDisplayWrapper>
+              <QuestionDisplayWrapper>
+                {loaded ? children : <LoadingSpinner />}
+              </QuestionDisplayWrapper>
               <BottomBar onBack={onBack} nextButtonText={nextButtonText} />
             </FormContentWrapper>
           </FormStyled>

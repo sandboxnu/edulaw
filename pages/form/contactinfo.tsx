@@ -23,7 +23,7 @@ const FormContainer = styled.div`
 `
 
 function ContactInfo() {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(true)
   const router = useRouter()
   const allInputFields: [string, string][][] = [
     [
