@@ -55,6 +55,7 @@ function ContactInfo() {
         router.push('/form/additionalinfo')
         actions.setSubmitting(false)
       }}
+      onBack={() => router.push('/home')}
     >
       <TitleText>Contact Info</TitleText>
       <InfoText>

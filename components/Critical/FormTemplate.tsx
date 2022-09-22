@@ -53,6 +53,7 @@ interface FormTemplateProps {
   initialValues: any
   onBack?: () => void
   nextButtonText?: string
+  currentPage?: string
 }
 
 export const FormTemplate: React.FC<FormTemplateProps> = ({
@@ -61,6 +62,7 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
   initialValues,
   nextButtonText = 'Next',
   children,
+  currentPage,
 }) => {
   return (
     <FullPageContainer>
@@ -68,7 +70,7 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
       <HorizontalBox>
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           <FormStyled>
-            <SideProgressBar />
+            <SideProgressBar currentPage={currentPage} />
             <FormContentWrapper>
               <QuestionDisplayWrapper>{children}</QuestionDisplayWrapper>
               <BottomBar onBack={onBack} nextButtonText={nextButtonText} />

@@ -96,7 +96,7 @@ The information is specific to your situation and concerns, but here are a few e
         router.push('/form')
         actions.setSubmitting(false)
       }}
-      nextButtonText={'Next'}
+      onBack={() => router.push('/form/group')}
     >
       <div>
         <TitleText>Introducing your concern</TitleText>

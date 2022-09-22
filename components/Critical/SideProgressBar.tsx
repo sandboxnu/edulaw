@@ -10,6 +10,7 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import useWindowDimensions from '../../hooks/widthHook'
+import { useRouter } from 'next/router'
 
 const GreySideBox = styled.div`
   width: 100%;
@@ -48,10 +49,22 @@ const SummaryItem = styled.div`
   }
 `
 
-function SideProgressBar() {
-  const [selectedIndex, setSelectedIndex] = React.useState(0)
+const NAVITEMS = [
+  ['Home', '/home'],
+  ['Contact Info', '/form/contactinfo'],
+  ['Additional Info', '/form/additionalinfo'],
+  ['District and School', '/form/district'],
+  ['Student or Group Details', '/form/group'],
+  ['Concerns', '/form/concerns'],
+]
+
+function SideProgressBar({ currentPage }: { currentPage?: string }) {
+  const [selectedIndex, setSelectedIndex] = React.useState(
+    currentPage ? NAVITEMS.findIndex((item) => item[0] == currentPage) : 0
+  )
   const width = useWindowDimensions().width
   const [expanded, setExpanded] = React.useState(width >= CUTOFFS.mobile)
+  const router = useRouter()
 
   const handleListItemClick = (index: number) => {
     setSelectedIndex(index)
@@ -76,7 +89,7 @@ function SideProgressBar() {
     }
   }, [width])
 
-  const ProgressItem = (text: string, index: number) => {
+  const ProgressItem = ([text, link]: string[], index: number) => {
     const textStyling = {
       fontSize: '16px',
       color: index === selectedIndex ? 'black' : COLORS.TEXT_GREY,
@@ -84,7 +97,7 @@ function SideProgressBar() {
 
     if (selectedIndex == index) {
       return (
-        <SummaryItem key={text}>
+        <SummaryItem key={text} onClick={() => router.push(link)}>
           <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
             {index == 0 ? (
               <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />
@@ -119,14 +132,6 @@ function SideProgressBar() {
     }
   }
 
-  const NAVITEMS = [
-    'Home',
-    'Contact Info',
-    'Additional Info',
-    'District and School',
-    'Student or Group Details',
-    'Concerns',
-  ]
   return (
     <GreySideBox>
       <Accordion

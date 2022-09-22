@@ -74,6 +74,7 @@ const District: React.FC = () => {
         router.push('/form/group')
         actions.setSubmitting(false)
       }}
+      onBack={() => router.push('/form/additionalinfo')}
     >
       <select
         name="District"
