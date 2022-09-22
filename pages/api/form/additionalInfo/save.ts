@@ -4,8 +4,8 @@ import { dbConnect } from '../../../../server/_dbConnect'
 
 export interface AdditionalInfoDb extends WithId<Document> {
   userID: string
-  relationship: number
-  language: number
+  relationship: string
+  language: string
   deseAccommodations: string
   bsea: boolean
 }

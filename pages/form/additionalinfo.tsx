@@ -6,12 +6,17 @@ import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
 
 // TODO: Get accurate stuff for this
-const languages = ['English', 'Spanish']
-const relationships = ['Parent', 'Legal Guardian', 'Other']
+const relationships = [
+  'Student',
+  'Parent or Legal Guardian',
+  'Special Education Surrogate',
+  'School Employee',
+  'Other',
+]
 
 const District: React.FC = () => {
-  const [language, setLanguage] = useState<number | undefined>(undefined)
-  const [relationship, setRelationship] = useState<number | undefined>(
+  const [language, setLanguage] = useState<string>('')
+  const [relationship, setRelationship] = useState<string | undefined>(
     undefined
   )
   const [deseAccommodations, setDeseAccommodations] = useState<string>('')
@@ -84,7 +89,7 @@ const District: React.FC = () => {
     <FormTemplate
       loaded={loaded}
       initialValues={{
-        language: undefined,
+        language: '',
         relationship: undefined,
         deseAccomodations: '',
         bsea: false,
@@ -96,29 +101,22 @@ const District: React.FC = () => {
       onBack={() => router.push('/form/contactinfo')}
       currentPage="Additional Info"
     >
-      <select
-        name="Language"
+      <input
+        name="language"
         value={language}
-        onChange={({ target }) => {
-          setLanguage(parseInt(target.value))
-        }}
-      >
-        {languages.map((language, index) => {
-          return (
-            <option key={language} value={index}>
-              {language}
-            </option>
-          )
-        })}
-      </select>
+        onChange={({ target }) => setLanguage(target.value)}
+      />
       <select
         name="Relationship"
         value={relationship}
-        onChange={({ target }) => setRelationship(parseInt(target.value))}
+        onChange={({ target }) => setRelationship(target.value)}
       >
+        <option value="none" selected disabled hidden>
+          Select relationship
+        </option>
         {relationships.map((relationship, index) => {
           return (
-            <option key={relationship} value={index}>
+            <option key={relationship} value={relationship}>
               {relationship}
             </option>
           )
