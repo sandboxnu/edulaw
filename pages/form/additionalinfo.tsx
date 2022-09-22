@@ -25,6 +25,8 @@ export const StyledAutocomplete = styled(Autocomplete)`
   }
 `
 
+export const StyledTextField = styled(TextField)``
+
 const relationships = [
   'Student',
   'Parent or Legal Guardian',
@@ -143,7 +145,7 @@ If you tell the school you prefer a language other than English, you have the ri
           options={relationships}
           onInputChange={(evt, newValue) => setRelationship(newValue)}
           sx={{ width: 330, height: 42 }}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => <StyledTextField {...params} />}
         />
         <InfoText>
           If you require accommodations for communicating with DESE, describe

@@ -7,7 +7,7 @@ import { InfoText } from '../../components/FormStyles/QuestionText'
 import { TextArea } from '../../components/FormStyles/TextArea'
 import { districts, schools } from '../../constants'
 import { DistrictDB } from '../api/form/district/save'
-import { StyledAutocomplete } from './additionalinfo'
+import { StyledAutocomplete, StyledTextField } from './additionalinfo'
 
 const District: React.FC = () => {
   const [district, setDistrict] = useState<string | undefined>(undefined)
@@ -87,7 +87,7 @@ const District: React.FC = () => {
           setSchool(undefined)
         }}
         sx={{ width: 330, height: 42 }}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params) => <StyledTextField {...params} />}
       />
       <InfoText>Please fill in the school that the student attends:</InfoText>
       <StyledAutocomplete
@@ -99,7 +99,7 @@ const District: React.FC = () => {
           setSchool(newValue as string)
         }}
         sx={{ width: 330, height: 42 }}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params) => <StyledTextField {...params} />}
       />
     </FormTemplate>
   )

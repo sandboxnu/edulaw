@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { studentSpecialCircumstances } from '../../constants/additionalConstants'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
-import { StyledAutocomplete } from './additionalinfo'
+import { StyledAutocomplete, StyledTextField } from './additionalinfo'
 import { Checkbox, MenuItem, TextField } from '@material-ui/core'
 import { InfoText } from '../../components/FormStyles/QuestionText'
 import { TextArea } from '../../components/FormStyles/TextArea'
@@ -97,7 +97,7 @@ const Group: React.FC = () => {
         }}
         options={['One Student', 'Group of Students']}
         sx={{ width: 330, height: 42 }}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params) => <StyledTextField {...params} />}
       />
 
       <InfoText>Do any of the following apply to the student?</InfoText>

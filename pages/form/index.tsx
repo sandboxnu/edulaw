@@ -220,12 +220,13 @@ const DynamicForm: React.FC<{
     y: number,
     text: string,
     doc: jsPDF,
-    fontStyle?: string
+    fontStyle?: string,
+    align: 'left' | 'right' = 'left'
   ) => {
     if (fontStyle) {
-      doc.setFont('times', fontStyle).text(text, x, y)
+      doc.setFont('times', fontStyle).text(text, x, y, { align: align })
     } else {
-      doc.text(text, x, y)
+      doc.text(text, x, y, { align: align })
     }
     return y + 8
   }
@@ -255,21 +256,28 @@ const DynamicForm: React.FC<{
       await fetch(`/api/form/group/retrieve?userID=${userID}`)
     ).json()) as GroupDB
 
-    y = writeDocAbstraction(
+    writeDocAbstraction(
       10,
       y,
-      'First Name: ' +
-        contactInfo.firstName +
-        '\tLast Name: ' +
-        contactInfo.lastName,
+      'First Name: ' + contactInfo.firstName,
       doc,
       'normal'
     )
     y = writeDocAbstraction(
       10,
       y,
-      'Email: ' + contactInfo.email + '\tPhone: ' + contactInfo.phoneNum,
-      doc
+      'Last Name: ' + contactInfo.lastName,
+      doc,
+      'normal',
+      'right'
+    )
+    writeDocAbstraction(10, y, 'Email: ' + contactInfo.email, doc)
+    y = writeDocAbstraction(
+      10,
+      y,
+      'Phone: ' + contactInfo.phoneNum,
+      doc,
+      'right'
     )
     y = writeDocAbstraction(10, y, 'Address: ' + contactInfo.address, doc)
     y = writeDocAbstraction(
@@ -319,9 +327,8 @@ const DynamicForm: React.FC<{
     y = writeDocAbstraction(
       10,
       y,
-      'Currently being addressed by BSEA? ' + additionalInfo.bsea
-        ? 'Yes'
-        : 'No',
+      'Currently being addressed by BSEA? ' +
+        (additionalInfo.bsea ? 'Yes' : 'No'),
       doc
     )
 
@@ -333,6 +340,9 @@ const DynamicForm: React.FC<{
       doc
     )
     y = writeDocAbstraction(10, y, 'Special Circumstances: ', doc)
+    if (groups.specialCircumstances.length === 0) {
+      y = writeDocAbstraction(10, y, '\tN/A', doc)
+    }
     for (let k = 0; k < groups.specialCircumstances.length; k++) {
       y = checkNewPage(y, doc)
       if (groups.specialCircumstances[k]) {
