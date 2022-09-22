@@ -75,6 +75,7 @@ const District: React.FC = () => {
         actions.setSubmitting(false)
       }}
       onBack={() => router.push('/form/additionalinfo')}
+      currentPage="District and School"
     >
       <select
         name="District"

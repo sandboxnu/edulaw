@@ -82,6 +82,7 @@ const Group: React.FC = () => {
         actions.setSubmitting(false)
       }}
       onBack={() => router.push('/form/district')}
+      currentPage="Student or Group Details"
     >
       <select>
         <option value="Student">Student</option>

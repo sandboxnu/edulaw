@@ -56,6 +56,7 @@ function ContactInfo() {
         actions.setSubmitting(false)
       }}
       onBack={() => router.push('/home')}
+      currentPage="Contact Info"
     >
       <TitleText>Contact Info</TitleText>
       <InfoText>

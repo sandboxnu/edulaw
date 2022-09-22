@@ -66,13 +66,6 @@ function SideProgressBar({ currentPage }: { currentPage?: string }) {
   const [expanded, setExpanded] = React.useState(width >= CUTOFFS.mobile)
   const router = useRouter()
 
-  const handleListItemClick = (index: number) => {
-    setSelectedIndex(index)
-    if (width <= CUTOFFS.mobile) {
-      setExpanded(false)
-    }
-  }
-
   const onChange = (event: React.SyntheticEvent, navExpand: boolean) => {
     // If on mobile layout
     if (width <= CUTOFFS.mobile) {
@@ -114,7 +107,7 @@ function SideProgressBar({ currentPage }: { currentPage?: string }) {
       )
     } else {
       return (
-        <ListItem key={text} onClick={() => handleListItemClick(index)}>
+        <ListItem key={text} onClick={() => router.push(link)}>
           <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
             {index == 0 ? (
               <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />

@@ -93,6 +93,7 @@ const District: React.FC = () => {
         actions.setSubmitting(false)
       }}
       onBack={() => router.push('/form/contactinfo')}
+      currentPage="Additional Info"
     >
       <select
         name="Language"
