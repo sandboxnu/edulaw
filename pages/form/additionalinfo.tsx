@@ -30,11 +30,11 @@ export const StyledTextField = styled(TextField)`
     border: 1px solid ${COLORS.SHADOW_GREY};
     background-color: ${COLORS.LIGHT_GREY};
     box-sizing: border-box;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 16px;
-    line-height: 26px;
-    font-family: 'Source Sans Pro';
+    padding: 10px !important;
+    border-radius: 6px !important;
+    font-size: 16px !important;
+    line-height: 26px !important;
+    font-family: 'Source Sans Pro' !important;
     resize: none;
     &:focus {
       border: 1px solid ${COLORS.EDLAW_BLUE};
