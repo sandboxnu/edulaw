@@ -197,8 +197,16 @@ If your concerns are being addressed by a BSEA hearing, PRS will wait to make a 
           value={bsea ? 'Yes' : 'No'}
           onChange={(evt) => setBsea(evt.target.value === 'Yes')}
         >
-          <RadioButton type="radio" value={'Yes'} />
-          <RadioButton type="radio" value={'No'} />
+          <RadioButton
+            type="radio"
+            value={'Yes'}
+            onChange={(evt) => setBsea(evt.target.value === 'Yes')}
+          />
+          <RadioButton
+            type="radio"
+            value={'No'}
+            onChange={(evt) => setBsea(evt.target.value === 'Yes')}
+          />
         </RadioGroup>
       </FormContainer>
     </FormTemplate>

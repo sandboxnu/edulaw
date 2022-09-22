@@ -24,6 +24,7 @@ import { DistrictDB } from '../api/form/district/save'
 import { GroupDB } from '../api/form/group/save'
 import { studentSpecialCircumstances } from '../../constants/additionalConstants'
 import { ContactInfoDb } from '../api/form/contactinfo/save'
+import { FormContainer } from './contactinfo'
 
 const files = {
   animalForm: '../../../constants/Animal Form.csv',
@@ -391,6 +392,7 @@ const DynamicForm: React.FC<{
         })
         .catch((err) => {
           alert('An error occurred while generating the PDF. Please try again.')
+          console.error(err)
         })
     }
   }
@@ -417,7 +419,7 @@ const DynamicForm: React.FC<{
       }
       initialValues={formValues}
     >
-      <>
+      <FormContainer>
         <TitleText>{currentQuestion.section}</TitleText>
         <ChooseFormType
           question={currentQuestion}
@@ -425,7 +427,7 @@ const DynamicForm: React.FC<{
           answer={formValues.formAnswers[currentQuestion.id]}
           questionHistory={questionHistory}
         />
-      </>
+      </FormContainer>
     </FormTemplate>
   )
 }

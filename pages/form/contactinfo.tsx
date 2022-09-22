@@ -25,6 +25,7 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  overflow: auto;
 `
 
 function ContactInfo() {
@@ -153,21 +154,68 @@ function ContactInfo() {
         below.
       </InfoText>
       <FormContainer>
-        {allInputFields.map((inputRow) => (
-          <InputRow key={inputRow.toString()}>
-            {inputRow.map((singleInput) => (
-              <TextArea
-                key={singleInput[0]}
-                width={330}
-                height={42}
-                placeholder={singleInput[0]}
-                name={singleInput[1]}
-                value={singleInput[2]}
-                onChange={(evt) => singleInput[3](evt.target.value)}
-              />
-            ))}
-          </InputRow>
-        ))}
+        <InputRow>
+          <TextArea
+            width={330}
+            height={42}
+            placeholder="First Name"
+            value={firstName}
+            onChange={(evt) => setFirstName(evt.target.value)}
+          />
+          <TextArea
+            width={330}
+            height={42}
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(evt) => setLastName(evt.target.value)}
+          />
+        </InputRow>
+        <InputRow>
+          <TextArea
+            width={330}
+            height={42}
+            placeholder="Email"
+            value={email}
+            onChange={(evt) => setEmail(evt.target.value)}
+          />
+          <TextArea
+            width={330}
+            height={42}
+            placeholder="Phone Number"
+            value={phoneNum}
+            onChange={(evt) => setPhoneNum(evt.target.value)}
+          />
+        </InputRow>
+        <InputRow>
+          <TextArea
+            width={330}
+            height={42}
+            placeholder="Street Address"
+            value={address}
+            onChange={(evt) => setAddress(evt.target.value)}
+          />
+          <TextArea
+            width={330}
+            height={42}
+            placeholder="City"
+            value={city}
+            onChange={(evt) => setCity(evt.target.value)}
+          />
+          <TextArea
+            width={330}
+            height={42}
+            placeholder="State"
+            value={state}
+            onChange={(evt) => setState(evt.target.value)}
+          />
+          <TextArea
+            width={330}
+            height={42}
+            placeholder="Zip Code"
+            value={zip}
+            onChange={(evt) => setZip(evt.target.value)}
+          />
+        </InputRow>
       </FormContainer>
     </FormTemplate>
   )
