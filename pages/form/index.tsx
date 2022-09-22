@@ -258,26 +258,42 @@ const DynamicForm: React.FC<{
     y = writeDocAbstraction(
       10,
       y,
-      'First Name: ' + contactInfo.firstName,
+      'First Name: ' +
+        contactInfo.firstName +
+        '\tLast Name: ' +
+        contactInfo.lastName,
       doc,
       'normal'
     )
-    y = writeDocAbstraction(10, y, 'Last Name: ' + contactInfo.lastName, doc)
-    y = writeDocAbstraction(10, y, 'Email: ' + contactInfo.email, doc)
-    y = writeDocAbstraction(10, y, 'Phone: ' + contactInfo.phoneNum, doc)
+    y = writeDocAbstraction(
+      10,
+      y,
+      'Email: ' + contactInfo.email + '\tPhone: ' + contactInfo.phoneNum,
+      doc
+    )
     y = writeDocAbstraction(10, y, 'Address: ' + contactInfo.address, doc)
-    y = writeDocAbstraction(10, y, 'City: ' + contactInfo.city, doc)
-    y = writeDocAbstraction(10, y, 'State: ' + contactInfo.state, doc)
-    y = writeDocAbstraction(10, y, 'Zip Code: ' + contactInfo.zip, doc)
+    y = writeDocAbstraction(
+      10,
+      y,
+      'City: ' +
+        contactInfo.city +
+        '\tState: ' +
+        contactInfo.state +
+        '\tZip Code: ' +
+        contactInfo.zip,
+      doc
+    )
 
     y = writeDocAbstraction(
       10,
       y,
-      'District: ' + districtSchool.district,
+      'District: ' +
+        districtSchool.district +
+        '\tSchool:' +
+        districtSchool.school,
       doc,
       'normal'
     )
-    y = writeDocAbstraction(10, y, 'School: ' + districtSchool.school, doc)
 
     y = writeDocAbstraction(
       10,
@@ -303,7 +319,9 @@ const DynamicForm: React.FC<{
     y = writeDocAbstraction(
       10,
       y,
-      'BSEA Addressed? ' + additionalInfo.bsea,
+      'Currently being addressed by BSEA? ' + additionalInfo.bsea
+        ? 'Yes'
+        : 'No',
       doc
     )
 
@@ -318,7 +336,12 @@ const DynamicForm: React.FC<{
     for (let k = 0; k < groups.specialCircumstances.length; k++) {
       y = checkNewPage(y, doc)
       if (groups.specialCircumstances[k]) {
-        y = writeDocAbstraction(10, y, studentSpecialCircumstances[k], doc)
+        y = writeDocAbstraction(
+          10,
+          y,
+          '\t' + studentSpecialCircumstances[k],
+          doc
+        )
       }
     }
 
