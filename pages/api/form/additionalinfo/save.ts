@@ -7,7 +7,7 @@ export interface AdditionalInfoDb extends WithId<Document> {
   relationship: string
   language: string
   deseAccommodations: string
-  bsea: boolean
+  bsea: 'Yes' | 'No'
 }
 
 export default async function handler(

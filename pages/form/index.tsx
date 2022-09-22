@@ -321,8 +321,7 @@ const DynamicForm: React.FC<{
     y = writeDocAbstraction(
       10,
       y,
-      'Currently being addressed by BSEA? ' +
-        (additionalInfo.bsea ? 'Yes' : 'No'),
+      'Currently being addressed by BSEA? ' + additionalInfo.bsea,
       doc
     )
 
