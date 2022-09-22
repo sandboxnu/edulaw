@@ -77,9 +77,10 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
             </Formik>
           ) : (
             <form
-              onSubmit={() =>
+              onSubmit={(evt) => {
                 onSubmit({ formAnswers: {} }, { setSubmitting: console.log })
-              }
+                evt.preventDefault()
+              }}
             >
               {formElements}
             </form>
