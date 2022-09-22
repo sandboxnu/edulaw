@@ -26,8 +26,9 @@ export const StyledAutocomplete = styled(Autocomplete)`
 `
 
 export const StyledTextField = styled(TextField)`
-  & {
-    border: 1px solid ${COLORS.SHADOW_GREY};
+  & div,
+  > input {
+    border: 1px solid ${COLORS.SHADOW_GREY} !important;
     background-color: ${COLORS.LIGHT_GREY};
     box-sizing: border-box;
     padding: 10px !important;
