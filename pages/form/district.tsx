@@ -4,9 +4,10 @@ import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { InfoText } from '../../components/FormStyles/QuestionText'
+import { TextArea } from '../../components/FormStyles/TextArea'
 import { districts, schools } from '../../constants'
 import { DistrictDB } from '../api/form/district/save'
-import { StyledSelect } from './additionalinfo'
+import { StyledAutocomplete } from './additionalinfo'
 
 const District: React.FC = () => {
   const [district, setDistrict] = useState<string | undefined>(undefined)
@@ -76,37 +77,30 @@ const District: React.FC = () => {
       currentPage="District and School"
     >
       <InfoText>Please fill in the student&rsquo;s school district:</InfoText>
-      <StyledSelect
-        label="Select District"
+      <StyledAutocomplete
         value={district}
-        onChange={(event) => {
-          setDistrict(event.target.value as string)
+        options={districts}
+        onChange={(evt, newValue) => {
+          setDistrict(newValue as string)
           setSchool(undefined)
         }}
-      >
-        {districts.map((district) => {
-          return (
-            <MenuItem key={district} value={district}>
-              {district}
-            </MenuItem>
-          )
-        })}
-      </StyledSelect>
+        renderInput={(params) => (
+          <TextArea width={330} height={42} {...params} />
+        )}
+      />
       <InfoText>Please fill in the school that the student attends:</InfoText>
-      <StyledSelect
-        label="Select School"
+      <StyledAutocomplete
         value={school}
-        onChange={(event) => setSchool(event.target.value as string)}
-      >
-        {district !== undefined &&
-          schools[districts.indexOf(district)].map((school) => {
-            return (
-              <MenuItem key={school} value={school}>
-                {school}
-              </MenuItem>
-            )
-          })}
-      </StyledSelect>
+        options={
+          district === undefined ? [] : schools[districts.indexOf(district)]
+        }
+        onChange={(evt, newValue) => {
+          setSchool(newValue as string)
+        }}
+        renderInput={(params) => (
+          <TextArea width={330} height={42} {...params} />
+        )}
+      />
     </FormTemplate>
   )
 }

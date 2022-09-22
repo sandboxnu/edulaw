@@ -1,5 +1,6 @@
 //import { CheckBoxOutlineBlankOutlined } from '@mui/icons-material'
 import { MenuItem, Select } from '@material-ui/core'
+import Autocomplete from '@mui/material/Autocomplete'
 import RadioGroup from '@mui/material/RadioGroup'
 import { DropDownMenu } from 'material-ui'
 import { useSession } from 'next-auth/react'
@@ -16,7 +17,7 @@ import { COLORS } from '../../constants/colors'
 import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
 import { FormContainer } from './contactinfo'
 
-export const StyledSelect = styled(Select)`
+export const StyledAutocomplete = styled(Autocomplete)`
   & {
     border-color: ${COLORS.SHADOW_GREY};
     background-color: ${COLORS.LIGHT_GREY};
@@ -29,7 +30,6 @@ const relationships = [
   'Parent or Legal Guardian',
   'Special Education Surrogate',
   'School Employee',
-  'Other',
 ]
 
 const AdditionalInfo: React.FC = () => {
@@ -137,19 +137,15 @@ If you tell the school you prefer a language other than English, you have the ri
               "Anyone can file a PRS complaint, including a parent, social worker, attorney, counselor, or other third party. If you are not the student's parent or guardian, you need to get the parent or education decision maker’s permission to file a complaint related to a specific child.",
           }}
         />
-        <StyledSelect
-          value={relationship}
-          label="Select Relationship"
-          onChange={(evt) => setRelationship(evt.target.value as string)}
-        >
-          {relationships.map((relationship) => {
-            return (
-              <MenuItem key={relationship} value={relationship}>
-                {relationship}
-              </MenuItem>
-            )
-          })}
-        </StyledSelect>
+        <StyledAutocomplete
+          freeSolo
+          inputValue={relationship}
+          options={relationships}
+          onInputChange={(evt, newValue) => setRelationship(newValue)}
+          renderInput={(params) => (
+            <TextArea width={330} height={42} {...params} />
+          )}
+        />
         <InfoText>
           If you require accommodations for communicating with DESE, describe
           them in the box below.

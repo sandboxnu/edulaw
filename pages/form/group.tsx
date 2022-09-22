@@ -4,9 +4,10 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { studentSpecialCircumstances } from '../../constants/additionalConstants'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
-import { StyledSelect } from './additionalinfo'
+import { StyledAutocomplete } from './additionalinfo'
 import { Checkbox, MenuItem } from '@material-ui/core'
 import { InfoText } from '../../components/FormStyles/QuestionText'
+import { TextArea } from '../../components/FormStyles/TextArea'
 
 const Group: React.FC = () => {
   const [studentOrGroup, setStudentOrGroup] = useState<string | undefined>()
@@ -88,16 +89,16 @@ const Group: React.FC = () => {
         Are you filing this complaint on behalf of one student or a group of
         students?
       </InfoText>
-      <StyledSelect
-        label=""
+      <StyledAutocomplete
         value={studentOrGroup}
-        onChange={(event) => {
-          setStudentOrGroup(event.target.value as string)
+        onChange={(event, newValue) => {
+          setStudentOrGroup(newValue as string)
         }}
-      >
-        <MenuItem value="Student">Student</MenuItem>
-        <MenuItem value="Group">Group</MenuItem>
-      </StyledSelect>
+        options={['Student', 'Group']}
+        renderInput={(params) => (
+          <TextArea width={330} height={42} {...params} />
+        )}
+      />
 
       <InfoText>Do any of the following apply to the student?</InfoText>
       {studentSpecialCircumstances.map((option, index) => {
