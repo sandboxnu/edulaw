@@ -86,7 +86,9 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   const ctx = useContext(FormCtx)
   const results = buildResults(ctx.formValues, props.questionHistory).map(
     ({ formAnswer, question, answer }) => {
-      function _onChange(event: ChangeEvent<HTMLTextAreaElement>) {
+      function _onChange(
+        event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+      ) {
         _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
       }
 
