@@ -68,7 +68,7 @@ const AdditionalInfo: React.FC = () => {
   const [bsea, setBsea] = useState<'Yes' | 'No' | undefined>()
   const router = useRouter()
   const { data, status } = useSession()
-  const [loaded, setLoaded] = useState<boolean>(true)
+  const [loaded, setLoaded] = useState<boolean>(false)
 
   // reroutes to signup if not logged in
 

@@ -17,7 +17,7 @@ const Concern: React.FC = () => {
   const [concern, setConcern] = useState<string | undefined>(undefined)
   const router = useRouter()
   const { data, status } = useSession()
-  const [loaded, setLoaded] = useState<boolean>(true)
+  const [loaded, setLoaded] = useState<boolean>(false)
 
   const tooltipText = `This is the part where you're introducing the PRS officer to your concerns by telling them generally what happened.  
 
