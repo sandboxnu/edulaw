@@ -289,10 +289,15 @@ const DynamicForm: React.FC<{
     y = writeDocAbstraction(
       10,
       y,
-      'District: ' +
-        districtSchool.district +
-        '\t\tSchool: ' +
-        districtSchool.school,
+      'District: ' + districtSchool.district,
+      doc,
+      'normal'
+    )
+
+    y = writeDocAbstraction(
+      10,
+      y,
+      'School: ' + districtSchool.school,
       doc,
       'normal'
     )
@@ -311,7 +316,7 @@ const DynamicForm: React.FC<{
     )
     y = writeDocAbstraction(10, y, 'DESE Accomodations: ', doc)
     const deseSplit = doc.splitTextToSize(
-      additionalInfo.deseAccommodations,
+      additionalInfo.deseAccommodations ?? 'N/A',
       180
     )
     for (let i = 0; i < deseSplit.length; i++) {
@@ -333,7 +338,7 @@ const DynamicForm: React.FC<{
       doc
     )
     y = writeDocAbstraction(10, y, 'Special Circumstances: ', doc)
-    if (groups.specialCircumstances.length === 0) {
+    if (groups.specialCircumstances.every((b) => !b)) {
       y = writeDocAbstraction(10, y, '\tN/A', doc)
     }
     for (let k = 0; k < groups.specialCircumstances.length; k++) {
