@@ -43,7 +43,7 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = (
         <MyTextInput
           name={props.question.id.toString()}
           label={props.question.question}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
             props.onChange({
               questionId: parseInt(event.target.name),
               type: QuestionType.TEXT,

@@ -10,7 +10,7 @@ interface InputBoxProps {
   cutoffWidth?: number
 }
 
-export const InputBox = styled.input`
+export const InputBox = styled.textarea`
   width: ${(props: InputBoxProps) => props.width}px;
   height: ${(props: InputBoxProps) => props.height}px;
   border: 1px solid ${COLORS.SHADOW_GREY};
@@ -39,7 +39,7 @@ interface InputProps {
   width: number
   height: number
   defaultValue?: string
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
   type?: string
   placeholder?: string
   cutoffWidth?: number
@@ -59,7 +59,6 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
           defaultValue={props.defaultValue}
           {...field}
           onChange={props.onChange}
-          type={props.type}
           placeholder={props.placeholder}
           cutoffWidth={props.cutoffWidth}
         />
@@ -71,7 +70,6 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
         height={props.height}
         defaultValue={props.defaultValue}
         {...field}
-        type={props.type}
         placeholder={props.placeholder}
         cutoffWidth={props.cutoffWidth}
       />
