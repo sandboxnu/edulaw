@@ -24,7 +24,7 @@ const InputRow = styled.div`
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 32px;
   overflow: auto;
 `
 

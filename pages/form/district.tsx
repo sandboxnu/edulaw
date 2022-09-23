@@ -8,6 +8,7 @@ import { TextArea } from '../../components/FormStyles/TextArea'
 import { districts, schools } from '../../constants'
 import { DistrictDB } from '../api/form/district/save'
 import { StyledAutocomplete, StyledTextField } from './additionalinfo'
+import { FormContainer } from './contactinfo'
 
 const District: React.FC = () => {
   const [district, setDistrict] = useState<string | undefined>(undefined)
@@ -76,31 +77,33 @@ const District: React.FC = () => {
       onBack={() => router.push('/form/additionalinfo')}
       currentPage="District and School"
     >
-      <InfoText>Please fill in the student&rsquo;s school district:</InfoText>
-      <StyledAutocomplete
-        value={district}
-        options={districts}
-        onChange={(evt, newValue) => {
-          console.log(evt)
-          console.log(newValue)
-          setDistrict(newValue as string)
-          setSchool(undefined)
-        }}
-        sx={{ width: 330, height: 42 }}
-        renderInput={(params) => <StyledTextField {...params} />}
-      />
-      <InfoText>Please fill in the school that the student attends:</InfoText>
-      <StyledAutocomplete
-        value={school}
-        options={
-          district === undefined ? [] : schools[districts.indexOf(district)]
-        }
-        onChange={(evt, newValue) => {
-          setSchool(newValue as string)
-        }}
-        sx={{ width: 330, height: 42 }}
-        renderInput={(params) => <StyledTextField {...params} />}
-      />
+      <FormContainer>
+        <InfoText>Please fill in the student&rsquo;s school district:</InfoText>
+        <StyledAutocomplete
+          value={district}
+          options={districts}
+          onChange={(evt, newValue) => {
+            console.log(evt)
+            console.log(newValue)
+            setDistrict(newValue as string)
+            setSchool(undefined)
+          }}
+          sx={{ width: 330, height: 42 }}
+          renderInput={(params) => <StyledTextField {...params} />}
+        />
+        <InfoText>Please fill in the school that the student attends:</InfoText>
+        <StyledAutocomplete
+          value={school}
+          options={
+            district === undefined ? [] : schools[districts.indexOf(district)]
+          }
+          onChange={(evt, newValue) => {
+            setSchool(newValue as string)
+          }}
+          sx={{ width: 330, height: 42 }}
+          renderInput={(params) => <StyledTextField {...params} />}
+        />
+      </FormContainer>
     </FormTemplate>
   )
 }
