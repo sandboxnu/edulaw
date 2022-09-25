@@ -66,15 +66,9 @@ const District: React.FC = () => {
     }
   }, [data])
 
-  useEffect(() => {
-    router.beforePopState(() => {
-      save()
-      return true
-    })
-  }, [router])
-
   return (
     <FormTemplate
+      save={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
         await save()

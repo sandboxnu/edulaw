@@ -11,7 +11,7 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import useWindowDimensions from '../../hooks/widthHook'
-import { useRouter } from 'next/router'
+import { NextRouter, useRouter } from 'next/router'
 
 const GreySideBox = styled.div`
   width: 100%;
@@ -62,15 +62,16 @@ const NAVITEMS = [
 
 function SideProgressBar({
   currentPage = 'Guided Questions',
+  router,
 }: {
   currentPage?: string
+  router: NextRouter
 }) {
   const [selectedIndex, setSelectedIndex] = React.useState(
     currentPage ? NAVITEMS.findIndex((item) => item[0] == currentPage) : 0
   )
   const width = useWindowDimensions().width
   const [expanded, setExpanded] = React.useState(width >= CUTOFFS.mobile)
-  const router = useRouter()
 
   const onChange = (event: React.SyntheticEvent, navExpand: boolean) => {
     // If on mobile layout

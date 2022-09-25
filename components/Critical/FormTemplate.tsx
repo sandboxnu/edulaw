@@ -6,7 +6,8 @@ import { BottomBar } from './BottomBar'
 import { Form, Formik } from 'formik'
 import { FormValues } from '../../utils/FormContext'
 import { LoadingSpinner } from '../LoadingSpinner'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const FullPageContainer = styled.div`
   display: flex;
@@ -61,6 +62,7 @@ interface FormTemplateProps {
   nextButtonText?: string
   currentPage?: string
   loaded: boolean
+  save: () => Promise<void>
 }
 
 export const FormTemplate: React.FC<FormTemplateProps> = ({
@@ -71,7 +73,17 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
   children,
   currentPage = 'Guided Questions',
   loaded,
+  save,
 }) => {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.beforePopState(() => {
+      save()
+      return true
+    })
+  }, [router])
+
   return (
     <FullPageContainer>
       <NavBar />
@@ -93,7 +105,7 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
           )
         })(
           <React.Fragment>
-            <SideProgressBar currentPage={currentPage} />
+            <SideProgressBar currentPage={currentPage} router={router} />
             <FormContentWrapper>
               <QuestionDisplayWrapper>
                 {loaded ? children : <LoadingSpinner />}

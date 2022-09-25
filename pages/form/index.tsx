@@ -445,16 +445,12 @@ const DynamicForm: React.FC<{
     }
   }
 
-  useEffect(() => {
-    router.beforePopState(() => {
-      save()
-      return true
-    })
-  }, [router])
-
   return (
     <FormCtx.Provider value={{ formValues, setFormValues }}>
       <FormTemplate
+        save={async () => {
+          await save()
+        }}
         loaded={loaded}
         onBack={_handleBack}
         onSubmit={onSubmit}

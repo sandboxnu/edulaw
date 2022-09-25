@@ -114,37 +114,9 @@ function ContactInfo() {
     }
   }, [data])
 
-  const allInputFields: [
-    string,
-    string,
-    string,
-    Dispatch<SetStateAction<string>>
-  ][][] = [
-    [
-      ['First Name', 'firstName', firstName, setFirstName],
-      ['Last Name', 'lastName', lastName, setLastName],
-    ],
-    [
-      ['Phone', 'phone', phoneNum, setPhoneNum],
-      ['Email', 'email', email, setEmail],
-    ],
-    [
-      ['Address', 'address', address, setAddress],
-      ['City', 'city', city, setCity],
-      ['State', 'state', state, setState],
-      ['Zipcode', 'zip', zip, setZip],
-    ],
-  ]
-
-  useEffect(() => {
-    router.beforePopState(() => {
-      save()
-      return true
-    })
-  }, [router])
-
   return (
     <FormTemplate
+      save={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
         await save()

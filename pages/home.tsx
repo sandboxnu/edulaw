@@ -7,14 +7,15 @@ import {
   SidebarDiv,
   HorizontalBox,
 } from '../components/FormStyles/ExtraStyles'
+import { useRouter } from 'next/router'
 
-function home() {
+function Home() {
   return (
     <Main>
       <NavBar />
       <HorizontalBox>
         <SidebarDiv>
-          <SideProgressBar currentPage="Home" />
+          <SideProgressBar currentPage="Home" router={useRouter()} />
         </SidebarDiv>
         <MainPage />
       </HorizontalBox>
@@ -22,4 +23,4 @@ function home() {
   )
 }
 
-export default home
+export default Home

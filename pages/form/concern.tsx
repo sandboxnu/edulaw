@@ -54,13 +54,6 @@ The information is specific to your situation and concerns, but here are a few e
     }
   }
 
-  useEffect(() => {
-    router.beforePopState(() => {
-      save()
-      return true
-    })
-  }, [router])
-
   // loads values in from database, only loads once
   useEffect(() => {
     const retrieve = async () => {
@@ -84,6 +77,7 @@ The information is specific to your situation and concerns, but here are a few e
   }, [data])
   return (
     <FormTemplate
+      save={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
         await save()
