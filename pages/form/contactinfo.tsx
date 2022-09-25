@@ -25,7 +25,7 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  overflow: auto;
+  overflow-y: auto;
 `
 
 function ContactInfo() {
