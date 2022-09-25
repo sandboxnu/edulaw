@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import {
   emptyFormValues,
   FormAnswer,
+  FormCtx,
   FormResult,
   FormValues,
 } from '../../utils/FormContext'
@@ -435,25 +436,27 @@ const DynamicForm: React.FC<{
   }
 
   return (
-    <FormTemplate
-      loaded={loaded}
-      onBack={_handleBack}
-      onSubmit={onSubmit}
-      nextButtonText={
-        currentQuestion.type === QuestionType.RESULT ? 'End' : 'Next'
-      }
-      initialValues={formValues}
-    >
-      <FormContainer>
-        <TitleText>{currentQuestion.section}</TitleText>
-        <ChooseFormType
-          question={currentQuestion}
-          onChange={setCurrentAnswer}
-          answer={formValues.formAnswers[currentQuestion.id]}
-          questionHistory={questionHistory}
-        />
-      </FormContainer>
-    </FormTemplate>
+    <FormCtx.Provider value={{ formValues, setFormValues }}>
+      <FormTemplate
+        loaded={loaded}
+        onBack={_handleBack}
+        onSubmit={onSubmit}
+        nextButtonText={
+          currentQuestion.type === QuestionType.RESULT ? 'End' : 'Next'
+        }
+        initialValues={formValues}
+      >
+        <FormContainer>
+          <TitleText>{currentQuestion.section}</TitleText>
+          <ChooseFormType
+            question={currentQuestion}
+            onChange={setCurrentAnswer}
+            answer={formValues.formAnswers[currentQuestion.id]}
+            questionHistory={questionHistory}
+          />
+        </FormContainer>
+      </FormTemplate>
+    </FormCtx.Provider>
   )
 }
 
