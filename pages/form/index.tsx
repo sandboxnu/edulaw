@@ -239,7 +239,7 @@ const DynamicForm: React.FC<{
    */
   async function initialInformation(doc: jsPDF) {
     const x = 1
-    let y = 3
+    let y = 1.5
     const userID = data!.user!.id
     // gonna be real this also looks ugly afffff but it all looked ugly aff
     const districtSchool = (await (
@@ -323,7 +323,7 @@ const DynamicForm: React.FC<{
     )
     for (let i = 0; i < deseSplit.length; i++) {
       y = checkNewPage(y, doc)
-      y = writeDocAbstraction(x * 2, y, deseSplit[i], doc)
+      y = writeDocAbstraction(x + 0.5, y, deseSplit[i], doc)
     }
     y = writeDocAbstraction(
       x,
@@ -341,12 +341,12 @@ const DynamicForm: React.FC<{
     )
     y = writeDocAbstraction(x, y, 'Special Circumstances: ', doc)
     if (groups.specialCircumstances.every((b) => !b)) {
-      y = writeDocAbstraction(x * 2, y, 'N/A', doc)
+      y = writeDocAbstraction(x + 0.5, y, 'N/A', doc)
     }
     for (let k = 0; k < groups.specialCircumstances.length; k++) {
       y = checkNewPage(y, doc)
       if (groups.specialCircumstances[k]) {
-        y = writeDocAbstraction(x * 2, y, studentSpecialCircumstances[k], doc)
+        y = writeDocAbstraction(x + 0.5, y, studentSpecialCircumstances[k], doc)
       }
     }
 
@@ -358,21 +358,21 @@ const DynamicForm: React.FC<{
     )
     for (let j = 0; j < concernsSplit.length; j++) {
       y = checkNewPage(y, doc)
-      y = writeDocAbstraction(x * 2, y, concernsSplit[j], doc, 'normal')
+      y = writeDocAbstraction(x + 0.5, y, concernsSplit[j], doc, 'normal')
     }
   }
 
   async function _buildDoc(doc: jsPDF, answers: FormResult[]): Promise<jsPDF> {
     const x = 1
-    let y = 2
-    const y_inc = 8
+    let y = 1
+    const y_inc = 0.5
 
     doc
       .setFont('times', 'bold')
       .text(
         'Student Complaint and Details',
         doc.internal.pageSize.width / 2,
-        (doc.internal.pageSize.height * 2) / 11,
+        (doc.internal.pageSize.height * 1) / 11,
         { align: 'center' }
       )
     await initialInformation(doc)
@@ -383,7 +383,7 @@ const DynamicForm: React.FC<{
       .text(
         'Begin Complaints',
         doc.internal.pageSize.width / 2,
-        (doc.internal.pageSize.height * 2) / 11,
+        (doc.internal.pageSize.height * 1) / 11,
         {
           align: 'center',
         }
@@ -407,7 +407,7 @@ const DynamicForm: React.FC<{
         )
         for (let i = 0; i < splitAnswer.length; i++) {
           y = checkNewPage(y, doc)
-          y = writeDocAbstraction(x * 2, y, splitAnswer[i], doc, 'normal')
+          y = writeDocAbstraction(x + 0.5, y, splitAnswer[i], doc, 'normal')
         }
         y = writeDocAbstraction(x, y, '\n', doc)
       }
