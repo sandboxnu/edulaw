@@ -28,7 +28,7 @@ export const InputCol = styled.div`
   column-gap: 20px;
   max-width: 800px;
   flex-flow: column wrap;
-  margin: 20px 0;
+  margin: 20px 15px;
 `
 
 export const FormContainer = styled.div`
