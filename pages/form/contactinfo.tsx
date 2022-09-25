@@ -135,6 +135,12 @@ function ContactInfo() {
       ['Zipcode', 'zip', zip, setZip],
     ],
   ]
+
+  router.beforePopState(() => {
+    save()
+    return true
+  })
+
   return (
     <FormTemplate
       loaded={loaded}

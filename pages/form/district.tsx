@@ -66,6 +66,11 @@ const District: React.FC = () => {
     }
   }, [data])
 
+  router.beforePopState(() => {
+    save()
+    return true
+  })
+
   return (
     <FormTemplate
       loaded={loaded}

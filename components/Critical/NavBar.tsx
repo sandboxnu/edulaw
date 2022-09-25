@@ -70,6 +70,10 @@ function NavBar() {
             </Typography>
             <SignOutButton
               onClick={async () => {
+                const confirm = window.confirm(
+                  'Are you sure you want to sign out?'
+                )
+                if (!confirm) return
                 await signOut()
                 router.push('/signin')
               }}

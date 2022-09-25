@@ -75,6 +75,12 @@ const Group: React.FC = () => {
     ]
     setCheckedArr(updatedCheckedArr)
   }
+
+  router.beforePopState(() => {
+    save()
+    return true
+  })
+
   return (
     <FormTemplate
       loaded={loaded}
