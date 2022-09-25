@@ -54,10 +54,12 @@ The information is specific to your situation and concerns, but here are a few e
     }
   }
 
-  router.beforePopState(() => {
-    save()
-    return true
-  })
+  useEffect(() => {
+    router.beforePopState(() => {
+      save()
+      return true
+    })
+  }, [router])
 
   // loads values in from database, only loads once
   useEffect(() => {

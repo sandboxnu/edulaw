@@ -127,10 +127,12 @@ const AdditionalInfo: React.FC = () => {
     }
   }, [data])
 
-  router.beforePopState(() => {
-    save()
-    return true
-  })
+  useEffect(() => {
+    router.beforePopState(() => {
+      save()
+      return true
+    })
+  }, [router])
 
   return (
     <FormTemplate

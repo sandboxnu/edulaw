@@ -123,7 +123,7 @@ const DynamicForm: React.FC<{
   }, [data])
 
   useEffect(() => {
-    questionHistory.push(startingQuestion)
+    if (questionHistory.length === 0) questionHistory.push(startingQuestion)
   }, [])
 
   /**
@@ -444,6 +444,13 @@ const DynamicForm: React.FC<{
       _handleNext()
     }
   }
+
+  useEffect(() => {
+    router.beforePopState(() => {
+      save()
+      return true
+    })
+  }, [router])
 
   return (
     <FormCtx.Provider value={{ formValues, setFormValues }}>
