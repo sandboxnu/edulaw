@@ -229,7 +229,7 @@ const DynamicForm: React.FC<{
     } else {
       doc.text(text, x, y, { align: align })
     }
-    return y + 8
+    return y + doc.getLineHeight()
   }
 
   /**
@@ -238,7 +238,8 @@ const DynamicForm: React.FC<{
    * @param doc the jsPDF doc to write on
    */
   async function initialInformation(doc: jsPDF) {
-    let y = 35
+    const x = 1
+    let y = 3
     const userID = data!.user!.id
     // gonna be real this also looks ugly afffff but it all looked ugly aff
     const districtSchool = (await (
@@ -258,7 +259,7 @@ const DynamicForm: React.FC<{
     ).json()) as GroupDB
 
     y = writeDocAbstraction(
-      10,
+      x,
       y,
       'First Name: ' +
         contactInfo.firstName +
@@ -267,16 +268,16 @@ const DynamicForm: React.FC<{
       doc,
       'normal'
     )
-    writeDocAbstraction(10, y, 'Email: ' + contactInfo.email, doc)
+    writeDocAbstraction(x, y, 'Email: ' + contactInfo.email, doc)
     y = writeDocAbstraction(
-      10,
+      x,
       y,
       'Email: ' + contactInfo.email + '\t\tPhone: ' + contactInfo.phoneNum,
       doc
     )
-    y = writeDocAbstraction(10, y, 'Address: ' + contactInfo.address, doc)
+    y = writeDocAbstraction(x, y, 'Address: ' + contactInfo.address, doc)
     y = writeDocAbstraction(
-      10,
+      x,
       y,
       'City: ' +
         contactInfo.city +
@@ -288,7 +289,7 @@ const DynamicForm: React.FC<{
     )
 
     y = writeDocAbstraction(
-      10,
+      x,
       y,
       'District: ' + districtSchool.district,
       doc,
@@ -296,7 +297,7 @@ const DynamicForm: React.FC<{
     )
 
     y = writeDocAbstraction(
-      10,
+      x,
       y,
       'School: ' + districtSchool.school,
       doc,
@@ -304,28 +305,28 @@ const DynamicForm: React.FC<{
     )
 
     y = writeDocAbstraction(
-      10,
+      x,
       y,
       'Primary language: ' + additionalInfo.language,
       doc
     )
     y = writeDocAbstraction(
-      10,
+      x,
       y,
       'Relationship to student: ' + additionalInfo.relationship,
       doc
     )
-    y = writeDocAbstraction(10, y, 'DESE Accomodations: ', doc)
+    y = writeDocAbstraction(x, y, 'DESE Accomodations: ', doc)
     const deseSplit = doc.splitTextToSize(
       additionalInfo.deseAccommodations ?? 'N/A',
-      180
+      (doc.internal.pageSize.width * 6) / 8.5
     )
     for (let i = 0; i < deseSplit.length; i++) {
       y = checkNewPage(y, doc)
-      y = writeDocAbstraction(10, y, '\t' + deseSplit[i], doc)
+      y = writeDocAbstraction(x * 2, y, deseSplit[i], doc)
     }
     y = writeDocAbstraction(
-      10,
+      x,
       y,
       'Currently being addressed by BSEA? ' + additionalInfo.bsea,
       doc
@@ -333,39 +334,37 @@ const DynamicForm: React.FC<{
 
     y = checkNewPage(y, doc)
     y = writeDocAbstraction(
-      10,
+      x,
       y,
       'Filing on behalf of: ' + groups.studentOrGroup,
       doc
     )
-    y = writeDocAbstraction(10, y, 'Special Circumstances: ', doc)
+    y = writeDocAbstraction(x, y, 'Special Circumstances: ', doc)
     if (groups.specialCircumstances.every((b) => !b)) {
-      y = writeDocAbstraction(10, y, '\tN/A', doc)
+      y = writeDocAbstraction(x * 2, y, 'N/A', doc)
     }
     for (let k = 0; k < groups.specialCircumstances.length; k++) {
       y = checkNewPage(y, doc)
       if (groups.specialCircumstances[k]) {
-        y = writeDocAbstraction(
-          10,
-          y,
-          '\t' + studentSpecialCircumstances[k],
-          doc
-        )
+        y = writeDocAbstraction(x * 2, y, studentSpecialCircumstances[k], doc)
       }
     }
 
     y = checkNewPage(y, doc)
-    y = writeDocAbstraction(10, y, 'Statement of concerns: ', doc, 'bold')
-    const concernsSplit = doc.splitTextToSize(concerns.concern, 180)
+    y = writeDocAbstraction(x, y, 'Statement of concerns: ', doc, 'bold')
+    const concernsSplit = doc.splitTextToSize(
+      concerns.concern,
+      (doc.internal.pageSize.width * 6) / 8.5
+    )
     for (let j = 0; j < concernsSplit.length; j++) {
       y = checkNewPage(y, doc)
-      y = writeDocAbstraction(10, y, '\t' + concernsSplit[j], doc, 'normal')
+      y = writeDocAbstraction(x * 2, y, concernsSplit[j], doc, 'normal')
     }
   }
 
   async function _buildDoc(doc: jsPDF, answers: FormResult[]): Promise<jsPDF> {
-    const x = 10
-    let y = 25
+    const x = 1
+    let y = 2
     const y_inc = 8
 
     doc
@@ -373,7 +372,7 @@ const DynamicForm: React.FC<{
       .text(
         'Student Complaint and Details',
         doc.internal.pageSize.width / 2,
-        25,
+        (doc.internal.pageSize.height * 2) / 11,
         { align: 'center' }
       )
     await initialInformation(doc)
@@ -381,23 +380,34 @@ const DynamicForm: React.FC<{
 
     doc
       .setFont('times', 'bold')
-      .text('Begin Complaints', doc.internal.pageSize.width / 2, 25, {
-        align: 'center',
-      })
+      .text(
+        'Begin Complaints',
+        doc.internal.pageSize.width / 2,
+        (doc.internal.pageSize.height * 2) / 11,
+        {
+          align: 'center',
+        }
+      )
     y += y_inc
 
     answers.forEach(function (item) {
-      const splitQuestion = doc.splitTextToSize(item.question, 180)
+      const splitQuestion = doc.splitTextToSize(
+        item.question,
+        (doc.internal.pageSize.width * 6) / 8.5
+      )
       for (let i = 0; i < splitQuestion.length; i++) {
         y = checkNewPage(y, doc)
         y = writeDocAbstraction(x, y, splitQuestion[i], doc, 'bold')
       }
 
       if (item.formAnswer.type === QuestionType.TEXT) {
-        const splitAnswer = doc.splitTextToSize(item.formAnswer.userAnswer, 180)
+        const splitAnswer = doc.splitTextToSize(
+          item.formAnswer.userAnswer,
+          (doc.internal.pageSize.width * 6) / 8.5
+        )
         for (let i = 0; i < splitAnswer.length; i++) {
           y = checkNewPage(y, doc)
-          y = writeDocAbstraction(x, y, '\t' + splitAnswer[i], doc, 'normal')
+          y = writeDocAbstraction(x * 2, y, splitAnswer[i], doc, 'normal')
         }
         y = writeDocAbstraction(x, y, '\n', doc)
       }
@@ -408,7 +418,7 @@ const DynamicForm: React.FC<{
   async function _handleSubmit() {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
 
-    const doc = new jsPDF()
+    const doc = new jsPDF({ unit: 'in', format: 'letter' })
     const results = buildResults(formValues, questionHistory)
     if (results.length > 0) {
       _buildDoc(doc, results)
