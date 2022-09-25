@@ -8,6 +8,7 @@ import { StyledAutocomplete, StyledTextField } from './additionalinfo'
 import { Checkbox, MenuItem, TextField } from '@material-ui/core'
 import { InfoText } from '../../components/FormStyles/QuestionText'
 import { TextArea } from '../../components/FormStyles/TextArea'
+import { InputCol } from './contactinfo'
 
 const Group: React.FC = () => {
   const [studentOrGroup, setStudentOrGroup] = useState<string | undefined>()
@@ -78,6 +79,7 @@ const Group: React.FC = () => {
 
   return (
     <FormTemplate
+      title="Student and Group Details"
       onNavigate={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
@@ -91,32 +93,37 @@ const Group: React.FC = () => {
       }}
       currentPage="Student or Group Details"
     >
-      <InfoText>
-        Are you filing this complaint on behalf of one student or a group of
-        students?
-      </InfoText>
-      <StyledAutocomplete
-        value={studentOrGroup}
-        onChange={(event, newValue) => {
-          setStudentOrGroup(newValue as string)
-        }}
-        options={['One Student', 'Group of Students']}
-        sx={{ width: 330, height: 42 }}
-        renderInput={(params) => <StyledTextField {...params} />}
-      />
-
-      <InfoText>Do any of the following apply to the student?</InfoText>
-      {studentSpecialCircumstances.map((option, index) => {
-        return (
-          <div key={option}>
-            <Checkbox
-              checked={checkedArr[index]}
-              onChange={() => handleOnChange(index)}
-            />
-            <label>{option}</label>
-          </div>
-        )
-      })}
+      <InputCol>
+        <InfoText>
+          Are you filing this complaint on behalf of one student or a group of
+          students?
+        </InfoText>
+        <StyledAutocomplete
+          value={studentOrGroup}
+          onChange={(event, newValue) => {
+            setStudentOrGroup(newValue as string)
+          }}
+          options={['One Student', 'Group of Students']}
+          sx={{ width: 330, height: 42 }}
+          renderInput={(params) => <StyledTextField {...params} />}
+        />
+      </InputCol>
+      <InputCol>
+        <InfoText>Do any of the following apply to the student?</InfoText>
+        <div>
+          {studentSpecialCircumstances.map((option, index) => {
+            return (
+              <div key={option}>
+                <Checkbox
+                  checked={checkedArr[index]}
+                  onChange={() => handleOnChange(index)}
+                />
+                <label>{option}</label>
+              </div>
+            )
+          })}
+        </div>
+      </InputCol>
     </FormTemplate>
   )
 }

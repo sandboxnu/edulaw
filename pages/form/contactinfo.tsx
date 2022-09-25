@@ -13,19 +13,30 @@ import { useSession } from 'next-auth/react'
 import { ConcernDB } from '../api/form/concern/save'
 import { TextArea } from '../../components/FormStyles/TextArea'
 
-const InputRow = styled.div`
+export const InputRow = styled.div`
   display: flex;
   row-gap: 12px;
   column-gap: 20px;
   max-width: 800px;
   flex-flow: row wrap;
-  margin: 10px 0;
+  margin: 20px 0;
 `
+
+export const InputCol = styled.div`
+  display: flex;
+  row-gap: 12px;
+  column-gap: 20px;
+  max-width: 800px;
+  flex-flow: column wrap;
+  margin: 20px 0;
+`
+
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  overflow-y: auto;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin: 0;
 `
 
 function ContactInfo() {
@@ -116,6 +127,7 @@ function ContactInfo() {
 
   return (
     <FormTemplate
+      title="Contact Info"
       onNavigate={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
@@ -129,75 +141,74 @@ function ContactInfo() {
       }}
       currentPage="Contact Info"
     >
-      <TitleText>Contact Info</TitleText>
-      <InfoText>
-        The PRS officer will only contact you using the information you provide
-        below.
-      </InfoText>
-      <FormContainer>
-        <InputRow>
-          <TextArea
-            width={330}
-            height={42}
-            placeholder="First Name"
-            value={firstName}
-            onChange={(evt) => setFirstName(evt.target.value)}
-          />
-          <TextArea
-            width={330}
-            height={42}
-            placeholder="Last Name"
-            value={lastName}
-            onChange={(evt) => setLastName(evt.target.value)}
-          />
-        </InputRow>
-        <InputRow>
-          <TextArea
-            width={330}
-            height={42}
-            placeholder="Email"
-            value={email}
-            onChange={(evt) => setEmail(evt.target.value)}
-          />
-          <TextArea
-            width={330}
-            height={42}
-            placeholder="Phone Number"
-            value={phoneNum}
-            onChange={(evt) => setPhoneNum(evt.target.value)}
-          />
-        </InputRow>
-        <InputRow>
-          <TextArea
-            width={330}
-            height={42}
-            placeholder="Street Address"
-            value={address}
-            onChange={(evt) => setAddress(evt.target.value)}
-          />
-          <TextArea
-            width={330}
-            height={42}
-            placeholder="City"
-            value={city}
-            onChange={(evt) => setCity(evt.target.value)}
-          />
-          <TextArea
-            width={330}
-            height={42}
-            placeholder="State"
-            value={state}
-            onChange={(evt) => setState(evt.target.value)}
-          />
-          <TextArea
-            width={330}
-            height={42}
-            placeholder="Zip Code"
-            value={zip}
-            onChange={(evt) => setZip(evt.target.value)}
-          />
-        </InputRow>
-      </FormContainer>
+      <InputRow>
+        <InfoText>
+          The PRS officer will only contact you using the information you
+          provide below.
+        </InfoText>
+      </InputRow>
+      <InputRow>
+        <TextArea
+          width={330}
+          height={42}
+          placeholder="First Name"
+          value={firstName}
+          onChange={(evt) => setFirstName(evt.target.value)}
+        />
+        <TextArea
+          width={330}
+          height={42}
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(evt) => setLastName(evt.target.value)}
+        />
+      </InputRow>
+      <InputRow>
+        <TextArea
+          width={330}
+          height={42}
+          placeholder="Email"
+          value={email}
+          onChange={(evt) => setEmail(evt.target.value)}
+        />
+        <TextArea
+          width={330}
+          height={42}
+          placeholder="Phone Number"
+          value={phoneNum}
+          onChange={(evt) => setPhoneNum(evt.target.value)}
+        />
+      </InputRow>
+      <InputRow>
+        <TextArea
+          width={330}
+          height={42}
+          placeholder="Street Address"
+          value={address}
+          onChange={(evt) => setAddress(evt.target.value)}
+        />
+        <TextArea
+          width={330}
+          height={42}
+          placeholder="City"
+          value={city}
+          onChange={(evt) => setCity(evt.target.value)}
+        />
+        <TextArea
+          width={330}
+          height={42}
+          placeholder="State"
+          value={state}
+          onChange={(evt) => setState(evt.target.value)}
+        />
+        <TextArea
+          width={330}
+          height={42}
+          placeholder="Zip Code"
+          value={zip}
+          onChange={(evt) => setZip(evt.target.value)}
+        />
+      </InputRow>
     </FormTemplate>
   )
 }

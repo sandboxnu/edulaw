@@ -8,10 +8,7 @@ import Modal from '../../components/FormStyles/Modal'
 import { InfoText, TitleText } from '../../components/FormStyles/QuestionText'
 import { TextArea } from '../../components/FormStyles/TextArea'
 import { ConcernDB } from '../api/form/concern/save'
-
-const TooltipContainer = styled.div`
-  margin-bottom: 8px;
-`
+import { InputCol } from './contactinfo'
 
 const Concern: React.FC = () => {
   const [concern, setConcern] = useState<string | undefined>(undefined)
@@ -77,6 +74,7 @@ The information is specific to your situation and concerns, but here are a few e
   }, [data])
   return (
     <FormTemplate
+      title="Introducing your concern"
       onNavigate={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
@@ -90,22 +88,19 @@ The information is specific to your situation and concerns, but here are a few e
       }}
       currentPage="Concerns"
     >
-      <div>
-        <TitleText>Introducing your concern</TitleText>
+      <InputCol>
         <InfoText>
           Before we start the questions, please briefly describe your concerns
           in the box below. The text that you write will be the first paragraph
           of your complaint. It will set the stage for the more specific
           information that we get through the questions.{' '}
         </InfoText>
-        <TooltipContainer>
-          <Tooltip
-            tooltip={{
-              tooltipText: 'What kind of information should I include?',
-              tooltipHoveredText: tooltipText,
-            }}
-          />
-        </TooltipContainer>
+        <Tooltip
+          tooltip={{
+            tooltipText: 'What kind of information should I include?',
+            tooltipHoveredText: tooltipText,
+          }}
+        />
         <TextArea
           name="Concern"
           width={650}
@@ -115,8 +110,9 @@ The information is specific to your situation and concerns, but here are a few e
           onChange={(event) => {
             setConcern(event.target.value)
           }}
+          resize={true}
         />
-      </div>
+      </InputCol>
       <Modal />
     </FormTemplate>
   )

@@ -20,7 +20,7 @@ export const AnswerText = styled.label`
 `
 export const TitleText = styled.h1`
   font-size: 26px;
-  margin-bottom: 20px;
+  margin: 64px 10% 0px;
   font-family: Source Sans Pro;
 `
 

@@ -15,7 +15,7 @@ import { RadioButton } from '../../components/FormStyles/RadioButton'
 import { TextArea } from '../../components/FormStyles/TextArea'
 import { COLORS } from '../../constants/colors'
 import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
-import { FormContainer } from './contactinfo'
+import { FormContainer, InputCol, InputRow } from './contactinfo'
 
 export const StyledAutocomplete = styled(Autocomplete)`
   & {
@@ -31,7 +31,7 @@ export const StyledTextField = styled(TextField)`
     border: 1px solid ${COLORS.SHADOW_GREY} !important;
     background-color: ${COLORS.LIGHT_GREY};
     box-sizing: border-box;
-    padding: 10px !important;
+    padding: 0px !important;
     border-radius: 6px !important;
     font-size: 16px !important;
     line-height: 26px !important;
@@ -43,11 +43,24 @@ export const StyledTextField = styled(TextField)`
     }
   }
 
+  & input {
+    padding: 10px !important;
+  }
+
+  & > div {
+    padding-bottom: 0 !important;
+    padding-right: 0 !important;
+  }
+
   & > div > div {
     display: none !important;
   }
 
-  &::after {
+  & > ::after {
+    display: none !important;
+  }
+
+  & > ::before {
     display: none !important;
   }
 `
@@ -129,6 +142,7 @@ const AdditionalInfo: React.FC = () => {
 
   return (
     <FormTemplate
+      title="Additional Info"
       onNavigate={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
@@ -142,40 +156,45 @@ const AdditionalInfo: React.FC = () => {
       }}
       currentPage="Additional Info"
     >
-      <TitleText>Additional Info</TitleText>
-      <FormContainer>
-        <InfoText>What is your primary language?</InfoText>
-        <Tooltip
-          tooltip={{
-            tooltipText: 'What if I speak more than one language?',
-            tooltipHoveredText: `Select the language that you have identified as your preferred language for communicating with the school.
+      <InputRow>
+        <InputCol style={{ marginTop: '0px', marginBottom: '0px' }}>
+          <InfoText>What is your primary language?</InfoText>
+          <Tooltip
+            tooltip={{
+              tooltipText: 'What if I speak more than one language?',
+              tooltipHoveredText: `Select the language that you have identified as your preferred language for communicating with the school.
 If you tell the school you prefer a language other than English, you have the right to receive information from the school in that language.  The tool will include questions about whether the school communicated in the right language during the walkthrough if you identify another language here.`,
-          }}
-        />
-        <TextArea
-          width={330}
-          height={42}
-          name={'language'}
-          placeholder={'Type language'}
-          value={language}
-          onChange={(event) => setLanguage(event.target.value)}
-        />
-        <InfoText>What is your relationship to the student?</InfoText>
-        <Tooltip
-          tooltip={{
-            tooltipText: 'More information',
-            tooltipHoveredText:
-              "Anyone can file a PRS complaint, including a parent, social worker, attorney, counselor, or other third party. If you are not the student's parent or guardian, you need to get the parent or education decision maker’s permission to file a complaint related to a specific child.",
-          }}
-        />
-        <StyledAutocomplete
-          freeSolo
-          inputValue={relationship}
-          options={relationships}
-          onInputChange={(evt, newValue) => setRelationship(newValue)}
-          sx={{ width: 330, height: 42 }}
-          renderInput={(params) => <StyledTextField {...params} />}
-        />
+            }}
+          />
+          <TextArea
+            width={330}
+            height={42}
+            name={'language'}
+            placeholder={'Type language'}
+            value={language}
+            onChange={(event) => setLanguage(event.target.value)}
+          />
+        </InputCol>
+        <InputCol style={{ marginTop: '0px', marginBottom: '0px' }}>
+          <InfoText>What is your relationship to the student?</InfoText>
+          <Tooltip
+            tooltip={{
+              tooltipText: 'More information',
+              tooltipHoveredText:
+                "Anyone can file a PRS complaint, including a parent, social worker, attorney, counselor, or other third party. If you are not the student's parent or guardian, you need to get the parent or education decision maker’s permission to file a complaint related to a specific child.",
+            }}
+          />
+          <StyledAutocomplete
+            freeSolo
+            inputValue={relationship}
+            options={relationships}
+            onInputChange={(evt, newValue) => setRelationship(newValue)}
+            sx={{ width: 330, height: 42 }}
+            renderInput={(params) => <StyledTextField {...params} />}
+          />
+        </InputCol>
+      </InputRow>
+      <InputCol>
         <InfoText>
           If you require accommodations for communicating with DESE, describe
           them in the box below.
@@ -197,12 +216,15 @@ If you tell the school you prefer a language other than English, you have the ri
         />
         <TextArea
           width={600}
-          height={150}
+          height={100}
           name={'deseAccommodation'}
           placeholder={'Describe accomodations here'}
           value={deseAccommodations}
           onChange={(evt) => setDeseAccommodations(evt.target.value)}
+          resize={true}
         />
+      </InputCol>
+      <InputCol>
         <InfoText>
           Are any of these concerns currently being addressed by Mediation or a
           Hearing in the Bureau of Special Education Appeals (BSEA)?
@@ -226,7 +248,7 @@ If your concerns are being addressed by a BSEA hearing, PRS will wait to make a 
           sx={{ width: 330, height: 42 }}
           renderInput={(params) => <StyledTextField {...params} />}
         />
-      </FormContainer>
+      </InputCol>
     </FormTemplate>
   )
 }

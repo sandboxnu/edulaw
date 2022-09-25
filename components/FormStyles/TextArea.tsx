@@ -6,6 +6,7 @@ interface TextAreaProps {
   width: number
   height: number
   cutoffWidth?: number
+  resize?: boolean
 }
 
 export const TextArea = styled.textarea`
@@ -14,12 +15,12 @@ export const TextArea = styled.textarea`
   border: 1px solid ${COLORS.SHADOW_GREY};
   background-color: ${COLORS.LIGHT_GREY};
   box-sizing: border-box;
-  padding: 10px;
+  padding: 8px 10px;
   border-radius: 6px;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 24px;
   font-family: 'Source Sans Pro';
-  resize: none;
+  resize: ${(props: TextAreaProps) => (props.resize ? 'auto' : 'none')};
   &:focus {
     border: 1px solid ${COLORS.EDLAW_BLUE};
     outline: none;

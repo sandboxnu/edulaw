@@ -8,6 +8,8 @@ import { FormValues } from '../../utils/FormContext'
 import { LoadingSpinner } from '../LoadingSpinner'
 import React, { ReactNode, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { TitleText } from '../FormStyles/QuestionText'
+import { FormContainer } from '../../pages/form/contactinfo'
 
 const FullPageContainer = styled.div`
   display: flex;
@@ -29,11 +31,18 @@ const HorizontalBox = styled.div`
   }
 `
 const FormContentWrapper = styled.div`
+  height: calc(100vh - 80px);
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
 `
+
+const ScrollContainer = styled.div`
+  margin: 20px 0;
+  overflow-y: scroll;
+`
+
 const FormStyled = styled(Form)`
   width: 100%;
   flex-grow: 1;
@@ -44,12 +53,6 @@ const OtherFormStyled = styled.form`
   width: 100%;
   flex-grow: 1;
   display: flex;
-`
-
-const QuestionDisplayWrapper = styled.div`
-  padding-left: 10%;
-  padding-right: 10%;
-  margin-top: 64px;
 `
 
 interface FormTemplateProps {
@@ -63,6 +66,7 @@ interface FormTemplateProps {
   currentPage?: string
   loaded: boolean
   onNavigate?: () => Promise<void>
+  title: string
 }
 
 export const FormTemplate: React.FC<FormTemplateProps> = ({
@@ -74,6 +78,7 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
   currentPage = 'Guided Questions',
   loaded,
   onNavigate,
+  title,
 }) => {
   return (
     <FullPageContainer>
@@ -100,12 +105,17 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
               currentPage={currentPage}
               onNavigate={onNavigate}
             />
-            <FormContentWrapper>
-              <QuestionDisplayWrapper>
-                {loaded ? children : <LoadingSpinner />}
-              </QuestionDisplayWrapper>
-              <BottomBar onBack={onBack} nextButtonText={nextButtonText} />
-            </FormContentWrapper>
+            {!loaded ? (
+              <LoadingSpinner />
+            ) : (
+              <FormContentWrapper>
+                <TitleText>{title}</TitleText>
+                <ScrollContainer>
+                  <FormContainer>{children}</FormContainer>
+                </ScrollContainer>
+                <BottomBar onBack={onBack} nextButtonText={nextButtonText} />
+              </FormContentWrapper>
+            )}
           </React.Fragment>
         )}
       </HorizontalBox>

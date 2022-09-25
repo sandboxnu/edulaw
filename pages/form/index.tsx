@@ -450,6 +450,7 @@ const DynamicForm: React.FC<{
   return (
     <FormCtx.Provider value={{ formValues, setFormValues }}>
       <FormTemplate
+        title={currentQuestion.section}
         onNavigate={async () => {
           await save()
         }}
@@ -461,15 +462,12 @@ const DynamicForm: React.FC<{
         }
         initialValues={formValues}
       >
-        <FormContainer>
-          <TitleText>{currentQuestion.section}</TitleText>
-          <ChooseFormType
-            question={currentQuestion}
-            onChange={setCurrentAnswer}
-            answer={formValues.formAnswers[currentQuestion.id]}
-            questionHistory={questionHistory}
-          />
-        </FormContainer>
+        <ChooseFormType
+          question={currentQuestion}
+          onChange={setCurrentAnswer}
+          answer={formValues.formAnswers[currentQuestion.id]}
+          questionHistory={questionHistory}
+        />
       </FormTemplate>
     </FormCtx.Provider>
   )
