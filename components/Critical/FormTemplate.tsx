@@ -78,9 +78,13 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
   const router = useRouter()
 
   useEffect(() => {
-    router.beforePopState(() => {
-      save()
-      return true
+    router.beforePopState(({ url, as, options }) => {
+      const fn = async () => {
+        await save()
+        router.push(url, as, options)
+      }
+      fn()
+      return false
     })
   }, [router])
 

@@ -199,9 +199,10 @@ const DynamicForm: React.FC<{
   function _handleBack() {
     if (questionHistory.length === 1) {
       router.push('/form/concern')
+    } else {
+      questionHistory.splice(-1)
+      _handleQuestionChange()
     }
-    questionHistory.splice(-1)
-    _handleQuestionChange()
   }
 
   // determines whether the given doc needs a new page added to it
