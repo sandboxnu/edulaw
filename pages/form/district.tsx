@@ -68,14 +68,17 @@ const District: React.FC = () => {
 
   return (
     <FormTemplate
-      save={save}
+      onNavigate={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
         await save()
         router.push('/form/group')
         actions.setSubmitting(false)
       }}
-      onBack={() => router.push('/form/additionalinfo')}
+      onBack={async () => {
+        await save()
+        router.push('/form/additionalinfo')
+      }}
       currentPage="District and School"
     >
       <FormContainer>

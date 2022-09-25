@@ -198,6 +198,7 @@ const DynamicForm: React.FC<{
 
   function _handleBack() {
     if (questionHistory.length === 1) {
+      save()
       router.push('/form/concern')
     } else {
       questionHistory.splice(-1)
@@ -449,7 +450,7 @@ const DynamicForm: React.FC<{
   return (
     <FormCtx.Provider value={{ formValues, setFormValues }}>
       <FormTemplate
-        save={async () => {
+        onNavigate={async () => {
           await save()
         }}
         loaded={loaded}

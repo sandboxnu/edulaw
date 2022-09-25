@@ -78,14 +78,17 @@ const Group: React.FC = () => {
 
   return (
     <FormTemplate
-      save={save}
+      onNavigate={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
         await save()
         router.push('/form/concern')
         actions.setSubmitting(false)
       }}
-      onBack={() => router.push('/form/district')}
+      onBack={async () => {
+        await save()
+        router.push('/form/district')
+      }}
       currentPage="Student or Group Details"
     >
       <InfoText>

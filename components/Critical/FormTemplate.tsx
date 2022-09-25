@@ -62,7 +62,7 @@ interface FormTemplateProps {
   nextButtonText?: string
   currentPage?: string
   loaded: boolean
-  save: () => Promise<void>
+  onNavigate?: () => Promise<void>
 }
 
 export const FormTemplate: React.FC<FormTemplateProps> = ({
@@ -73,21 +73,8 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
   children,
   currentPage = 'Guided Questions',
   loaded,
-  save,
+  onNavigate,
 }) => {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.beforePopState(({ url, as, options }) => {
-      const fn = async () => {
-        await save()
-        router.push(url, as, options)
-      }
-      fn()
-      return false
-    })
-  }, [router])
-
   return (
     <FullPageContainer>
       <NavBar />
@@ -109,7 +96,10 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
           )
         })(
           <React.Fragment>
-            <SideProgressBar currentPage={currentPage} router={router} />
+            <SideProgressBar
+              currentPage={currentPage}
+              onNavigate={onNavigate}
+            />
             <FormContentWrapper>
               <QuestionDisplayWrapper>
                 {loaded ? children : <LoadingSpinner />}

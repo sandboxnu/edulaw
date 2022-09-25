@@ -15,7 +15,7 @@ function Home() {
       <NavBar />
       <HorizontalBox>
         <SidebarDiv>
-          <SideProgressBar currentPage="Home" router={useRouter()} />
+          <SideProgressBar currentPage="Home" />
         </SidebarDiv>
         <MainPage />
       </HorizontalBox>

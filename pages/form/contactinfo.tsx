@@ -116,14 +116,17 @@ function ContactInfo() {
 
   return (
     <FormTemplate
-      save={save}
+      onNavigate={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
         await save()
         router.push('/form/additionalinfo')
         actions.setSubmitting(false)
       }}
-      onBack={() => router.push('/home')}
+      onBack={async () => {
+        await save()
+        router.push('/home')
+      }}
       currentPage="Contact Info"
     >
       <TitleText>Contact Info</TitleText>

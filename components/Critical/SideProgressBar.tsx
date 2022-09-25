@@ -62,16 +62,17 @@ const NAVITEMS = [
 
 function SideProgressBar({
   currentPage = 'Guided Questions',
-  router,
+  onNavigate,
 }: {
   currentPage?: string
-  router: NextRouter
+  onNavigate?: () => Promise<void>
 }) {
   const [selectedIndex, setSelectedIndex] = React.useState(
     currentPage ? NAVITEMS.findIndex((item) => item[0] == currentPage) : 0
   )
   const width = useWindowDimensions().width
   const [expanded, setExpanded] = React.useState(width >= CUTOFFS.mobile)
+  const router = useRouter()
 
   const onChange = (event: React.SyntheticEvent, navExpand: boolean) => {
     // If on mobile layout
@@ -97,7 +98,15 @@ function SideProgressBar({
 
     if (selectedIndex === index) {
       return (
-        <SummaryItem key={text} onClick={() => router.push(link)}>
+        <SummaryItem
+          key={text}
+          onClick={async () => {
+            if (onNavigate) {
+              await onNavigate()
+            }
+            router.push(link)
+          }}
+        >
           <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
             {index === 0 ? (
               <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />
@@ -114,7 +123,15 @@ function SideProgressBar({
       )
     } else {
       return (
-        <ListItem key={text} onClick={() => router.push(link)}>
+        <ListItem
+          key={text}
+          onClick={async () => {
+            if (onNavigate) {
+              await onNavigate()
+            }
+            router.push(link)
+          }}
+        >
           <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
             {index === 0 ? (
               <HomeOutlined style={{ color: COLORS.EDLAW_BLUE }} />

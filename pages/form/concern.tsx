@@ -77,14 +77,17 @@ The information is specific to your situation and concerns, but here are a few e
   }, [data])
   return (
     <FormTemplate
-      save={save}
+      onNavigate={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
         await save()
         router.push('/form')
         actions.setSubmitting(false)
       }}
-      onBack={() => router.push('/form/group')}
+      onBack={async () => {
+        await save()
+        router.push('/form/group')
+      }}
       currentPage="Concerns"
     >
       <div>

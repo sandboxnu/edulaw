@@ -129,14 +129,17 @@ const AdditionalInfo: React.FC = () => {
 
   return (
     <FormTemplate
-      save={save}
+      onNavigate={save}
       loaded={loaded}
       onSubmit={async (values, actions) => {
         await save()
         router.push('/form/district')
         actions.setSubmitting(false)
       }}
-      onBack={() => router.push('/form/contactinfo')}
+      onBack={async () => {
+        await save()
+        router.push('/form/contactinfo')
+      }}
       currentPage="Additional Info"
     >
       <TitleText>Additional Info</TitleText>
