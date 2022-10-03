@@ -36,9 +36,7 @@ The information is specific to your situation and concerns, but here are a few e
     if (!data?.user?.id) {
       return
     }
-    const userID = data.user.id
     const body: Omit<ConcernDB, '_id'> = {
-      userID: userID,
       concern: concern,
     }
     const result = await fetch('/api/form/concern/save', {
@@ -57,8 +55,7 @@ The information is specific to your situation and concerns, but here are a few e
       if (!data?.user?.id || loaded) {
         return
       }
-      const userID = data.user.id
-      const result = await fetch(`/api/form/concern/retrieve?userID=${userID}`)
+      const result = await fetch(`/api/form/concern/retrieve`)
       const body = await result.json()
       if (result.status !== 200) {
         console.error(body.error)

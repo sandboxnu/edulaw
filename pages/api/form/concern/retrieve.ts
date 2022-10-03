@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { ConcernDB } from './save'
 import { dbConnect } from '../../../../server/_dbConnect'
+import { unstable_getServerSession } from 'next-auth'
+import { authOptions } from '../../auth/[...nextauth]'
 
 export default async function handler(
   req: NextApiRequest,
@@ -20,9 +22,14 @@ export default async function handler(
     return
   }
   await client.connect()
+  const session = await unstable_getServerSession(req, res, authOptions)
+  if (!session) {
+    res.status(401).json({ error: 'You must be logged in.' })
+    return
+  }
   const formCollection = client.db('edlaw').collection('concern')
   const result = (await formCollection.findOne({
-    userID: userID,
+    userID: session.user?.id,
   })) as ConcernDB | null
   if (result) {
     res.status(200).json(result)

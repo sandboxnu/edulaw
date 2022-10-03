@@ -71,9 +71,7 @@ const DynamicForm: React.FC<{
       if (!data?.user?.id) {
         return
       }
-      const userID = data.user.id
       const body: Omit<FormAnswerDB, '_id'> = {
-        userID: userID,
         formValues: formValues,
         questionHistory: questionHistory,
         currentQuestion: currentQuestion,
@@ -103,8 +101,7 @@ const DynamicForm: React.FC<{
       if (!data?.user?.id) {
         return
       }
-      const userID = data.user.id
-      const result = await fetch(`/api/form/retrieve?userID=${userID}`)
+      const result = await fetch(`/api/form/retrieve`)
       const body = await result.json()
       if (result.status !== 200) {
         console.error(body.error)
@@ -244,22 +241,21 @@ const DynamicForm: React.FC<{
     const xCenter = doc.internal.pageSize.width / 2
     const xRight = doc.internal.pageSize.width - x
     let y = 1.5
-    const userID = data!.user!.id
     // gonna be real this also looks ugly afffff but it all looked ugly aff
     const districtSchool = (await (
-      await fetch(`/api/form/district/retrieve?userID=${userID}`)
+      await fetch(`/api/form/district/retrieve`)
     ).json()) as DistrictDB
     const contactInfo = (await (
-      await fetch(`/api/form/contactinfo/retrieve?userID=${userID}`)
+      await fetch(`/api/form/contactinfo/retrieve`)
     ).json()) as ContactInfoDb
     const additionalInfo = (await (
-      await fetch(`/api/form/additionalinfo/retrieve?userID=${userID}`)
+      await fetch(`/api/form/additionalinfo/retrieve`)
     ).json()) as AdditionalInfoDb
     const concerns = (await (
-      await fetch(`/api/form/concern/retrieve?userID=${userID}`)
+      await fetch(`/api/form/concern/retrieve`)
     ).json()) as ConcernDB
     const groups = (await (
-      await fetch(`/api/form/group/retrieve?userID=${userID}`)
+      await fetch(`/api/form/group/retrieve`)
     ).json()) as GroupDB
 
     writeDocAbstraction(

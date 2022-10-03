@@ -30,9 +30,7 @@ const Group: React.FC = () => {
     if (!data?.user?.id) {
       return
     }
-    const userID = data.user.id
     const body: Omit<GroupDB, '_id'> = {
-      userID: userID,
       studentOrGroup: studentOrGroup,
       specialCircumstances: checkedArr,
     }
@@ -51,8 +49,7 @@ const Group: React.FC = () => {
       if (!data?.user?.id || loaded) {
         return
       }
-      const userID = data.user.id
-      const result = await fetch(`/api/form/group/retrieve?userID=${userID}`)
+      const result = await fetch(`/api/form/group/retrieve`)
       const body = await result.json()
       if (result.status !== 200) {
         console.error(body.error)
