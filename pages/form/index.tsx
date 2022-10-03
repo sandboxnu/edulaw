@@ -335,7 +335,9 @@ const DynamicForm: React.FC<{
     )
     y = writeDocAbstraction(x, y, 'DESE Accomodations: ', doc)
     const deseSplit = doc.splitTextToSize(
-      additionalInfo.deseAccommodations ?? 'N/A',
+      additionalInfo.deseAccommodations === ''
+        ? 'N/A'
+        : additionalInfo.deseAccommodations,
       (doc.internal.pageSize.width * 6) / 8.5
     )
     for (let i = 0; i < deseSplit.length; i++) {
