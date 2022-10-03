@@ -3,6 +3,7 @@ import { WithId, Document } from 'mongodb'
 import { dbConnect } from '../../../../server/_dbConnect'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
+import { encrypt } from '../../../../server/crypto'
 
 export interface GroupDB extends WithId<Document> {
   studentOrGroup: string
@@ -35,6 +36,7 @@ export default async function handler(
     { userID: session.user?.id },
     {
       ...doc,
+      studentOrGroup: encrypt(doc.studentOrGroup),
       userID: session.user?.id,
     },
     {

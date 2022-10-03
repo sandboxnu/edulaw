@@ -3,6 +3,7 @@ import { ContactInfoDb } from './save'
 import { dbConnect } from '../../../../server/_dbConnect'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
+import { decrypt } from '../../../../server/crypto'
 
 export default async function handler(
   req: NextApiRequest,
@@ -30,7 +31,11 @@ export default async function handler(
     userID: session.user?.id,
   })) as ContactInfoDb | null
   if (result) {
-    res.status(200).json(result)
+    const decrypted = result
+    for (const key in result) {
+      decrypted[key] = decrypt(result[key])
+    }
+    res.status(200).json(decrypted)
   } else {
     res.status(401).json({ error: 'User does not have saved formAnswer' })
   }

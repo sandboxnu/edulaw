@@ -3,6 +3,7 @@ import { WithId, Document } from 'mongodb'
 import { dbConnect } from '../../../../server/_dbConnect'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
+import { encrypt } from '../../../../server/crypto'
 
 export interface ContactInfoDb extends WithId<Document> {
   firstName: string
@@ -37,10 +38,14 @@ export default async function handler(
     return
   }
   const formCollection = client.db('edlaw').collection('contact')
+  const encrypted = doc
+  for (const key in doc) {
+    encrypted[key] = encrypt(doc[key])
+  }
   const result = await formCollection.replaceOne(
     { userID: session.user?.id },
     {
-      ...doc,
+      ...encrypted,
       userID: session.user?.id,
     },
     {

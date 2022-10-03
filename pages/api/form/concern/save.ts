@@ -3,6 +3,7 @@ import { WithId, Document } from 'mongodb'
 import { dbConnect } from '../../../../server/_dbConnect'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
+import { encrypt } from '../../../../server/crypto'
 
 export interface ConcernDB extends WithId<Document> {
   concern: string
@@ -33,8 +34,8 @@ export default async function handler(
   const result = await formCollection.replaceOne(
     { userID: session.user?.id },
     {
-      ...doc,
       userID: session.user?.id,
+      concern: encrypt(doc.concern),
     },
     {
       upsert: true,
