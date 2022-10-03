@@ -224,14 +224,14 @@ const DynamicForm: React.FC<{
     text: string,
     doc: jsPDF,
     fontStyle?: string,
-    align: 'left' | 'right' = 'left'
+    align: 'left' | 'center' | 'right' = 'left'
   ) => {
     if (fontStyle) {
       doc.setFont('times', fontStyle).text(text, x, y, { align: align })
     } else {
       doc.text(text, x, y, { align: align })
     }
-    return y + doc.getLineHeight()
+    return y + 1 / 3
   }
 
   /**
@@ -241,6 +241,8 @@ const DynamicForm: React.FC<{
    */
   async function initialInformation(doc: jsPDF) {
     const x = 1
+    const xCenter = doc.internal.pageSize.width / 2
+    const xRight = doc.internal.pageSize.width - x
     let y = 1.5
     const userID = data!.user!.id
     // gonna be real this also looks ugly afffff but it all looked ugly aff
@@ -260,34 +262,47 @@ const DynamicForm: React.FC<{
       await fetch(`/api/form/group/retrieve?userID=${userID}`)
     ).json()) as GroupDB
 
-    y = writeDocAbstraction(
+    writeDocAbstraction(
       x,
       y,
-      'First Name: ' +
-        contactInfo.firstName +
-        '\t\tLast Name: ' +
-        contactInfo.lastName,
+      'First Name: ' + contactInfo.firstName,
       doc,
       'normal'
     )
+    y = writeDocAbstraction(
+      xRight,
+      y,
+      'Last Name: ' + contactInfo.lastName,
+      doc,
+      'normal',
+      'right'
+    )
     writeDocAbstraction(x, y, 'Email: ' + contactInfo.email, doc)
     y = writeDocAbstraction(
-      x,
+      xRight,
       y,
-      'Email: ' + contactInfo.email + '\t\tPhone: ' + contactInfo.phoneNum,
-      doc
+      'Phone: ' + contactInfo.phoneNum,
+      doc,
+      undefined,
+      'right'
     )
     y = writeDocAbstraction(x, y, 'Address: ' + contactInfo.address, doc)
-    y = writeDocAbstraction(
-      x,
+    writeDocAbstraction(x, y, 'City: ' + contactInfo.city, doc)
+    writeDocAbstraction(
+      xCenter,
       y,
-      'City: ' +
-        contactInfo.city +
-        '\t\tState: ' +
-        contactInfo.state +
-        '\t\tZip Code: ' +
-        contactInfo.zip,
-      doc
+      'State: ' + contactInfo.state,
+      doc,
+      undefined,
+      'center'
+    )
+    y = writeDocAbstraction(
+      xRight,
+      y,
+      'Zip Code: ' + contactInfo.zip,
+      doc,
+      undefined,
+      'right'
     )
 
     y = writeDocAbstraction(
