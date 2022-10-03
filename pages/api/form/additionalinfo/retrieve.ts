@@ -32,10 +32,9 @@ export default async function handler(
   })) as AdditionalInfoDb | null
   if (result) {
     const decrypted = result
-    for (const key in result) {
+    for (const key in ['relationship', 'language', 'deseAccomodations']) {
       decrypted[key] = decrypt(result[key])
     }
-    decrypted.bsea = result.bsea
     res.status(200).json(decrypted)
   } else {
     res.status(401).json({ error: 'User does not have saved formAnswer' })
