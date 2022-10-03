@@ -108,6 +108,7 @@ const DynamicForm: React.FC<{
       const body = await result.json()
       if (result.status !== 200) {
         console.error(body.error)
+        questionHistory = [startingQuestion]
       } else {
         const typedBody = body as FormAnswerDB
         questionHistory = typedBody.questionHistory
@@ -121,10 +122,6 @@ const DynamicForm: React.FC<{
       retrieve()
     }
   }, [data])
-
-  useEffect(() => {
-    if (questionHistory.length === 0) questionHistory.push(startingQuestion)
-  }, [])
 
   /**
    * Returns the next question based on whether or not current question is a radio, continue, or text,
