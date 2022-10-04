@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 interface buttonProps {
   primary?: boolean
+  width?: number
 }
 
 export const Button = styled.button`
@@ -10,7 +11,7 @@ export const Button = styled.button`
   font-size: 16px;
   display: inline-block;
   border-radius: 4px;
-  width: 150px;
+  width: ${({ width }: buttonProps) => (width ? width : 150)}px;
   height: 42px;
   margin: 0;
   &:hover {

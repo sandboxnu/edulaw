@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useContext } from 'react'
 import {
-  FormAnswer,
   FormContextInterface,
   FormCtx,
   FormResult,
@@ -12,7 +11,6 @@ import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { QuestionType } from '../../models/question'
 import QuestionLayout from '../FormStyles/QuestionLayout'
-import { FieldHookConfig, useField } from 'formik'
 
 const SingleQuestionResponseDiv = styled.div`
   display: flex;
@@ -28,7 +26,6 @@ export function buildResults(
   formValues: FormValues,
   questionHistory: Question[]
 ): FormResult[] {
-  // const questionKeys = Object.keys(formAnswers)
   const results = questionHistory.reduce(
     (results: FormResult[], curQuestion) => {
       const curFormAns = formValues.formAnswers[curQuestion.id]
@@ -89,7 +86,9 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   const ctx = useContext(FormCtx)
   const results = buildResults(ctx.formValues, props.questionHistory).map(
     ({ formAnswer, question, answer }) => {
-      function _onChange(event: ChangeEvent<HTMLInputElement>) {
+      function _onChange(
+        event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+      ) {
         _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
       }
 
@@ -118,7 +117,7 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   return (
     <QuestionLayout
       results={results}
-      questionText={results.length === 0 ? 'No violations identified' : ''}
+      questionText={props.label}
       input={<div />}
     />
   )

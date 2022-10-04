@@ -1,16 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { WithId, Document, RegExpOrString } from 'mongodb'
-import { FormAnswer, FormValues } from '../../../utils/FormContext'
-import { dbConnect } from '../../../server/_dbConnect'
-import { Question } from '../../../models'
+import { WithId, Document } from 'mongodb'
+import { dbConnect } from '../../../../server/_dbConnect'
 import { unstable_getServerSession } from 'next-auth'
-import { authOptions } from '../auth/[...nextauth]'
+import { authOptions } from '../../auth/[...nextauth]'
+import { encrypt } from '../../../../server/crypto'
 
-export interface FormAnswerDB extends WithId<Document> {
-  formValues: FormValues
-  questionHistory: Question[]
-  currentQuestion: Question
-  currentAnswer: FormAnswer
+export interface ConcernDB extends WithId<Document> {
+  concern: string
 }
 
 export default async function handler(
@@ -22,7 +18,7 @@ export default async function handler(
     return
   }
 
-  const doc = JSON.parse(req.body) as Omit<FormAnswerDB, '_id'>
+  const doc = JSON.parse(req.body) as Omit<ConcernDB, '_id'>
   const client = await dbConnect()
   if (!client) {
     res.status(500).json({ error: 'Client is not connected' })
@@ -34,12 +30,12 @@ export default async function handler(
     res.status(401).json({ error: 'You must be logged in.' })
     return
   }
-  const formCollection = await client.db('edlaw').collection('form')
+  const formCollection = client.db('edlaw').collection('concern')
   const result = await formCollection.replaceOne(
     { userID: session.user?.id },
     {
-      ...doc,
       userID: session.user?.id,
+      concern: encrypt(doc.concern),
     },
     {
       upsert: true,

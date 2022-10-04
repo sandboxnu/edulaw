@@ -1,11 +1,24 @@
-import NextAuth from 'next-auth'
+import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialProvider from 'next-auth/providers/credentials'
 import { dbConnect } from '../../../server/_dbConnect'
 import bcrypt from 'bcryptjs'
 import type { WithId, Document } from 'mongodb'
 
 /* eslint-disable */
-export default NextAuth({
+
+const signinUser = async (user: WithId<Document>, pwd: string) => {
+  if (!user.hashPass) {
+    throw new Error('Please enter password')
+  }
+  const isMatch = await bcrypt.compare(pwd, user.hashPass)
+
+  if (!isMatch) {
+    throw new Error('Password Incorrect')
+  }
+  return user
+}
+
+export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
@@ -55,17 +68,8 @@ export default NextAuth({
   pages: {
     signIn: '/signin',
   },
-})
-
-const signinUser = async (user: WithId<Document>, pwd: string) => {
-  if (!user.hashPass) {
-    throw new Error('Please enter password')
-  }
-  const isMatch = await bcrypt.compare(pwd, user.hashPass)
-
-  if (!isMatch) {
-    throw new Error('Password Incorrect')
-  }
-  return user
 }
+
+export default NextAuth(authOptions)
+
 /* eslint-enable */

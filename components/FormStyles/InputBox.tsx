@@ -10,7 +10,28 @@ interface InputBoxProps {
   cutoffWidth?: number
 }
 
-export const InputBox = styled.input`
+export const InputBox = styled.textarea`
+  width: ${(props: InputBoxProps) => props.width}px;
+  height: ${(props: InputBoxProps) => props.height}px;
+  border: 1px solid ${COLORS.SHADOW_GREY};
+  background-color: ${COLORS.LIGHT_GREY};
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'Source Sans Pro';
+  resize: auto;
+  &:focus {
+    border: 1px solid ${COLORS.EDLAW_BLUE};
+    outline: none;
+  }
+  @media (max-width: ${CUTOFFS.mobile}px) {
+    width: ${(props: InputBoxProps) => props.cutoffWidth}px;
+  }
+`
+
+export const InputLine = styled.input`
   width: ${(props: InputBoxProps) => props.width}px;
   height: ${(props: InputBoxProps) => props.height}px;
   border: 1px solid ${COLORS.SHADOW_GREY};
@@ -21,6 +42,7 @@ export const InputBox = styled.input`
   font-size: 16px;
   line-height: 26px;
   font-family: 'Source Sans Pro';
+  resize: none;
   &:focus {
     border: 1px solid ${COLORS.EDLAW_BLUE};
     outline: none;
@@ -39,7 +61,9 @@ interface InputProps {
   width: number
   height: number
   defaultValue?: string
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (
+    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => void
   type?: string
   placeholder?: string
   cutoffWidth?: number
@@ -52,8 +76,8 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
 
   function onChangeInput(): JSX.Element {
     if (props.onChange) {
-      return (
-        <InputBox
+      return props.type ? (
+        <InputLine
           width={props.width}
           height={props.height}
           defaultValue={props.defaultValue}
@@ -63,15 +87,34 @@ export const StyledTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
           placeholder={props.placeholder}
           cutoffWidth={props.cutoffWidth}
         />
+      ) : (
+        <InputBox
+          width={props.width}
+          height={props.height}
+          defaultValue={props.defaultValue}
+          {...field}
+          onChange={props.onChange}
+          placeholder={props.placeholder}
+          cutoffWidth={props.cutoffWidth}
+        />
       )
     }
-    return (
-      <InputBox
+    return props.type ? (
+      <InputLine
         width={props.width}
         height={props.height}
         defaultValue={props.defaultValue}
         {...field}
         type={props.type}
+        placeholder={props.placeholder}
+        cutoffWidth={props.cutoffWidth}
+      />
+    ) : (
+      <InputBox
+        width={props.width}
+        height={props.height}
+        defaultValue={props.defaultValue}
+        {...field}
         placeholder={props.placeholder}
         cutoffWidth={props.cutoffWidth}
       />

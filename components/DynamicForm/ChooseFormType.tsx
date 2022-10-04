@@ -3,7 +3,7 @@ import { MyTextInput } from './MyInput'
 import { Question, Answer } from '../../models'
 import { MyRadio } from './MyRadio'
 import { MyResult } from './MyResult'
-import { FormAnswer, FormValues } from '../../utils/FormContext'
+import { FormAnswer } from '../../utils/FormContext'
 import MyContinue from './MyContinue'
 import { QuestionType } from '../../models/question'
 
@@ -43,7 +43,9 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = (
         <MyTextInput
           name={props.question.id.toString()}
           label={props.question.question}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          onChange={(
+            event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+          ) =>
             props.onChange({
               questionId: parseInt(event.target.name),
               type: QuestionType.TEXT,
