@@ -8,7 +8,6 @@ import MyContinue from './MyContinue'
 import { QuestionType } from '../../models/question'
 
 interface ChooseFormTypeProps {
-  question: Question
   onChange: React.Dispatch<React.SetStateAction<FormAnswer>>
   answer?: FormAnswer
   questionHistory: Question[]
@@ -18,13 +17,14 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = (
   props
 ): JSX.Element => {
   const { answer } = props
-  const answerChoices: Answer[] = props.question.answers
-  switch (props.question.type) {
+  const question = props.questionHistory[props.questionHistory.length - 1]
+  const answerChoices: Answer[] = question.answers
+  switch (question.type) {
     case QuestionType.RADIO: {
       return (
         <MyRadio
-          name={props.question.id.toString()}
-          label={props.question.question}
+          name={question.id.toString()}
+          label={question.question}
           options={answerChoices}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             props.onChange({
@@ -34,15 +34,15 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = (
             })
           }
           ans={answer?.type === QuestionType.RADIO ? answer : undefined}
-          tooltip={props.question.tooltip}
+          tooltip={question.tooltip}
         />
       )
     }
     case QuestionType.TEXT: {
       return (
         <MyTextInput
-          name={props.question.id.toString()}
-          label={props.question.question}
+          name={question.id.toString()}
+          label={question.question}
           onChange={(
             event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
           ) =>
@@ -53,20 +53,20 @@ export const ChooseFormType: React.FC<ChooseFormTypeProps> = (
             })
           }
           ans={answer?.type === QuestionType.TEXT ? answer : undefined}
-          tooltip={props.question.tooltip}
+          tooltip={question.tooltip}
         />
       )
     }
     case QuestionType.RESULT: {
-      return <MyResult label={props.question.question} {...props} />
+      return <MyResult label={question.question} {...props} />
     }
     case QuestionType.CONTINUE: {
       return (
         <MyContinue
-          label={props.question.question}
+          label={question.question}
           onMount={() =>
             props.onChange({
-              questionId: props.question.id,
+              questionId: question.id,
               type: QuestionType.CONTINUE,
             })
           }
