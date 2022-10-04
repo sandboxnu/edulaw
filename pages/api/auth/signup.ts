@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { email, password } = JSON.parse(req.body)
 
-  const users = client.db().collection('user')
+  const users = client.db('edlaw').collection('user')
   const exists = await users.findOne({ username: email })
   if (exists) {
     res.status(401).json({ error: 'User already exists' })
