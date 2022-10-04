@@ -63,9 +63,7 @@ function ContactInfo() {
     if (!data?.user?.id) {
       return
     }
-    const userID = data.user.id
     const body: Omit<ConcernDB, '_id'> = {
-      userID,
       firstName,
       lastName,
       phoneNum,
@@ -91,10 +89,7 @@ function ContactInfo() {
       if (!data?.user?.id || loaded) {
         return
       }
-      const userID = data.user.id
-      const result = await fetch(
-        `/api/form/contactinfo/retrieve?userID=${userID}`
-      )
+      const result = await fetch(`/api/form/contactinfo/retrieve`)
       const body = await result.json()
       if (result.status !== 200) {
         console.error(body.error)

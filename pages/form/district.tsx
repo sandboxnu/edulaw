@@ -27,9 +27,7 @@ const District: React.FC = () => {
     if (!data?.user?.id) {
       return
     }
-    const userID = data.user.id
     const body: Omit<DistrictDB, '_id'> = {
-      userID: userID,
       district: district,
       school: school,
     }
@@ -49,8 +47,7 @@ const District: React.FC = () => {
       if (!data?.user?.id || loaded) {
         return
       }
-      const userID = data.user.id
-      const result = await fetch(`/api/form/district/retrieve?userID=${userID}`)
+      const result = await fetch(`/api/form/district/retrieve`)
       const body = await result.json()
       if (result.status !== 200) {
         console.error(body.error)

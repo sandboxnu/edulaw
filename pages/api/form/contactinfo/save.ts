@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { WithId, Document } from 'mongodb'
 import { dbConnect } from '../../../../server/_dbConnect'
+import { unstable_getServerSession } from 'next-auth'
+import { authOptions } from '../../auth/[...nextauth]'
+import { encrypt } from '../../../../server/crypto'
 
 export interface ContactInfoDb extends WithId<Document> {
   firstName: string
@@ -29,10 +32,26 @@ export default async function handler(
     return
   }
   await client.connect()
+  const session = await unstable_getServerSession(req, res, authOptions)
+  if (!session) {
+    res.status(401).json({ error: 'You must be logged in.' })
+    return
+  }
   const formCollection = client.db('edlaw').collection('contact')
-  const result = await formCollection.replaceOne({ userID: doc.userID }, doc, {
-    upsert: true,
-  })
+  const encrypted = doc
+  for (const key in doc) {
+    encrypted[key] = encrypt(doc[key])
+  }
+  const result = await formCollection.replaceOne(
+    { userID: session.user?.id },
+    {
+      ...encrypted,
+      userID: session.user?.id,
+    },
+    {
+      upsert: true,
+    }
+  )
   if (result.acknowledged) {
     res.status(200).json({ success: true })
   } else {
