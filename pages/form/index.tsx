@@ -45,16 +45,18 @@ export const getStaticProps: GetStaticProps = (context) => {
 }
 
 let startingAnswer: FormAnswer
+let questionHistory: Question[] = []
 
 const DynamicForm: React.FC<{
   questions: Question[]
   startingQuestionIndex: number
 }> = ({ questions, startingQuestionIndex }) => {
-  const [questionHistory, setQuestionHistory] = useState([
-    questions[startingQuestionIndex],
-  ])
+  const startingQuestion: Question = questions[startingQuestionIndex]
   const router = useRouter()
   const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
+  const [currentQuestion, setCurrentQuestion] = useState({
+    ...startingQuestion,
+  })
   const [currentAnswer, setCurrentAnswer] = useState(startingAnswer)
   const [loaded, setLoaded] = useState(false)
   const { data, status } = useSession()
@@ -74,6 +76,7 @@ const DynamicForm: React.FC<{
         userID: userID,
         formValues: formValues,
         questionHistory: questionHistory,
+        currentQuestion: currentQuestion,
         currentAnswer: currentAnswer,
       }
       const result = await fetch('/api/form/save', {
@@ -84,15 +87,15 @@ const DynamicForm: React.FC<{
       if (result.status !== 200) {
         console.error(resBody.error)
       }
-    }, 1000)
-  }, [])
+    }, 5000)
+  }, [formValues, questionHistory, currentQuestion, currentAnswer])
 
   // For saving values to the database
   useEffect(() => {
     if (loaded) {
       save()
     }
-  }, [formValues])
+  }, [currentQuestion])
 
   //For retrieving values from the database(only runs once)
   useEffect(() => {
@@ -105,10 +108,12 @@ const DynamicForm: React.FC<{
       const body = await result.json()
       if (result.status !== 200) {
         console.error(body.error)
+        questionHistory = [startingQuestion]
       } else {
         const typedBody = body as FormAnswerDB
-        setQuestionHistory(typedBody.questionHistory)
+        questionHistory = typedBody.questionHistory
         setFormValues(typedBody.formValues)
+        setCurrentQuestion(typedBody.currentQuestion)
         setCurrentAnswer(typedBody.currentAnswer)
       }
       setLoaded(true)
@@ -128,24 +133,20 @@ const DynamicForm: React.FC<{
     ]
   }
 
-  function getCurrentQuestion() {
-    return questionHistory[questionHistory.length - 1]
-  }
-
   /**
    * Handles changing the old question to the given question
    */
-  function _handleQuestionChange(prevQuestion: Question) {
+  function _handleQuestionChange() {
     const newFormValues: FormValues = {
       formAnswers: {
         ...formValues.formAnswers,
-        [prevQuestion.id]: currentAnswer,
+        [currentQuestion.id]: currentAnswer,
       },
     }
     setFormValues(newFormValues)
 
-    const newQuestion = getCurrentQuestion()
-
+    const newQuestion = questionHistory[questionHistory.length - 1]
+    setCurrentQuestion(newQuestion)
     if (newQuestion.id in newFormValues.formAnswers) {
       setCurrentAnswer(newFormValues.formAnswers[newQuestion.id])
     } else {
@@ -181,16 +182,15 @@ const DynamicForm: React.FC<{
     // if the question is not answered, don't let the user continue
     if (
       !currentAnswer ||
-      currentAnswer.questionId !== getCurrentQuestion().id ||
+      currentAnswer.questionId !== currentQuestion.id ||
       (currentAnswer.type === QuestionType.RADIO &&
         currentAnswer.answerId === -1)
     ) {
       return
     }
-    const prevQuestion = getCurrentQuestion()
-    const nextQuestion = getNextQuestion(prevQuestion, currentAnswer)
-    setQuestionHistory([...questionHistory, nextQuestion])
-    _handleQuestionChange(prevQuestion)
+    const nextQuestion = getNextQuestion(currentQuestion, currentAnswer)
+    questionHistory.push(nextQuestion)
+    _handleQuestionChange()
   }
 
   function _handleBack() {
@@ -198,9 +198,8 @@ const DynamicForm: React.FC<{
       save()
       router.push('/form/concern')
     } else {
-      const prevQuestion = getCurrentQuestion()
-      setQuestionHistory(questionHistory.slice(0, -1))
-      _handleQuestionChange(prevQuestion)
+      questionHistory.splice(-1)
+      _handleQuestionChange()
     }
   }
 
@@ -454,7 +453,7 @@ const DynamicForm: React.FC<{
     values: FormValues,
     { setSubmitting }: { setSubmitting: (submit: boolean) => void }
   ) => {
-    if (getCurrentQuestion().type === QuestionType.RESULT) {
+    if (currentQuestion.type === QuestionType.RESULT) {
       _handleSubmit()
       setSubmitting(false)
     } else {
@@ -465,7 +464,7 @@ const DynamicForm: React.FC<{
   return (
     <FormCtx.Provider value={{ formValues, setFormValues }}>
       <FormTemplate
-        title={getCurrentQuestion().section}
+        title={currentQuestion.section}
         onNavigate={async () => {
           await save()
         }}
@@ -473,13 +472,14 @@ const DynamicForm: React.FC<{
         onBack={_handleBack}
         onSubmit={onSubmit}
         nextButtonText={
-          getCurrentQuestion().type === QuestionType.RESULT ? 'End' : 'Next'
+          currentQuestion.type === QuestionType.RESULT ? 'End' : 'Next'
         }
         initialValues={formValues}
       >
         <ChooseFormType
+          question={currentQuestion}
           onChange={setCurrentAnswer}
-          answer={formValues.formAnswers[getCurrentQuestion().id]}
+          answer={formValues.formAnswers[currentQuestion.id]}
           questionHistory={questionHistory}
         />
       </FormTemplate>

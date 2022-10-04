@@ -8,6 +8,7 @@ export interface FormAnswerDB extends WithId<Document> {
   userID: string
   formValues: FormValues
   questionHistory: Question[]
+  currentQuestion: Question
   currentAnswer: FormAnswer
 }
 
