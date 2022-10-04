@@ -40,7 +40,7 @@ interface QuestionTextProps {
   questionText: string
 }
 
-const BlockQuote: React.FC<QuestionTextProps> = ({ questionText }) => {
+export const BlockQuote: React.FC<QuestionTextProps> = ({ questionText }) => {
   return (
     <BlockQuoteContainer>
       <QuoteBlockBar />

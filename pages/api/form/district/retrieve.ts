@@ -31,13 +31,11 @@ export default async function handler(
     userID: session.user?.id,
   })) as DistrictDB | null
   if (result) {
-    res
-      .status(200)
-      .json({
-        ...result,
-        district: decrypt(result.district),
-        school: decrypt(result.school),
-      })
+    res.status(200).json({
+      ...result,
+      district: decrypt(result.district),
+      school: decrypt(result.school),
+    })
   } else {
     res.status(401).json({ error: 'User does not have saved formAnswer' })
   }

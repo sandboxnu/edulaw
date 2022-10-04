@@ -38,7 +38,6 @@ export default async function handler(
   for (const key in doc) {
     encrypted[key] = encrypt(doc[key])
   }
-  encrypted['bsea'] = doc.bsea
   const result = await formCollection.replaceOne(
     { userID: session.user?.id },
     {
