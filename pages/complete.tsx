@@ -335,7 +335,9 @@ function Final() {
       <p>
         DESE has a website with more information about the complaint process.
         You can view that information{' '}
-        <a href=" https://www.doe.mass.edu/prs/">here.</a>
+        <a target="_blank" href=" https://www.doe.mass.edu/prs/">
+          here.
+        </a>
       </p>
     </FormTemplate>
   )
