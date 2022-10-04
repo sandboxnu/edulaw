@@ -58,6 +58,7 @@ const NAVITEMS = [
   ['Student or Group Details', '/form/group'],
   ['Concerns', '/form/concern'],
   ['Guided Questions', '/form'],
+  ['Finish Complaint', '/complete'],
 ]
 
 function SideProgressBar({

@@ -18,6 +18,7 @@ import { ConcernDB } from './api/form/concern/save'
 import { ContactInfoDb } from './api/form/contactinfo/save'
 import { DistrictDB } from './api/form/district/save'
 import { GroupDB } from './api/form/group/save'
+import { FormTemplate } from '../components/Critical/FormTemplate'
 
 const Main = styled.div`
   display: flex;
@@ -303,60 +304,40 @@ function Final() {
   }
 
   return (
-    <Main>
-      <NavBar />
-      <LowerStuff>
-        <SideBarStyled />
-        <LowerRight>
-          <InfoSection
-            style={{
-              width: '80%',
-              right: '20%',
-              padding: '10%',
-              paddingTop: '5%',
-              paddingBottom: '5%',
-            }}
-          >
-            <h1>What happens next?</h1>
-            <br />
-            <br />
-            <p>
-              When you click “download complaint” below, a PDF version of your
-              complaint will download to your computer. To send it to DESE, you
-              can send an email to compliance@doe.mass.edu with the attachment
-              and the subject line ‘PRS Complaint’
-            </p>
-            <br />
-            <br />
-            <BlockQuote questionText="Please note: You do not need to include anything in the body of the email."></BlockQuote>
-            <br />
-            <p>
-              Once you send them the complaint, someone from PRS should reach
-              out to you within 3-5 days. You are always welcome to contact the
-              EdLaw Project intake line with questions about the process, but
-              the complaint goes directly to PRS. PRS will communicate with you
-              directly and will not tell the EdLaw Project that they get your
-              complaint, or any updates about the result.
-            </p>
-            <br />
-            <br />
-            <p>
-              DESE has a website with more information about the complaint
-              process. You can view that information{' '}
-              <a href=" https://www.doe.mass.edu/prs/">here.</a>
-            </p>
-          </InfoSection>
-          <StyledBottomButtonBar>
-            <ButtonContainer>
-              <BackButton>Back</BackButton>
-              <NextEndButton onClick={() => _handleSubmit()}>
-                Download Complaint
-              </NextEndButton>
-            </ButtonContainer>
-          </StyledBottomButtonBar>
-        </LowerRight>
-      </LowerStuff>
-    </Main>
+    <FormTemplate
+      onBack={() => router.push('/form')}
+      onSubmit={_handleSubmit}
+      nextButtonText="Download"
+      currentPage="Finish Complaint"
+      loaded={true}
+      title="What happens next?"
+    >
+      <p>
+        When you click “Download” below, a PDF version of your complaint will
+        download to your computer. To send it to DESE, you can send an email to
+        compliance@doe.mass.edu with the attachment and the subject line
+        &lsquo;PRS Complaint&rsquo;.
+      </p>
+      <br />
+      <br />
+      <BlockQuote questionText="Please note: You do not need to include anything in the body of the email."></BlockQuote>
+      <br />
+      <p>
+        Once you send them the complaint, someone from PRS should reach out to
+        you within 3-5 days. You are always welcome to contact the EdLaw Project
+        intake line with questions about the process, but the complaint goes
+        directly to PRS. PRS will communicate with you directly and will not
+        tell the EdLaw Project that they get your complaint, or any updates
+        about the result.
+      </p>
+      <br />
+      <br />
+      <p>
+        DESE has a website with more information about the complaint process.
+        You can view that information{' '}
+        <a href=" https://www.doe.mass.edu/prs/">here.</a>
+      </p>
+    </FormTemplate>
   )
 }
 
