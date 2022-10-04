@@ -1,6 +1,7 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { LoadingSpinner } from '../components/LoadingSpinner'
 
 const upload = async (file: File) => {
   await fetch('/api/form/questions/upload', {
@@ -20,7 +21,7 @@ const Admin = () => {
   ) {
     router.push('/')
   } else if (status === 'loading') {
-    return <div />
+    return <LoadingSpinner />
   }
 
   return (
@@ -28,7 +29,6 @@ const Admin = () => {
       <p>Upload csv below</p>
       <input
         type="file"
-        value={file?.name || 'No file selected yet'}
         onChange={(e) => setFile(e.target.files?.item(0) || undefined)}
       />
       <button
