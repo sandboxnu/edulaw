@@ -33,7 +33,7 @@ export default async function handler(
   if (result) {
     const decrypted = result
     for (const key in result) {
-      if (key === '_id' || key === 'userID' || key === 'bsea') continue
+      if (key === '_id' || key === 'userID') continue
       decrypted[key] = decrypt(result[key])
     }
     res.status(200).json(decrypted)
