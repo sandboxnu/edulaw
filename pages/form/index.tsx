@@ -94,7 +94,7 @@ const DynamicForm: React.FC<{
           console.error(resBody.error)
         }
       },
-      5000
+      3000
     )
   }, [])
 
@@ -108,7 +108,7 @@ const DynamicForm: React.FC<{
         currentAnswer: currentAnswer,
       })
     }
-  }, [currentQuestion])
+  }, [formValues, currentQuestion, questionHistory, currentAnswer])
 
   //For retrieving values from the database(only runs once)
   useEffect(() => {
