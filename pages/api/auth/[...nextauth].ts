@@ -37,13 +37,16 @@ export const authOptions: NextAuthOptions = {
           console.log('no client')
           return { name: 'Internal Server Error' }
         }
-        const existingUser = await client.db().collection('user').findOne({
-          username: credentials.username,
-        })
+        const existingUser = await client
+          .db('edlaw')
+          .collection('user')
+          .findOne({
+            username: credentials.username,
+          })
         if (existingUser) {
           signinUser(existingUser, credentials.password)
           client?.close()
-          return { id: existingUser._id }
+          return { id: existingUser._id, admin: existingUser.admin }
         } else {
           client?.close()
           return { name: 'Invalid Credentials' }

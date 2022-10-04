@@ -18,23 +18,11 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
-import { TitleText } from '../../components/FormStyles/QuestionText'
-import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
-import { ConcernDB } from '../api/form/concern/save'
-import { DistrictDB } from '../api/form/district/save'
-import { GroupDB } from '../api/form/group/save'
-import { studentSpecialCircumstances } from '../../constants/additionalConstants'
-import { ContactInfoDb } from '../api/form/contactinfo/save'
-import { FormContainer } from './contactinfo'
 
-const files = {
-  animalForm: '../../../constants/Animal Form.csv',
-  actualForm: '../../../constants/EdLaw Combined Flowchart.csv',
-}
-
-export const getStaticProps: GetStaticProps = (context) => {
-  const file = files.actualForm
-  const { questions, startingQuestion } = csvToQuestionArray(file)
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { questions, startingQuestion } = await (
+    await fetch('/api/form/questions/retrieve')
+  ).json()
 
   return {
     props: {
