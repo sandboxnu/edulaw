@@ -40,18 +40,20 @@ export const getStaticProps: GetStaticProps<DynamicFormInput> = async (
     .db('edlaw')
     .collection('startingQuestion')
 
-  const questions = (await formCollection
-    .find()
-    .toArray()) as unknown as Question[]
+  const questions = (await formCollection.find().toArray()) as unknown as
+    | Question[]
+    | undefined
   const startingQuestion =
-    (await startingQuestionCollection.findOne()) as unknown as {
-      index: number
-    }
+    (await startingQuestionCollection.findOne()) as unknown as
+      | {
+          index: number
+        }
+      | undefined
 
   return {
     props: {
-      questions: questions,
-      startingQuestionIndex: startingQuestion.index,
+      questions: questions || [],
+      startingQuestionIndex: startingQuestion?.index || 0,
     },
   }
 }
