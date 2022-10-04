@@ -65,34 +65,33 @@ const DynamicForm: React.FC<{
     router.push('/signup')
   }
 
+  const forceSave = async ({
+    formValues,
+    questionHistory,
+    currentQuestion,
+    currentAnswer,
+  }: Omit<FormAnswerDB, '_id' | 'userID'>) => {
+    if (!data?.user?.id) {
+      return
+    }
+    const body: Omit<FormAnswerDB, '_id'> = {
+      formValues: formValues,
+      questionHistory: questionHistory,
+      currentQuestion: currentQuestion,
+      currentAnswer: currentAnswer,
+    }
+    const result = await fetch('/api/form/save', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+    const resBody = await result.json()
+    if (result.status !== 200) {
+      console.error(resBody.error)
+    }
+  }
+
   const save = useMemo(() => {
-    return _.debounce(
-      async ({
-        formValues,
-        questionHistory,
-        currentQuestion,
-        currentAnswer,
-      }: Omit<FormAnswerDB, '_id' | 'userID'>) => {
-        if (!data?.user?.id) {
-          return
-        }
-        const body: Omit<FormAnswerDB, '_id'> = {
-          formValues: formValues,
-          questionHistory: questionHistory,
-          currentQuestion: currentQuestion,
-          currentAnswer: currentAnswer,
-        }
-        const result = await fetch('/api/form/save', {
-          method: 'POST',
-          body: JSON.stringify(body),
-        })
-        const resBody = await result.json()
-        if (result.status !== 200) {
-          console.error(resBody.error)
-        }
-      },
-      3000
-    )
+    return _.debounce(forceSave, 3000)
   }, [])
 
   // For saving values to the database
@@ -204,13 +203,16 @@ const DynamicForm: React.FC<{
 
   function _handleBack() {
     if (questionHistory.length === 1) {
-      save({
-        formValues: formValues,
-        questionHistory: questionHistory,
-        currentQuestion: currentQuestion,
-        currentAnswer: currentAnswer,
-      })
-      router.push('/form/concern')
+      const fn = async () => {
+        await forceSave({
+          formValues: formValues,
+          questionHistory: questionHistory,
+          currentQuestion: currentQuestion,
+          currentAnswer: currentAnswer,
+        })
+        router.push('/form/concern')
+      }
+      fn()
     } else {
       questionHistory.splice(-1)
       _handleQuestionChange()
@@ -479,7 +481,7 @@ const DynamicForm: React.FC<{
       <FormTemplate
         title={currentQuestion.section}
         onNavigate={async () => {
-          await save({
+          await forceSave({
             formValues: formValues,
             questionHistory: questionHistory,
             currentQuestion: currentQuestion,
