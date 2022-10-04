@@ -18,16 +18,40 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
+import { dbConnect } from '../../server/_dbConnect'
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { questions, startingQuestion } = await (
-    await fetch('/api/form/questions/retrieve')
-  ).json()
+type DynamicFormInput = {
+  questions: Question[]
+  startingQuestionIndex: number
+}
+
+export const getStaticProps: GetStaticProps<DynamicFormInput> = async (
+  context
+) => {
+  const client = await dbConnect()
+
+  if (!client) {
+    throw Error('An error occurred while connecting to the database.')
+  }
+  await client.connect()
+
+  const formCollection = client.db('edlaw').collection('questions')
+  const startingQuestionCollection = client
+    .db('edlaw')
+    .collection('startingQuestion')
+
+  const questions = (await formCollection
+    .find()
+    .toArray()) as unknown as Question[]
+  const startingQuestion =
+    (await startingQuestionCollection.findOne()) as unknown as {
+      index: number
+    }
 
   return {
     props: {
       questions: questions,
-      startingQuestionIndex: startingQuestion,
+      startingQuestionIndex: startingQuestion.index,
     },
   }
 }
@@ -35,10 +59,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 let startingAnswer: FormAnswer
 let questionHistory: Question[] = []
 
-const DynamicForm: React.FC<{
-  questions: Question[]
-  startingQuestionIndex: number
-}> = ({ questions, startingQuestionIndex }) => {
+const DynamicForm: React.FC<DynamicFormInput> = ({
+  questions,
+  startingQuestionIndex,
+}) => {
   const startingQuestion: Question = questions[startingQuestionIndex]
   const router = useRouter()
   const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
