@@ -1,4 +1,5 @@
 import type { DefaultUser } from 'next-auth'
+import { MongoClient } from 'mongodb'
 
 declare module 'next-auth' {
   interface User extends DefaultUser {
@@ -15,4 +16,9 @@ declare module 'next-auth/jwt/types' {
     uid: string
     admin: boolean
   }
+}
+
+declare global {
+  // eslint-disable-next-line
+  var _mongoClientPromise: Promise<MongoClient>
 }

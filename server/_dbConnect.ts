@@ -9,24 +9,25 @@ const host =
     : process.env.MONGO_HOST
 const uri = `mongodb${prefix}://${root}:${pw}@${host}/?authSource=admin`
 
-const client = new MongoClient(uri)
+// stolen from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
 
-let connected = false
+let client
+let clientPromise: Promise<MongoClient>
 
-export const dbConnect = async (): Promise<MongoClient | undefined> => {
-  if (connected) {
-    return client
+if (process.env.NODE_ENV === 'development') {
+  // In development mode, use a global variable so that the value
+  // is preserved across module reloads caused by HMR (Hot Module Replacement).
+  if (!global._mongoClientPromise) {
+    client = new MongoClient(uri)
+    global._mongoClientPromise = client.connect()
   }
-
-  try {
-    // Connect the client to the server
-    await client.connect()
-    // Establish and verify connection
-    await client.db('user').command({ ping: 1 })
-    connected = true
-    return client
-  } catch (error) {
-    console.log(error)
-    return undefined
-  }
+  clientPromise = global._mongoClientPromise
+} else {
+  // In production mode, it's best to not use a global variable.
+  client = new MongoClient(uri)
+  clientPromise = client.connect()
 }
+
+// Export a module-scoped MongoClient promise. By doing this in a
+// separate module, the client can be shared across functions.
+export const dbConnect = () => clientPromise
