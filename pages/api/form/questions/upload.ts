@@ -48,7 +48,11 @@ export default async function handler(
     index: questionsInfo.startingQuestion,
   })
 
-  await res.revalidate('/form')
+  try {
+    await res.revalidate('/form')
+  } catch (err) {
+    return res.status(500).json({ error: 'Error revalidating' })
+  }
 
   if (result.acknowledged && result2.acknowledged) {
     res.status(200).json({ success: true })

@@ -7,8 +7,11 @@ import { LoadingSpinner } from '../components/LoadingSpinner'
 const CenterDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-self: flex-center;
+  align-items: center;
+  height: 20%;
+  width: 20%;
   margin: auto;
+  margin-top: 5%;
   gap: 20px;
 `
 
@@ -39,6 +42,7 @@ const Admin = () => {
         <p>Upload csv below</p>
         <input
           type="file"
+          accept="text/csv"
           onChange={(e) => setFile(e.target.files?.item(0) || undefined)}
         />
         <button
