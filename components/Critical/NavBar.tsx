@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 import MuiTooltip from '@mui/material/Tooltip'
 import Logo from './Logo'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
 const NeedHelpContainer = styled.div`
@@ -41,6 +41,7 @@ const SignOutButton = styled.button`
 
 function NavBar() {
   const router = useRouter()
+  const { data, status } = useSession()
   const tooltipText = (
     <p>
       If you feel like the questions in this guide aren&apos;t addressing your
@@ -68,18 +69,20 @@ function NavBar() {
             <Typography style={{ color: 'white', fontSize: 16 }}>
               Need help?
             </Typography>
-            <SignOutButton
-              onClick={async () => {
-                const confirm = window.confirm(
-                  'Are you sure you want to sign out?'
-                )
-                if (!confirm) return
-                await signOut()
-                router.push('/signin')
-              }}
-            >
-              Sign out
-            </SignOutButton>
+            {status === 'authenticated' && (
+              <SignOutButton
+                onClick={async () => {
+                  const confirm = window.confirm(
+                    'Are you sure you want to sign out?'
+                  )
+                  if (!confirm) return
+                  await signOut()
+                  router.push('/signin')
+                }}
+              >
+                Sign out
+              </SignOutButton>
+            )}
           </NeedHelpContainer>
         </MuiTooltip>
       </Toolbar>
