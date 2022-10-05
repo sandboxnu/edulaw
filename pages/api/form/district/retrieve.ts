@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { DistrictDB } from './save'
-import { dbConnect } from '../../../../server/_dbConnect'
+import clientPromise from '../../../../server/_dbConnect'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
 import { decrypt } from '../../../../server/crypto'
@@ -14,7 +14,7 @@ export default async function handler(
     return
   }
 
-  const client = await dbConnect()
+  const client = await clientPromise
 
   if (!client) {
     res.status(500).json({ error: 'Client is not connected' })

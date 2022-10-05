@@ -1,6 +1,6 @@
 import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialProvider from 'next-auth/providers/credentials'
-import { dbConnect } from '../../../server/_dbConnect'
+import clientPromise from '../../../server/_dbConnect'
 import bcrypt from 'bcryptjs'
 import type { WithId, Document } from 'mongodb'
 
@@ -32,7 +32,7 @@ export const authOptions: NextAuthOptions = {
       },
       authorize: async (credentials, req) => {
         if (!credentials) throw new Error('no credentials provided')
-        const client = await dbConnect()
+        const client = await clientPromise
         if (!client) {
           console.log('no client')
           return { name: 'Internal Server Error' }

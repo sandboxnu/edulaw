@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { WithId, Document } from 'mongodb'
-import { dbConnect } from '../../../../server/_dbConnect'
+import clientPromise from '../../../../server/_dbConnect'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
 import { encrypt } from '../../../../server/crypto'
@@ -20,7 +20,7 @@ export default async function handler(
   }
 
   const doc = JSON.parse(req.body) as Omit<DistrictDB, '_id'>
-  const client = await dbConnect()
+  const client = await clientPromise
   if (!client) {
     res.status(500).json({ error: 'Client is not connected' })
     return

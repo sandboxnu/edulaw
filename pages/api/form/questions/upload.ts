@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { WithId, Document, MongoClient } from 'mongodb'
-import { dbConnect } from '../../../../server/_dbConnect'
+import clientPromise from '../../../../server/_dbConnect'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
 import { Question } from '../../../../models'
@@ -37,15 +37,13 @@ export default async function handler(
   const questionsInfo = csvToQuestionArray(file, { stringified: true })
   const wellFormedResponse = wellFormed(questionsInfo.questions)
   if (!wellFormedResponse.pass) {
-    res
-      .status(417)
-      .json({
-        error: `CSV is not well-formed. ${wellFormedResponse.message()}`,
-      })
+    res.status(417).json({
+      error: `CSV is not well-formed. ${wellFormedResponse.message()}`,
+    })
     return
   }
 
-  const client = await dbConnect()
+  const client = await clientPromise
   if (!client) {
     res.status(500).json({ error: 'Client is not connected' })
     return

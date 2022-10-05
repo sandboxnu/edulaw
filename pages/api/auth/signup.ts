@@ -1,10 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { NextApiRequest, NextApiResponse } from 'next'
-import { dbConnect } from '../../../server/_dbConnect'
+import clientPromise from '../../../server/_dbConnect'
 import bcrypt from 'bcryptjs'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const client = await dbConnect()
+  const client = await clientPromise
   if (!client) {
     res.status(500).json({ error: 'Could not connect to client' })
     return null

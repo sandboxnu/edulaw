@@ -18,7 +18,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
-import { dbConnect } from '../../server/_dbConnect'
+import clientPromise from '../../server/_dbConnect'
 import { ObjectId } from 'mongodb'
 
 type DynamicFormInput = {
@@ -29,7 +29,7 @@ type DynamicFormInput = {
 export const getStaticProps: GetStaticProps<DynamicFormInput> = async (
   context
 ) => {
-  const client = await dbConnect()
+  const client = await clientPromise
 
   if (!client) {
     throw Error('An error occurred while connecting to the database.')
