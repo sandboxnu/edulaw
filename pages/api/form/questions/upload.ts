@@ -5,6 +5,7 @@ import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
 import { Question } from '../../../../models'
 import csvToQuestionArray from '../../../../constants/csv_parser'
+import { wellFormed } from '../../../../constants/csv_parser.test'
 
 const dropIfExists = async (collection: string, client: MongoClient) => {
   return client
@@ -34,6 +35,15 @@ export default async function handler(
   const file = req.body as string
 
   const questionsInfo = csvToQuestionArray(file, { stringified: true })
+  const wellFormedResponse = wellFormed(questionsInfo.questions)
+  if (!wellFormedResponse.pass) {
+    res
+      .status(417)
+      .json({
+        error: `CSV is not well-formed. ${wellFormedResponse.message()}`,
+      })
+    return
+  }
 
   const client = await dbConnect()
   if (!client) {
@@ -60,7 +70,10 @@ export default async function handler(
   try {
     await res.revalidate('/form')
   } catch (err) {
-    return res.status(500).json({ error: 'Error revalidating' })
+    res
+      .status(500)
+      .json({ error: 'Error regenerating form page, please try again.' })
+    return
   }
 
   if (result.acknowledged && result2.acknowledged) {

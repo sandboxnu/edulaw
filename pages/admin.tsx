@@ -20,11 +20,12 @@ const upload = async (file: File) => {
   fetch('/api/form/questions/upload', {
     method: 'POST',
     body: text,
-  }).then((response) => {
+  }).then(async (response) => {
     if (response.ok) {
       alert('Success')
     } else {
-      alert(`Error ${response.status}`)
+      const { error } = await response.json()
+      alert(`Error ${response.status}: ${error}`)
     }
   })
 }
@@ -33,8 +34,9 @@ const Admin = () => {
   const { data, status } = useSession()
   const router = useRouter()
   const [file, setFile] = useState<File | undefined>()
+  const [loading, setLoading] = useState(false)
 
-  if (status === 'loading') {
+  if (status === 'loading' || loading) {
     return <LoadingSpinner />
   } else if (status === 'authenticated' && data?.user?.admin) {
     return (
@@ -46,14 +48,16 @@ const Admin = () => {
           onChange={(e) => setFile(e.target.files?.item(0) || undefined)}
         />
         <button
-          onClick={() => {
+          onClick={async () => {
             if (
               file &&
               confirm(
-                "Are you sure you want to upload a new file? Note that this will delete existing user's answers if successful."
+                "Are you sure you want to upload a new file? Note that this will delete existing users' answers if successful."
               )
             ) {
-              upload(file)
+              setLoading(true)
+              await upload(file)
+              setLoading(false)
             }
           }}
         >
