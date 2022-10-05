@@ -52,11 +52,7 @@ export default async function handler(
     .db('edlaw')
     .collection('startingQuestion')
 
-  const result = await questionCollection.insertMany(
-    questionsInfo.questions.map((val) => {
-      return { document: val }
-    })
-  )
+  const result = await questionCollection.insertMany(questionsInfo.questions)
   const result2 = await startingQuestionCollection.insertOne({
     index: questionsInfo.startingQuestion,
   })
