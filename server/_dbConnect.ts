@@ -11,12 +11,19 @@ const uri = `mongodb${prefix}://${root}:${pw}@${host}/?authSource=admin`
 
 const client = new MongoClient(uri)
 
+let connection: MongoClient | undefined
+
 export const dbConnect = async (): Promise<MongoClient | undefined> => {
+  if (connection) {
+    return connection
+  }
+
   try {
     // Connect the client to the server
     await client.connect()
     // Establish and verify connection
     await client.db('user').command({ ping: 1 })
+    connection = client
     return client
   } catch (error) {
     console.log(error)

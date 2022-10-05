@@ -19,7 +19,7 @@ export default async function handler(
     res.status(500).json({ error: 'Client is not connected' })
     return
   }
-  await client.connect()
+
   const session = await unstable_getServerSession(req, res, authOptions)
   if (!session) {
     res.status(401).json({ error: 'You must be logged in.' })

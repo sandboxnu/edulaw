@@ -29,10 +29,10 @@ export default async function handler(
     res.status(500).json({ error: 'Client is not connected' })
     return
   }
-  await client.connect()
-  await client.db('edlaw').dropCollection('form')
-  await client.db('edlaw').dropCollection('questions')
-  await client.db('edlaw').dropCollection('startingQuestion')
+
+  await client.db('edlaw').collection('form').drop()
+  await client.db('edlaw').collection('questions').drop()
+  await client.db('edlaw').collection('startingQuestion').drop()
 
   const questionCollection = client.db('edlaw').collection('questions')
   const startingQuestionCollection = client

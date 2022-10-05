@@ -33,7 +33,6 @@ export const getStaticProps: GetStaticProps<DynamicFormInput> = async (
   if (!client) {
     throw Error('An error occurred while connecting to the database.')
   }
-  await client.connect()
 
   const formCollection = client.db('edlaw').collection('questions')
   const startingQuestionCollection = client
