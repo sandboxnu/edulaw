@@ -20,24 +20,23 @@ export default async function handler(
     return
   }
 
-  clientPromise
-    .then(async (client) => {
-      const formCollection = client.db('edlaw').collection('contact')
-      const result = (await formCollection.findOne({
-        userID: session.user?.id,
-      })) as ContactInfoDb | null
-      if (result) {
-        const decrypted = result
-        for (const key in result) {
-          if (key === '_id' || key === 'userID') continue
-          decrypted[key] = decrypt(result[key])
-        }
-        res.status(200).json(decrypted)
-      } else {
-        res.status(401).json({ error: 'User does not have saved formAnswer' })
+  const client = await clientPromise
+  try {
+    const formCollection = client.db('edlaw').collection('contact')
+    const result = (await formCollection.findOne({
+      userID: session.user?.id,
+    })) as ContactInfoDb | null
+    if (result) {
+      const decrypted = result
+      for (const key in result) {
+        if (key === '_id' || key === 'userID') continue
+        decrypted[key] = decrypt(result[key])
       }
-    })
-    .catch((err) => {
-      res.status(500).json({ error: 'Client is not connected' })
-    })
+      res.status(200).json(decrypted)
+    } else {
+      res.status(401).json({ error: 'User does not have saved formAnswer' })
+    }
+  } catch (err: any) {
+    res.status(500).json({ error: err })
+  }
 }
