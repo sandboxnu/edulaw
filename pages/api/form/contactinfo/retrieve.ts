@@ -14,30 +14,30 @@ export default async function handler(
     return
   }
 
-  const client = await clientPromise
-
-  if (!client) {
-    res.status(500).json({ error: 'Client is not connected' })
-    return
-  }
-
   const session = await unstable_getServerSession(req, res, authOptions)
   if (!session) {
     res.status(401).json({ error: 'You must be logged in.' })
     return
   }
-  const formCollection = client.db('edlaw').collection('contact')
-  const result = (await formCollection.findOne({
-    userID: session.user?.id,
-  })) as ContactInfoDb | null
-  if (result) {
-    const decrypted = result
-    for (const key in result) {
-      if (key === '_id' || key === 'userID') continue
-      decrypted[key] = decrypt(result[key])
-    }
-    res.status(200).json(decrypted)
-  } else {
-    res.status(401).json({ error: 'User does not have saved formAnswer' })
-  }
+
+  clientPromise
+    .then(async (client) => {
+      const formCollection = client.db('edlaw').collection('contact')
+      const result = (await formCollection.findOne({
+        userID: session.user?.id,
+      })) as ContactInfoDb | null
+      if (result) {
+        const decrypted = result
+        for (const key in result) {
+          if (key === '_id' || key === 'userID') continue
+          decrypted[key] = decrypt(result[key])
+        }
+        res.status(200).json(decrypted)
+      } else {
+        res.status(401).json({ error: 'User does not have saved formAnswer' })
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ error: 'Client is not connected' })
+    })
 }
