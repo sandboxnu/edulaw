@@ -1,10 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { WithId, Document } from 'mongodb'
+import { WithId, Document, MongoClient } from 'mongodb'
 import { dbConnect } from '../../../../server/_dbConnect'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
 import { Question } from '../../../../models'
 import csvToQuestionArray from '../../../../constants/csv_parser'
+
+const dropIfExists = async (collection: string, client: MongoClient) => {
+  return client
+    .db('edlaw')
+    .collections()
+    .then(async (collections) => {
+      if (collections.map((c) => c.collectionName).includes(collection)) {
+        return client.db('edlaw').dropCollection(collection)
+      }
+    })
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -30,9 +41,11 @@ export default async function handler(
     return
   }
 
-  await client.db('edlaw').collection('form').drop()
-  await client.db('edlaw').collection('questions').drop()
-  await client.db('edlaw').collection('startingQuestion').drop()
+  await Promise.all(
+    ['form', 'questions', 'startingQuestion'].map((c) =>
+      dropIfExists(c, client)
+    )
+  )
 
   const questionCollection = client.db('edlaw').collection('questions')
   const startingQuestionCollection = client

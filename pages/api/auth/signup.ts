@@ -23,5 +23,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const newUser = await users.insertOne(hashedUser)
     res.status(200).json({ id: newUser.insertedId })
   }
-  await client.close()
 }

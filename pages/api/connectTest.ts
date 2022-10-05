@@ -10,6 +10,5 @@ export default async function handler(
     res.status(500).json({ error: 'Client did not connect' })
   } else {
     res.status(200).json({ success: 'Client connected successfully' })
-    await client.close()
   }
 }
