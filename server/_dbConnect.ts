@@ -7,9 +7,7 @@ const host =
   process.env.NODE_ENV === 'development'
     ? 'localhost:8080'
     : process.env.MONGO_HOST
-const uri = `mongodb${prefix}://${root}:${pw}@${host}/${
-  process.env.NODE_ENV !== 'development' && '?directConnection=true'
-}`
+const uri = `mongodb${prefix}://${root}:${pw}@${host}`
 
 // stolen from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
 
