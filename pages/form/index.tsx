@@ -19,6 +19,7 @@ import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import { dbConnect } from '../../server/_dbConnect'
+import { ObjectId } from 'mongodb'
 
 type DynamicFormInput = {
   questions: Question[]
@@ -40,8 +41,9 @@ export const getStaticProps: GetStaticProps<DynamicFormInput> = async (
     .collection('startingQuestion')
 
   const questions = (await formCollection.find().toArray()) as unknown as
-    | Question[]
+    | Array<Question & { _id: ObjectId }>
     | undefined
+  const questionsNoId = questions?.map((q) => _.omit(q, '_id'))
   const startingQuestion =
     (await startingQuestionCollection.findOne()) as unknown as
       | {
@@ -51,7 +53,7 @@ export const getStaticProps: GetStaticProps<DynamicFormInput> = async (
 
   return {
     props: {
-      questions: questions || [],
+      questions: questionsNoId || [],
       startingQuestionIndex: startingQuestion?.index || 0,
     },
   }
