@@ -20,9 +20,9 @@ export default async function handler(
     return
   }
 
-  const file = JSON.parse(req.body) as File
+  const file = req.body as string
 
-  const questionsInfo = await csvToQuestionArray(file)
+  const questionsInfo = csvToQuestionArray(file, { stringified: true })
 
   const client = await dbConnect()
   if (!client) {

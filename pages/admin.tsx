@@ -1,12 +1,28 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import styled from 'styled-components'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 
+const CenterDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: flex-center;
+  margin: auto;
+  gap: 20px;
+`
+
 const upload = async (file: File) => {
-  await fetch('/api/form/questions/upload', {
+  const text = await file.text()
+  fetch('/api/form/questions/upload', {
     method: 'POST',
-    body: file,
+    body: text,
+  }).then((response) => {
+    if (response.ok) {
+      alert('Success')
+    } else {
+      alert(`Error ${response.status}`)
+    }
   })
 }
 
@@ -19,7 +35,7 @@ const Admin = () => {
     return <LoadingSpinner />
   } else if (status === 'authenticated' && data?.user?.admin) {
     return (
-      <div>
+      <CenterDiv>
         <p>Upload csv below</p>
         <input
           type="file"
@@ -27,16 +43,19 @@ const Admin = () => {
         />
         <button
           onClick={() => {
-            if (file) {
+            if (
+              file &&
+              confirm(
+                "Are you sure you want to upload a new file? Note that this will delete existing user's answers if successful."
+              )
+            ) {
               upload(file)
-                .then(() => alert('Success'))
-                .catch((err) => alert('Error'))
             }
           }}
         >
-          Click to confirm
+          Click to confirm upload
         </button>
-      </div>
+      </CenterDiv>
     )
   } else {
     router.push('/')

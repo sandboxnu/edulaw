@@ -18,13 +18,13 @@ enum CsvColumns {
 type CsvType = Record<CsvColumns, string>
 
 // Extracts the columns of note from the csv
-const csvToCsvTypeArray = async (
-  fileName: string | File
-): Promise<CsvType[]> => {
-  const f =
-    typeof fileName === 'string'
-      ? fs.readFileSync(path.resolve(__dirname, fileName))
-      : await fileName.text()
+const csvToCsvTypeArray = (
+  file: string,
+  options?: { stringified?: boolean }
+): CsvType[] => {
+  const f = options?.stringified
+    ? file
+    : fs.readFileSync(path.resolve(__dirname, file))
   const csv = parse(f, { columns: true }) as CsvType[]
   return csv
 }
@@ -96,8 +96,11 @@ const mapTooltips = (
 }
 
 // Reads from the provided file into an array of type Question, including parsing answers and tooltips
-const csvToQuestionArray = async (fileName: string | File) => {
-  const csv: CsvType[] = await csvToCsvTypeArray(fileName)
+const csvToQuestionArray = (
+  file: string,
+  options?: { stringified?: boolean }
+) => {
+  const csv: CsvType[] = csvToCsvTypeArray(file, options)
 
   const sections = csv.filter(
     (entry: CsvType) => entry[CsvColumns.NAME] === 'Rectangle Container'
