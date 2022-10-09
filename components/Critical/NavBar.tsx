@@ -6,8 +6,8 @@ import styled from 'styled-components'
 
 import MuiTooltip from '@mui/material/Tooltip'
 import Logo from './Logo'
-import { signOut } from 'next-auth/react'
-import { useRouter } from 'next/router'
+import { signOut as nextAuthSignOut, useSession } from 'next-auth/react'
+import { NextRouter, useRouter } from 'next/router'
 
 const NeedHelpContainer = styled.div`
   display: flex;
@@ -39,8 +39,16 @@ const SignOutButton = styled.button`
   background-color: ${COLORS.EDLAW_GREEN};
 `
 
+const signOut = async (router: NextRouter) => {
+  const confirm = window.confirm('Are you sure you want to sign out?')
+  if (!confirm) return
+  await nextAuthSignOut({ redirect: false })
+  router.push('/signin')
+}
+
 function NavBar() {
   const router = useRouter()
+  const { data, status } = useSession()
   const tooltipText = (
     <p>
       If you feel like the questions in this guide aren&apos;t addressing your
@@ -68,18 +76,11 @@ function NavBar() {
             <Typography style={{ color: 'white', fontSize: 16 }}>
               Need help?
             </Typography>
-            <SignOutButton
-              onClick={async () => {
-                const confirm = window.confirm(
-                  'Are you sure you want to sign out?'
-                )
-                if (!confirm) return
-                await signOut()
-                router.push('/signin')
-              }}
-            >
-              Sign out
-            </SignOutButton>
+            {status === 'authenticated' && (
+              <SignOutButton onClick={() => signOut(router)}>
+                Sign out
+              </SignOutButton>
+            )}
           </NeedHelpContainer>
         </MuiTooltip>
       </Toolbar>

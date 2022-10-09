@@ -61,6 +61,21 @@ const NAVITEMS = [
   ['Finish Complaint', '/complete'],
 ]
 
+const navigate = async ({
+  onNavigate,
+  router,
+  link,
+}: {
+  onNavigate?: () => Promise<void>
+  router: NextRouter
+  link: string
+}) => {
+  if (onNavigate) {
+    await onNavigate()
+  }
+  router.push(link)
+}
+
 function SideProgressBar({
   currentPage = 'Guided Questions',
   onNavigate,
@@ -101,12 +116,7 @@ function SideProgressBar({
       return (
         <SummaryItem
           key={text}
-          onClick={async () => {
-            if (onNavigate) {
-              await onNavigate()
-            }
-            router.push(link)
-          }}
+          onClick={() => navigate({ onNavigate, router, link })}
         >
           <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
             {index === 0 ? (
@@ -126,12 +136,7 @@ function SideProgressBar({
       return (
         <ListItem
           key={text}
-          onClick={async () => {
-            if (onNavigate) {
-              await onNavigate()
-            }
-            router.push(link)
-          }}
+          onClick={() => navigate({ onNavigate, router, link })}
         >
           <ListItemIcon style={{ display: 'flex', alignItems: 'center' }}>
             {index === 0 ? (

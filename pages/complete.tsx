@@ -55,7 +55,6 @@ const StyledBottomButtonBar = styled(BottomButtonBar)`
 
 // determines whether the given doc needs a new page added to it
 // y denotes where the cursor is placed on the doc in terms of height / the 'y' axis
-// since jsPDF is a little bitch (but better than others)
 const checkNewPage = (y: number, doc: jsPDF) => {
   if (y > 270) {
     doc.addPage()
@@ -83,7 +82,6 @@ const writeDocAbstraction = (
 
 /**
  * helper method to fetch and write all of the pre-form questions onto the given doc
- * TODO needs contact info endpoint, try to clean up as well
  * @param doc the jsPDF doc to write on
  */
 async function initialInformation(doc: jsPDF) {
@@ -91,7 +89,6 @@ async function initialInformation(doc: jsPDF) {
   const xCenter = doc.internal.pageSize.width / 2
   const xRight = doc.internal.pageSize.width - x
   let y = 1.5
-  // gonna be real this also looks ugly afffff but it all looked ugly aff
   const districtSchool = (await (
     await fetch(`/api/form/district/retrieve`)
   ).json()) as DistrictDB
