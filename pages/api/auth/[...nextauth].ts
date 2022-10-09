@@ -13,7 +13,7 @@ const signinUser = async (user: WithId<Document>, pwd: string) => {
   const isMatch = await bcrypt.compare(pwd, user.hashPass)
 
   if (!isMatch) {
-    throw new Error('Password Incorrect')
+    throw new Error('Invalid Credentials')
   }
   return user
 }
@@ -31,10 +31,9 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       authorize: async (credentials, req) => {
-        if (!credentials) throw new Error('no credentials provided')
+        if (!credentials) throw new Error('No credentials provided')
         const client = await dbConnect()
         if (!client) {
-          console.log('no client')
           return { name: 'Internal Server Error' }
         }
         const existingUser = await client.db().collection('user').findOne({
