@@ -18,28 +18,43 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
-import { TitleText } from '../../components/FormStyles/QuestionText'
-import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
-import { ConcernDB } from '../api/form/concern/save'
-import { DistrictDB } from '../api/form/district/save'
-import { GroupDB } from '../api/form/group/save'
-import { studentSpecialCircumstances } from '../../constants/additionalConstants'
-import { ContactInfoDb } from '../api/form/contactinfo/save'
-import { FormContainer } from './contactinfo'
+import clientPromise from '../../server/_dbConnect'
+import { ObjectId } from 'mongodb'
 
-const files = {
-  animalForm: '../../../constants/Animal Form.csv',
-  actualForm: '../../../constants/EdLaw Combined Flowchart.csv',
+type DynamicFormInput = {
+  questions: Question[]
+  startingQuestionIndex: number
 }
 
-export const getStaticProps: GetStaticProps = (context) => {
-  const file = files.actualForm
-  const { questions, startingQuestion } = csvToQuestionArray(file)
+export const getStaticProps: GetStaticProps<DynamicFormInput> = async (
+  context
+) => {
+  const client = await clientPromise
+
+  if (!client) {
+    throw Error('An error occurred while connecting to the database.')
+  }
+
+  const formCollection = client.db('edlaw').collection('questions')
+  const startingQuestionCollection = client
+    .db('edlaw')
+    .collection('startingQuestion')
+
+  const questions = (await formCollection.find().toArray()) as unknown as
+    | Array<Question & { _id: ObjectId }>
+    | undefined
+  const questionsNoId = questions?.map((q) => _.omit(q, '_id'))
+  const startingQuestion =
+    (await startingQuestionCollection.findOne()) as unknown as
+      | {
+          index: number
+        }
+      | undefined
 
   return {
     props: {
-      questions: questions,
-      startingQuestionIndex: startingQuestion,
+      questions: questionsNoId || [],
+      startingQuestionIndex: startingQuestion?.index || 0,
     },
   }
 }
@@ -47,10 +62,10 @@ export const getStaticProps: GetStaticProps = (context) => {
 let startingAnswer: FormAnswer
 let questionHistory: Question[] = []
 
-const DynamicForm: React.FC<{
-  questions: Question[]
-  startingQuestionIndex: number
-}> = ({ questions, startingQuestionIndex }) => {
+const DynamicForm: React.FC<DynamicFormInput> = ({
+  questions,
+  startingQuestionIndex,
+}) => {
   const startingQuestion: Question = questions[startingQuestionIndex]
   const router = useRouter()
   const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
