@@ -9,6 +9,7 @@ import { districts, schools } from '../../constants'
 import { DistrictDB } from '../api/form/district/save'
 import { StyledAutocomplete, StyledTextField } from './additionalinfo'
 import { FormContainer, InputCol, InputRow } from './contactinfo'
+import isSignedIn from '../../utils/isSignedIn'
 
 const District: React.FC = () => {
   const [district, setDistrict] = useState<string | undefined>(undefined)
@@ -18,7 +19,7 @@ const District: React.FC = () => {
   const [loaded, setLoaded] = useState<boolean>(false)
 
   // reroutes to signup if not logged in
-  if (status === 'unauthenticated') {
+  if (!isSignedIn({ data, status })) {
     router.push('/signup')
   }
 

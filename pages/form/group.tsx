@@ -9,6 +9,7 @@ import { Checkbox, MenuItem, TextField } from '@material-ui/core'
 import { InfoText } from '../../components/FormStyles/QuestionText'
 import { TextArea } from '../../components/FormStyles/TextArea'
 import { InputCol } from './contactinfo'
+import isSignedIn from '../../utils/isSignedIn'
 
 const Group: React.FC = () => {
   const [studentOrGroup, setStudentOrGroup] = useState<string | undefined>()
@@ -22,7 +23,7 @@ const Group: React.FC = () => {
   const { data, status } = useSession()
   const [loaded, setLoaded] = useState<boolean>(false)
 
-  if (status === 'unauthenticated') {
+  if (!isSignedIn({ data, status })) {
     router.push('/signup')
   }
 

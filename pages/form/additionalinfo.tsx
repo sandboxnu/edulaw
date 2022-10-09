@@ -14,6 +14,7 @@ import { TitleText, InfoText } from '../../components/FormStyles/QuestionText'
 import { RadioButton } from '../../components/FormStyles/RadioButton'
 import { TextArea } from '../../components/FormStyles/TextArea'
 import { COLORS } from '../../constants/colors'
+import isSignedIn from '../../utils/isSignedIn'
 import { AdditionalInfoDb } from '../api/form/additionalinfo/save'
 import { FormContainer, InputCol, InputRow } from './contactinfo'
 
@@ -85,7 +86,7 @@ const AdditionalInfo: React.FC = () => {
 
   // reroutes to signup if not logged in
 
-  if (status === 'unauthenticated') {
+  if (!isSignedIn({ data, status })) {
     router.push('/signup')
   }
 

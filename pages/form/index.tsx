@@ -20,6 +20,7 @@ import { QuestionType } from '../../models/question'
 import { FormTemplate } from '../../components/Critical/FormTemplate'
 import clientPromise from '../../server/_dbConnect'
 import { ObjectId } from 'mongodb'
+import isSignedIn from '../../utils/isSignedIn'
 
 type DynamicFormInput = {
   questions: Question[]
@@ -76,7 +77,7 @@ const DynamicForm: React.FC<DynamicFormInput> = ({
   const [loaded, setLoaded] = useState(false)
   const { data, status } = useSession()
 
-  if (status === 'unauthenticated') {
+  if (!isSignedIn({ data, status })) {
     router.push('/signup')
   }
 

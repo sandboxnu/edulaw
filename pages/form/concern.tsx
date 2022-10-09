@@ -8,6 +8,7 @@ import { InfoText, TitleText } from '../../components/FormStyles/QuestionText'
 import { TextArea } from '../../components/FormStyles/TextArea'
 import { ConcernDB } from '../api/form/concern/save'
 import { InputCol } from './contactinfo'
+import isSignedIn from '../../utils/isSignedIn'
 
 const Concern: React.FC = () => {
   const [concern, setConcern] = useState<string | undefined>(undefined)
@@ -26,7 +27,7 @@ The information is specific to your situation and concerns, but here are a few e
 “I asked the school to do a special education evaluation for the student in September and they still haven't done it.  His grades have dropped and the school isn't giving him the support he needs.”`
 
   // reroutes to signup if not logged in
-  if (status === 'unauthenticated') {
+  if (!isSignedIn({ data, status })) {
     router.push('/signup')
   }
 

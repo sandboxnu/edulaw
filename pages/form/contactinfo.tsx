@@ -12,6 +12,7 @@ import { ContactInfoDb } from '../api/form/contactinfo/save'
 import { useSession } from 'next-auth/react'
 import { ConcernDB } from '../api/form/concern/save'
 import { TextArea } from '../../components/FormStyles/TextArea'
+import isSignedIn from '../../utils/isSignedIn'
 
 export const InputRow = styled.div`
   display: flex;
@@ -54,7 +55,7 @@ function ContactInfo() {
 
   // reroutes to signup if not logged in
 
-  if (status === 'unauthenticated') {
+  if (!isSignedIn({ data, status })) {
     router.push('/signup')
   }
 
