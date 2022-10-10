@@ -11,13 +11,16 @@ const uri = `mongodb${prefix}://${root}:${pw}@${host}`
 
 // stolen from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
 
-let client
-
-if (!global._mongoClientPromise) {
-  client = new MongoClient(uri)
-  global._mongoClientPromise = client.connect()
-}
+const client = new MongoClient(uri)
+global._mongoClientPromise = client.connect()
 const clientPromise = global._mongoClientPromise
+  .then(async (client) => {
+    await client.db('admin').command({ ping: 1 })
+    return client
+  })
+  .catch((err) => {
+    return undefined
+  })
 
 // Export a module-scoped MongoClient promise. By doing this in a
 // separate module, the client can be shared across functions.
