@@ -21,6 +21,11 @@ export default async function handler(
   }
 
   const client = await clientPromise
+  if (!client) {
+    res.status(500).json({ error: 'Client is not connected' })
+    return
+  }
+
   try {
     const formCollection = client.db('edlaw').collection('contact')
     const result = (await formCollection.findOne({
