@@ -26,8 +26,8 @@ export const encrypt = (value?: string) => {
 export const decrypt = (value?: string) => {
   if (!value) return ''
   const [salt, iv, ciphertext] = value.split(':')
-  const key = scryptSync(password, salt, 24)
-  const decipher = createDecipheriv(algorithm, key, iv)
+  const key = scryptSync(password, Buffer.from(salt, 'hex'), 24)
+  const decipher = createDecipheriv(algorithm, key, Buffer.from(iv, 'hex'))
   let decrypted = decipher.update(ciphertext, 'hex', 'utf8')
   decrypted += decipher.final('utf8')
   return decrypted
