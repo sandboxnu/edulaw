@@ -44,10 +44,8 @@ export const authOptions: NextAuthOptions = {
           })
         if (existingUser) {
           signinUser(existingUser, credentials.password)
-          client?.close()
           return { id: existingUser._id, admin: existingUser.admin }
         } else {
-          client?.close()
           return { name: 'Invalid Credentials' }
         }
       },
