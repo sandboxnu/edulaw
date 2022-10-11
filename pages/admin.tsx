@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { LoadingSpinner } from '../components/LoadingSpinner'
 
@@ -17,17 +17,16 @@ const CenterDiv = styled.div`
 
 const upload = async (file: File) => {
   const text = await file.text()
-  fetch('/api/form/questions/upload', {
+  const response = await fetch('/api/form/questions/upload', {
     method: 'POST',
     body: text,
-  }).then(async (response) => {
-    if (response.ok) {
-      alert('Success')
-    } else {
-      const { error } = await response.json()
-      alert(`Error ${response.status}: ${error}`)
-    }
   })
+  if (response.ok) {
+    alert('Success')
+  } else {
+    const { error } = await response.json()
+    alert(`Error ${response.status}: ${error}`)
+  }
 }
 
 const Admin = () => {

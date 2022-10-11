@@ -5,7 +5,7 @@ import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../../auth/[...nextauth]'
 import { Question } from '../../../../models'
 import csvToQuestionArray from '../../../../constants/csv_parser'
-import { wellFormed } from '../../../../constants/csv_parser.test'
+import isWellFormed from '../../../../utils/isWellFormed'
 
 const dropIfExists = async (collection: string, client: MongoClient) => {
   return client
@@ -35,7 +35,7 @@ export default async function handler(
   const file = req.body as string
 
   const questionsInfo = csvToQuestionArray(file, { stringified: true })
-  const wellFormedResponse = wellFormed(questionsInfo.questions)
+  const wellFormedResponse = isWellFormed(questionsInfo.questions)
   if (!wellFormedResponse.pass) {
     res.status(417).json({
       error: `CSV is not well-formed. ${wellFormedResponse.message()}`,
