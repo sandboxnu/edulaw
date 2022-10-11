@@ -14,21 +14,17 @@ export const encrypt = (value?: string) => {
   const iv = randomBytes(16)
   const key = scryptSync(password, salt, 24)
   const cipher = createCipheriv(algorithm, key, iv)
-  let encrypted = cipher.update(
-    `${salt.toString('hex')}:${iv.toString('hex')}:value`,
-    'utf8',
-    'hex'
-  )
+  let encrypted = cipher.update(value, 'utf8', 'hex')
   encrypted += cipher.final('hex')
-  return encrypted
+  return `${salt.toString('hex')}:${iv.toString('hex')}:${encrypted}`
 }
 
 export const decrypt = (value?: string) => {
   if (!value) return ''
-  const [salt, iv, ciphertext] = value.split(':')
+  const [salt, iv, encrypted] = value.split(':')
   const key = scryptSync(password, Buffer.from(salt, 'hex'), 24)
   const decipher = createDecipheriv(algorithm, key, Buffer.from(iv, 'hex'))
-  let decrypted = decipher.update(ciphertext, 'hex', 'utf8')
+  let decrypted = decipher.update(encrypted, 'hex', 'utf8')
   decrypted += decipher.final('utf8')
   return decrypted
 }
