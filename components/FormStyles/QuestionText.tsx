@@ -22,6 +22,7 @@ export const TitleText = styled.h1`
   font-size: 26px;
   margin: 64px 10% 0px;
   font-family: Source Sans Pro;
+  whitespace: pre-wrap;
 `
 
 const QuoteBlockBar = styled.div`

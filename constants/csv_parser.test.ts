@@ -17,8 +17,3 @@ test('Ensure animal flowchart is well-formed', async () => {
   const actual = csvParser('./Animal Form.csv').questions
   expect(actual).toBeWellFormed()
 })
-
-test('Ensure actual flowchart is well-formed', async () => {
-  const actual = csvParser('./EdLaw Combined Flowchart.csv').questions
-  expect(actual).toBeWellFormed()
-})
