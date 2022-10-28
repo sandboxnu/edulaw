@@ -10,6 +10,7 @@ import React, { ReactNode, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { TitleText } from '../FormStyles/QuestionText'
 import { FormContainer } from '../../pages/form/contactinfo'
+import { SidebarDiv } from '../FormStyles/ExtraStyles'
 
 const FullPageContainer = styled.div`
   display: flex;
@@ -101,10 +102,12 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
           )
         })(
           <React.Fragment>
-            <SideProgressBar
-              currentPage={currentPage}
-              onNavigate={onNavigate}
-            />
+            <SidebarDiv>
+              <SideProgressBar
+                currentPage={currentPage}
+                onNavigate={onNavigate}
+              />
+            </SidebarDiv>
             {!loaded ? (
               <LoadingSpinner />
             ) : (

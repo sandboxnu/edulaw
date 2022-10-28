@@ -70,6 +70,7 @@ const navigate = async ({
   router: NextRouter
   link: string
 }) => {
+  if (link === '/complete') return
   if (onNavigate) {
     await onNavigate()
   }
