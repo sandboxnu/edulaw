@@ -44,6 +44,19 @@ export const authOptions: NextAuthOptions = {
           })
         if (existingUser) {
           signinUser(existingUser, credentials.password)
+          await client
+            .db('edlaw')
+            .collection('user')
+            .updateOne(
+              {
+                username: credentials.username,
+              },
+              {
+                $currentDate: {
+                  lastLogin: true,
+                },
+              }
+            )
           return { id: existingUser._id, admin: existingUser.admin }
         } else {
           return { name: 'Invalid Credentials' }
