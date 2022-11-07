@@ -93,7 +93,8 @@ export const FormTemplate: React.FC<FormTemplateProps> = ({
           ) : (
             <OtherFormStyled
               onSubmit={(evt: React.SyntheticEvent) => {
-                onSubmit({ formAnswers: {} }, { setSubmitting: console.log })
+                // eslint-disable-next-line
+                onSubmit({ formAnswers: {} }, { setSubmitting: (data) => {} })
                 evt.preventDefault()
               }}
             >
