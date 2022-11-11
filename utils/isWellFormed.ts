@@ -15,6 +15,12 @@ const isWellFormed = (questions: Question[]) => {
           message: `Questions checked: ${idx}/${questions.length}\nQuestion ${question.id} has no content`,
           pass: false,
         }
+      if (question.question.split('"').length > 3) {
+        return {
+          message: `Questions checked: ${idx}/${questions.length}\nQuestion ${question.id} has too many double quotes:\n${question.question}`,
+          pass: false,
+        }
+      }
       const outOfBounds = question.answers.find(
         (answer) => answer.route < 0 || answer.route >= questions.length
       )
