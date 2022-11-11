@@ -39,8 +39,10 @@ export const BottomButtonBar = styled.div`
   justify-content: end;
   align-items: center;
   height: 80px;
+  min-height: 80px;
   border-top: 1px solid ${COLORS.SHADOW_GREY};
   background-color: ${COLORS.LIGHT_GREY};
+  margin-top: auto;
 `
 
 export const ButtonContainer = styled.div`

@@ -7,7 +7,7 @@ import { StyledTextInput } from '../FormStyles/InputBox'
 interface InputProps {
   name: string
   label: string
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  onChange: (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void
   ans?: TextFormAnswer
   tooltip?: { tooltipText: string; tooltipHoveredText: string }
 }
@@ -23,12 +23,11 @@ export const MyTextInput: React.FC<InputProps & FieldHookConfig<string>> = (
         tooltip={props.tooltip}
         input={
           <StyledTextInput
-            type="text"
             {...field}
             onChange={props.onChange}
             defaultValue={props.ans?.userAnswer || ''}
-            width={300}
-            height={42}
+            width={650}
+            height={200}
           />
         }
       />

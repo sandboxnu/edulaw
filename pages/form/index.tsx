@@ -1,5 +1,4 @@
 import { Question } from '../../models'
-import { Form, Formik } from 'formik'
 import React, { useState, useEffect, useMemo } from 'react'
 import {
   emptyFormValues,
@@ -9,9 +8,6 @@ import {
   FormValues,
 } from '../../utils/FormContext'
 import { ChooseFormType } from '../../components/DynamicForm/ChooseFormType'
-import NavBar from '../../components/Critical/NavBar'
-import styled from 'styled-components'
-import SideProgressBar from '../../components/Critical/SideProgressBar'
 import { buildResults } from '../../components/DynamicForm/MyResult'
 import { jsPDF } from 'jspdf'
 import { GetStaticProps } from 'next'
@@ -21,56 +17,45 @@ import _ from 'lodash'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { QuestionType } from '../../models/question'
-import {
-  BottomButtonBar,
-  ButtonContainer,
-  BackButton,
-  NextEndButton,
-  HorizontalBox,
-} from '../../components/FormStyles/ExtraStyles'
-import { LoadingSpinner } from '../../components/LoadingSpinner'
+import { FormTemplate } from '../../components/Critical/FormTemplate'
+import clientPromise from '../../server/_dbConnect'
+import { ObjectId } from 'mongodb'
+import isSignedIn from '../../utils/isSignedIn'
 
-const Main = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  align-items: stretch;
-`
-
-const FormContentWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
-const QuestionDisplayWrapper = styled.div`
-  padding-left: 10%;
-  margin-top: 64px;
-`
-const TitleText = styled.h1`
-  font-size: 26px;
-  margin-bottom: 20px;
-  font-family: Source Sans Pro;
-`
-const FormStyled = styled(Form)`
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-`
-
-const files = {
-  animalForm: '../../../constants/Animal Form.csv',
-  actualForm: '../../../constants/EdLaw Combined Flowchart.csv',
+type DynamicFormInput = {
+  questions: Question[]
+  startingQuestionIndex: number
 }
 
-export const getStaticProps: GetStaticProps = (context) => {
-  const file = files.actualForm
-  const { questions, startingQuestion } = csvToQuestionArray(file)
+export const getStaticProps: GetStaticProps<DynamicFormInput> = async (
+  context
+) => {
+  const client = await clientPromise
+
+  if (!client) {
+    throw Error('An error occurred while connecting to the database.')
+  }
+
+  const formCollection = client.db('edlaw').collection('questions')
+  const startingQuestionCollection = client
+    .db('edlaw')
+    .collection('startingQuestion')
+
+  const questions = (await formCollection.find().toArray()) as unknown as
+    | Array<Question & { _id: ObjectId }>
+    | undefined
+  const questionsNoId = questions?.map((q) => _.omit(q, '_id'))
+  const startingQuestion =
+    (await startingQuestionCollection.findOne()) as unknown as
+      | {
+          index: number
+        }
+      | undefined
 
   return {
     props: {
-      questions: questions,
-      startingQuestionIndex: startingQuestion,
+      questions: questionsNoId || [],
+      startingQuestionIndex: startingQuestion?.index || 0,
     },
   }
 }
@@ -78,10 +63,10 @@ export const getStaticProps: GetStaticProps = (context) => {
 let startingAnswer: FormAnswer
 let questionHistory: Question[] = []
 
-const DynamicForm: React.FC<{
-  questions: Question[]
-  startingQuestionIndex: number
-}> = ({ questions, startingQuestionIndex }) => {
+const DynamicForm: React.FC<DynamicFormInput> = ({
+  questions,
+  startingQuestionIndex,
+}) => {
   const startingQuestion: Question = questions[startingQuestionIndex]
   const router = useRouter()
   const [formValues, setFormValues] = useState<FormValues>(emptyFormValues)
@@ -92,41 +77,50 @@ const DynamicForm: React.FC<{
   const [loaded, setLoaded] = useState(false)
   const { data, status } = useSession()
 
-  if (status === 'unauthenticated') {
+  if (!isSignedIn({ data, status })) {
     router.push('/signup')
   }
 
+  const forceSave = async ({
+    formValues,
+    questionHistory,
+    currentQuestion,
+    currentAnswer,
+  }: Omit<FormAnswerDB, '_id' | 'userID'>) => {
+    if (!data?.user?.id) {
+      return
+    }
+    const body: Omit<FormAnswerDB, '_id'> = {
+      formValues: formValues,
+      questionHistory: questionHistory,
+      currentQuestion: currentQuestion,
+      currentAnswer: currentAnswer,
+    }
+    const result = await fetch('/api/form/save', {
+      method: 'POST',
+      body: JSON.stringify(body),
+    })
+    const resBody = await result.json()
+    if (result.status !== 200) {
+      console.error(resBody.error)
+    }
+  }
+
   const save = useMemo(() => {
-    return _.debounce(async () => {
-      console.log('saving')
-      if (!data?.user?.id) {
-        return
-      }
-      const userID = data.user.id
-      const body: Omit<FormAnswerDB, '_id'> = {
-        userID: userID,
-        formValues: formValues,
-        questionHistory: questionHistory,
-        currentQuestion: currentQuestion,
-        currentAnswer: currentAnswer,
-      }
-      const result = await fetch('/api/form/save', {
-        method: 'POST',
-        body: JSON.stringify(body),
-      })
-      const resBody = await result.json()
-      if (result.status !== 200) {
-        console.error(resBody.error)
-      }
-    }, 30000)
+    return _.debounce(forceSave, 3000)
   }, [])
 
   // For saving values to the database
   useEffect(() => {
     if (loaded) {
-      save()
+      save({
+        formValues: formValues,
+        questionHistory: questionHistory,
+        currentQuestion: currentQuestion,
+        currentAnswer: currentAnswer,
+      })
     }
-  }, [currentQuestion])
+  }, [formValues, currentQuestion, questionHistory, currentAnswer])
 
   //For retrieving values from the database(only runs once)
   useEffect(() => {
@@ -134,11 +128,11 @@ const DynamicForm: React.FC<{
       if (!data?.user?.id) {
         return
       }
-      const userID = data.user.id
-      const result = await fetch(`/api/form/retrieve?userID=${userID}`)
+      const result = await fetch(`/api/form/retrieve`)
       const body = await result.json()
       if (result.status !== 200) {
         console.error(body.error)
+        questionHistory = [startingQuestion]
       } else {
         const typedBody = body as FormAnswerDB
         questionHistory = typedBody.questionHistory
@@ -152,10 +146,6 @@ const DynamicForm: React.FC<{
       retrieve()
     }
   }, [data])
-
-  useEffect(() => {
-    questionHistory.push(startingQuestion)
-  }, [])
 
   /**
    * Returns the next question based on whether or not current question is a radio, continue, or text,
@@ -228,101 +218,77 @@ const DynamicForm: React.FC<{
   }
 
   function _handleBack() {
-    if (questionHistory.length === 1) return
-    questionHistory.splice(-1)
-    _handleQuestionChange()
+    if (questionHistory.length === 1) {
+      const fn = async () => {
+        await forceSave({
+          formValues: formValues,
+          questionHistory: questionHistory,
+          currentQuestion: currentQuestion,
+          currentAnswer: currentAnswer,
+        })
+        router.push('/form/concern')
+      }
+      fn()
+    } else {
+      questionHistory.splice(-1)
+      _handleQuestionChange()
+    }
   }
 
-  function _buildDoc(doc: jsPDF, answers: FormResult[]): jsPDF {
-    const x = 10
-    let y = 10
-    const y_inc = 8
-
-    answers.forEach(function (item) {
-      const splitQuestion = doc.splitTextToSize(item.question, 200)
-      for (let i = 0; i < splitQuestion.length; i++) {
-        doc.setFont('times', 'bold').text(splitQuestion[i], x, y)
-        y += y_inc
-      }
-      if (item.answer != null) {
-        doc.setFont('times', 'normal').text('\t' + item.answer + '\n\n', x, y)
-        y += y_inc
-      }
-      if (item.formAnswer.type === QuestionType.TEXT) {
-        const splitAnswer = doc.splitTextToSize(item.formAnswer.userAnswer, 200)
-        for (let i = 0; i < splitAnswer.length; i++) {
-          doc.setFont('times', 'normal').text('\t' + splitAnswer[i], x, y)
-          y += y_inc
-        }
-        doc.text('\n', x, y)
-        y += y_inc
-      }
-    })
-    return doc
-  }
-
-  function _handleSubmit() {
+  async function _handleSubmit() {
     // This is where whatever we do at the end of the form (storing, making pdf, etc) would happen
 
-    let doc = new jsPDF()
-    const results = buildResults(formValues, questionHistory)
-    if (results.length > 0) {
-      doc = _buildDoc(doc, results)
-      doc.save('PRS_Complaint.pdf')
+    const results = buildResults(formValues, questions)
+    const stringDoc = results.length > 0 ? JSON.stringify(results) : ''
+    router.push(
+      {
+        pathname: '/complete',
+        query: { data: stringDoc },
+      },
+      '/complete  '
+    )
+  }
+
+  const onSubmit = (
+    values: FormValues,
+    { setSubmitting }: { setSubmitting: (submit: boolean) => void }
+  ) => {
+    if (currentQuestion.type === QuestionType.RESULT) {
+      _handleSubmit()
+      setSubmitting(false)
+    } else {
+      _handleNext()
     }
   }
 
   return (
-    <Main>
-      <NavBar />
-      <HorizontalBox>
-        <SideProgressBar />
-
-        <FormCtx.Provider value={{ formValues, setFormValues }}>
-          <Formik
-            initialValues={formValues}
-            onSubmit={(values: FormValues, { setSubmitting }) => {
-              if (currentQuestion.type === QuestionType.RESULT) {
-                _handleSubmit()
-                setSubmitting(false)
-              } else {
-                _handleNext()
-              }
-            }}
-          >
-            <FormStyled>
-              <FormContentWrapper>
-                {!loaded ? (
-                  <LoadingSpinner />
-                ) : (
-                  <QuestionDisplayWrapper>
-                    <TitleText>{currentQuestion.section}</TitleText>
-                    <ChooseFormType
-                      question={currentQuestion}
-                      onChange={setCurrentAnswer}
-                      answer={formValues.formAnswers[currentQuestion.id]}
-                      questionHistory={questionHistory}
-                    />
-                  </QuestionDisplayWrapper>
-                )}
-                <BottomButtonBar>
-                  <ButtonContainer>
-                    <BackButton type="button" onClick={() => _handleBack()}>
-                      Back
-                    </BackButton>
-                    <NextEndButton type="submit" disabled={!loaded}>
-                      {currentQuestion.type === QuestionType.RESULT
-                        ? 'End'
-                        : 'Next'}
-                    </NextEndButton>
-                  </ButtonContainer>
-                </BottomButtonBar>
-              </FormContentWrapper>
-            </FormStyled>
-          </Formik>
-        </FormCtx.Provider>
-      </HorizontalBox>
-    </Main>
+    <FormCtx.Provider value={{ formValues, setFormValues }}>
+      <FormTemplate
+        title={currentQuestion.section}
+        onNavigate={async () => {
+          await forceSave({
+            formValues: formValues,
+            questionHistory: questionHistory,
+            currentQuestion: currentQuestion,
+            currentAnswer: currentAnswer,
+          })
+        }}
+        loaded={loaded}
+        onBack={_handleBack}
+        onSubmit={onSubmit}
+        nextButtonText={
+          currentQuestion.type === QuestionType.RESULT ? 'End' : 'Next'
+        }
+        initialValues={formValues}
+      >
+        <ChooseFormType
+          question={currentQuestion}
+          onChange={setCurrentAnswer}
+          answer={formValues.formAnswers[currentQuestion.id]}
+          questionHistory={questionHistory}
+        />
+      </FormTemplate>
+    </FormCtx.Provider>
   )
 }
 

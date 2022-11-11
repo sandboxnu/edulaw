@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useContext } from 'react'
 import {
-  FormAnswer,
   FormContextInterface,
   FormCtx,
   FormResult,
@@ -12,7 +11,6 @@ import styled from 'styled-components'
 import { StyledTextInput } from '../FormStyles/InputBox'
 import { QuestionType } from '../../models/question'
 import QuestionLayout from '../FormStyles/QuestionLayout'
-import { FieldHookConfig, useField } from 'formik'
 
 const SingleQuestionResponseDiv = styled.div`
   display: flex;
@@ -88,7 +86,9 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   const ctx = useContext(FormCtx)
   const results = buildResults(ctx.formValues, props.questionHistory).map(
     ({ formAnswer, question, answer }) => {
-      function _onChange(event: ChangeEvent<HTMLInputElement>) {
+      function _onChange(
+        event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+      ) {
         _updateTextInputs(ctx, formAnswer.questionId, event.target.value)
       }
 
@@ -117,7 +117,7 @@ export const MyResult: React.FC<MyResultProps> = (props): JSX.Element => {
   return (
     <QuestionLayout
       results={results}
-      questionText={results.length === 0 ? props.label : ''}
+      questionText={props.label}
       input={<div />}
     />
   )

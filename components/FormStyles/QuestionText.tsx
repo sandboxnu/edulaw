@@ -6,11 +6,23 @@ export const QuestionText = styled.label`
   font-size: 16px;
   line-height: 33px;
 `
+export const InfoText = styled.p`
+  font-family: Source Sans Pro;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0px;
+`
 export const AnswerText = styled.label`
   font-family: Source Sans Pro;
   font-size: 16px;
   line-height: 33px;
   font-weight: 600;
+`
+export const TitleText = styled.h1`
+  font-size: 26px;
+  margin: 64px 10% 0px;
+  font-family: Source Sans Pro;
+  whitespace: pre-wrap;
 `
 
 const QuoteBlockBar = styled.div`
@@ -29,7 +41,7 @@ interface QuestionTextProps {
   questionText: string
 }
 
-const BlockQuote: React.FC<QuestionTextProps> = ({ questionText }) => {
+export const BlockQuote: React.FC<QuestionTextProps> = ({ questionText }) => {
   return (
     <BlockQuoteContainer>
       <QuoteBlockBar />
@@ -44,7 +56,7 @@ export const QuestionsWithBlockText: React.FC<QuestionTextProps> = ({
   return (
     <div>
       {questionText
-        .split('"')
+        .split(/"|“|”/)
         .map((text, i) =>
           i % 2 == 0 ? (
             <QuestionText key={text}>{text}</QuestionText>

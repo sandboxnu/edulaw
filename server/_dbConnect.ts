@@ -7,19 +7,21 @@ const host =
   process.env.NODE_ENV === 'development'
     ? 'localhost:8080'
     : process.env.MONGO_HOST
-const uri = `mongodb${prefix}://${root}:${pw}@${host}/?authSource=admin`
+const uri = `mongodb${prefix}://${root}:${pw}@${host}`
+
+// stolen from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
 
 const client = new MongoClient(uri)
-
-export const dbConnect = async (): Promise<MongoClient | undefined> => {
-  try {
-    // Connect the client to the server
-    await client.connect()
-    // Establish and verify connection
-    await client.db('user').command({ ping: 1 })
+global._mongoClientPromise = client.connect()
+const clientPromise = global._mongoClientPromise
+  .then(async (client) => {
+    await client.db('admin').command({ ping: 1 })
     return client
-  } catch (error) {
-    console.log(error)
+  })
+  .catch((err) => {
     return undefined
-  }
-}
+  })
+
+// Export a module-scoped MongoClient promise. By doing this in a
+// separate module, the client can be shared across functions.
+export default clientPromise
