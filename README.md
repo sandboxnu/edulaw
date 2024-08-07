@@ -1,4 +1,19 @@
 # edulaw
+Previews:
+
+Landing Page:
+
+<img src="https://github.com/user-attachments/assets/c38cd248-8115-4e40-8e55-730a52e7ec54" width="500">
+
+Start Screen:
+
+<img src="https://github.com/user-attachments/assets/9d22854c-c0e3-48c4-b715-a0b71aba8ddd" width="500">
+
+Login:
+
+<img src="https://github.com/user-attachments/assets/425a796e-efea-4609-8286-7223d0fff3dd" width="500">
+
+
 
 EduLaw is a project that assists parents in reporting violations of their children's educational rights to the appropriate legal entity.
 
